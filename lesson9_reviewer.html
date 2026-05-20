@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviewer: Laws Supporting Sexuality & Gender in the Philippines</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d2e;
+    --card: #1f2235;
+    --border: #2e3150;
+    --accent: #e63946;
+    --accent2: #ffd166;
+    --accent3: #06d6a0;
+    --accent4: #118ab2;
+    --accent5: #ff6b6b;
+    --text: #e8eaf6;
+    --muted: #8b90b8;
+    --tag-bg: #2e3150;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0f1117 0%, #1a1230 50%, #0f1117 100%);
+    border-bottom: 2px solid var(--border);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(230,57,70,0.15) 0%, transparent 70%);
+  }
+  .hero-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 42px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--accent2); }
+  .hero-sub {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* NAV */
+  .toc {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .toc a {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .toc a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* MAIN */
+  main { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* LAW CARD */
+  .law {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 36px;
+    overflow: hidden;
+    scroll-margin-top: 20px;
+  }
+  .law-header {
+    padding: 24px 28px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .law-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .law-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .law-title .short-name {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .law-body { padding: 24px 28px; }
+
+  /* QUICK-GLANCE STRIP */
+  .quick-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .qs-item {
+    background: var(--tag-bg);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .qs-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .qs-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* SECTIONS */
+  .section { margin-bottom: 20px; }
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* BULLETS */
+  ul.points { list-style: none; }
+  ul.points li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    color: var(--text);
+    font-size: 14px;
+    border-bottom: 1px solid rgba(46,49,80,0.5);
+  }
+  ul.points li:last-child { border-bottom: none; }
+  ul.points li::before {
+    content: '›';
+    position: absolute;
+    left: 4px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* OFFENSE TABLE */
+  .offense-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .offense-table th {
+    background: var(--tag-bg);
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .offense-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .offense-table tr:last-child td { border-bottom: none; }
+  .degree-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    border-left: 3px solid;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+
+  /* KEY TERMS GRID */
+  .terms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .term-card {
+    background: var(--tag-bg);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .term-card .term {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .term-card .def {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* COLOR VARIANTS */
+  .c-red  { --lc: var(--accent); }
+  .c-yel  { --lc: var(--accent2); }
+  .c-grn  { --lc: var(--accent3); }
+  .c-blu  { --lc: var(--accent4); }
+  .c-ora  { --lc: #f77f00; }
+  .c-pur  { --lc: #9b5de5; }
+  .c-pin  { --lc: var(--accent5); }
+  .c-teal { --lc: #43aa8b; }
+
+  .law-header { border-left: 4px solid var(--lc, var(--accent)); }
+  .law-num { background: color-mix(in srgb, var(--lc, var(--accent)) 15%, transparent); color: var(--lc, var(--accent)); }
+  .law-title .short-name { color: var(--lc, var(--accent2)); }
+  .highlight { border-color: var(--lc, var(--accent)); background: color-mix(in srgb, var(--lc, var(--accent)) 8%, transparent); }
+  .degree-badge.d1 { background: color-mix(in srgb, var(--accent2) 18%, transparent); color: var(--accent2); }
+  .degree-badge.d2 { background: color-mix(in srgb, var(--ora, #f77f00) 18%, transparent); color: #f77f00; }
+  .degree-badge.d3 { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
+
+  /* SUMMARY BLOCK */
+  .summary-card {
+    background: linear-gradient(135deg, #1a1d2e, #1f2235);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 36px;
+  }
+  .summary-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--accent2);
+    margin-bottom: 18px;
+  }
+  .law-list-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .law-list-row:last-child { border-bottom: none; }
+  .law-pill {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 85px;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 40px 20px 36px; }
+    .toc { padding: 16px 20px; }
+    main { padding: 32px 16px 60px; }
+    .law-header { flex-direction: column; gap: 8px; }
+    .quick-strip { grid-template-columns: 1fr 1fr; }
+    .terms-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Lesson 9 Reviewer</div>
+  <h1>Laws Supporting <span>Sexuality & Gender</span><br>in the Philippines</h1>
+  <p class="hero-sub">A condensed, structured study guide covering all major laws, key definitions, penalties, and rights discussed in the lesson.</p>
+</div>
+
+<nav class="toc">
+  <a href="#overview">Overview</a>
+  <a href="#ra9262">RA 9262</a>
+  <a href="#ra7877">RA 7877</a>
+  <a href="#ra6725">RA 6725</a>
+  <a href="#ra11313">RA 11313</a>
+  <a href="#ra9710">RA 9710</a>
+  <a href="#ra7882">RA 7882</a>
+  <a href="#ra11210">RA 11210</a>
+  <a href="#ra8353">RA 8353</a>
+  <a href="#ra8505">RA 8505</a>
+  <a href="#ra8187">RA 8187</a>
+  <a href="#ra6949">RA 6949</a>
+  <a href="#ra10398">RA 10398</a>
+  <a href="#ra7192">RA 7192</a>
+</nav>
+
+<main>
+
+<!-- OVERVIEW TABLE -->
+<div class="summary-card" id="overview">
+  <h2>📋 Quick Reference: All Laws at a Glance</h2>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(230,57,70,0.15);color:#e63946;">RA 9262</span>
+    <span>Anti-Violence Against Women and Their Children Act of 2004</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(255,209,102,0.15);color:#ffd166;">RA 7877</span>
+    <span>Anti-Sexual Harassment Act of 1995</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(6,214,160,0.15);color:#06d6a0;">RA 6725</span>
+    <span>Anti-Discrimination Against Women in Employment</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(17,138,178,0.15);color:#118ab2;">RA 11313</span>
+    <span>Safe Spaces Act (Bawal Bastos Law)</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(247,127,0,0.15);color:#f77f00;">RA 9710</span>
+    <span>Magna Carta of Women</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(155,93,229,0.15);color:#9b5de5;">RA 7882</span>
+    <span>Assistance to Women in Micro & Cottage Business Enterprises</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(255,107,107,0.15);color:#ff6b6b;">RA 11210</span>
+    <span>105-Day Expanded Maternity Leave Law</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(67,170,139,0.15);color:#43aa8b;">RA 8353</span>
+    <span>Anti-Rape Law of 1997</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(230,57,70,0.15);color:#e63946;">RA 8505</span>
+    <span>Rape Victim Assistance and Protection Act of 1998</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(255,209,102,0.15);color:#ffd166;">RA 8187</span>
+    <span>Paternity Leave Act of 1996</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(6,214,160,0.15);color:#06d6a0;">RA 6949</span>
+    <span>National Women's Day (March 8)</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(17,138,178,0.15);color:#118ab2;">RA 10398</span>
+    <span>National Consciousness Day — VAWC (November 25)</span>
+  </div>
+  <div class="law-list-row">
+    <span class="law-pill" style="background:rgba(247,127,0,0.15);color:#f77f00;">RA 7192</span>
+    <span>Women in Development and Nation Building Act</span>
+  </div>
+</div>
+
+<!-- RA 9262 -->
+<div class="law c-red" id="ra9262">
+  <div class="law-header">
+    <div class="law-num">RA 9262</div>
+    <div class="law-title">
+      <h2>Anti-VAWC Act of 2004</h2>
+      <div class="short-name">Anti-Violence Against Women and Their Children</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="quick-strip">
+      <div class="qs-item"><div class="qs-label">Year</div><div class="qs-val">2004</div></div>
+      <div class="qs-item"><div class="qs-label">Protects</div><div class="qs-val">Women & children</div></div>
+      <div class="qs-item"><div class="qs-label">Fine (max)</div><div class="qs-val">₱300,000</div></div>
+      <div class="qs-item"><div class="qs-label">Perpetrator</div><div class="qs-val">Partner/spouse</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">4 Types of Violence (Sec. 3)</div>
+      <div class="terms-grid">
+        <div class="term-card">
+          <div class="term" style="color:#e63946;">Physical Violence</div>
+          <div class="def">Acts that cause bodily or physical harm.</div>
+        </div>
+        <div class="term-card">
+          <div class="term" style="color:#ffd166;">Sexual Violence</div>
+          <div class="def">Sexual acts committed against the woman/child, including rape, sexual harassment, forcing sexual activity, and prostitution.</div>
+        </div>
+        <div class="term-card">
+          <div class="term" style="color:#06d6a0;">Psychological Violence</div>
+          <div class="def">Acts causing mental/emotional suffering — intimidation, harassment, stalking, public humiliation, repeated verbal abuse, mental infidelity.</div>
+        </div>
+        <div class="term-card">
+          <div class="term" style="color:#118ab2;">Economic Abuse</div>
+          <div class="def">Making a woman financially dependent — withdrawing support, preventing work, destroying property, controlling money/properties.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Other Key Definitions</div>
+      <ul class="points">
+        <li><strong>Battery</strong> — inflicting physical harm resulting in physical and psychological/emotional distress</li>
+        <li><strong>Battered Woman Syndrome</strong> — scientifically defined pattern of psychological and behavioral symptoms in women in battering relationships</li>
+        <li><strong>Stalking</strong> — knowingly and without lawful justification following or placing the woman/child under surveillance</li>
+        <li><strong>Dating relationship</strong> — parties live as husband and wife without marriage, or are romantically involved on a continuing basis (casual acquaintance is excluded)</li>
+        <li><strong>Children</strong> — below 18 years of age, or incapable of taking care of themselves; includes biological children and those in her care</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Penalties (Sec. 6)</div>
+      <ul class="points">
+        <li>Physical harm → follows Revised Penal Code (parricide, murder, homicide); serious injuries → <em>prison mayor</em></li>
+        <li>Threatening harm → 2 degrees lower than consummated crime (min. <em>arresto mayor</em>)</li>
+        <li>Placing in fear / compelling conduct → <em>arresto mayor</em></li>
+        <li>Restricting freedom of movement → <em>prision correccional</em></li>
+        <li>Causing sexual activity without rape → <em>prision mayor</em></li>
+        <li>Psychological/emotional anguish → <em>prision mayor</em></li>
+        <li>If committed while pregnant or in presence of a child → <strong>maximum period</strong> applies</li>
+        <li>Additional fine: <strong>₱100,000 – ₱300,000</strong> + mandatory psychological counseling</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Rights of Victims (Sec. 35)</div>
+      <ul class="points">
+        <li>To be treated with respect and dignity</li>
+        <li>Legal assistance from PAO / any public legal assistance office</li>
+        <li>Support services from DSWD and LGUs</li>
+        <li>All legal remedies under the Family Code</li>
+        <li>Information about their rights and right to apply for a protection order</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RA 7877 -->
+<div class="law c-yel" id="ra7877">
+  <div class="law-header">
+    <div class="law-num">RA 7877</div>
+    <div class="law-title">
+      <h2>Anti-Sexual Harassment Act of 1995</h2>
+      <div class="short-name">Work, Education & Training Environments</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="quick-strip">
+      <div class="qs-item"><div class="qs-label">Year</div><div class="qs-val">1995</div></div>
+      <div class="qs-item"><div class="qs-label">Fine</div><div class="qs-val">₱10,000–₱20,000</div></div>
+      <div class="qs-item"><div class="qs-label">Prison</div><div class="qs-val">1–6 months</div></div>
+      <div class="qs-item"><div class="qs-label">Prescription</div><div class="qs-val">3 years</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Definition</div>
+      <div class="highlight">Sexual harassment is committed by a person in authority (employer, supervisor, teacher, coach, etc.) who demands, requests, or requires sexual favor from another — regardless of whether the demand is accepted.</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">In a Work Environment, SH is committed when:</div>
+      <ul class="points">
+        <li>Sexual favor is a condition for hiring, employment, re-employment, or promotion</li>
+        <li>Refusal to grant the favor limits, segregates, or adversely affects employment opportunities</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">In an Education/Training Environment, SH is committed when:</div>
+      <ul class="points">
+        <li>Sexual favor is a condition for passing grades, honors, scholarships, or allowances</li>
+        <li>Sexual advances create an intimidating, hostile, or offensive environment for the student/trainee/apprentice</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RA 6725 -->
+<div class="law c-grn" id="ra6725">
+  <div class="law-header">
+    <div class="law-num">RA 6725</div>
+    <div class="law-title">
+      <h2>Anti-Discrimination in Employment</h2>
+      <div class="short-name">Amends Labor Code Art. 135</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="section">
+      <div class="section-title">Prohibited Acts (Art. 135)</div>
+      <ul class="points">
+        <li>Paying a female employee <strong>lesser compensation</strong> than a male employee for work of equal value</li>
+        <li>Favoring a male employee for <strong>promotions, training, scholarships</strong> solely based on sex</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RA 11313 -->
+<div class="law c-blu" id="ra11313">
+  <div class="law-header">
+    <div class="law-num">RA 11313</div>
+    <div class="law-title">
+      <h2>Safe Spaces Act</h2>
+      <div class="short-name">"Bawal Bastos Law" — Gender-Based Sexual Harassment</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="quick-strip">
+      <div class="qs-item"><div class="qs-label">Coverage</div><div class="qs-val">Streets, online, public spaces</div></div>
+      <div class="qs-item"><div class="qs-label">Minors</div><div class="qs-val">DSWD handles (RA 9344)</div></div>
+      <div class="qs-item"><div class="qs-label">PUVs</div><div class="qs-val">License may be cancelled (LTO)</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Degree Offenses & Penalties</div>
+      <table class="offense-table">
+        <thead>
+          <tr>
+            <th>Degree</th>
+            <th>Acts</th>
+            <th>1st Offense</th>
+            <th>2nd Offense</th>
+            <th>3rd Offense</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="degree-badge d1">1st</span></td>
+            <td>Catcalling, wolf-whistling, leering, unwanted invitations, sexist/transphobic slurs, persistent comments on appearance</td>
+            <td>₱1,000 fine + 12 hrs community service + Gender Sensitivity Seminar</td>
+            <td>Arresto menor (6–10 days) + ₱3,000</td>
+            <td>Arresto menor (11–30 days) + ₱10,000</td>
+          </tr>
+          <tr>
+            <td><span class="degree-badge d2">2nd</span></td>
+            <td>Offensive body gestures, exposing private parts for gratification</td>
+            <td>₱10,000 + 12 hrs community service + seminar</td>
+            <td>Arresto menor (11–30 days) + ₱15,000</td>
+            <td>Arresto mayor (1 mo 1 day – 6 mos) + ₱20,000</td>
+          </tr>
+          <tr>
+            <td><span class="degree-badge d3">3rd</span></td>
+            <td>Stalking + touching/pinching/brushing against victim's body</td>
+            <td>Arresto menor (11–30 days) + ₱30,000 + seminar</td>
+            <td>Arresto mayor (1 mo 1 day – 6 mos) or ₱50,000</td>
+            <td>Arresto mayor (4 mos 1 day – 6 mos) + ₱100,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- RA 9710 -->
+<div class="law c-ora" id="ra9710">
+  <div class="law-header">
+    <div class="law-num">RA 9710</div>
+    <div class="law-title">
+      <h2>Magna Carta of Women</h2>
+      <div class="short-name">Comprehensive Women's Human Rights Law</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="quick-strip">
+      <div class="qs-item"><div class="qs-label">Based on</div><div class="qs-val">CEDAW & ICESCR</div></div>
+      <div class="qs-item"><div class="qs-label">Oversight body</div><div class="qs-val">PCW (Phil. Commission on Women)</div></div>
+      <div class="qs-item"><div class="qs-label">GAD</div><div class="qs-val">Gender & Development mainstreaming</div></div>
+    </div>
+
+    <div class="highlight">
+      The MCW is the local translation of CEDAW — it defines gender discrimination, state obligations, substantive equality, and temporary special measures for Filipino women, especially those in marginalized sectors.
+    </div>
+
+    <div class="section">
+      <div class="section-title">Key Rights Guaranteed</div>
+      <ul class="points">
+        <li>Protection from all forms of violence (barangay VAW desks, training for gov't personnel)</li>
+        <li>Protection and security during disasters and calamities</li>
+        <li>Participation and representation in civil service, planning bodies, and politics</li>
+        <li>Equal treatment before the law (discriminatory laws to be reviewed/repealed)</li>
+        <li>Equal access to education, scholarships, training; no expulsion due to pregnancy</li>
+        <li>Equal participation in sports</li>
+        <li>Non-discrimination in military, police, and similar services</li>
+        <li>Non-derogatory portrayal in media and film</li>
+        <li>Comprehensive health services covering all life stages (including family planning)</li>
+        <li><strong>2-month paid gynecological surgery leave</strong> (min. 6 months continuous service required)</li>
+        <li>Equal rights in marriage and family relations</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Marginalized Sectors Covered</div>
+      <ul class="points">
+        <li>Small farmers & rural workers, Fisherfolk, Urban poor</li>
+        <li>Formal & informal economy workers, Migrant workers</li>
+        <li>Indigenous peoples, Moro people</li>
+        <li>Children (under 18), Senior citizens (60+), Persons with disabilities</li>
+        <li>Solo parents (per RA 8972)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Government Responsibilities</div>
+      <ul class="points">
+        <li>All agencies (incl. GOCCs, LGUs) must adopt <strong>gender mainstreaming</strong></li>
+        <li>Maintain gender statistics & sex-disaggregated databases</li>
+        <li>Commission on Human Rights acts as <strong>Gender & Development Ombud</strong></li>
+        <li>Commission on Audit conducts annual audit of GAD budgets</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Penalties</div>
+      <ul class="points">
+        <li>Gov't violator: civil service sanctions recommended by CHR to CSC and DILG</li>
+        <li>Private violator: liable to pay damages + other legal remedies</li>
+        <li>Violence by State agents = aggravating offense with corresponding higher penalties</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RA 7882 -->
+<div class="law c-pur" id="ra7882">
+  <div class="law-header">
+    <div class="law-num">RA 7882</div>
+    <div class="law-title">
+      <h2>Women in Micro & Cottage Business</h2>
+      <div class="short-name">Assistance to Women Entrepreneurs</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="quick-strip">
+      <div class="qs-item"><div class="qs-label">Eligibility</div><div class="qs-val">Filipino women, 18+</div></div>
+      <div class="qs-item"><div class="qs-label">Max Inventory</div><div class="qs-val">₱25,000/day</div></div>
+      <div class="qs-item"><div class="qs-label">Interest rate</div><div class="qs-val">Prime or 12% p.a. (lower)</div></div>
+      <div class="qs-item"><div class="qs-label">Penalty</div><div class="qs-val">1 yr prison or ₱5,000</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Key Provisions</div>
+      <ul class="points">
+        <li>Priority loans for women in existing micro/cottage business (≥1 yr with good track record)</li>
+        <li>Business learners certified by TESDA eligible for loans up to ₱25,000 capitalization</li>
+        <li>TESDA provides free technical training</li>
+        <li>DTI Bureau of Small and Medium Business Development is the implementing agency</li>
+        <li>Prohibited: mortgaging loan-funded equipment; refusing/delaying loans without justification</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RA 11210 -->
+<div class="law c-pin" id="ra11210">
+  <div class="law-header">
+    <div class="law-num">RA 11210</div>
+    <div class="law-title">
+      <h2>105-Day Expanded Maternity Leave Law</h2>
+      <div class="short-name">For All Female Workers — Public & Private</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="quick-strip">
+      <div class="qs-item"><div class="qs-label">Standard leave</div><div class="qs-val">105 days (full pay)</div></div>
+      <div class="qs-item"><div class="qs-label">Solo mothers</div><div class="qs-val">+15 days (full pay)</div></div>
+      <div class="qs-item"><div class="qs-label">Optional ext.</div><div class="qs-val">+30 days (no pay)</div></div>
+      <div class="qs-item"><div class="qs-label">Miscarriage</div><div class="qs-val">60 days (full pay)</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Key Rules</div>
+      <ul class="points">
+        <li>Applies to all female workers regardless of civil status or legitimacy of child</li>
+        <li>Leave must be availed continuously (before or after delivery) — cannot be deferred</li>
+        <li>Granted for <strong>every instance</strong> of pregnancy, miscarriage, or emergency termination</li>
+        <li>SSS members must have paid ≥3 monthly contributions in the 12 months before the semester of childbirth</li>
+        <li>Employer must advance full payment within 30 days of application; SSS reimburses employer 100%</li>
+        <li>Postnatal leave must be at least 60 days</li>
+        <li>Up to <strong>7 days</strong> may be allocated to the child's father or alternate caregiver (within 4th degree of consanguinity)</li>
+        <li>Employer cannot use maternity leave as basis for demotion or termination</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Penalties</div>
+      <div class="highlight">Fine: ₱20,000 – ₱200,000 and/or imprisonment of 6 years and 1 day to 12 years.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RA 8353 -->
+<div class="law c-teal" id="ra8353">
+  <div class="law-header">
+    <div class="law-num">RA 8353</div>
+    <div class="law-title">
+      <h2>Anti-Rape Law of 1997</h2>
+      <div class="short-name">Reclassifies Rape as Crime Against Persons</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="section">
+      <div class="section-title">Key Provisions</div>
+      <ul class="points">
+        <li>Rape is now classified as a <strong>Crime Against Persons</strong> (not just against chastity) under the Revised Penal Code</li>
+        <li>Penalty: <strong>Reclusion perpetua</strong> (Art. 266-B)</li>
+        <li>Effect of Pardon (Art. 266-C): subsequent valid marriage between offended party and offender extinguishes criminal action or penalty</li>
+        <li>Presumptions (Art. 266-D): any overt act of resistance, or incapacity to give valid consent, may be accepted as evidence in prosecution</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RA 8505 -->
+<div class="law c-red" id="ra8505">
+  <div class="law-header">
+    <div class="law-num">RA 8505</div>
+    <div class="law-title">
+      <h2>Rape Victim Assistance & Protection Act of 1998</h2>
+      <div class="short-name">Rape Crisis Centers in Every Province and City</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="quick-strip">
+      <div class="qs-item"><div class="qs-label">Initial Fund</div><div class="qs-val">₱120M total</div></div>
+      <div class="qs-item"><div class="qs-label">DSWD share</div><div class="qs-val">₱60M</div></div>
+      <div class="qs-item"><div class="qs-label">Others</div><div class="qs-val">₱20M each (DOH, DILG, DOJ)</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Key Provisions</div>
+      <ul class="points">
+        <li>DSWD, DOH, DILG, DOJ + lead NGO must establish a <strong>rape crisis center in every province and city</strong></li>
+        <li>Police duty: refer to prosecutor for inquest; arrange counseling and medical services; file a report</li>
+        <li>Closed-door proceedings can be ordered to protect privacy of offended party and accused</li>
+        <li><strong>Rape Shield</strong> (Sec. 6): complainant's past sexual conduct/reputation is NOT admissible as evidence unless found material and relevant by the court</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RA 8187 -->
+<div class="law c-yel" id="ra8187">
+  <div class="law-header">
+    <div class="law-num">RA 8187</div>
+    <div class="law-title">
+      <h2>Paternity Leave Act of 1996</h2>
+      <div class="short-name">7 Days for Married Male Employees</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="quick-strip">
+      <div class="qs-item"><div class="qs-label">Duration</div><div class="qs-val">7 days (full pay)</div></div>
+      <div class="qs-item"><div class="qs-label">Deliveries covered</div><div class="qs-val">First 4 deliveries</div></div>
+      <div class="qs-item"><div class="qs-label">Penalty</div><div class="qs-val">Fine up to ₱25,000 or 30 days–6 mos imprisonment</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Key Rules</div>
+      <ul class="points">
+        <li>Only for <strong>married male employees</strong> in public and private sectors</li>
+        <li>Covers the <strong>first four (4) deliveries</strong> of the legitimate spouse</li>
+        <li>Includes miscarriage as a qualifying delivery</li>
+        <li>Employee must notify employer of wife's pregnancy and expected delivery date</li>
+        <li>Purpose: enable him to support his wife during recovery and care for the newborn</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RA 6949 -->
+<div class="law c-grn" id="ra6949">
+  <div class="law-header">
+    <div class="law-num">RA 6949</div>
+    <div class="law-title">
+      <h2>National Women's Day</h2>
+      <div class="short-name">March 8 — Working Special Holiday</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="highlight">
+      March 8 of every year is declared a <strong>working special holiday</strong> known as National Women's Day. Government and private employers must afford employees time to participate in related activities.
+    </div>
+  </div>
+</div>
+
+<!-- RA 10398 -->
+<div class="law c-blu" id="ra10398">
+  <div class="law-header">
+    <div class="law-num">RA 10398</div>
+    <div class="law-title">
+      <h2>National VAWC Consciousness Day</h2>
+      <div class="short-name">November 25 — Annual Awareness Day</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="quick-strip">
+      <div class="qs-item"><div class="qs-label">Date</div><div class="qs-val">November 25</div></div>
+      <div class="qs-item"><div class="qs-label">Budget source</div><div class="qs-val">5% of GAD budget</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">What Must Happen on Nov. 25</div>
+      <ul class="points">
+        <li>PIA must allocate ≥1 hour of airtime for VAWC awareness programs</li>
+        <li>Publishers encouraged to feature VAWC issues in print media</li>
+        <li>Schools must organize consciousness-raising activities</li>
+        <li>Gov't & LGU leaders must promote VAWC awareness</li>
+      </ul>
+    </div>
+    <div class="section">
+      <div class="section-title">Agencies Involved</div>
+      <ul class="points">
+        <li><strong>National level:</strong> NSO (data), PNP (enforcement), DSWD (welfare), DOLE (labor), DFA (overseas cases), PCW (gender equality), IACAT (trafficking), IAC-VAWC</li>
+        <li><strong>Regional level:</strong> RIACAT-VAWC — evaluates local activities and submits annual reports on Nov. 25</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RA 7192 -->
+<div class="law c-ora" id="ra7192">
+  <div class="law-header">
+    <div class="law-num">RA 7192</div>
+    <div class="law-title">
+      <h2>Women in Development and Nation Building Act</h2>
+      <div class="short-name">Equal Partners in National Development</div>
+    </div>
+  </div>
+  <div class="law-body">
+    <div class="quick-strip">
+      <div class="qs-item"><div class="qs-label">Lead agency</div><div class="qs-val">NEDA</div></div>
+      <div class="qs-item"><div class="qs-label">Goal</div><div class="qs-val">Full equality before the law</div></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Key Provisions</div>
+      <ul class="points">
+        <li><strong>Equality in contracts:</strong> Women of legal age have equal capacity to act and enter into contracts as men, regardless of civil status</li>
+        <li><strong>Equal club membership:</strong> Equal access to social, civic, and recreational clubs and organizations</li>
+        <li><strong>Military schools:</strong> Equal opportunities for appointment, admission, training, and commissioning in AFP and PNP schools</li>
+        <li><strong>Voluntary SSS/GSIS/Pag-IBIG:</strong> Full-time homemakers (with working spouse's consent) entitled to coverage up to ½ of working spouse's compensation</li>
+        <li>NEDA ensures women's participation in foreign aid, grants, and loans</li>
+        <li>Key areas: gender-responsive education, employment, agriculture, social services, and budgeting</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CONCLUSION -->
+<div class="summary-card">
+  <h2>💡 Why These Laws Matter — Conclusion</h2>
+  <ul class="points">
+    <li><strong>Protection Against Discrimination:</strong> Makes it illegal to treat someone unfairly based on gender</li>
+    <li><strong>Access to Opportunities:</strong> Removes obstacles in education, jobs, and other fields for women</li>
+    <li><strong>Equal Pay & Fair Labor:</strong> Ensures equal pay for the same work and workplace protection</li>
+    <li><strong>Protection from Violence & Harassment:</strong> Legal support and protection for victims of gender-based violence</li>
+    <li><strong>Reproductive Rights & Health:</strong> Protects bodily autonomy and access to maternal/reproductive health services</li>
+    <li><strong>Social & Cultural Change:</strong> Laws shift societal norms toward more equal and respectful attitudes on gender</li>
+  </ul>
+</div>
+
+</main>
+</body>
+</html>
