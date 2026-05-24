@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 7 Reviewer — Staff Mental Health Services</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap');
+
+:root {
+  --navy: #1e3a5f;
+  --orange: #f4732a;
+  --orange-light: #fff0e8;
+  --cream: #fdf8f2;
+  --white: #ffffff;
+  --text: #1a2640;
+  --muted: #6b7a99;
+  --border: #e0e8f5;
+  --teal: #0d9488;
+  --purple: #7c3aed;
+  --rose: #e11d48;
+  --green: #16a34a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 56px 32px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: rgba(244,115,42,0.12);
+  top: -120px; right: -80px;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(244,115,42,0.08);
+  bottom: -100px; left: -60px;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 5vw, 50px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.hero h1 span { color: var(--orange); }
+.hero-sub {
+  color: rgba(255,255,255,0.6);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  font-size: 15px;
+}
+.hero-outcomes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.outcome-pill {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+  text-align: left;
+}
+.outcome-pill span { color: var(--orange); margin-right: 6px; }
+
+/* ── NAV ── */
+.nav-section {
+  background: var(--navy);
+  padding: 28px 24px 32px;
+}
+.nav-label {
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 18px;
+}
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 10px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.nav-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  text-decoration: none;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: all 0.22s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.nav-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--nc, var(--orange));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  border-radius: 0 0 2px 2px;
+}
+.nav-card:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+}
+.nav-card:hover::after { transform: scaleX(1); }
+.nav-card .nc-emoji {
+  font-size: 22px;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.nav-card .nc-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--nc, var(--orange));
+  opacity: 0.9;
+}
+.nav-card .nc-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.25;
+}
+.nav-card .nc-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ── MAIN ── */
+main { max-width: 860px; margin: 0 auto; padding: 40px 20px 80px; }
+
+/* ── SECTION HEADER ── */
+.sec-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 44px 0 22px;
+  scroll-margin-top: 64px;
+}
+.sec-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.sec-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.sec-title small {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+/* ── PROF CARDS ── */
+.prof-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.prof-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px 20px 18px;
+  border: 1.5px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.prof-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
+.prof-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.prof-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.prof-field {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.prof-card p {
+  font-size: 13.5px;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* color schemes */
+.c1 { border-top: 4px solid #f4732a; }
+.c1 h3 { color: #f4732a; }
+.c1 .prof-field { background: #fff0e8; color: #c05a1f; }
+.c2 { border-top: 4px solid #0d9488; }
+.c2 h3 { color: #0d9488; }
+.c2 .prof-field { background: #e6fafa; color: #0d7870; }
+.c3 { border-top: 4px solid #7c3aed; }
+.c3 h3 { color: #7c3aed; }
+.c3 .prof-field { background: #f3eeff; color: #6330be; }
+.c4 { border-top: 4px solid #e11d48; }
+.c4 h3 { color: #e11d48; }
+.c4 .prof-field { background: #ffeef2; color: #be1039; }
+.c5 { border-top: 4px solid #0284c7; }
+.c5 h3 { color: #0284c7; }
+.c5 .prof-field { background: #e0f2fe; color: #026aa7; }
+.c6 { border-top: 4px solid #16a34a; }
+.c6 h3 { color: #16a34a; }
+.c6 .prof-field { background: #dcfce7; color: #15803d; }
+
+/* ── WORKERS SECTION ── */
+.worker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+.worker-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+}
+.worker-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.worker-card h3 .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.worker-card p { font-size: 13px; color: #4a5568; line-height: 1.55; }
+.worker-card .also-called {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+/* ── TABLE ── */
+.aspect-table-wrap {
+  background: var(--white);
+  border-radius: 14px;
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+}
+table.aspect-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.aspect-table thead tr {
+  background: var(--navy);
+  color: #fff;
+}
+.aspect-table th {
+  padding: 12px 18px;
+  text-align: left;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.aspect-table td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.aspect-table tr:last-child td { border-bottom: none; }
+.aspect-table tr:nth-child(even) td { background: #f9fbff; }
+.aspect-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--orange);
+  background: var(--orange-light);
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* ── ALERT BOXES ── */
+.alert {
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  border-left: 4px solid;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.alert strong { display: block; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; font-weight: 800; }
+.alert-red { background: #fff1f4; border-color: #e11d48; color: #7f1d35; }
+.alert-red strong { color: #e11d48; }
+.alert-orange { background: var(--orange-light); border-color: var(--orange); color: #7a3812; }
+.alert-orange strong { color: var(--orange); }
+.alert-teal { background: #f0fdfa; border-color: #0d9488; color: #134e4a; }
+.alert-teal strong { color: #0d9488; }
+.alert-navy { background: #eef2ff; border-color: var(--navy); color: #1e2e50; }
+.alert-navy strong { color: var(--navy); }
+
+/* ── STRESS SYMPTOM CARDS ── */
+.symptom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.symptom-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.symptom-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.symptom-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+.s-phys h3 { color: #0284c7; }
+.s-phys .symptom-tag { background: #e0f2fe; color: #0369a1; }
+.s-psych h3 { color: #7c3aed; }
+.s-psych .symptom-tag { background: #f3eeff; color: #6d28d9; }
+
+.symptom-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: #f0f4ff;
+  color: var(--navy);
+}
+.chip.red { background: #ffeef2; color: #be1039; }
+.chip.blue { background: #e0f2fe; color: #0369a1; }
+.chip.purple { background: #f3eeff; color: #6d28d9; }
+
+/* ── PFA BOX ── */
+.pfa-box {
+  background: linear-gradient(135deg, var(--navy) 0%, #2d5a8e 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 28px 28px 24px;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.pfa-box::after {
+  content: 'PFA';
+  position: absolute;
+  right: 20px; bottom: -10px;
+  font-family: 'Syne', sans-serif;
+  font-size: 80px;
+  font-weight: 800;
+  opacity: 0.07;
+  color: #fff;
+  line-height: 1;
+}
+.pfa-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+.pfa-box h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.pfa-box p { font-size: 14px; color: rgba(255,255,255,0.82); line-height: 1.65; }
+
+/* ── SUMMARY TABLE ── */
+.summary-wrap {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.summary-wrap h2 {
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  padding: 14px 20px;
+  letter-spacing: 1px;
+}
+.sum-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
+}
+.sum-row:last-child { border-bottom: none; }
+.sum-key {
+  font-weight: 800;
+  padding: 12px 16px;
+  background: #f9fbff;
+  color: var(--navy);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+}
+.sum-val {
+  padding: 12px 16px;
+  color: #374151;
+}
+
+/* ── STANDARDS ── */
+.standards-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.standards-list li {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.standards-list li::before {
+  content: '✓';
+  color: var(--green);
+  font-weight: 900;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 28px 20px;
+  font-size: 12px;
+}
+footer strong { color: rgba(255,255,255,0.8); }
+
+@media (max-width: 600px) {
+  .prof-grid { grid-template-columns: 1fr; }
+  .worker-grid { grid-template-columns: 1fr; }
+  .symptom-row { grid-template-columns: 1fr; }
+  .sum-row { grid-template-columns: 1fr; }
+  .sum-key { border-bottom: 1px solid var(--border); }
+  .hero-outcomes { flex-direction: column; align-items: stretch; }
+  .outcome-pill { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">Lesson 7 · DMH Reviewer</div>
+  <h1>Staff Mental<br><span>Health Services</span></h1>
+  <p class="hero-sub">A structured study guide on mental health professions, disaster mental health work, and staff care.</p>
+  <div class="hero-outcomes">
+    <div class="outcome-pill"><span>①</span> Identify roles & functions of MH professionals and workers</div>
+    <div class="outcome-pill"><span>②</span> Describe aspects & challenges in disaster MH settings</div>
+    <div class="outcome-pill"><span>③</span> Explain importance of staff mental health services</div>
+  </div>
+</header>
+
+<!-- NAV CARDS -->
+<nav class="nav-section">
+  <div class="nav-label">📖 Jump to a section</div>
+  <div class="nav-grid">
+    <a href="#mhp" class="nav-card" style="--nc:#f4732a;">
+      <div class="nc-emoji">🧠</div>
+      <div class="nc-num">Section 01</div>
+      <div class="nc-title">MH Profession</div>
+      <div class="nc-sub">What is it &amp; who qualifies?</div>
+    </a>
+    <a href="#professionals" class="nav-card" style="--nc:#0d9488;">
+      <div class="nc-emoji">👩‍⚕️</div>
+      <div class="nc-num">Section 02</div>
+      <div class="nc-title">6 Professionals</div>
+      <div class="nc-sub">Psychiatrists to Teachers</div>
+    </a>
+    <a href="#workers" class="nav-card" style="--nc:#7c3aed;">
+      <div class="nc-emoji">🤝</div>
+      <div class="nc-num">Section 03</div>
+      <div class="nc-title">Service Workers</div>
+      <div class="nc-sub">Workers &amp; Paraprofessionals</div>
+    </a>
+    <a href="#aspects" class="nav-card" style="--nc:#e11d48;">
+      <div class="nc-emoji">⚡</div>
+      <div class="nc-num">Section 04</div>
+      <div class="nc-title">DMH Aspects</div>
+      <div class="nc-sub">10 key factors (ARC, 2012)</div>
+    </a>
+    <a href="#stress" class="nav-card" style="--nc:#0284c7;">
+      <div class="nc-emoji">⚠️</div>
+      <div class="nc-num">Section 05</div>
+      <div class="nc-title">Stress &amp; Symptoms</div>
+      <div class="nc-sub">Physical &amp; psychological risks</div>
+    </a>
+    <a href="#solutions" class="nav-card" style="--nc:#16a34a;">
+      <div class="nc-emoji">🛡️</div>
+      <div class="nc-num">Section 06</div>
+      <div class="nc-title">Protection &amp; PFA</div>
+      <div class="nc-sub">Stress mgmt + First Aid</div>
+    </a>
+    <a href="#summary" class="nav-card" style="--nc:#f4732a;">
+      <div class="nc-emoji">📋</div>
+      <div class="nc-num">Section 07</div>
+      <div class="nc-title">Quick Summary</div>
+      <div class="nc-sub">All key points at a glance</div>
+    </a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ── SECTION 1: MH PROFESSION ── -->
+<div class="sec-header" id="mhp">
+  <div class="sec-icon" style="background:#fff0e8;">🧠</div>
+  <div class="sec-title">
+    <small>Overview</small>
+    Mental Health Profession
+  </div>
+</div>
+
+<div class="alert alert-navy">
+  <strong>Definition</strong>
+  A <strong>multidisciplinary group of professionals</strong> that addresses mental health needs in the country. Includes psychiatrists, psychologists, social workers, and others.
+</div>
+
+<ul class="standards-list">
+  <li>Identified with professional organizations that regulate training, credentialing, and licensing</li>
+  <li>Adhere to ethical codes and standards of practice</li>
+  <li>Must meet eligibility requirements and competency for their position</li>
+</ul>
+
+<!-- ── SECTION 2: 6 PROFESSIONALS ── -->
+<div class="sec-header" id="professionals">
+  <div class="sec-icon" style="background:#e6fafa;">👩‍⚕️</div>
+  <div class="sec-title">
+    <small>Mental Health Professionals</small>
+    The 6 Key Roles
+  </div>
+</div>
+
+<div class="prof-grid">
+
+  <div class="prof-card c1">
+    <div class="prof-num">01</div>
+    <h3>Psychiatrists</h3>
+    <div class="prof-field">Medicine</div>
+    <p><strong>Psychiatry:</strong> Branch of medicine focused on the <em>diagnosis, treatment, and prevention</em> of mental, emotional, and behavioral disorders.<br><br>Psychiatrists are medical doctors who specialize in mental health — qualified to evaluate both the <strong>mental and physical</strong> aspects of psychological problems.</p>
+  </div>
+
+  <div class="prof-card c2">
+    <div class="prof-num">02</div>
+    <h3>Psychologists</h3>
+    <div class="prof-field">Behavioral Science</div>
+    <p><strong>Psychology:</strong> The scientific study of human behavior and mental processes.<br><br>Psychologists try to understand <em>why</em> humans act the way they do and help disturbed, troubled, and mentally ill individuals.</p>
+  </div>
+
+  <div class="prof-card c3">
+    <div class="prof-num">03</div>
+    <h3>Social Workers</h3>
+    <div class="prof-field">Social Work</div>
+    <p><strong>Social Work:</strong> A practice-based profession that promotes social change, social cohesion, and the empowerment of people.<br><br>Help people overcome poverty, discrimination, abuse, addiction, illness, divorce, unemployment, disability, and mental illness.</p>
+  </div>
+
+  <div class="prof-card c4">
+    <div class="prof-num">04</div>
+    <h3>Guidance Counselors</h3>
+    <div class="prof-field">Education</div>
+    <p>Help students throughout their stay in a learning institution. Work involves <em>assessment, consultation, counseling, research, teaching</em>, and services for students' intellectual, emotional, psychological, social, and behavioral development.</p>
+  </div>
+
+  <div class="prof-card c5">
+    <div class="prof-num">05</div>
+    <h3>Nurses</h3>
+    <div class="prof-field">Healthcare</div>
+    <p><strong>Nursing:</strong> Autonomous and collaborative care of individuals of all ages, families, groups, and communities — sick or well, in all settings.<br><br>Includes health promotion, illness prevention, and care of ill, disabled, and dying people.</p>
+  </div>
+
+  <div class="prof-card c6">
+    <div class="prof-num">06</div>
+    <h3>Teachers</h3>
+    <div class="prof-field">Education / Community</div>
+    <p>Licensed professionals whose technical and professional experience can be used in the community — especially in the barangay — to provide leadership and deliver <strong>psychoeducation</strong> and <strong>psychological first aid</strong>.</p>
+  </div>
+
+</div>
+
+<!-- ── SECTION 3: SERVICE WORKERS & PARAPROFESSIONALS ── -->
+<div class="sec-header" id="workers">
+  <div class="sec-icon" style="background:#f3eeff;">🤝</div>
+  <div class="sec-title">
+    <small>Non-Licensed but Trained</small>
+    Mental Health Service Workers & Paraprofessionals
+  </div>
+</div>
+
+<div class="worker-grid">
+
+  <div class="worker-card">
+    <h3><span class="dot" style="background:#f4732a;"></span>MH Service Workers</h3>
+    <p>Per the <strong>Philippine Mental Health Law</strong>: trained persons, volunteers, or advocates engaged in mental health promotion, providing support services <em>under the supervision of MH professionals</em>. Can teach skills to patients in <strong>non-hospital settings</strong>.</p>
+  </div>
+
+  <div class="worker-card">
+    <h3><span class="dot" style="background:#7c3aed;"></span>Paraprofessionals</h3>
+    <div class="also-called">Not licensed to practice</div>
+    <p>Persons who are <strong>not licensed</strong> to practice but are trained and tasked to assist mental health professionals.<br><br><em>Examples:</em> teacher assistants, aides, volunteers</p>
+  </div>
+
+  <div class="worker-card">
+    <h3><span class="dot" style="background:#0d9488;"></span>Therapeutic Personnel</h3>
+    <p>Occupational, recreational, and art therapists who conduct diagnostic tests to determine patients' health status, functional limitations, and the nature of physical/mental disorders.</p>
+  </div>
+
+  <div class="worker-card">
+    <h3><span class="dot" style="background:#0284c7;"></span>Nursing Associates</h3>
+    <div class="also-called">Also: Nurse's Aides</div>
+    <p>Provide basic nursing and personal care for those in need due to aging, illness, injury, or impairment. Work <strong>under the supervision</strong> of other health professionals.</p>
+  </div>
+
+  <div class="worker-card">
+    <h3><span class="dot" style="background:#16a34a;"></span>Community Health Workers</h3>
+    <div class="also-called">Also: Barangay Health Workers</div>
+    <p>Persons who have undergone training under accredited government and NGO programs and <strong>voluntarily</strong> render primary health care services in the community.</p>
+  </div>
+
+</div>
+
+<!-- ── SECTION 4: ASPECTS OF DMH ── -->
+<div class="sec-header" id="aspects">
+  <div class="sec-icon" style="background:#fff0e8;">⚡</div>
+  <div class="sec-title">
+    <small>American Red Cross, 2012</small>
+    Aspects of DMH (Disaster Mental Health) Services
+  </div>
+</div>
+
+<div class="alert alert-orange">
+  <strong>Key Context</strong>
+  Mental health professionals and workers serve a wide range — from children to older adults — at different levels and locations. In DMH, work can be <strong>tremendous and challenging</strong>.
+</div>
+
+<div class="aspect-table-wrap">
+  <table class="aspect-table">
+    <thead>
+      <tr>
+        <th>Aspect</th>
+        <th>What it means in a DMH Setting</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="aspect-tag">Worksite</span></td>
+        <td>DMH work usually takes place in service delivery locations such as <strong>shelters, feeding sites, and emergency aid situations</strong> — not a typical office.</td>
+      </tr>
+      <tr>
+        <td><span class="aspect-tag">Teamwork</span></td>
+        <td>DMH workers may deliver services as part of an <strong>outreach team or integrated care team</strong> alongside other responders.</td>
+      </tr>
+      <tr>
+        <td><span class="aspect-tag">Initiation</span></td>
+        <td>The <strong>DMH worker usually initiates contact</strong> with clients — unlike regular therapy where clients reach out first.</td>
+      </tr>
+      <tr>
+        <td><span class="aspect-tag">Relationship</span></td>
+        <td>Relationships are <strong>professional</strong> although formal parameters may not always be apparent in a disaster setting.</td>
+      </tr>
+      <tr>
+        <td><span class="aspect-tag">Duration</span></td>
+        <td>Interventions are <strong>SHORT-TERM</strong>; services are often delivered in one face-to-face contact, generally no more than <strong>three contacts</strong>.</td>
+      </tr>
+      <tr>
+        <td><span class="aspect-tag">Methodology</span></td>
+        <td>DMH workers are <strong>more directive</strong> with clients in disaster situations, focusing on interventions that lead to <strong>disaster recovery</strong>.</td>
+      </tr>
+      <tr>
+        <td><span class="aspect-tag">Nature of Interventions</span></td>
+        <td>Work is <strong>task-centered</strong> — focused first on meeting clients' urgent needs, rather than a primary focus on emotional states.</td>
+      </tr>
+      <tr>
+        <td><span class="aspect-tag">Scheduling</span></td>
+        <td>Interventions are more likely <strong>spontaneous</strong> and involve outreach efforts in neighborhoods and communities.</td>
+      </tr>
+      <tr>
+        <td><span class="aspect-tag">Accessibility</span></td>
+        <td>Clients and families can be <strong>difficult to track</strong> as housing situations change in the aftermath of a disaster.</td>
+      </tr>
+      <tr>
+        <td><span class="aspect-tag">Responsibility</span></td>
+        <td>DMH workers <strong>supplement and provide secondary assistance</strong> to disaster-affected clients — not the primary responders.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ── SECTION 5: STRESS & SYMPTOMS ── -->
+<div class="sec-header" id="stress">
+  <div class="sec-icon" style="background:#ffeef2;">⚠️</div>
+  <div class="sec-title">
+    <small>Staff Wellbeing Risk</small>
+    Stress, Symptoms & Challenges
+  </div>
+</div>
+
+<div class="alert alert-red">
+  <strong>The Core Problem</strong>
+  The significant amount of work in DMH — including promotion, prevention, treatment, and aftercare — can contribute to <strong>HIGH LEVELS OF STRESS</strong> in service providers themselves.
+</div>
+
+<div class="alert alert-orange" style="margin-bottom:16px;">
+  <strong>Additional Challenges</strong>
+  Disaster workers are at risk for <strong>compassion fatigue, burnout, and vicarious traumatization</strong>. Many find their return to regular duties to be a complicated, prolonged, and difficult process after a disaster response assignment.
+</div>
+
+<div class="symptom-row">
+  <div class="symptom-card s-phys">
+    <h3><span class="symptom-tag">Physical Symptoms</span></h3>
+    <div class="symptom-chips">
+      <span class="chip blue">Unusual fatigue</span>
+      <span class="chip blue">Sleeping problems</span>
+      <span class="chip blue">Frequent colds</span>
+      <span class="chip blue">Hypertension</span>
+      <span class="chip blue">Cardiovascular disease</span>
+      <span class="chip blue">Diabetes</span>
+      <span class="chip blue">Cancer</span>
+    </div>
+  </div>
+  <div class="symptom-card s-psych">
+    <h3><span class="symptom-tag">Psychological Symptoms</span></h3>
+    <div class="symptom-chips">
+      <span class="chip purple">Disorientation</span>
+      <span class="chip purple">Depression</span>
+      <span class="chip purple">Anxiety</span>
+      <span class="chip purple">Substance abuse</span>
+      <span class="chip purple">Violence</span>
+      <span class="chip purple">Suicidal behavior</span>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-navy">
+  <strong>Important Note</strong>
+  Mental health professionals are shown to be <strong>reliable responders</strong>, but they may experience a <strong>decline in well-being</strong> and become more vulnerable to mental health problems themselves. They need MORE support for these symptoms.
+</div>
+
+<!-- ── SECTION 6: PROTECTION & PFA ── -->
+<div class="sec-header" id="solutions">
+  <div class="sec-icon" style="background:#dcfce7;">🛡️</div>
+  <div class="sec-title">
+    <small>Protecting DMH Workers</small>
+    Solutions & Psychological First Aid
+  </div>
+</div>
+
+<div class="alert alert-teal" style="margin-bottom:16px;">
+  <strong>Stress Management Programs</strong>
+  DMH workers must also be protected. Stress management programs are good to promote their mental health. This includes: <strong>healthy diet · routine exercise · adequate rest</strong>
+</div>
+
+<div class="pfa-box">
+  <div class="pfa-label">Key Protective Tool</div>
+  <h3>Psychological First Aid (PFA)</h3>
+  <p>A basic understanding of PFA protects <strong>both DMH workers and the victims of disaster</strong>. It offers <strong>first-line psychosocial support</strong> after an emergency, disaster, or traumatic event — acting as a foundation for all disaster mental health work.</p>
+</div>
+
+<!-- ── SECTION 7: QUICK SUMMARY ── -->
+<div class="sec-header" id="summary">
+  <div class="sec-icon" style="background:#e0f2fe;">📋</div>
+  <div class="sec-title">
+    <small>Review at a Glance</small>
+    Quick Summary
+  </div>
+</div>
+
+<div class="summary-wrap">
+  <h2>📌 LESSON 7 — KEY TAKEAWAYS</h2>
+  <div class="sum-row">
+    <div class="sum-key">MH Profession</div>
+    <div class="sum-val">A <strong>multidisciplinary group</strong> addressing mental health needs; regulated via training, credentialing, licensing; must follow ethical codes and meet competency requirements.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">6 MH Professionals</div>
+    <div class="sum-val">Psychiatrists · Psychologists · Social Workers · Guidance Counselors · Nurses · Teachers</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">MH Service Workers</div>
+    <div class="sum-val">Trained volunteers/advocates working under professionals in <strong>non-hospital settings</strong> (per Philippine MH Law)</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Paraprofessionals</div>
+    <div class="sum-val">Not licensed; trained to <strong>assist</strong> professionals. Examples: aides, volunteers, teacher assistants</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">DMH = Challenging</div>
+    <div class="sum-val">Work is <strong>short-term, task-centered, spontaneous, worker-initiated</strong>; often in shelters/aid sites; secondary supplemental role</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Staff Risks</div>
+    <div class="sum-val">Compassion fatigue · burnout · vicarious traumatization · physical & psychological symptom onset</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Solutions</div>
+    <div class="sum-val">Stress management programs (diet, exercise, rest) + knowledge of <strong>PFA (Psychological First Aid)</strong></div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">PFA</div>
+    <div class="sum-val"><strong>First-line psychosocial support</strong> after emergencies/disasters; protects both workers and victims</div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <strong>Lesson 7 · Staff Mental Health Services</strong> · Disaster Mental Health (DMH) · Reviewer Material
+</footer>
+
+</body>
+</html>
