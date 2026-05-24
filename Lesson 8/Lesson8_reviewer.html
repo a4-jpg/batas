@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 8 Reviewer — Administrative Procedures in DMH Services</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap');
+
+:root {
+  --navy: #1e3a5f;
+  --orange: #f4732a;
+  --orange-light: #fff0e8;
+  --cream: #fdf8f2;
+  --white: #ffffff;
+  --text: #1a2640;
+  --muted: #6b7a99;
+  --border: #e0e8f5;
+  --teal: #0d9488;
+  --purple: #7c3aed;
+  --rose: #e11d48;
+  --green: #16a34a;
+  --yellow: #d97706;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 56px 32px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: rgba(244,115,42,0.1);
+  top: -130px; right: -90px;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: rgba(244,115,42,0.07);
+  bottom: -80px; left: -50px;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(24px, 4.5vw, 46px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  position: relative; z-index: 1;
+}
+.hero h1 span { color: var(--orange); }
+.hero-sub {
+  color: rgba(255,255,255,0.55);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  font-size: 14.5px;
+  position: relative; z-index: 1;
+}
+.hero-outcomes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 740px;
+  margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.outcome-pill {
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.82);
+  font-weight: 600;
+  text-align: left;
+}
+.outcome-pill span { color: var(--orange); margin-right: 6px; }
+
+/* ── NAV ── */
+.nav-section {
+  background: var(--navy);
+  padding: 4px 24px 32px;
+}
+.nav-label {
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 16px;
+  padding-top: 20px;
+}
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  gap: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.nav-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  text-decoration: none;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: all 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+.nav-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--nc, var(--orange));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-card:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.22);
+  transform: translateY(-2px);
+}
+.nav-card:hover::after { transform: scaleX(1); }
+.nc-emoji { font-size: 22px; line-height: 1; margin-bottom: 2px; }
+.nc-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--nc, var(--orange));
+}
+.nc-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.25;
+}
+.nc-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.42);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ── MAIN ── */
+main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+
+/* ── SECTION HEADERS ── */
+.sec-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 48px 0 22px;
+  scroll-margin-top: 20px;
+}
+.sec-icon {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 21px;
+  flex-shrink: 0;
+}
+.sec-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.sec-title small {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+/* ── ALERT BOXES ── */
+.alert {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  border-left: 4px solid;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.alert strong { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; font-weight: 800; }
+.alert-orange { background: var(--orange-light); border-color: var(--orange); color: #7a3812; }
+.alert-orange strong { color: var(--orange); }
+.alert-navy { background: #eef2ff; border-color: var(--navy); color: #1e2e50; }
+.alert-navy strong { color: var(--navy); }
+.alert-teal { background: #f0fdfa; border-color: #0d9488; color: #134e4a; }
+.alert-teal strong { color: #0d9488; }
+.alert-red { background: #fff1f4; border-color: var(--rose); color: #7f1d35; }
+.alert-red strong { color: var(--rose); }
+.alert-green { background: #f0fdf4; border-color: var(--green); color: #14532d; }
+.alert-green strong { color: var(--green); }
+.alert-yellow { background: #fffbeb; border-color: var(--yellow); color: #78350f; }
+.alert-yellow strong { color: var(--yellow); }
+
+/* ── CHECKLIST ── */
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.checklist li {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.checklist li::before {
+  content: '✓';
+  color: var(--green);
+  font-weight: 900;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── PHASE CARDS ── */
+.phase-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.phase-timeline::before {
+  content: '';
+  position: absolute;
+  left: 28px; top: 48px; bottom: 48px;
+  width: 2px;
+  background: var(--border);
+}
+.phase-card {
+  display: grid;
+  grid-template-columns: 56px 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.phase-dot {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--pd, var(--orange));
+}
+.phase-col {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.phase-col-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  padding-bottom: 7px;
+  border-bottom: 1.5px solid var(--border);
+}
+.phase-col.challenges .phase-col-label { color: var(--rose); }
+.phase-col.supports .phase-col-label { color: var(--teal); }
+.phase-col ul { list-style: none; }
+.phase-col ul li {
+  font-size: 13.5px;
+  padding: 5px 0 5px 16px;
+  position: relative;
+  border-bottom: 1px solid rgba(224,232,245,0.6);
+  line-height: 1.5;
+}
+.phase-col ul li:last-child { border-bottom: none; }
+.phase-col.challenges ul li::before { content: '⚠'; position: absolute; left: 0; font-size: 11px; top: 7px; }
+.phase-col.supports ul li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-weight: 700; top: 5px; }
+
+/* ── STEPS GRID ── */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+}
+.step-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  transition: transform 0.18s, box-shadow 0.18s;
+  border-top: 3px solid var(--sc, var(--orange));
+}
+.step-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.step-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sc, var(--orange));
+  margin-bottom: 5px;
+}
+.step-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 7px;
+}
+.step-card p { font-size: 13px; color: #4a5568; line-height: 1.55; }
+
+/* ── DEFINITION CARDS ── */
+.def-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.def-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.def-card .def-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+.def-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 7px;
+}
+.def-card p { font-size: 13.5px; color: #4a5568; line-height: 1.6; }
+
+/* ── NUMBERED LIST CARDS ── */
+.num-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.num-list li {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px 12px 52px;
+  font-size: 14px;
+  position: relative;
+  line-height: 1.55;
+}
+.num-list li::before {
+  content: attr(data-n);
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  width: 26px; height: 26px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── DISCLOSURE RULE PILLS ── */
+.rule-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.rule-list li {
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-radius: 10px;
+  padding: 11px 16px 11px 44px;
+  font-size: 13.5px;
+  position: relative;
+  line-height: 1.55;
+  color: #78350f;
+}
+.rule-list li::before {
+  content: attr(data-n);
+  position: absolute;
+  left: 12px; top: 12px;
+  width: 22px; height: 22px;
+  background: var(--yellow);
+  color: #fff;
+  border-radius: 6px;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 22px;
+  text-align: center;
+}
+
+/* ── FLOW STEPS (financial assistance) ── */
+.flow-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.flow-steps::after {
+  content: '';
+  position: absolute;
+  top: 36px; left: 12.5%; right: 12.5%;
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 8px;
+  position: relative;
+  z-index: 1;
+}
+.flow-num {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--fs, var(--orange));
+  color: var(--fs, var(--orange));
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 0 0 0 4px var(--cream);
+}
+.flow-step h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 4px;
+  line-height: 1.25;
+}
+.flow-step p { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+
+/* ── DISTRESS GRID ── */
+.distress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.distress-chip {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--dc, #e11d48);
+  border-radius: 0 10px 10px 0;
+  padding: 11px 14px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+}
+.distress-chip small { display: block; font-size: 12px; font-weight: 400; color: var(--muted); margin-top: 2px; }
+
+/* ── DISPOSITION CARDS ── */
+.disp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.disp-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  border-top: 3px solid var(--dsc, var(--navy));
+}
+.disp-card .dsc-emoji { font-size: 22px; margin-bottom: 8px; display: block; }
+.disp-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 5px;
+}
+.disp-card p { font-size: 12.5px; color: #4a5568; line-height: 1.5; }
+
+/* ── SUMMARY BOX ── */
+.summary-wrap {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.summary-wrap h2 {
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  padding: 14px 20px;
+  letter-spacing: 1px;
+}
+.sum-row {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
+}
+.sum-row:last-child { border-bottom: none; }
+.sum-key {
+  font-weight: 800;
+  padding: 12px 16px;
+  background: #f9fbff;
+  color: var(--navy);
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+}
+.sum-val { padding: 12px 16px; color: #374151; }
+
+/* ── FHP BOX ── */
+.fhp-box {
+  background: linear-gradient(135deg, var(--navy) 0%, #2d5a8e 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 26px 28px 22px;
+  position: relative;
+  overflow: hidden;
+}
+.fhp-box::after {
+  content: 'FHP';
+  position: absolute;
+  right: 16px; bottom: -14px;
+  font-family: 'Syne', sans-serif;
+  font-size: 88px;
+  font-weight: 800;
+  opacity: 0.06;
+  color: #fff;
+}
+.fhp-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 7px;
+}
+.fhp-box h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+.fhp-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.fhp-pill {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.88);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  padding: 28px 20px;
+  font-size: 12px;
+}
+footer strong { color: rgba(255,255,255,0.75); }
+
+@media (max-width: 640px) {
+  .phase-card { grid-template-columns: 1fr; }
+  .phase-dot { display: none; }
+  .phase-timeline::before { display: none; }
+  .flow-steps { grid-template-columns: 1fr 1fr; }
+  .flow-steps::after { display: none; }
+  .sum-row { grid-template-columns: 1fr; }
+  .sum-key { border-bottom: 1px solid var(--border); }
+  .hero-outcomes { flex-direction: column; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">Lesson 8 · DMH Reviewer</div>
+  <h1>Administrative Procedures in<br><span>Disaster Mental Health Services</span></h1>
+  <p class="hero-sub">A structured guide covering Force Health Protection, deployment phases, confidentiality, record keeping, and financial assistance.</p>
+  <div class="hero-outcomes">
+    <div class="outcome-pill"><span>①</span> Describe the importance of administrative procedures in DMH</div>
+    <div class="outcome-pill"><span>②</span> Explain ethical standards governing confidentiality, record keeping &amp; informed consent</div>
+    <div class="outcome-pill"><span>③</span> Discuss procedures for providing financial support in crisis situations</div>
+  </div>
+</header>
+
+<!-- NAV CARDS -->
+<nav class="nav-section">
+  <div class="nav-label">📖 Jump to a section</div>
+  <div class="nav-grid">
+    <a href="#fhp" class="nav-card" style="--nc:#f4732a;">
+      <div class="nc-emoji">🛡️</div>
+      <div class="nc-num">Section 01</div>
+      <div class="nc-title">Force Health Protection</div>
+      <div class="nc-sub">Self-care &amp; 3 phases</div>
+    </a>
+    <a href="#pre" class="nav-card" style="--nc:#0d9488;">
+      <div class="nc-emoji">🎒</div>
+      <div class="nc-num">Section 02</div>
+      <div class="nc-title">Pre-Deployment</div>
+      <div class="nc-sub">Challenges &amp; support</div>
+    </a>
+    <a href="#during" class="nav-card" style="--nc:#7c3aed;">
+      <div class="nc-emoji">⚡</div>
+      <div class="nc-num">Section 03</div>
+      <div class="nc-title">During Deployment</div>
+      <div class="nc-sub">Resilience strategies</div>
+    </a>
+    <a href="#post" class="nav-card" style="--nc:#e11d48;">
+      <div class="nc-emoji">🏠</div>
+      <div class="nc-num">Section 04</div>
+      <div class="nc-title">Post-Deployment</div>
+      <div class="nc-sub">Goals &amp; principles</div>
+    </a>
+    <a href="#distress" class="nav-card" style="--nc:#0284c7;">
+      <div class="nc-emoji">⚠️</div>
+      <div class="nc-num">Section 05</div>
+      <div class="nc-title">Worker Distress</div>
+      <div class="nc-sub">Causes &amp; DMH response</div>
+    </a>
+    <a href="#confidentiality" class="nav-card" style="--nc:#d97706;">
+      <div class="nc-emoji">🔒</div>
+      <div class="nc-num">Section 06</div>
+      <div class="nc-title">Confidentiality</div>
+      <div class="nc-sub">Rules, limits &amp; disclosures</div>
+    </a>
+    <a href="#records" class="nav-card" style="--nc:#16a34a;">
+      <div class="nc-emoji">📁</div>
+      <div class="nc-num">Section 07</div>
+      <div class="nc-title">Record Keeping</div>
+      <div class="nc-sub">Informed consent &amp; docs</div>
+    </a>
+    <a href="#financial" class="nav-card" style="--nc:#f4732a;">
+      <div class="nc-emoji">💰</div>
+      <div class="nc-num">Section 08</div>
+      <div class="nc-title">Financial Assistance</div>
+      <div class="nc-sub">DSWD &amp; procedures</div>
+    </a>
+    <a href="#summary" class="nav-card" style="--nc:#7c3aed;">
+      <div class="nc-emoji">📋</div>
+      <div class="nc-num">Section 09</div>
+      <div class="nc-title">Key Points</div>
+      <div class="nc-sub">Quick summary</div>
+    </a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ── SECTION 1: FORCE HEALTH PROTECTION ── -->
+<div class="sec-header" id="fhp">
+  <div class="sec-icon" style="background:#fff0e8;">🛡️</div>
+  <div class="sec-title">
+    <small>Yin &amp; Kukor, 2010</small>
+    Force Health Protection (FHP)
+  </div>
+</div>
+
+<div class="fhp-box">
+  <div class="fhp-label">Core Concept</div>
+  <h3>Force Health Protection</h3>
+  <div class="fhp-pills">
+    <span class="fhp-pill">Promotes worker resilience</span>
+    <span class="fhp-pill">Takes place in ALL relief operation settings</span>
+    <span class="fhp-pill">Self-care prevents compassion fatigue</span>
+    <span class="fhp-pill">Helps workers &amp; supervisors overcome obstacles to self-care</span>
+  </div>
+</div>
+
+<div class="sec-header" style="margin-top:28px;">
+  <div class="sec-title" style="font-size:16px;">
+    <small>DMH provides support during</small>
+    3 Deployment Phases
+  </div>
+</div>
+
+<div class="steps-grid" style="margin-bottom:10px;">
+  <div class="step-card" style="--sc:#f4732a;">
+    <div class="step-num">Phase 01</div>
+    <h3>Pre-Deployment</h3>
+    <p>After staff are assigned to a job and <strong>before they leave their home</strong>.</p>
+  </div>
+  <div class="step-card" style="--sc:#0d9488;">
+    <div class="step-num">Phase 02</div>
+    <h3>During Deployment</h3>
+    <p>While the worker is <strong>actively engaged</strong> in disaster operations.</p>
+  </div>
+  <div class="step-card" style="--sc:#7c3aed;">
+    <div class="step-num">Phase 03</div>
+    <h3>Post-Deployment</h3>
+    <p>When the worker begins making arrangements to <strong>return home</strong> and after leaving the operation.</p>
+  </div>
+</div>
+
+
+<!-- ── SECTION 2: PRE-DEPLOYMENT ── -->
+<div class="sec-header" id="pre">
+  <div class="sec-icon" style="background:#f0fdfa;">🎒</div>
+  <div class="sec-title">
+    <small>Phase 1</small>
+    Pre-Deployment Support
+  </div>
+</div>
+
+<div class="alert alert-orange" style="margin-bottom:16px;">
+  <strong>Key Concern</strong>
+  With the emphasis on rapid response, pre-deployment preparation and onsite training may be <strong>shortchanged</strong>. Staff may sometimes deploy when not emotionally prepared or distracted by family needs.
+</div>
+
+<div class="phase-card">
+  <div class="phase-dot" style="background:#fff1f4; --pd:#e11d48;">⚠️</div>
+  <div class="phase-col challenges">
+    <div class="phase-col-label">⚠ Challenges for Workers</div>
+    <ul>
+      <li>Making travel and other arrangements</li>
+      <li>Local disaster personal impact</li>
+      <li>Traveling logistics</li>
+      <li>Anticipation of the unknown</li>
+      <li>Difficulty accessing accurate info &amp; resources</li>
+      <li>In-processing delays</li>
+      <li>"Hurry up and wait"</li>
+    </ul>
+  </div>
+  <div class="phase-col supports">
+    <div class="phase-col-label">→ DMH Supports &amp; Services</div>
+    <ul>
+      <li>Interviewing (screening) for appropriateness for deployment</li>
+      <li>Building resilience</li>
+      <li>PFA training</li>
+      <li>"Coping with Disaster: Preparing for a Disaster Assignment" brochure</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sec-header" style="margin-top:20px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:16px;">
+    <small>6 steps</small>
+    Stress Management Suggestions Before Deploying
+  </div>
+</div>
+<div class="steps-grid">
+  <div class="step-card" style="--sc:#f4732a;">
+    <div class="step-num">Step 01</div>
+    <h3>Gather Information</h3>
+    <p>Learn conditions at the disaster site so you can bring appropriate clothing and supplies.</p>
+  </div>
+  <div class="step-card" style="--sc:#0d9488;">
+    <div class="step-num">Step 02</div>
+    <h3>Gather Self-Care Items</h3>
+    <p>Bring sufficient medication to last several days <em>beyond</em> your expected deployment length.</p>
+  </div>
+  <div class="step-card" style="--sc:#7c3aed;">
+    <div class="step-num">Step 03</div>
+    <h3>Make Arrangements</h3>
+    <p>Establish with your employer how work will be managed and arrange care for family members and pets.</p>
+  </div>
+  <div class="step-card" style="--sc:#e11d48;">
+    <div class="step-num">Step 04</div>
+    <h3>Complete Paperwork</h3>
+    <p>Complete all necessary paperwork at your chapter before departing.</p>
+  </div>
+  <div class="step-card" style="--sc:#0284c7;">
+    <div class="step-num">Step 05</div>
+    <h3>Track Deployment</h3>
+    <p>Check for deployment updates immediately before departing and again upon arrival at your destination.</p>
+  </div>
+  <div class="step-card" style="--sc:#16a34a;">
+    <div class="step-num">Step 06</div>
+    <h3>Set Up Communication</h3>
+    <p>Provide family with your chapter phone number so they can access emergency communication services.</p>
+  </div>
+</div>
+
+
+<!-- ── SECTION 3: DURING DEPLOYMENT ── -->
+<div class="sec-header" id="during">
+  <div class="sec-icon" style="background:#f3eeff;">⚡</div>
+  <div class="sec-title">
+    <small>Phase 2</small>
+    During Deployment Support
+  </div>
+</div>
+
+<div class="alert alert-teal" style="margin-bottom:14px;">
+  <strong>Mindset</strong>
+  Successfully managing disaster relief work requires workers to take care of themselves <strong>before, during, and after</strong> their assignments. Disasters can bring strong emotions even among experienced workers — but we all have <strong>resilience</strong>.
+</div>
+
+<div class="phase-card">
+  <div class="phase-dot" style="background:#f3eeff; --pd:#7c3aed;">⚡</div>
+  <div class="phase-col challenges">
+    <div class="phase-col-label">⚠ Challenges for Workers</div>
+    <ul>
+      <li>Environmental exposures</li>
+      <li>Work-related exposures</li>
+      <li>Managing common stress reactions</li>
+      <li>Burnout</li>
+      <li>Compassion fatigue</li>
+    </ul>
+  </div>
+  <div class="phase-col supports">
+    <div class="phase-col-label">→ DMH Supports &amp; Services</div>
+    <ul>
+      <li>Staff orientation: strategies to reduce stress</li>
+      <li>Self-care and coping strategies</li>
+      <li>Monitoring environmental and work-related stressors; triage of at-risk staff</li>
+      <li>Constructive feedback to activity leads for reducing stressors</li>
+      <li>Collaborating with Staff Wellness when appropriate</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sec-header" style="margin-top:24px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:16px;">
+    <small>8 strategies</small>
+    Resilience-Building Strategies
+  </div>
+</div>
+<div class="steps-grid">
+  <div class="step-card" style="--sc:#f4732a;">
+    <div class="step-num">Strategy 01</div>
+    <h3>Stay Safe</h3>
+    <p>Attend all work orientations and briefings; follow all safety precautions and guidelines.</p>
+  </div>
+  <div class="step-card" style="--sc:#0d9488;">
+    <div class="step-num">Strategy 02</div>
+    <h3>Prioritize Your Work</h3>
+    <p>Stay focused on what you're accomplishing; don't let what remains to be done overwhelm you.</p>
+  </div>
+  <div class="step-card" style="--sc:#7c3aed;">
+    <div class="step-num">Strategy 03</div>
+    <h3>Make Self-Care Priority #1</h3>
+    <p>Assert yourself and ask for help if you are uncomfortable with your assignment.</p>
+  </div>
+  <div class="step-card" style="--sc:#e11d48;">
+    <div class="step-num">Strategy 04</div>
+    <h3>Stay Connected</h3>
+    <p>Connect with other workers. If inexperienced, partnering with someone else can be especially helpful.</p>
+  </div>
+  <div class="step-card" style="--sc:#0284c7;">
+    <div class="step-num">Strategy 05</div>
+    <h3>Maintain a Hopeful Outlook</h3>
+    <p>Regularly remind yourself: you are providing for survivors' needs and helping them recover.</p>
+  </div>
+  <div class="step-card" style="--sc:#16a34a;">
+    <div class="step-num">Strategy 06</div>
+    <h3>Manage Relationships Professionally</h3>
+    <p>On assignment you will work with teams and supervisors you may have never met before.</p>
+  </div>
+  <div class="step-card" style="--sc:#d97706;">
+    <div class="step-num">Strategy 07</div>
+    <h3>Use Calming Strategies</h3>
+    <p>Consider usual strategies you use to relax or calm yourself and how they can help on assignment.</p>
+  </div>
+  <div class="step-card" style="--sc:#7c3aed;">
+    <div class="step-num">Strategy 08</div>
+    <h3>Watch for Training Opportunities</h3>
+    <p>Feeling confident about your disaster work skills contributes to your sense of strength and resilience.</p>
+  </div>
+</div>
+
+<div class="alert alert-navy" style="margin-top:16px;">
+  <strong>DMH Training Offered During Deployment</strong>
+  Orientation for All Responders · Psychological First Aid (PFA) · Foundations of Disaster Mental Health (FDMH)
+</div>
+
+
+<!-- ── SECTION 4: POST-DEPLOYMENT ── -->
+<div class="sec-header" id="post">
+  <div class="sec-icon" style="background:#ffeef2;">🏠</div>
+  <div class="sec-title">
+    <small>Phase 3</small>
+    Post-Deployment Support
+  </div>
+</div>
+
+<div class="alert alert-orange" style="margin-bottom:14px;">
+  <strong>Why it matters</strong>
+  Disaster workers often experience the sights, smells, and sounds of disaster just like the community. MH support after disaster aims to assist workers with <strong>coping, long-term well-being, and personal growth</strong>.
+</div>
+
+<div class="phase-card">
+  <div class="phase-dot" style="background:#ffeef2; --pd:#e11d48;">🏠</div>
+  <div class="phase-col challenges">
+    <div class="phase-col-label">⚠ Challenges for Workers</div>
+    <ul>
+      <li>Transitioning back to pre-deployment lives and routines</li>
+      <li>Incorporating the deployment experience into daily life in a meaningful way</li>
+    </ul>
+  </div>
+  <div class="phase-col supports">
+    <div class="phase-col-label">→ DMH Supports &amp; Services</div>
+    <ul>
+      <li>Providing opportunities to discuss experiences</li>
+      <li>Normalizing post-deployment reactions</li>
+      <li>Building resilience</li>
+      <li>Providing post-event triage and information about referral resources</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sec-header" style="margin-top:24px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:16px;">Goals &amp; Principles of Post-Deployment DMH Support</div>
+</div>
+
+<div class="alert alert-green" style="margin-bottom:14px;">
+  <strong>2 Goals</strong>
+  (1) Help workers successfully transition back to pre-deployment lives and routines. (2) Help them begin to incorporate their deployment experience into their lives in a meaningful way.
+</div>
+
+<ul class="checklist" style="margin-bottom:16px;">
+  <li>Participation in post-deployment support should always be <strong>voluntary</strong></li>
+  <li>Usually offered by DMH at the end of a relief operation, but should also be offered at the <strong>home chapter</strong> after deployments</li>
+  <li>Time and place of contact should be <strong>convenient and suitable</strong> for the disaster worker</li>
+  <li>Support will most typically be provided in an <strong>individual one-to-one format</strong></li>
+  <li>When provided in a group, it should be <strong>psychoeducational and discussion-oriented</strong></li>
+  <li>Post-deployment contacts should <strong>NOT be debriefings</strong> and should not specifically aim to elicit workers' feelings</li>
+</ul>
+
+<div class="sec-header" style="margin-top:10px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:16px;">5 Objectives of Post-Deployment Intervention</div>
+</div>
+<ul class="num-list">
+  <li data-n="1">Offer workers an opportunity to talk and ask questions about their deployment</li>
+  <li data-n="2">Prioritize staff with significant exposure-based risk factors, sub-threshold PTSD, and/or substance abuse to identify those at risk for chronic reactions</li>
+  <li data-n="3">Provide information that assists in identifying, anticipating, and normalizing post-deployment reactions</li>
+  <li data-n="4">Provide information to help recognize and build resilience — the worker's ability to bounce back after difficult experiences</li>
+  <li data-n="5">Establish an understanding of when to seek additional support and provide information about referral resources</li>
+</ul>
+
+
+<!-- ── SECTION 5: WORKER DISTRESS ── -->
+<div class="sec-header" id="distress">
+  <div class="sec-icon" style="background:#e0f2fe;">⚠️</div>
+  <div class="sec-title">
+    <small>Mental Health Emergencies</small>
+    Worker Distress
+  </div>
+</div>
+
+<div class="alert alert-red" style="margin-bottom:14px;">
+  <strong>Key Fact</strong>
+  Disaster workers may become distressed for many reasons — not just from the disaster itself. DMH workers must be ready to respond.
+</div>
+
+<div class="distress-grid" style="margin-bottom:18px;">
+  <div class="distress-chip" style="--dc:#e11d48;">Personal crisis while on assignment</div>
+  <div class="distress-chip" style="--dc:#f4732a;">Reactions to disaster aftermath &amp; working conditions</div>
+  <div class="distress-chip" style="--dc:#7c3aed;">Exacerbation of pre-existing conditions</div>
+  <div class="distress-chip" style="--dc:#0284c7;">Conflicts with other workers</div>
+  <div class="distress-chip" style="--dc:#d97706;">Being informed of a crisis at home</div>
+  <div class="distress-chip" style="--dc:#0d9488;">Exposure to same risk factors as clients (living in disaster-affected area)</div>
+  <div class="distress-chip" style="--dc:#16a34a;">Problems the same as among the general population</div>
+</div>
+
+<div class="alert alert-navy" style="margin-bottom:14px;">
+  <strong>When Meeting Distressed Workers, DMH Workers:</strong>
+  Provide support to the responder · Assess mental health needs and emotional fitness for work · Collaborate with Staff Wellness and Staff Relations and make recommendations as appropriate
+</div>
+
+<div class="sec-header" style="margin-top:16px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:16px;">MH Emergency — Disposition Recommendations</div>
+</div>
+
+<div class="disp-grid">
+  <div class="disp-card" style="--dsc:#0d9488;">
+    <span class="dsc-emoji">⏸️</span>
+    <h3>Time Off</h3>
+    <p>Worker given time off to recover before continuing duties.</p>
+  </div>
+  <div class="disp-card" style="--dsc:#0284c7;">
+    <span class="dsc-emoji">🔄</span>
+    <h3>Reassignment</h3>
+    <p>Transfer to another activity or assignment setting.</p>
+  </div>
+  <div class="disp-card" style="--dsc:#16a34a;">
+    <span class="dsc-emoji">🕊️</span>
+    <h3>Compassionate Release</h3>
+    <p>Released from relief operation with no restriction — may return in the future.</p>
+  </div>
+  <div class="disp-card" style="--dsc:#e11d48;">
+    <span class="dsc-emoji">🚨</span>
+    <h3>Immediate Release</h3>
+    <p>Released with recommendation to not be assigned to future operations without further counseling or treatment.</p>
+  </div>
+</div>
+
+<div class="alert alert-yellow" style="margin-top:16px;">
+  <strong>Process Note</strong>
+  In MH emergencies, Staff Wellness leads. DMH makes its final recommendation to the technical lead, who consults with Staff Wellness and Staff Relations. OM is notified of all recommendations.
+</div>
+
+
+<!-- ── SECTION 6: CONFIDENTIALITY ── -->
+<div class="sec-header" id="confidentiality">
+  <div class="sec-icon" style="background:#fffbeb;">🔒</div>
+  <div class="sec-title">
+    <small>Admin Procedures — PAP Code of Ethics 2022</small>
+    Confidentiality
+  </div>
+</div>
+
+<div class="alert alert-navy" style="margin-bottom:14px;">
+  <strong>Why Admin Procedures Matter</strong>
+  Administrative procedures provide an objective set of rules by which DMH professionals and workers are governed. They ensure workers are held accountable for actions that deviate from procedures.
+</div>
+
+<div class="def-grid" style="margin-bottom:18px;">
+  <div class="def-card">
+    <div class="def-tag" style="background:#fffbeb; color:#92400e;">Definition</div>
+    <h3 style="color:#d97706;">Confidentiality</h3>
+    <p>The ethical and legal duty to protect sensitive, private, or personal information from unauthorized access, disclosure, or theft. Ensures data shared in trust remains private.</p>
+  </div>
+  <div class="def-card">
+    <div class="def-tag" style="background:#f0fdfa; color:#134e4a;">Core Duty</div>
+    <h3 style="color:#0d9488;">Maintaining It</h3>
+    <p>Safeguard any client information regardless of the medium. Ensure it is secured and not placed in areas or devices easily accessible to unqualified persons.</p>
+  </div>
+  <div class="def-card">
+    <div class="def-tag" style="background:#ffeef2; color:#7f1d35;">Recording</div>
+    <h3 style="color:#e11d48;">Consent Required</h3>
+    <p>Obtain consent from clients or legal representatives before recording voices or images. Explain all anticipated uses of recordings before the session.</p>
+  </div>
+</div>
+
+<div class="sec-header" style="margin-top:10px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:16px;">Limitations of Confidentiality</div>
+</div>
+<ul class="checklist" style="margin-bottom:18px;">
+  <li>Clients must be told before sessions how their information may be used</li>
+  <li>Information may be released only after careful consideration — in cases of <strong>imminent danger</strong> or when <strong>required by court</strong></li>
+  <li>For electronic transmissions (fax, email), clients must be warned of privacy risks; use safeguards like encryption and passwords</li>
+</ul>
+
+<div class="sec-header" style="margin-top:10px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:16px;">7 Rules on Disclosures</div>
+</div>
+<ul class="rule-list">
+  <li data-n="1">Ensure disclosed information is not misused or misinterpreted</li>
+  <li data-n="2">Share confidential information only with client/legal consent, unless prohibited by law</li>
+  <li data-n="3">Disclose to the source of referral only; if self-referral, require written permission from the client</li>
+  <li data-n="4">Without consent, disclosure allowed only when mandated/permitted by law (e.g., providing services, preventing harm)</li>
+  <li data-n="5">Limit disclosure strictly to what is necessary</li>
+  <li data-n="6">Releases to schools, agencies, or organizations must be supervised by qualified practitioners only</li>
+  <li data-n="7">Information gathered within institutions is confidential and requires management approval for release</li>
+</ul>
+
+<div class="alert alert-orange" style="margin-top:14px;">
+  <strong>Other Use of Confidential Info</strong>
+  Do NOT reveal client information in writings, lectures, seminars, classroom discussions, research, publications, or social media — UNLESS: written consent is given, disclosure is legally authorized, or reasonable steps are taken to disguise the client's identity.
+</div>
+
+<div class="alert alert-teal" style="margin-top:14px;">
+  <strong>Consultation Rule</strong>
+  Do not share client-identifying details with colleagues unless consent is given or disclosure is unavoidable. When seeking second opinions, limit shared information strictly to what is necessary.
+</div>
+
+
+<!-- ── SECTION 7: RECORD KEEPING ── -->
+<div class="sec-header" id="records">
+  <div class="sec-icon" style="background:#dcfce7;">📁</div>
+  <div class="sec-title">
+    <small>PAP Code of Ethics 2022</small>
+    Record Keeping &amp; Informed Consent
+  </div>
+</div>
+
+<div class="alert alert-green" style="margin-bottom:14px;">
+  <strong>Core Purpose</strong>
+  Maintaining client records preserves a written history of the therapy process and describes actions taken by the specialist. <strong>INFORMED CONSENT = CLIENT'S PROTECTION</strong>
+</div>
+
+<div class="sec-header" style="margin-top:10px; margin-bottom:12px;">
+  <div class="sec-title" style="font-size:15px;">5 Reasons We Create and Keep Records</div>
+</div>
+<ul class="num-list" style="margin-bottom:18px;">
+  <li data-n="1">Facilitate provision of services by ourselves or other professionals</li>
+  <li data-n="2">Allow for replication and evaluation of our research</li>
+  <li data-n="3">Meet institutional requirements</li>
+  <li data-n="4">Ensure accuracy of billing and payments</li>
+  <li data-n="5">Ensure compliance with relevant laws</li>
+</ul>
+
+<ul class="checklist">
+  <li>Each contact with the client should be documented along with the <strong>nature of the contact</strong> and <strong>type of services given</strong></li>
+  <li>Records should include <strong>informed consent</strong> and <strong>confidentiality waiver</strong></li>
+  <li>In the Philippine context, clients have the right to access their clinical records — <em>unless</em> revealing such information would cause harm to the client's health or put others at risk</li>
+</ul>
+
+
+<!-- ── SECTION 8: FINANCIAL ASSISTANCE ── -->
+<div class="sec-header" id="financial">
+  <div class="sec-icon" style="background:#fff0e8;">💰</div>
+  <div class="sec-title">
+    <small>DSWD</small>
+    Financial Assistance
+  </div>
+</div>
+
+<div class="alert alert-navy" style="margin-bottom:20px;">
+  <strong>Key Agency</strong>
+  During a disaster, people turn to the government for financial assistance. The <strong>DSWD (Department of Social Welfare and Development)</strong> is mandated to provide financial assistance to individuals and families suffering from unexpected life events, crisis situations, or difficult circumstances. Documentary requirements must be submitted.
+</div>
+
+<div class="sec-header" style="margin-top:10px; margin-bottom:18px;">
+  <div class="sec-title" style="font-size:16px;">4-Step Financial Assistance Process</div>
+</div>
+
+<div class="flow-steps">
+  <div class="flow-step">
+    <div class="flow-num" style="--fs:#f4732a;">1</div>
+    <h3>Screening &amp; Verification</h3>
+    <p>For completion and correctness of documents</p>
+  </div>
+  <div class="flow-step">
+    <div class="flow-num" style="--fs:#0d9488;">2</div>
+    <h3>Assessment</h3>
+    <p>For eligibility determination</p>
+  </div>
+  <div class="flow-step">
+    <div class="flow-num" style="--fs:#7c3aed;">3</div>
+    <h3>Provision of Assistance</h3>
+    <p>For validation and approval</p>
+  </div>
+  <div class="flow-step">
+    <div class="flow-num" style="--fs:#e11d48;">4</div>
+    <h3>Referral Services</h3>
+    <p>Additional support connections</p>
+  </div>
+</div>
+
+<div class="sec-header" style="margin-top:28px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:16px;">Roles of DMH Workers in Financial Assistance</div>
+</div>
+<ul class="checklist">
+  <li>Become well-acquainted with <strong>state laws and policies</strong> regarding financial assistance to individuals in crisis</li>
+  <li>Create a <strong>positive atmosphere</strong> during the situation</li>
+  <li>Be <strong>perceptive</strong> with the problem and the assistance clients are seeking</li>
+  <li>Be <strong>kind, sincere, understanding, and empathetic</strong> of the client's needs</li>
+</ul>
+
+
+<!-- ── SECTION 9: KEY POINTS / SUMMARY ── -->
+<div class="sec-header" id="summary">
+  <div class="sec-icon" style="background:#f3eeff;">📋</div>
+  <div class="sec-title">
+    <small>Lesson 8 at a Glance</small>
+    Key Points Summary
+  </div>
+</div>
+
+<div class="summary-wrap">
+  <h2>📌 LESSON 8 — KEY TAKEAWAYS</h2>
+  <div class="sum-row">
+    <div class="sum-key">Admin Procedures</div>
+    <div class="sum-val">Provide an objective set of rules governing DMH professionals and workers; ensure accountability for deviations.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Force Health Protection</div>
+    <div class="sum-val">Promotes worker resilience in all relief settings. <strong>Self-care</strong> is crucial to prevent compassion fatigue (Yin &amp; Kukor, 2010).</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">3 DMH Phases</div>
+    <div class="sum-val">Pre-deployment · During deployment · Post-deployment — each with specific challenges and DMH supports.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Confidentiality</div>
+    <div class="sum-val">All MH practitioners are duty-bound to safeguard client info in obtaining, using, storing, and releasing it.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">When to Disclose</div>
+    <div class="sum-val">Subpoenaed by court · Mandated/permitted by law · Client consent · Life-threatening emergency · Client is a minor · Child abuse experience.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Record Keeping</div>
+    <div class="sum-val">Essential for continuity of care, research, institutional compliance, billing, and legal requirements. <strong>Informed Consent = Client's Protection.</strong></div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Informed Consent</div>
+    <div class="sum-val">Required before making written and oral reports about clients.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Financial Assistance</div>
+    <div class="sum-val">DSWD handles it. Procedures: (1) Screening &amp; Verification → (2) Assessment → (3) Provision → (4) Referral Services.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">DMH Worker Role</div>
+    <div class="sum-val">Be kind, empathetic, perceptive, and knowledgeable about relevant laws and policies for clients in crisis.</div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <strong>Lesson 8 · Administrative Procedures in Disaster Mental Health Services</strong> · Reviewer Material · Source: PAP Code of Ethics 2022
+</footer>
+
+</body>
+</html>
