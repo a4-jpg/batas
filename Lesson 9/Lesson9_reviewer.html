@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 9 Reviewer — Responsibilities during Disaster</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap');
+
+:root {
+  --navy: #1e3a5f;
+  --orange: #f4732a;
+  --orange-light: #fff0e8;
+  --cream: #fdf8f2;
+  --white: #ffffff;
+  --text: #1a2640;
+  --muted: #6b7a99;
+  --border: #e0e8f5;
+  --teal: #0d9488;
+  --purple: #7c3aed;
+  --rose: #e11d48;
+  --green: #16a34a;
+  --yellow: #d97706;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 56px 32px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: rgba(244,115,42,0.1);
+  top: -130px; right: -90px;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: rgba(244,115,42,0.07);
+  bottom: -80px; left: -50px;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(24px, 4.5vw, 46px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  position: relative; z-index: 1;
+}
+.hero h1 span { color: var(--orange); }
+.hero-sub {
+  color: rgba(255,255,255,0.55);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  font-size: 14.5px;
+  position: relative; z-index: 1;
+}
+.hero-outcomes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 740px;
+  margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.outcome-pill {
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.82);
+  font-weight: 600;
+  text-align: left;
+}
+.outcome-pill span { color: var(--orange); margin-right: 6px; }
+
+/* ── NAV ── */
+.nav-section {
+  background: var(--navy);
+  padding: 4px 24px 32px;
+}
+.nav-label {
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 16px;
+  padding-top: 20px;
+}
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  gap: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.nav-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  text-decoration: none;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: all 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+.nav-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--nc, var(--orange));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-card:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.22); transform: translateY(-2px); }
+.nav-card:hover::after { transform: scaleX(1); }
+.nc-emoji { font-size: 22px; line-height: 1; margin-bottom: 2px; }
+.nc-num { font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--nc, var(--orange)); }
+.nc-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: #fff; line-height: 1.25; }
+.nc-sub { font-size: 11px; color: rgba(255,255,255,0.42); font-weight: 600; line-height: 1.3; }
+
+/* ── MAIN ── */
+main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+
+/* ── SECTION HEADERS ── */
+.sec-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 48px 0 22px;
+  scroll-margin-top: 20px;
+}
+.sec-icon {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 21px;
+  flex-shrink: 0;
+}
+.sec-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.sec-title small {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+/* ── ALERT BOXES ── */
+.alert {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  border-left: 4px solid;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.alert strong { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; font-weight: 800; }
+.alert-orange { background: var(--orange-light); border-color: var(--orange); color: #7a3812; }
+.alert-orange strong { color: var(--orange); }
+.alert-navy { background: #eef2ff; border-color: var(--navy); color: #1e2e50; }
+.alert-navy strong { color: var(--navy); }
+.alert-teal { background: #f0fdfa; border-color: #0d9488; color: #134e4a; }
+.alert-teal strong { color: #0d9488; }
+.alert-red { background: #fff1f4; border-color: var(--rose); color: #7f1d35; }
+.alert-red strong { color: var(--rose); }
+.alert-green { background: #f0fdf4; border-color: var(--green); color: #14532d; }
+.alert-green strong { color: var(--green); }
+.alert-yellow { background: #fffbeb; border-color: var(--yellow); color: #78350f; }
+.alert-yellow strong { color: var(--yellow); }
+.alert-purple { background: #f5f3ff; border-color: var(--purple); color: #3b0764; }
+.alert-purple strong { color: var(--purple); }
+
+/* ── CHECKLIST ── */
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.checklist li {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.checklist li::before { content: '✓'; color: var(--green); font-weight: 900; font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+
+/* ── STEP CARDS ── */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+}
+.step-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  transition: transform 0.18s, box-shadow 0.18s;
+  border-top: 3px solid var(--sc, var(--orange));
+}
+.step-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.step-num { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--sc, var(--orange)); margin-bottom: 5px; }
+.step-card h3 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 7px; }
+.step-card p { font-size: 13px; color: #4a5568; line-height: 1.55; }
+
+/* ── NUMBERED LIST ── */
+.num-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.num-list li {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px 12px 52px;
+  font-size: 14px;
+  position: relative;
+  line-height: 1.55;
+}
+.num-list li::before {
+  content: attr(data-n);
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  width: 26px; height: 26px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── ORANGE NUMBERED LIST ── */
+.num-list-orange li::before { background: var(--orange); }
+.num-list-teal li::before { background: var(--teal); }
+.num-list-purple li::before { background: var(--purple); }
+
+/* ── ROLE CARDS ── */
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.role-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.role-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--rc, var(--orange));
+}
+.role-emoji { font-size: 28px; margin-bottom: 8px; }
+.role-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.role-card p { font-size: 13px; color: #4a5568; line-height: 1.6; }
+
+/* ── TABLE ── */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+  font-size: 13.5px;
+  margin-bottom: 18px;
+}
+.styled-table thead tr {
+  background: var(--navy);
+  color: #fff;
+}
+.styled-table thead th {
+  padding: 12px 16px;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: left;
+}
+.styled-table tbody tr { border-bottom: 1.5px solid var(--border); }
+.styled-table tbody tr:last-child { border-bottom: none; }
+.styled-table tbody tr:nth-child(even) { background: #f8faff; }
+.styled-table tbody td { padding: 12px 16px; vertical-align: top; line-height: 1.55; color: var(--text); }
+.styled-table tbody td:first-child { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 13px; color: var(--navy); white-space: nowrap; }
+
+/* ── TRIAGE TABLE ── */
+.triage-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; font-size: 13px; margin-bottom: 18px; background: var(--white); border: 1.5px solid var(--border); }
+.triage-table thead th { background: var(--navy); color: #fff; padding: 10px 14px; font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; text-align: left; }
+.triage-table tbody tr { border-bottom: 1px solid var(--border); }
+.triage-table tbody td { padding: 10px 14px; vertical-align: top; line-height: 1.5; }
+.triage-table .cat-purple { background: #f3e8ff; font-weight: 800; color: #581c87; }
+.triage-table .cat-red { background: #fff1f4; font-weight: 800; color: #7f1d35; }
+.triage-table .cat-yellow { background: #fffbeb; font-weight: 800; color: #78350f; }
+.triage-table .cat-green { background: #f0fdf4; font-weight: 800; color: #14532d; }
+
+/* ── LEADERSHIP TABLE ── */
+.lead-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.lead-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.lead-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: #f8faff;
+  border-bottom: 1.5px solid var(--border);
+}
+.lead-header .lead-badge {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: var(--lc, var(--navy));
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.lead-header h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.lead-body { padding: 14px 18px; }
+.lead-body ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.lead-body ul li {
+  font-size: 13.5px;
+  line-height: 1.5;
+  padding-left: 18px;
+  position: relative;
+  color: #4a5568;
+}
+.lead-body ul li::before { content: '→'; position: absolute; left: 0; color: var(--lc, var(--orange)); font-weight: 800; }
+
+/* ── FLOW STEPS ── */
+.flow-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.flow-steps::after {
+  content: '';
+  position: absolute;
+  top: 36px; left: 12.5%; right: 12.5%;
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+.flow-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 8px; position: relative; z-index: 1; }
+.flow-num {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--fs, var(--orange));
+  color: var(--fs, var(--orange));
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 0 0 0 4px var(--cream);
+}
+.flow-step h3 { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 800; color: var(--navy); margin-bottom: 4px; line-height: 1.25; }
+.flow-step p { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+/* ── SUMMARY BLOCK ── */
+.summary-wrap {
+  background: var(--navy);
+  border-radius: 16px;
+  padding: 30px 28px;
+  color: #fff;
+}
+.summary-wrap h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--orange);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.sum-row {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 13.5px;
+}
+.sum-row:last-child { border-bottom: none; }
+.sum-key {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--orange);
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  padding-top: 2px;
+}
+.sum-val { color: rgba(255,255,255,0.82); line-height: 1.6; }
+.sum-val strong { color: #fff; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  text-align: center;
+  padding: 22px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .phase-card { grid-template-columns: 1fr; }
+  .flow-steps { grid-template-columns: 1fr 1fr; }
+  .sum-row { grid-template-columns: 1fr; gap: 4px; }
+  .styled-table { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-badge">Lesson 9</div>
+  <h1>Responsibilities<br><span>during Disaster</span></h1>
+  <p class="hero-sub">Adapted from American Red Cross (2012) Job Responsibilities during Disasters · Disaster Mental Health (DMH)</p>
+  <div class="hero-outcomes">
+    <div class="outcome-pill"><span>01</span> Identify requirements &amp; responsibilities of DMH staff during disaster operations</div>
+    <div class="outcome-pill"><span>02</span> Describe the processes in disaster operation</div>
+    <div class="outcome-pill"><span>03</span> Promote awareness on DMH response operation</div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<div class="nav-section">
+  <div class="nav-label">Jump to Section</div>
+  <div class="nav-grid">
+    <a class="nav-card" href="#intro" style="--nc:#f4732a;">
+      <div class="nc-emoji">🏛️</div>
+      <div class="nc-num">Intro</div>
+      <div class="nc-title">ARC &amp; Key Institutions</div>
+      <div class="nc-sub">ARC, PRC, NDRRMC &amp; more</div>
+    </a>
+    <a class="nav-card" href="#worker-resp" style="--nc:#0d9488;">
+      <div class="nc-emoji">👷</div>
+      <div class="nc-num">Part 1</div>
+      <div class="nc-title">DMH Worker Responsibilities</div>
+      <div class="nc-sub">8-step process</div>
+    </a>
+    <a class="nav-card" href="#supplies" style="--nc:#7c3aed;">
+      <div class="nc-emoji">🎒</div>
+      <div class="nc-num">Part 2</div>
+      <div class="nc-title">Supplies &amp; PsySTART</div>
+      <div class="nc-sub">Typical materials given</div>
+    </a>
+    <a class="nav-card" href="#supervisor" style="--nc:#d97706;">
+      <div class="nc-emoji">🧑‍💼</div>
+      <div class="nc-num">Part 3</div>
+      <div class="nc-title">DMH Supervisor</div>
+      <div class="nc-sub">8 supervisor responsibilities</div>
+    </a>
+    <a class="nav-card" href="#leader" style="--nc:#e11d48;">
+      <div class="nc-emoji">🌟</div>
+      <div class="nc-num">Part 4</div>
+      <div class="nc-title">DMH Leader</div>
+      <div class="nc-sub">Disaster Site Manager roles</div>
+    </a>
+    <a class="nav-card" href="#summary" style="--nc:#16a34a;">
+      <div class="nc-emoji">📋</div>
+      <div class="nc-num">Summary</div>
+      <div class="nc-title">Key Takeaways</div>
+      <div class="nc-sub">Lesson 9 at a glance</div>
+    </a>
+  </div>
+</div>
+
+<main>
+
+<!-- ── SECTION 1: INTRO ── -->
+<div class="sec-header" id="intro">
+  <div class="sec-icon" style="background:#fff0e8;">🏛️</div>
+  <div class="sec-title">
+    <small>Introduction &amp; Background</small>
+    ARC &amp; Key Institutions
+  </div>
+</div>
+
+<div class="alert alert-orange" style="margin-bottom:18px;">
+  <strong>Source</strong>
+  This lesson adapts the <strong>American Red Cross (2012) Job Responsibilities during Disasters</strong> framework. In the Philippines, its equivalent is the <strong>Philippine Red Cross (PRC)</strong>.
+</div>
+
+<div class="role-grid">
+  <div class="role-card" style="--rc:#f4732a;">
+    <div class="role-emoji">🇺🇸</div>
+    <h3>American Red Cross (ARC)</h3>
+    <p>A non-profit, independent, humanitarian organization that provides emergency assistance, disaster relief, and disaster preparedness education in the United States.</p>
+  </div>
+  <div class="role-card" style="--rc:#e11d48;">
+    <div class="role-emoji">🇵🇭</div>
+    <h3>Philippine Red Cross (PRC)</h3>
+    <p>The Philippine equivalent of the ARC. Performs the same mandate — emergency assistance, disaster relief, and disaster preparedness education — in the Philippine context.</p>
+  </div>
+</div>
+
+<div class="sec-header" style="margin-top:10px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:16px;">Key Disaster &amp; Mental Health Institutions</div>
+</div>
+<ul class="checklist">
+  <li>🏥 <strong>Department of Health (DOH)</strong> — Government health authority overseeing public health including mental health services during disasters</li>
+  <li>🛡️ <strong>Philippine Disaster Resilience Foundation (PDRF)</strong> — Private sector-led organization for disaster resilience efforts</li>
+  <li>❤️ <strong>Philippine Red Cross (PRC)</strong> — Humanitarian operations, relief services, and volunteer deployment</li>
+  <li>📋 <strong>National Disaster Risk Reduction and Management Council (NDRRMC)</strong> — National coordinating body for all disaster risk reduction and management efforts</li>
+  <li>🎓 <strong>Academic / Research Units</strong> — Universities and research centers contributing expertise and evidence-based practices</li>
+  <li>🏘️ <strong>Local and Community-Based Service Providers</strong> — Grassroots organizations delivering on-the-ground psychosocial support</li>
+  <li>🏢 <strong>Private Institutions</strong> — Corporate and private sector partners contributing resources and specialized services</li>
+</ul>
+
+
+<!-- ── SECTION 2: WORKER RESPONSIBILITIES ── -->
+<div class="sec-header" id="worker-resp">
+  <div class="sec-icon" style="background:#f0fdfa;">👷</div>
+  <div class="sec-title">
+    <small>Part 1 — 8-Step Process</small>
+    DMH Worker Responsibilities during Disaster
+  </div>
+</div>
+
+<div class="alert alert-teal">
+  <strong>Overview</strong>
+  DMH workers follow an 8-step process from the moment they are deployed to the time they leave the relief operation. Each step carries specific duties and expectations.
+</div>
+
+<div class="steps-grid" style="margin-bottom:28px;">
+  <div class="step-card" style="--sc:#f4732a;">
+    <div class="step-num">Step 1</div>
+    <h3>In-Processing (Registration)</h3>
+    <p>All DMH workers must complete registration tasks <strong>before deployment</strong>. This is a non-negotiable first responsibility.</p>
+  </div>
+  <div class="step-card" style="--sc:#0d9488;">
+    <div class="step-num">Step 2</div>
+    <h3>Orientation</h3>
+    <p>The DMH supervisor ensures every worker or volunteer is <strong>properly oriented before</strong> they are deployed to their work assignment.</p>
+  </div>
+  <div class="step-card" style="--sc:#7c3aed;">
+    <div class="step-num">Step 3</div>
+    <h3>Job Assignments</h3>
+    <p>Workers receive assignments from a DMH supervisor or site manager, based on operational needs and individual skills.</p>
+  </div>
+  <div class="step-card" style="--sc:#d97706;">
+    <div class="step-num">Step 4</div>
+    <h3>Gathering Needed Information</h3>
+    <p>Workers must understand specific job expectations and the <strong>chain of command</strong> at their job site before starting work.</p>
+  </div>
+  <div class="step-card" style="--sc:#e11d48;">
+    <div class="step-num">Step 5</div>
+    <h3>Acquiring Needed Supplies</h3>
+    <p>Workers must obtain all supplies necessary to perform their functions effectively during the operation.</p>
+  </div>
+  <div class="step-card" style="--sc:#1e3a5f;">
+    <div class="step-num">Step 6</div>
+    <h3>Using PsySTART</h3>
+    <p>Workers use the <strong>PsySTART Aggregated Worksheet</strong> to record client risk factors and contacts with clients and responders.</p>
+  </div>
+  <div class="step-card" style="--sc:#16a34a;">
+    <div class="step-num">Step 7</div>
+    <h3>Work Performance Evaluation</h3>
+    <p>Workers review the evaluation form and discuss performance expectations with their supervisor <strong>before beginning work</strong>.</p>
+  </div>
+  <div class="step-card" style="--sc:#0d9488;">
+    <div class="step-num">Step 8</div>
+    <h3>Out-Processing</h3>
+    <p>Workers collaborate closely with supervisors to complete all transition tasks before officially leaving the relief operation.</p>
+  </div>
+</div>
+
+<!-- ORIENTATION DETAILS -->
+<div class="sec-header" style="margin-top:6px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:17px;">Step 2 Deep Dive: What Orientation Covers</div>
+</div>
+<ul class="checklist" style="margin-bottom:24px;">
+  <li>The nature of the <strong>disaster itself</strong></li>
+  <li>Service delivery plans and status of <strong>health services, sheltering, feeding</strong>, and all other response components</li>
+  <li>The <strong>affected population</strong> and any special considerations that help workers better assist clients</li>
+  <li>Expectations for workers, including the need to be <strong>flexible, patient</strong>, and attentive to <strong>self-care</strong> throughout the relief operation</li>
+</ul>
+
+<!-- JOB ASSIGNMENT BASIS -->
+<div class="sec-header" style="margin-top:6px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:17px;">Step 3 Deep Dive: Basis of Job Assignments</div>
+</div>
+<div class="alert alert-navy" style="margin-bottom:14px;">
+  <strong>How Assignments Are Decided</strong>
+  Assignments should be based on both organizational need and the worker's personal development path within the Red Cross.
+</div>
+<ul class="num-list num-list-orange" style="margin-bottom:24px;">
+  <li data-n="1">Need for DMH coverage at service delivery sites</li>
+  <li data-n="2">Optimal opportunities for job satisfaction and career development within the Red Cross</li>
+  <li data-n="3">Human resources system position (e.g., DMH service associate)</li>
+  <li data-n="4">Disaster training and disaster experience</li>
+  <li data-n="5">Leadership and communication skills and experience</li>
+  <li data-n="6">Employment experience and worker interests</li>
+  <li data-n="7">Worker promotion and development plans</li>
+</ul>
+
+<!-- GATHERING INFO -->
+<div class="sec-header" style="margin-top:6px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:17px;">Step 4 Deep Dive: Important Information to Gather</div>
+</div>
+<ul class="checklist" style="margin-bottom:24px;">
+  <li>Name and contact information of your <strong>immediate supervisor</strong></li>
+  <li>Name and contact info for the <strong>DMH lead or designee</strong> at DRO headquarters</li>
+  <li>Specific <strong>assignment address and directions</strong></li>
+  <li>Name and contact info for the <strong>administrative supervisor or manager</strong> of the service delivery site</li>
+  <li><strong>Hours of operation</strong> for the site</li>
+</ul>
+
+<!-- OUT-PROCESSING -->
+<div class="sec-header" style="margin-top:6px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:17px;">Step 8 Deep Dive: Out-Processing Tasks</div>
+</div>
+<ul class="num-list" style="margin-bottom:18px;">
+  <li data-n="1">Making <strong>travel arrangements</strong> for returning home</li>
+  <li data-n="2">Ensuring any assigned <strong>rental vehicle is returned</strong></li>
+  <li data-n="3">Returning any <strong>cell phone</strong> assigned to you on the DRO</li>
+  <li data-n="4">Reviewing the assigned <strong>Disaster Staff Card funds</strong> to ensure sufficient funds for the return trip</li>
+  <li data-n="5">Arranging a <strong>performance review</strong> with your immediate technical supervisor or site supervisor</li>
+  <li data-n="6">Planning for <strong>sufficient time</strong> to complete all of the above tasks</li>
+</ul>
+
+
+<!-- ── SECTION 3: SUPPLIES & PSYSTART ── -->
+<div class="sec-header" id="supplies">
+  <div class="sec-icon" style="background:#f5f3ff;">🎒</div>
+  <div class="sec-title">
+    <small>Part 2 — Step 5 &amp; 6 Details</small>
+    Typical Supplies &amp; PsySTART System
+  </div>
+</div>
+
+<div class="alert alert-purple">
+  <strong>Why Supplies Matter</strong>
+  DMH workers must secure all materials needed for their function. The type and quantity of supplies will vary based on the disaster's scale and site assignment.
+</div>
+
+<table class="styled-table" style="margin-bottom:24px;">
+  <thead>
+    <tr>
+      <th>Material / Supply</th>
+      <th>Situation for Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>📱 Cell Phone</td>
+      <td>Assigned to each <strong>team</strong>, not to individual workers. Shared device for team communication.</td>
+    </tr>
+    <tr>
+      <td>🚗 Service Vehicles (Rental Cars)</td>
+      <td>Available when necessary for travel to service delivery sites. Cars are <strong>shared</strong> and may be reassigned to other activities at any time.</td>
+    </tr>
+    <tr>
+      <td>📋 PsySTART Aggregated Worksheet &amp; Supervisor Daily Summary</td>
+      <td>Used by field staff and supervisors to aggregate client risk factors and record contacts with clients and responders.</td>
+    </tr>
+    <tr>
+      <td>📄 Client Consent to Share Information</td>
+      <td>Used for the <strong>informed consent process</strong> when working with clients and Red Cross staff.</td>
+    </tr>
+    <tr>
+      <td>📚 Educational Materials</td>
+      <td>DMH print materials available to assist both clients and responders in <strong>coping with disasters</strong>.</td>
+    </tr>
+    <tr>
+      <td>🖊️ Basic Office Supplies</td>
+      <td>Paper, pens, and other basics are usually available at the DRO.</td>
+    </tr>
+    <tr>
+      <td>🗺️ Maps and Directions</td>
+      <td>Made available to help workers navigate to and from service delivery work sites.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="sec-header" style="margin-top:6px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:17px;">PsySTART® MH Triage Quick Guide</div>
+</div>
+<div class="alert alert-navy" style="margin-bottom:14px;">
+  <strong>What is PsySTART?</strong>
+  PsySTART is a mental health triage system used by DMH workers to systematically identify disaster survivors who may need immediate or elevated mental health support. Workers stop and assess whenever a risk factor is present.
+</div>
+
+<table class="triage-table">
+  <thead>
+    <tr>
+      <th>Triage Factor</th>
+      <th>How to Assess</th>
+      <th>Triage Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Expressed thought or intent to harm self/others</td>
+      <td>Do you feel like you want to hurt yourself or hurt anyone else since the incident?</td>
+      <td class="cat-purple">🟣 STOP — Triage Purple</td>
+    </tr>
+    <tr>
+      <td>Felt or expressed <em>extreme</em> fear or panic</td>
+      <td>During or after the incident, felt like was "losing control," "couldn't think," or "going crazy"</td>
+      <td class="cat-red">🔴 STOP — Triage Red</td>
+    </tr>
+    <tr>
+      <td>Trapped or delayed evacuation</td>
+      <td>Was trapped for a long period of time</td>
+      <td class="cat-red">🔴 STOP — Triage Red</td>
+    </tr>
+    <tr>
+      <td>Expressed felt direct threat to life of self or family member</td>
+      <td>Says felt like would/will die OR felt like family was going to die</td>
+      <td class="cat-red">🔴 STOP — Triage Red</td>
+    </tr>
+    <tr>
+      <td>Saw/heard death or serious injury of other (include parent, child, family member, stranger)</td>
+      <td>Indicates saw others dead, burned, mutilated, blood, or heard screams/cries for help</td>
+      <td class="cat-red">🔴 STOP — Triage Red</td>
+    </tr>
+    <tr>
+      <td>Death of one parent, child, or family member</td>
+      <td>Anyone in family died</td>
+      <td class="cat-red">🔴 STOP — Triage Red</td>
+    </tr>
+    <tr>
+      <td>Family member / care giver currently separated, missing, or unaccounted for</td>
+      <td>Any family missing</td>
+      <td class="cat-red">🔴 STOP — Triage Red</td>
+    </tr>
+    <tr>
+      <td>Child separated from all caregivers</td>
+      <td>Unaccompanied minor</td>
+      <td class="cat-red">🔴 STOP — Triage Red</td>
+    </tr>
+    <tr>
+      <td>History of mental health care</td>
+      <td>Have you been diagnosed for or received treatment for any mental health problems?</td>
+      <td class="cat-yellow">🟡 STOP — Triage Yellow</td>
+    </tr>
+    <tr>
+      <td>Confirmed exposure/contamination OR concerned about possible exposures</td>
+      <td>Concerned about perception of being exposed to toxic/CBRN</td>
+      <td class="cat-yellow">🟡 STOP — Triage Yellow</td>
+    </tr>
+    <tr>
+      <td>NONE of the above</td>
+      <td>No triage factors identified</td>
+      <td class="cat-green">🟢 STOP — Triage Green</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-yellow">
+  <strong>Action Guide</strong>
+  🟣 Purple → Immediately contact site supervisor and DMH or call 911. 🔴 Red → Contact DMH as soon as possible. 🟡 Yellow → Contact DMH at the end of your shift. 🟢 Green → No further action needed at this time.
+</div>
+
+
+<!-- ── SECTION 4: SUPERVISOR ── -->
+<div class="sec-header" id="supervisor">
+  <div class="sec-icon" style="background:#fffbeb;">🧑‍💼</div>
+  <div class="sec-title">
+    <small>Part 3 — DMH Supervisor Role</small>
+    Responsibilities of DMH Supervisors
+  </div>
+</div>
+
+<div class="alert alert-orange">
+  <strong>Who is the DMH Supervisor?</strong>
+  The DMH Supervisor <strong>oversees, supports, and ensures the proper orientation</strong> of DMH workers or volunteers during crisis operations, and provides critical psychosocial interventions when needed.
+</div>
+
+<div class="sec-header" style="margin-top:10px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:16px;">8 Core Responsibilities of DMH Supervisors</div>
+</div>
+
+<div class="steps-grid" style="margin-bottom:24px;">
+  <div class="step-card" style="--sc:#f4732a;">
+    <div class="step-num">Responsibility 1</div>
+    <h3>DMH Supervisor Tasks</h3>
+    <p>Performing all general supervisory duties to maintain operational quality and worker wellbeing.</p>
+  </div>
+  <div class="step-card" style="--sc:#0d9488;">
+    <div class="step-num">Responsibility 2</div>
+    <h3>Adjusting Worker Assignments</h3>
+    <p>DMH assignments may change. Flexibility is a critical skill for all DMH staff.</p>
+  </div>
+  <div class="step-card" style="--sc:#7c3aed;">
+    <div class="step-num">Responsibility 3</div>
+    <h3>Arranging Days Off</h3>
+    <p>Supervisors must track duty hours and provide days off to help workers balance life and work.</p>
+  </div>
+  <div class="step-card" style="--sc:#d97706;">
+    <div class="step-num">Responsibility 4</div>
+    <h3>Reporting to DMH Leader</h3>
+    <p>Report team successes and challenges so that DRO leadership has accurate operational information.</p>
+  </div>
+  <div class="step-card" style="--sc:#e11d48;">
+    <div class="step-num">Responsibility 5</div>
+    <h3>Regular Communication with Staff</h3>
+    <p>Hold regular meetings for positive feedback, updates, and timely resolution of worker concerns.</p>
+  </div>
+  <div class="step-card" style="--sc:#1e3a5f;">
+    <div class="step-num">Responsibility 6</div>
+    <h3>Recordkeeping via PsySTART</h3>
+    <p>Complete and submit the PsySTART Supervisor Daily Summary at the end of each 24-hour reporting period.</p>
+  </div>
+  <div class="step-card" style="--sc:#16a34a;">
+    <div class="step-num">Responsibility 7</div>
+    <h3>PsySTART for Service Delivery</h3>
+    <p>The Supervisor Daily Summary shows totals of client risk factors and contacts recorded by all supervised responders.</p>
+  </div>
+  <div class="step-card" style="--sc:#0d9488;">
+    <div class="step-num">Responsibility 8</div>
+    <h3>Conducting Performance Evaluations</h3>
+    <p>It is the supervisor's responsibility to complete performance evaluations for each responder assigned to them.</p>
+  </div>
+</div>
+
+<!-- SUPERVISOR DETAILED TASKS -->
+<div class="sec-header" style="margin-top:6px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:17px;">Responsibility 1 Expanded: Supervisor Task List</div>
+</div>
+<ul class="checklist" style="margin-bottom:18px;">
+  <li>Ensuring the <strong>quality of client care</strong></li>
+  <li>Implementing the <strong>service delivery plan</strong></li>
+  <li>Mitigating worker risks of <strong>compassion fatigue or secondary traumatization</strong></li>
+  <li>Providing useful <strong>support, feedback, and direction</strong></li>
+  <li>Clearly explaining expectations for <strong>job performance</strong></li>
+  <li>Providing <strong>technical supervision</strong> related to DMH interventions</li>
+  <li>Answering questions about <strong>Red Cross DMH policies and procedures</strong></li>
+  <li>Ensuring that each worker receives a <strong>day off within every 7 days of work</strong></li>
+  <li>Ensuring the <strong>safety of each worker</strong> on the disaster operation</li>
+  <li>Providing updates on <strong>service delivery plans</strong></li>
+  <li>Personally <strong>thanking each DMH worker</strong> for his or her volunteer service</li>
+</ul>
+
+<div class="alert alert-teal">
+  <strong>PsySTART Supervisor Daily Summary Monitors</strong>
+  Number of DMH contacts per responder per site · Number and type of PsySTART risk factors identified · Sites with clients carrying greater numbers of risk factors · Responders working with high-risk-factor clients who may need extra support
+</div>
+
+
+<!-- ── SECTION 5: LEADER ── -->
+<div class="sec-header" id="leader">
+  <div class="sec-icon" style="background:#fff1f4;">🌟</div>
+  <div class="sec-title">
+    <small>Part 4 — DMH Leader (Disaster Site Manager)</small>
+    Responsibilities of DMH Leaders
+  </div>
+</div>
+
+<div class="alert alert-red">
+  <strong>Who is the DMH Leader?</strong>
+  Also known as the <strong>Disaster Site Manager</strong>. Responsible for <strong>planning, coordinating, and leading</strong> immediate DMH response efforts across the entire operation.
+</div>
+
+<div class="sec-header" style="margin-top:10px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:16px;">5 Core Responsibilities of DMH Leaders</div>
+</div>
+
+<div class="steps-grid" style="margin-bottom:28px;">
+  <div class="step-card" style="--sc:#e11d48;">
+    <div class="step-num">Area 1</div>
+    <h3>Organizing DMH Service Delivery</h3>
+    <p>Establishing a leadership team, mentoring DMH workers, planning service delivery, and setting up headquarters space.</p>
+  </div>
+  <div class="step-card" style="--sc:#7c3aed;">
+    <div class="step-num">Area 2</div>
+    <h3>Staffing DMH</h3>
+    <p>Ensuring sufficient, qualified staff are recruited, oriented, and assigned appropriately across all service delivery sites.</p>
+  </div>
+  <div class="step-card" style="--sc:#0d9488;">
+    <div class="step-num">Area 3</div>
+    <h3>Supporting DMH Services</h3>
+    <p>Obtaining and maintaining all materials and supplies needed for the DMH response throughout the operation.</p>
+  </div>
+  <div class="step-card" style="--sc:#d97706;">
+    <div class="step-num">Area 4</div>
+    <h3>Partnering with Groups</h3>
+    <p>Building and maintaining collaborative relationships with all internal activity leads, operations management, and external community partners.</p>
+  </div>
+  <div class="step-card" style="--sc:#1e3a5f;">
+    <div class="step-num">Area 5</div>
+    <h3>Scaling Down the DMH Activity</h3>
+    <p>Managing the handover of activities to local community DMH workers and drafting a written transition plan.</p>
+  </div>
+</div>
+
+<!-- LEADERSHIP POSITIONS -->
+<div class="sec-header" style="margin-top:6px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:17px;">Area 1 Deep Dive: Common DMH Leadership Positions</div>
+</div>
+
+<div class="lead-grid" style="margin-bottom:24px;">
+  <div class="lead-card">
+    <div class="lead-header">
+      <div class="lead-badge" style="--lc:#f4732a;">Operations Lead</div>
+      <h3>Operations Lead</h3>
+    </div>
+    <div class="lead-body" style="--lc:#f4732a;">
+      <ul>
+        <li>Acts as direct supervisor for DMH supervisors at service delivery sites or within a designated affected area</li>
+        <li>Screens, orients, and assigns incoming DMH responders</li>
+        <li>Oversees materials and resources</li>
+        <li>Assumes duties of the DMH lead during days off or absences</li>
+        <li>Assigns a DMH worker to oversee DMH referrals in the Client Assistance System (CAS)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="lead-card">
+    <div class="lead-header">
+      <div class="lead-badge" style="--lc:#0d9488;">Community Liaison Lead</div>
+      <h3>Community Liaison Lead</h3>
+    </div>
+    <div class="lead-body" style="--lc:#0d9488;">
+      <ul>
+        <li>Coordinates with local community mental health organizations, Medical Reserve Corps, and other MH partners</li>
+        <li>Assesses the community's cultural composition and ensures culturally-appropriate service delivery</li>
+        <li>Identifies local crisis hotlines, emergency facilities, mental health resources, and commitment laws</li>
+        <li>Assesses and works with affected school systems</li>
+        <li>Attends community meetings and coordinates media interviews with Public Affairs</li>
+      </ul>
+    </div>
+  </div>
+  <div class="lead-card">
+    <div class="lead-header">
+      <div class="lead-badge" style="--lc:#7c3aed;">Staff Mental Health Lead</div>
+      <h3>Staff Mental Health Lead</h3>
+    </div>
+    <div class="lead-body" style="--lc:#7c3aed;">
+      <ul>
+        <li>Has primary responsibility for staff mental health on the entire disaster operation</li>
+        <li>Works closely with Staff Wellness and/or Staff Relations on staff health and performance-related issues</li>
+        <li>Provides and oversees mental health out-processing support</li>
+        <li>Provides the mental health portion of general staff orientations at response headquarters</li>
+        <li>Carries the DMH after-hours phone, or arranges rotation of this responsibility</li>
+      </ul>
+    </div>
+  </div>
+  <div class="lead-card">
+    <div class="lead-header">
+      <div class="lead-badge" style="--lc:#d97706;">Administrative Assistant</div>
+      <h3>Administrative Assistant</h3>
+    </div>
+    <div class="lead-body" style="--lc:#d97706;">
+      <ul>
+        <li>Provides primary response headquarters DMH phone coverage</li>
+        <li>Registers newly arriving DMH responders and updates the DMH "job book"</li>
+        <li>Sets up schedules for community volunteers</li>
+        <li>Collects and reports statistics using the PsySTART system</li>
+        <li>Fields and distributes information that comes to DMH at response headquarters</li>
+        <li>Performs general office management tasks</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- MENTORING -->
+<div class="sec-header" style="margin-top:6px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:17px;">Area 1 Continued: Mentoring DMH Workers</div>
+</div>
+<div class="alert alert-navy">
+  <strong>Why Mentoring Matters</strong>
+  Mentoring is a <strong>vital role</strong> of any DMH Leader. It supports responder career development through a structured, sustained process for facilitating responder growth and promotion within the Red Cross.
+</div>
+
+<!-- COMMON SUPPLIES FOR LEADERS -->
+<div class="sec-header" style="margin-top:18px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:17px;">Area 3: Common Supplies Needed by DMH Leader</div>
+</div>
+<ul class="checklist" style="margin-bottom:18px;">
+  <li>⚡ Accessibility to <strong>electrical supply and equipment</strong></li>
+  <li>📄 <strong>Administrative and client forms</strong></li>
+  <li>🌐 <strong>Internet connectivity</strong></li>
+  <li>🚗 <strong>Service vehicle</strong> for transportation</li>
+  <li>💰 <strong>Source of funds</strong> for operational expenses</li>
+</ul>
+
+<!-- SCALING DOWN -->
+<div class="sec-header" style="margin-top:6px; margin-bottom:14px;">
+  <div class="sec-title" style="font-size:17px;">Area 5: Scaling Down the DMH Activity</div>
+</div>
+<ul class="checklist">
+  <li>The DMH Leader recognizes the need for <strong>handing over</strong> activities from the relief operation to local community DMH workers and volunteers</li>
+  <li><strong>Leftover materials</strong> are typically left with the affected chapters to help them restock their pre-disaster supplies</li>
+  <li>DMH leadership must provide a <strong>written transition plan</strong> to the job director specifying what DMH needs are anticipated after the DRO closes and who will be responsible for continuing DMH support</li>
+</ul>
+
+
+<!-- ── SUMMARY ── -->
+<div class="sec-header" id="summary">
+  <div class="sec-icon" style="background:#dcfce7;">📋</div>
+  <div class="sec-title">
+    <small>Lesson 9 at a Glance</small>
+    Key Points Summary
+  </div>
+</div>
+
+<div class="summary-wrap">
+  <h2>📌 LESSON 9 — KEY TAKEAWAYS</h2>
+  <div class="sum-row">
+    <div class="sum-key">Source Framework</div>
+    <div class="sum-val">Adapted from <strong>American Red Cross (2012)</strong> Job Responsibilities during Disasters. Philippine equivalent: Philippine Red Cross (PRC).</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Key Institutions</div>
+    <div class="sum-val">DOH, PDRF, PRC, NDRRMC, Academic/Research Units, Local/Community-based providers, and Private Institutions.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">8 Worker Steps</div>
+    <div class="sum-val">In-Processing → Orientation → Job Assignment → Gathering Info → Acquiring Supplies → Using PsySTART → Performance Evaluation → Out-Processing</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Registration Rule</div>
+    <div class="sum-val">All DMH workers must complete <strong>registration tasks BEFORE deployment</strong>. This is non-negotiable.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">PsySTART Triage Colors</div>
+    <div class="sum-val">🟣 Purple = imminent harm → call 911. 🔴 Red = high risk → contact DMH immediately. 🟡 Yellow = moderate risk → report at end of shift. 🟢 Green = no risk factors identified.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">DMH Supervisor Role</div>
+    <div class="sum-val">Oversees, supports, and orients workers. Key duties: quality care, staff safety, flexibility in assignments, PsySTART reporting, and performance evaluations. Workers must get <strong>1 day off per every 7 days</strong> worked.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">DMH Leader Role</div>
+    <div class="sum-val">Also called <strong>Disaster Site Manager</strong>. Responsible for organizing service delivery, staffing, acquiring supplies, internal/external partnerships, and scaling down the operation.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Flexibility Rule</div>
+    <div class="sum-val">Flexibility is a <strong>critical skill</strong> for all DMH staff. Workers may be asked to assume responsibilities outside their preferences or expectations.</div>
+  </div>
+  <div class="sum-row">
+    <div class="sum-key">Scaling Down</div>
+    <div class="sum-val">DMH Leader must prepare a <strong>written transition plan</strong> for the job director specifying post-DRO DMH needs and responsible parties for continuing support.</div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <strong>Lesson 9 · Responsibilities during Disaster · DMH</strong> · Reviewer Material · Adapted from American Red Cross (2012)
+</footer>
+
+</body>
+</html>
