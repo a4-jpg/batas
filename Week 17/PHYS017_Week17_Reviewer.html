@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHYS 017 · Week 17 Reviewer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0d0f14;
+    --surface: #151820;
+    --surface2: #1c2030;
+    --border: #2a2f45;
+    --accent: #5b8fff;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --accent4: #f97316;
+    --text: #e2e8f0;
+    --muted: #8892aa;
+    --card-radius: 14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13, 15, 20, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.25rem;
+  }
+
+  .nav-inner {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 56px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    white-space: nowrap;
+    margin-right: 0.5rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  nav a {
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  nav a:hover, nav a:focus {
+    color: var(--text);
+    border-color: var(--border);
+    background: var(--surface2);
+    outline: none;
+  }
+  nav a.active {
+    color: var(--accent);
+    background: rgba(91,143,255,0.1);
+    border-color: rgba(91,143,255,0.35);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3.5rem 1.25rem 2rem;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    background: rgba(91,143,255,0.1);
+    border: 1px solid rgba(91,143,255,0.3);
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.7rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #fff 40%, var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+  }
+
+  /* Objective chips */
+  .objectives {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .obj-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: left;
+    max-width: 280px;
+    line-height: 1.4;
+  }
+  .obj-chip span {
+    display: block;
+    color: var(--accent3);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── MAIN LAYOUT ─── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.25rem 5rem;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2.5rem 0 1rem;
+  }
+
+  .section-head h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text);
+  }
+
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--bg);
+    background: var(--accent);
+    border-radius: 6px;
+    padding: 0.2rem 0.45rem;
+    font-weight: 700;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 0.85rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: rgba(91,143,255,0.35); }
+
+  .card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+
+  .card p, .card li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .card ul {
+    padding-left: 1.1rem;
+    margin-top: 0.4rem;
+  }
+
+  .card li + li { margin-top: 0.25rem; }
+
+  /* Tag labels */
+  .tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 5px;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .tag-blue  { background: rgba(91,143,255,0.15);  color: var(--accent); }
+  .tag-purple{ background: rgba(167,139,250,0.15); color: var(--accent2); }
+  .tag-green { background: rgba(52,211,153,0.15);  color: var(--accent3); }
+  .tag-orange{ background: rgba(249,115,22,0.15);  color: var(--accent4); }
+
+  /* ─── FORMULA CARDS ─── */
+  .formula-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 0.85rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .formula-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 3px 0 0 3px;
+  }
+  .formula-card.blue::before  { background: var(--accent); }
+  .formula-card.purple::before{ background: var(--accent2); }
+  .formula-card.green::before { background: var(--accent3); }
+  .formula-card.orange::before{ background: var(--accent4); }
+
+  .formula-card h3 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .formula {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+  }
+
+  .formula-vars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .var-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .var-pill code {
+    font-family: 'Space Mono', monospace;
+    color: var(--text);
+  }
+
+  /* ─── COMPARISON TABLE ─── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .compare-table th {
+    background: var(--surface2);
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.65rem 0.9rem;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  .compare-table td {
+    padding: 0.7rem 0.9rem;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-table td code {
+    font-family: 'Space Mono', monospace;
+    color: var(--text);
+    background: var(--surface2);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+  }
+
+  /* ─── COLLISION GRID ─── */
+  .collision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  .collision-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1.1rem 1.2rem;
+  }
+
+  .collision-card h4 {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  .conserved-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-green { background: var(--accent3); }
+  .dot-red   { background: #f87171; }
+
+  .collision-example {
+    margin-top: 0.6rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    padding-top: 0.5rem;
+  }
+
+  /* ─── WORK TYPES GRID ─── */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 480px) {
+    .work-grid { grid-template-columns: 1fr; }
+  }
+
+  .work-type {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .work-type .big {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: block;
+    margin: 0.4rem 0;
+  }
+
+  .work-type p {
+    font-size: 0.78rem !important;
+  }
+
+  /* ─── SUMMARY BOX ─── */
+  .summary-box {
+    background: linear-gradient(135deg, rgba(91,143,255,0.08), rgba(167,139,250,0.08));
+    border: 1px solid rgba(91,143,255,0.3);
+    border-radius: var(--card-radius);
+    padding: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .summary-box h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 1rem;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .summary-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .summary-list li {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .summary-list li::before {
+    content: '→';
+    color: var(--accent2);
+    font-family: 'Space Mono', monospace;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  /* ─── BACK TO TOP ─── */
+  .back-top {
+    display: block;
+    text-align: center;
+    margin-top: 2.5rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    transition: all 0.2s;
+  }
+  .back-top:hover { color: var(--text); border-color: var(--accent); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 600px) {
+    .hero { padding: 2.5rem 1rem 1.5rem; }
+    .card { padding: 1.1rem 1.1rem; }
+    .formula-card { padding: 1rem 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="top">
+  <div class="nav-inner">
+    <span class="nav-label">W17</span>
+    <a href="#work">Work</a>
+    <a href="#energy">Energy</a>
+    <a href="#conservation">Conservation</a>
+    <a href="#power">Power</a>
+    <a href="#momentum">Momentum</a>
+    <a href="#collisions">Collisions</a>
+    <a href="#summary">Summary</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">PHYS 017 · Week 17</div>
+  <h1>Work, Energy &amp;<br>Momentum</h1>
+  <p>Your complete reviewer for the core principles of mechanical physics — formulas, key ideas, and exam-ready summaries.</p>
+  <div class="objectives">
+    <div class="obj-chip"><span>Objective 01</span>Interpret and give examples of the Law of Conservation of Energy</div>
+    <div class="obj-chip"><span>Objective 02</span>Express work as a change in mechanical energy (qualitative &amp; quantitative)</div>
+    <div class="obj-chip"><span>Objective 03</span>Determine net force using force &amp; velocity concepts</div>
+    <div class="obj-chip"><span>Objective 04</span>Describe power as work done per unit time</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ══ WORK ══ -->
+  <div class="section-head" id="work">
+    <span class="section-num">01</span>
+    <h2>Work</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-blue">Definition</span>
+    <h3>What is Work?</h3>
+    <p>In physics, work is done when a <strong>force causes an object to move through a displacement</strong>. Holding a heavy object without moving it — or pushing a wall that doesn't budge — involves <em>zero</em> mechanical work.</p>
+  </div>
+
+  <div class="formula-card blue">
+    <h3>Work Formula</h3>
+    <div class="formula">W = F · d · cos θ</div>
+    <div class="formula-vars">
+      <div class="var-pill"><code>W</code> = work (Joules, J)</div>
+      <div class="var-pill"><code>F</code> = force (Newtons, N)</div>
+      <div class="var-pill"><code>d</code> = displacement (meters, m)</div>
+      <div class="var-pill"><code>θ</code> = angle between force &amp; displacement</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-blue">Types of Work</span>
+    <h3>Positive, Negative &amp; Zero Work</h3>
+    <div class="work-grid">
+      <div class="work-type">
+        <span style="color: var(--accent3)">Positive</span>
+        <span class="big" style="color: var(--accent3)">θ = 0°</span>
+        <p>Force and displacement in the same direction.<br><em>e.g., pushing a crate forward</em></p>
+      </div>
+      <div class="work-type">
+        <span style="color: #f87171">Negative</span>
+        <span class="big" style="color: #f87171">θ = 180°</span>
+        <p>Force opposes motion.<br><em>e.g., friction, braking</em></p>
+      </div>
+      <div class="work-type">
+        <span style="color: var(--muted)">Zero</span>
+        <span class="big" style="color: var(--muted)">θ = 90°</span>
+        <p>Force perpendicular to displacement.<br><em>e.g., carrying a backpack horizontally</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ENERGY ══ -->
+  <div class="section-head" id="energy">
+    <span class="section-num">02</span>
+    <h2>Energy</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-purple">Definition</span>
+    <h3>What is Energy?</h3>
+    <p>Energy is the <strong>ability to do work</strong>. Without energy, no physical process can occur. It comes in many forms — chemical (food, gasoline), electrical (batteries), radiant (sunlight), and mechanical energy.</p>
+  </div>
+
+  <div class="formula-card purple">
+    <h3>Kinetic Energy — energy due to motion</h3>
+    <div class="formula">KE = ½mv²</div>
+    <div class="formula-vars">
+      <div class="var-pill"><code>m</code> = mass (kg)</div>
+      <div class="var-pill"><code>v</code> = velocity (m/s)</div>
+    </div>
+  </div>
+
+  <div class="formula-card purple">
+    <h3>Gravitational Potential Energy — energy due to position</h3>
+    <div class="formula">PE = mgh</div>
+    <div class="formula-vars">
+      <div class="var-pill"><code>m</code> = mass (kg)</div>
+      <div class="var-pill"><code>g</code> = 9.8 m/s²</div>
+      <div class="var-pill"><code>h</code> = height (m)</div>
+    </div>
+  </div>
+
+  <!-- ══ CONSERVATION ══ -->
+  <div class="section-head" id="conservation">
+    <span class="section-num">03</span>
+    <h2>Conservation of Energy</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-green">Law</span>
+    <h3>Law of Conservation of Energy</h3>
+    <p><strong>Energy cannot be created or destroyed.</strong> It can only be transformed from one form to another. Mechanical Energy is the sum of kinetic and potential energy:</p>
+    <div style="margin-top:0.8rem; text-align:center; font-family:'Space Mono',monospace; font-size:1.1rem; color: var(--text);">ME = KE + PE</div>
+  </div>
+
+  <div class="formula-card green">
+    <h3>Work-Energy Theorem</h3>
+    <div class="formula">W<sub style="font-size:0.75em">net</sub> = ΔKE</div>
+    <p style="font-size:0.83rem; color:var(--muted); margin-top:0.5rem;">The net work done on an object equals the change in its kinetic energy. More work → greater change in KE.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-green">Special Topic</span>
+    <h3>Escape Velocity</h3>
+    <p>The minimum speed needed to leave a planet permanently without further propulsion.</p>
+    <ul>
+      <li>Earth's escape velocity: <strong style="color:var(--text)">11.2 km/s (11,200 m/s)</strong></li>
+      <li>Essential for space exploration, satellite deployment, and rocket engineering</li>
+      <li>Without reaching escape velocity, a spacecraft will fall back to Earth</li>
+    </ul>
+  </div>
+
+  <!-- ══ POWER ══ -->
+  <div class="section-head" id="power">
+    <span class="section-num">04</span>
+    <h2>Power</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-orange">Definition</span>
+    <h3>What is Power?</h3>
+    <p>Power measures <strong>how fast work is done</strong>. Two students climbing the same stairs do equal work — but the faster student develops more power.</p>
+  </div>
+
+  <div class="formula-card orange">
+    <h3>Power Formula</h3>
+    <div class="formula">P = W / t</div>
+    <div class="formula-vars">
+      <div class="var-pill"><code>P</code> = power (Watts, W)</div>
+      <div class="var-pill"><code>W</code> = work (Joules, J)</div>
+      <div class="var-pill"><code>t</code> = time (seconds, s)</div>
+    </div>
+    <p style="font-size:0.82rem; color:var(--muted); margin-top:0.75rem;">SI unit of power is the <strong style="color:var(--text)">Watt</strong>: 1 W = 1 J/s</p>
+  </div>
+
+  <!-- ══ MOMENTUM ══ -->
+  <div class="section-head" id="momentum">
+    <span class="section-num">05</span>
+    <h2>Momentum</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-blue">Definition</span>
+    <h3>Linear Momentum</h3>
+    <p>Momentum describes the <strong>quantity of motion</strong> possessed by an object. A slow-moving truck can have more momentum than a fast bicycle because of its greater mass.</p>
+  </div>
+
+  <div class="formula-card blue">
+    <h3>Momentum Formula</h3>
+    <div class="formula">p = mv</div>
+    <div class="formula-vars">
+      <div class="var-pill"><code>p</code> = momentum (kg·m/s)</div>
+      <div class="var-pill"><code>m</code> = mass (kg)</div>
+      <div class="var-pill"><code>v</code> = velocity (m/s)</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-blue">Comparison</span>
+    <h3>Momentum vs. Kinetic Energy</h3>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Quantity</th>
+          <th>Formula</th>
+          <th>Effect of doubling speed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Momentum</td>
+          <td><code>p = mv</code></td>
+          <td>Doubles (×2)</td>
+        </tr>
+        <tr>
+          <td>Kinetic Energy</td>
+          <td><code>KE = ½mv²</code></td>
+          <td>Quadruples (×4)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="formula-card green">
+    <h3>Conservation of Momentum</h3>
+    <div class="formula">p<sub style="font-size:0.7em">i</sub> = p<sub style="font-size:0.7em">f</sub></div>
+    <p style="font-size:0.83rem; color:var(--muted); margin-top:0.5rem;">When no significant external force acts on a system, total momentum before equals total momentum after. <em>e.g., two skaters pushing apart — their momenta are equal and opposite, total stays zero.</em></p>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-purple">Rotational</span>
+    <h3>Angular Momentum</h3>
+    <p>The rotational counterpart of linear momentum. Objects rotating around an axis possess angular momentum — and it is <strong>conserved</strong> in rotational motion (no external torque).</p>
+    <ul>
+      <li>Figure skaters pulling arms in to spin faster</li>
+      <li>Ceiling fans and wind turbines</li>
+      <li>Planets orbiting the Sun</li>
+    </ul>
+  </div>
+
+  <!-- ══ COLLISIONS ══ -->
+  <div class="section-head" id="collisions">
+    <span class="section-num">06</span>
+    <h2>Collisions</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-orange">Types</span>
+    <h3>Types of Collisions</h3>
+    <div class="collision-grid">
+      <div class="collision-card">
+        <h4 style="color: var(--accent3)">Elastic</h4>
+        <div class="conserved-row"><span class="dot dot-green"></span>Momentum conserved</div>
+        <div class="conserved-row"><span class="dot dot-green"></span>Kinetic energy conserved</div>
+        <div class="collision-example">e.g., billiard balls, atomic collisions</div>
+      </div>
+      <div class="collision-card">
+        <h4 style="color: var(--accent)">Inelastic</h4>
+        <div class="conserved-row"><span class="dot dot-green"></span>Momentum conserved</div>
+        <div class="conserved-row"><span class="dot dot-red"></span>KE not conserved</div>
+        <div class="collision-example">e.g., car crashes, clay sticking together</div>
+      </div>
+      <div class="collision-card">
+        <h4 style="color: var(--accent4)">Perfectly Inelastic</h4>
+        <div class="conserved-row"><span class="dot dot-green"></span>Momentum conserved</div>
+        <div class="conserved-row"><span class="dot dot-red"></span>KE lost to heat/sound/deformation</div>
+        <div class="collision-example">Objects stick together after collision</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SUMMARY ══ -->
+  <div class="section-head" id="summary">
+    <span class="section-num">07</span>
+    <h2>Summary</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="summary-box">
+    <h3>Key Takeaways</h3>
+    <ul class="summary-list">
+      <li>Work transfers energy from one object or system to another</li>
+      <li>Energy cannot be created or destroyed — only transformed</li>
+      <li>Mechanical energy = Kinetic Energy + Potential Energy</li>
+      <li>The Work-Energy Theorem: W<sub>net</sub> = ΔKE</li>
+      <li>Power measures the rate of doing work (P = W/t)</li>
+      <li>Momentum (p = mv) measures quantity of motion</li>
+      <li>Momentum is conserved when no external force acts</li>
+      <li>Elastic collisions conserve both momentum and KE</li>
+      <li>Inelastic collisions conserve only momentum</li>
+      <li>Angular momentum is conserved in rotational motion</li>
+    </ul>
+  </div>
+
+  <!-- Formula Quick Reference -->
+  <div class="card" style="margin-top: 1rem;">
+    <span class="tag tag-purple">Quick Reference</span>
+    <h3>All Formulas at a Glance</h3>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Concept</th><th>Formula</th><th>Unit</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Work</td><td><code>W = Fdcosθ</code></td><td>Joules (J)</td></tr>
+        <tr><td>Kinetic Energy</td><td><code>KE = ½mv²</code></td><td>Joules (J)</td></tr>
+        <tr><td>Potential Energy</td><td><code>PE = mgh</code></td><td>Joules (J)</td></tr>
+        <tr><td>Mechanical Energy</td><td><code>ME = KE + PE</code></td><td>Joules (J)</td></tr>
+        <tr><td>Work-Energy Theorem</td><td><code>W_net = ΔKE</code></td><td>Joules (J)</td></tr>
+        <tr><td>Power</td><td><code>P = W/t</code></td><td>Watts (W)</td></tr>
+        <tr><td>Momentum</td><td><code>p = mv</code></td><td>kg·m/s</td></tr>
+        <tr><td>Conservation of Momentum</td><td><code>p_i = p_f</code></td><td>kg·m/s</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="back-top">↑ Back to top</a>
+
+</main>
+
+<script>
+  // Active nav link highlighting on scroll
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (active) {
+          active.classList.add('active');
+          active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { rootMargin: '-30% 0px -65% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
