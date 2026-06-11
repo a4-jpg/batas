@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHYS 017 · Weeks 14–16 Reviewer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0d0f14;
+    --surface: #151820;
+    --surface2: #1c2030;
+    --border: #2a2f45;
+    --accent: #5b8fff;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --accent4: #f97316;
+    --text: #e2e8f0;
+    --muted: #8892aa;
+    --card-radius: 14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13, 15, 20, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.25rem;
+  }
+
+  .nav-inner {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 56px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    white-space: nowrap;
+    margin-right: 0.5rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  nav a {
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  nav a:hover, nav a:focus {
+    color: var(--text);
+    border-color: var(--border);
+    background: var(--surface2);
+    outline: none;
+  }
+  nav a.active {
+    color: var(--accent);
+    background: rgba(91,143,255,0.1);
+    border-color: rgba(91,143,255,0.35);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3.5rem 1.25rem 2rem;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    background: rgba(91,143,255,0.1);
+    border: 1px solid rgba(91,143,255,0.3);
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.7rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #fff 40%, var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+
+  .objectives {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .obj-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: left;
+    max-width: 280px;
+    line-height: 1.4;
+  }
+  .obj-chip span {
+    display: block;
+    color: var(--accent3);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── MAIN ─── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.25rem 5rem;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2.5rem 0 1rem;
+  }
+
+  .section-head h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text);
+  }
+
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--bg);
+    background: var(--accent);
+    border-radius: 6px;
+    padding: 0.2rem 0.45rem;
+    font-weight: 700;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 0.85rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: rgba(91,143,255,0.35); }
+
+  .card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+
+  .card p, .card li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .card ul {
+    padding-left: 1.1rem;
+    margin-top: 0.4rem;
+  }
+
+  .card li + li { margin-top: 0.25rem; }
+
+  .tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 5px;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .tag-blue   { background: rgba(91,143,255,0.15);  color: var(--accent); }
+  .tag-purple { background: rgba(167,139,250,0.15); color: var(--accent2); }
+  .tag-green  { background: rgba(52,211,153,0.15);  color: var(--accent3); }
+  .tag-orange { background: rgba(249,115,22,0.15);  color: var(--accent4); }
+
+  /* ─── FORMULA CARDS ─── */
+  .formula-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 0.85rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .formula-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 3px 0 0 3px;
+  }
+  .formula-card.blue::before   { background: var(--accent); }
+  .formula-card.purple::before { background: var(--accent2); }
+  .formula-card.green::before  { background: var(--accent3); }
+  .formula-card.orange::before { background: var(--accent4); }
+
+  .formula-card h3 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .formula {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(0.95rem, 3vw, 1.35rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+  }
+
+  .formula-vars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .var-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .var-pill code {
+    font-family: 'Space Mono', monospace;
+    color: var(--text);
+  }
+
+  /* ─── NEWTON'S LAWS GRID ─── */
+  .laws-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  .law-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .law-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .law-card.l1::before { background: var(--accent); }
+  .law-card.l2::before { background: var(--accent2); }
+  .law-card.l3::before { background: var(--accent3); }
+
+  .law-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+  .l1 .law-num { color: var(--accent); }
+  .l2 .law-num { color: var(--accent2); }
+  .l3 .law-num { color: var(--accent3); }
+
+  .law-card h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .law-card p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .law-keyword {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-top: 0.6rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+  }
+  .l1 .law-keyword { background: rgba(91,143,255,0.15); color: var(--accent); }
+  .l2 .law-keyword { background: rgba(167,139,250,0.15); color: var(--accent2); }
+  .l3 .law-keyword { background: rgba(52,211,153,0.15); color: var(--accent3); }
+
+  /* ─── FRICTION COMPARE ─── */
+  .friction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  .friction-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1.2rem;
+  }
+
+  .friction-card h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .friction-card p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .fric-formula {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    color: var(--text);
+    margin: 0.5rem 0;
+    font-weight: 700;
+  }
+
+  /* ─── FBD STEPS ─── */
+  .fbd-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+
+  .fbd-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+  }
+
+  .step-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--bg);
+    background: var(--accent2);
+    border-radius: 6px;
+    padding: 0.2rem 0.5rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .fbd-step p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .fbd-step strong {
+    color: var(--text);
+  }
+
+  /* ─── COMPARE TABLE ─── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .compare-table th {
+    background: var(--surface2);
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.65rem 0.9rem;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  .compare-table td {
+    padding: 0.7rem 0.9rem;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-table td code {
+    font-family: 'Space Mono', monospace;
+    color: var(--text);
+    background: var(--surface2);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+  }
+
+  /* ─── WORKED EXAMPLES ─── */
+  .example-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    margin-bottom: 0.85rem;
+    overflow: hidden;
+  }
+
+  .example-header {
+    background: var(--surface2);
+    padding: 0.85rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .example-header:hover { background: rgba(91,143,255,0.07); }
+
+  .ex-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--bg);
+    background: var(--accent4);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
+  .example-header h3 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .ex-toggle {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .example-body {
+    padding: 1.2rem 1.4rem;
+    display: none;
+  }
+
+  .example-body.open { display: block; }
+
+  .given-block {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .given-block h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+
+  .given-block p, .given-block li {
+    font-size: 0.84rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .given-block ul { padding-left: 1.1rem; }
+
+  .solution-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sol-step {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+  }
+
+  .sol-step h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+  }
+
+  .sol-step p {
+    font-size: 0.84rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .answer-box {
+    background: rgba(52,211,153,0.08);
+    border: 1px solid rgba(52,211,153,0.3);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .answer-box h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+  }
+
+  .answer-box p {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* ─── SUMMARY ─── */
+  .summary-box {
+    background: linear-gradient(135deg, rgba(91,143,255,0.08), rgba(167,139,250,0.08));
+    border: 1px solid rgba(91,143,255,0.3);
+    border-radius: var(--card-radius);
+    padding: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .summary-box h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 1rem;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .summary-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .summary-list li {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .summary-list li::before {
+    content: '→';
+    color: var(--accent2);
+    font-family: 'Space Mono', monospace;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .back-top {
+    display: block;
+    text-align: center;
+    margin-top: 2.5rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    transition: all 0.2s;
+  }
+  .back-top:hover { color: var(--text); border-color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .hero { padding: 2.5rem 1rem 1.5rem; }
+    .card, .formula-card { padding: 1.1rem 1.1rem; }
+    .example-body { padding: 1rem 1rem; }
+    .example-header { padding: 0.75rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="top">
+  <div class="nav-inner">
+    <span class="nav-label">W14–16</span>
+    <a href="#newton">Newton's Laws</a>
+    <a href="#friction">Friction</a>
+    <a href="#fbd">Free-Body Diagrams</a>
+    <a href="#tension">Tension</a>
+    <a href="#formulas">Formulas</a>
+    <a href="#examples">Examples</a>
+    <a href="#summary">Summary</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">PHYS 017 · Weeks 14–16</div>
+  <h1>Dynamics (Forces)<br>&amp; Gravitation</h1>
+  <p>Your complete reviewer covering Newton's Laws, friction, free-body diagrams, tension, and worked examples.</p>
+  <div class="objectives">
+    <div class="obj-chip"><span>Objective 01</span>Interpret and apply Newton's Three Laws of Motion</div>
+    <div class="obj-chip"><span>Objective 02</span>Use free-body diagrams (FBDs) for interacting systems</div>
+    <div class="obj-chip"><span>Objective 03</span>Determine net force and forces between objects</div>
+    <div class="obj-chip"><span>Objective 04</span>Distinguish static vs kinetic friction</div>
+    <div class="obj-chip"><span>Objective 05</span>Apply Newton's Law of Gravitation</div>
+    <div class="obj-chip"><span>Objective 06</span>Calculate momentum, impulse, and average force</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ══ NEWTON'S LAWS ══ -->
+  <div class="section-head" id="newton">
+    <span class="section-num">01</span>
+    <h2>Newton's Laws of Motion</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-blue">Background</span>
+    <h3>Who is Isaac Newton?</h3>
+    <p>Sir Isaac Newton developed his theories of gravitation in <strong style="color:var(--text)">1666</strong> at age 23. In <strong style="color:var(--text)">1686</strong>, he presented his three laws of motion in the <em>Principia Mathematica Philosophiae Naturalis</em>. Together with Kepler's Laws, Newton's work explained why planets move in elliptical orbits rather than circles.</p>
+  </div>
+
+  <div class="laws-grid">
+    <div class="law-card l1">
+      <div class="law-num">First Law</div>
+      <h4>Law of Inertia</h4>
+      <p>An object at rest remains at rest, and an object in motion remains in motion at constant speed in a straight line <strong>unless acted on by an unbalanced force.</strong></p>
+      <div class="law-keyword">Inertia</div>
+    </div>
+    <div class="law-card l2">
+      <div class="law-num">Second Law</div>
+      <h4>Law of Force</h4>
+      <p>The acceleration of an object depends on the mass of the object and the amount of force applied. A heavier object experiences less acceleration for equal forces.</p>
+      <div class="law-keyword">F = ma</div>
+    </div>
+    <div class="law-card l3">
+      <div class="law-num">Third Law</div>
+      <h4>Action &amp; Reaction</h4>
+      <p>Whenever one object exerts a force on a second object, the second object exerts an <strong>equal and opposite</strong> force on the first. Forces result from interactions.</p>
+      <div class="law-keyword">Action–Reaction</div>
+    </div>
+  </div>
+
+  <div class="formula-card blue">
+    <h3>Newton's Second Law — Key Formula</h3>
+    <div class="formula">F<sub style="font-size:0.7em">net</sub> = ma</div>
+    <div class="formula-vars">
+      <div class="var-pill"><code>F</code> = net force (Newtons, N)</div>
+      <div class="var-pill"><code>m</code> = mass (kg)</div>
+      <div class="var-pill"><code>a</code> = acceleration (m/s²)</div>
+    </div>
+    <p style="font-size:0.82rem; color:var(--muted); margin-top:0.75rem;">⚠ Valid only for objects with <strong style="color:var(--text)">constant mass</strong>. Acceleration is proportional to force and inversely proportional to mass.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-blue">Real-World Examples</span>
+    <h3>Newton's Laws in Action (Aerodynamics)</h3>
+    <table class="compare-table">
+      <thead><tr><th>Law</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>1st — Inertia</td><td>A ball falling through the atmosphere, a kite reacting to wind changes</td></tr>
+        <tr><td>2nd — Force</td><td>Aircraft motion from aerodynamic forces, weight, and thrust</td></tr>
+        <tr><td>3rd — Action/Reaction</td><td>Wing lift (air deflected down → wing pushed up); jet engine thrust (gases backward → thrust forward)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ FRICTION ══ -->
+  <div class="section-head" id="friction">
+    <span class="section-num">02</span>
+    <h2>Static &amp; Kinetic Friction</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-orange">Definition</span>
+    <h3>What is Frictional Force?</h3>
+    <p>When an object is in contact with a surface, the component of the contact force <strong>parallel to the surface</strong> is called the frictional force. Friction magnitude does <em>not</em> depend on contact area — only on the normal force and the surface materials.</p>
+  </div>
+
+  <div class="friction-grid">
+    <div class="friction-card">
+      <h4 style="color: var(--accent)">Static Friction (f<sub>s</sub>)</h4>
+      <p>Opposes the <em>impending</em> relative motion between two objects that are not yet sliding.</p>
+      <div class="fric-formula">f<sub>s</sub> ≤ μ<sub>s</sub>F<sub>⊥</sub></div>
+      <p>Can range from zero up to a maximum value f<sub>s</sub><sup>Max</sup> = μ<sub>s</sub>F<sub>⊥</sub>. Once exceeded, sliding begins.</p>
+      <div style="margin-top:0.6rem; font-size:0.8rem; color:var(--muted);">0 &lt; μ<sub>s</sub> &lt; 1</div>
+    </div>
+    <div class="friction-card">
+      <h4 style="color: var(--accent4)">Kinetic Friction (f<sub>k</sub>)</h4>
+      <p>Opposes the relative <em>sliding</em> motion that is actually occurring between surfaces.</p>
+      <div class="fric-formula">f<sub>k</sub> = μ<sub>k</sub>F<sub>⊥</sub></div>
+      <p>Has a fixed value once sliding starts. Generally, μ<sub>k</sub> &lt; μ<sub>s</sub> — kinetic friction is less than maximum static friction.</p>
+      <div style="margin-top:0.6rem; font-size:0.8rem; color:var(--muted);">0 &lt; μ<sub>k</sub> &lt; 1</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-orange">Key Notes</span>
+    <h3>Important Rules for Friction</h3>
+    <ul>
+      <li>Friction equations give <strong style="color:var(--text)">magnitudes only</strong> — direction must be determined from the physics</li>
+      <li>With no other vertical forces: F<sub>⊥</sub> = W = mg (the normal force equals weight)</li>
+      <li>Friction force is <strong style="color:var(--text)">horizontal</strong>; normal force is <strong style="color:var(--text)">vertical</strong></li>
+      <li>A sled slows down because kinetic friction opposes its motion</li>
+    </ul>
+  </div>
+
+  <!-- ══ FREE-BODY DIAGRAMS ══ -->
+  <div class="section-head" id="fbd">
+    <span class="section-num">03</span>
+    <h2>Free-Body Diagrams</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-purple">Definition</span>
+    <h3>What is an FBD?</h3>
+    <p>A Free-Body Diagram (FBD) shows <strong>only the external forces</strong> acting on a single object, represented as a point (center of mass) in empty space. Internal forces are ignored because only external forces affect an object's motion. FBDs are the essential first step in applying Newton's Laws.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-purple">Procedure</span>
+    <h3>7-Step FBD Method</h3>
+    <div class="fbd-steps">
+      <div class="fbd-step">
+        <span class="step-num">01</span>
+        <p>Draw a <strong>center-of-mass symbol</strong> (⊗) to represent the object. If multiple objects are involved, draw a separate FBD for each.</p>
+      </div>
+      <div class="fbd-step">
+        <span class="step-num">02</span>
+        <p><strong>List all items in contact</strong> with the object. These exert contact forces. Do NOT add these items to your drawing — only their forces.</p>
+      </div>
+      <div class="fbd-step">
+        <span class="step-num">03</span>
+        <p>Identify all forces exerted <strong>on</strong> the object: (a) gravitational force from Earth and (b) contact forces from each item in Step 2.</p>
+      </div>
+      <div class="fbd-step">
+        <span class="step-num">04</span>
+        <p>Draw an <strong>arrow for each force</strong>, pointing in the direction the force acts, with the tail at the center of mass. Length should reflect relative magnitude. Label as F<sup>type</sup><sub>by/on</sub>.</p>
+      </div>
+      <div class="fbd-step">
+        <span class="step-num">05</span>
+        <p>Verify all forces are exerted <strong>on</strong> (not <em>by</em>) the object. Every label should share the same second subscript letter.</p>
+      </div>
+      <div class="fbd-step">
+        <span class="step-num">06</span>
+        <p>Draw the <strong>acceleration vector</strong> next to the center of mass. If object is in equilibrium, write ā = 0 and ensure forces sum to zero.</p>
+      </div>
+      <div class="fbd-step">
+        <span class="step-num">07</span>
+        <p>Draw a <strong>reference axis</strong>. If accelerating, point +x in the direction of acceleration. Final diagram: only the ⊗, force arrows, axis, and acceleration.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-purple">FBD Example</span>
+    <h3>Book Lying Motionless on the Floor</h3>
+    <p style="margin-bottom:0.8rem;">Two forces act on the book: gravity (Earth pulls down) and normal force (floor pushes up). Since the book is at rest, ā = 0 and these forces are equal and opposite.</p>
+    <div style="display:flex; justify-content:center; margin: 1rem 0;">
+      <svg viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+        <!-- axes -->
+        <line x1="90" y1="20" x2="90" y2="160" stroke="#2a2f45" stroke-width="1" stroke-dasharray="4"/>
+        <text x="96" y="28" fill="#8892aa" font-size="11" font-family="monospace">+x</text>
+        <!-- up arrow: contact force -->
+        <line x1="90" y1="90" x2="90" y2="35" stroke="#5b8fff" stroke-width="2.5" marker-end="url(#arrowUp)"/>
+        <text x="96" y="60" fill="#5b8fff" font-size="10" font-family="monospace">F͢ᶜ_fb</text>
+        <!-- down arrow: gravity -->
+        <line x1="90" y1="90" x2="90" y2="145" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#arrowDown)"/>
+        <text x="96" y="132" fill="#a78bfa" font-size="10" font-family="monospace">F͢ᴳ_Eb</text>
+        <!-- center of mass -->
+        <circle cx="90" cy="90" r="6" fill="none" stroke="#34d399" stroke-width="2"/>
+        <line x1="86" y1="90" x2="94" y2="90" stroke="#34d399" stroke-width="2"/>
+        <line x1="90" y1="86" x2="90" y2="94" stroke="#34d399" stroke-width="2"/>
+        <!-- a=0 label -->
+        <text x="66" y="94" fill="#8892aa" font-size="10" font-family="monospace">ā=0</text>
+        <!-- arrowheads -->
+        <defs>
+          <marker id="arrowUp" markerWidth="6" markerHeight="6" refX="3" refY="6" orient="auto">
+            <path d="M0,6 L3,0 L6,6" fill="none" stroke="#5b8fff" stroke-width="1.5"/>
+          </marker>
+          <marker id="arrowDown" markerWidth="6" markerHeight="6" refX="3" refY="0" orient="auto">
+            <path d="M0,0 L3,6 L6,0" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+    <p style="text-align:center; font-size:0.8rem; color:var(--muted);">F͢ᶜ<sub>fb</sub> = contact force by floor <em>on</em> book (↑) &nbsp;|&nbsp; F͢ᴳ<sub>Eb</sub> = gravity by Earth <em>on</em> book (↓)</p>
+  </div>
+
+  <!-- ══ TENSION ══ -->
+  <div class="section-head" id="tension">
+    <span class="section-num">04</span>
+    <h2>Tension Force</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-green">Definition</span>
+    <h3>What is Tension?</h3>
+    <p>Tension is a force along the length of a medium — particularly a <strong>flexible medium like a rope or cable</strong> (from Latin <em>tendere</em>: "to stretch"). Cables and ropes transmit forces through tension.</p>
+  </div>
+
+  <div class="formula-card green">
+    <h3>Key Tension Rules</h3>
+    <div class="formula">T = F<sub style="font-size:0.7em">Hand</sub></div>
+    <p style="font-size:0.83rem; color:var(--muted); margin-top:0.5rem;">The tension magnitude equals the applied hand force. A <strong style="color:var(--text)">massless rope</strong> transmits tension undiminished from one end to the other. A <strong style="color:var(--text)">massless, frictionless pulley</strong> also transmits tension undiminished.</p>
+    <div style="margin-top:0.75rem; font-size:0.83rem; color:var(--muted);">
+      If a mass is at rest or moving at constant velocity: &nbsp;<code style="font-family:'Space Mono',monospace; color:var(--text);">ΣF = W + T = 0 → T = mg</code>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-green">Newton's 3rd Law Pairs</span>
+    <h3>Tension Action–Reaction Pairs</h3>
+    <table class="compare-table">
+      <thead><tr><th>Object</th><th>Force Pair</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Box end</td><td><code>(F̄_Box, T̄)</code></td><td>Tension pulls on box; box pulls on rope</td></tr>
+        <tr><td>Hand end</td><td><code>(F̄_Hand, −T̄)</code></td><td>Tension pulls on hand; hand pulls on rope</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.82rem; color:var(--muted); margin-top:0.75rem;">⚠ The weight of the person holding must be <strong style="color:var(--text)">greater than the weight of the load</strong>, or the load drops and tension pulls the person upward.</p>
+  </div>
+
+  <!-- ══ KEY FORMULAS ══ -->
+  <div class="section-head" id="formulas">
+    <span class="section-num">05</span>
+    <h2>Key Formulas</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-blue">Quick Reference</span>
+    <h3>All Formulas at a Glance</h3>
+    <table class="compare-table">
+      <thead><tr><th>Concept</th><th>Formula</th><th>Unit</th></tr></thead>
+      <tbody>
+        <tr><td>Newton's 2nd Law</td><td><code>F_net = ma</code></td><td>Newtons (N)</td></tr>
+        <tr><td>Weight</td><td><code>W = mg</code></td><td>Newtons (N)</td></tr>
+        <tr><td>Max Static Friction</td><td><code>f_s^Max = μ_s · F_⊥</code></td><td>Newtons (N)</td></tr>
+        <tr><td>Kinetic Friction</td><td><code>f_k = μ_k · F_⊥</code></td><td>Newtons (N)</td></tr>
+        <tr><td>Tension (equilibrium)</td><td><code>T = mg</code></td><td>Newtons (N)</td></tr>
+        <tr><td>Acceleration (derived)</td><td><code>a = (F_net) / m</code></td><td>m/s²</td></tr>
+        <tr><td>Net Force (rocket)</td><td><code>F_net = F_t − F_air − mg</code></td><td>Newtons (N)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-blue">Problem-Solving Strategy</span>
+    <h3>4-Step Approach</h3>
+    <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.4rem;">
+      <div style="display:flex; gap:0.75rem; font-size:0.85rem; color:var(--muted);">
+        <span style="font-family:'Space Mono',monospace; color:var(--accent); font-size:0.75rem; flex-shrink:0; margin-top:0.1rem;">STEP 1</span>
+        <span>Identify Newton's Laws as the relevant principle. Draw a detailed sketch with labeled force arrows.</span>
+      </div>
+      <div style="display:flex; gap:0.75rem; font-size:0.85rem; color:var(--muted);">
+        <span style="font-family:'Space Mono',monospace; color:var(--accent); font-size:0.75rem; flex-shrink:0; margin-top:0.1rem;">STEP 2</span>
+        <span>List knowns and unknowns. Identify the system of interest. Distinguish external vs internal forces.</span>
+      </div>
+      <div style="display:flex; gap:0.75rem; font-size:0.85rem; color:var(--muted);">
+        <span style="font-family:'Space Mono',monospace; color:var(--accent); font-size:0.75rem; flex-shrink:0; margin-top:0.1rem;">STEP 3</span>
+        <span>Apply F_net = ma. For 2D problems, break into x and y components: F_net,x = ma; F_net,y = 0 (if no vertical acceleration).</span>
+      </div>
+      <div style="display:flex; gap:0.75rem; font-size:0.85rem; color:var(--muted);">
+        <span style="font-family:'Space Mono',monospace; color:var(--accent); font-size:0.75rem; flex-shrink:0; margin-top:0.1rem;">STEP 4</span>
+        <span>Check: Is the answer reasonable? Do the units match? (If solving for force, you should get N — not m/s.)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ EXAMPLES ══ -->
+  <div class="section-head" id="examples">
+    <span class="section-num">06</span>
+    <h2>Worked Examples</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Example 1 -->
+  <div class="example-card">
+    <div class="example-header" onclick="toggleEx(this)">
+      <span class="ex-badge">Example 1</span>
+      <h3>Rocket Acceleration — find <em>a</em></h3>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="example-body">
+      <div class="given-block">
+        <h4>Given</h4>
+        <ul>
+          <li>m = 5.00 × 10⁵ kg</li>
+          <li>Thrust (F<sub>t</sub>) = 1.250 × 10⁷ N</li>
+          <li>Air resistance (F<sub>air</sub>) = 4.50 × 10⁶ N</li>
+          <li>System: rocket accelerating straight up</li>
+        </ul>
+      </div>
+      <div class="solution-steps">
+        <div class="sol-step">
+          <h4>Set Up Net Force</h4>
+          <p>Forces acting: Thrust ↑, Weight ↓ (mg), Air resistance ↓</p>
+          <p style="margin-top:0.4rem; font-family:'Space Mono',monospace; color:var(--text); font-size:0.9rem;">F_net = F_t − F_air − mg = ma</p>
+        </div>
+        <div class="sol-step">
+          <h4>Solve for Acceleration</h4>
+          <p style="font-family:'Space Mono',monospace; color:var(--text); font-size:0.9rem;">a = (F_t − F_air − mg) / m</p>
+        </div>
+        <div class="sol-step">
+          <h4>Plug in Values</h4>
+          <p style="font-family:'Space Mono',monospace; font-size:0.82rem; color:var(--muted);">a = (1.250×10⁷ − 4.50×10⁶ − (5.00×10⁵)(9.80)) / (5.00×10⁵)</p>
+        </div>
+      </div>
+      <div class="answer-box">
+        <h4>Answer</h4>
+        <p>a = 6.20 m/s²</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example 2 -->
+  <div class="example-card">
+    <div class="example-header" onclick="toggleEx(this)">
+      <span class="ex-badge">Example 2</span>
+      <h3>High Jumper — find force exerted</h3>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="example-body">
+      <div class="given-block">
+        <h4>Given</h4>
+        <ul>
+          <li>m = 70.0 kg</li>
+          <li>a = 4.00 × g = 4.00 × 9.80 = 39.2 m/s²</li>
+          <li>System: jumper accelerating upward</li>
+        </ul>
+      </div>
+      <div class="solution-steps">
+        <div class="sol-step">
+          <h4>Set Up Net Force</h4>
+          <p>Forces: Ground reaction F ↑, Weight W = mg ↓</p>
+          <p style="margin-top:0.4rem; font-family:'Space Mono',monospace; color:var(--text); font-size:0.9rem;">F − mg = ma</p>
+        </div>
+        <div class="sol-step">
+          <h4>Solve for F</h4>
+          <p style="font-family:'Space Mono',monospace; color:var(--text); font-size:0.9rem;">F = ma + mg = m(a + g)</p>
+        </div>
+        <div class="sol-step">
+          <h4>Plug in Values</h4>
+          <p style="font-family:'Space Mono',monospace; font-size:0.82rem; color:var(--muted);">F = (70.0)(39.2) + (70.0)(9.80) = 2744 + 686</p>
+        </div>
+      </div>
+      <div class="answer-box">
+        <h4>Answer</h4>
+        <p>F = 3.43 × 10³ N</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example 3 -->
+  <div class="example-card">
+    <div class="example-header" onclick="toggleEx(this)">
+      <span class="ex-badge">Example 3</span>
+      <h3>Freight Train — find force per engine</h3>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="example-body">
+      <div class="given-block">
+        <h4>Given</h4>
+        <ul>
+          <li>2 engines × 8.00×10⁴ kg = 1.60×10⁵ kg</li>
+          <li>45 cars × 5.50×10⁴ kg = 2.475×10⁶ kg</li>
+          <li>Total mass = 2.635×10⁶ kg</li>
+          <li>a = 5.00×10⁻² m/s²</li>
+          <li>Friction (f) = 7.50×10⁵ N</li>
+        </ul>
+      </div>
+      <div class="solution-steps">
+        <div class="sol-step">
+          <h4>Set Up Net Force</h4>
+          <p style="font-family:'Space Mono',monospace; color:var(--text); font-size:0.9rem;">F − f = ma</p>
+        </div>
+        <div class="sol-step">
+          <h4>Solve for Total Force F</h4>
+          <p style="font-family:'Space Mono',monospace; color:var(--text); font-size:0.9rem;">F = ma + f</p>
+          <p style="font-family:'Space Mono',monospace; font-size:0.82rem; color:var(--muted); margin-top:0.3rem;">F = (2.635×10⁶)(5.00×10⁻²) + 7.50×10⁵ = 8.8175×10⁵ N</p>
+        </div>
+        <div class="sol-step">
+          <h4>Force Per Engine (2 identical engines)</h4>
+          <p style="font-family:'Space Mono',monospace; font-size:0.82rem; color:var(--muted);">F_one = 8.8175×10⁵ / 2</p>
+        </div>
+      </div>
+      <div class="answer-box">
+        <h4>Answer</h4>
+        <p>F per engine = 4.41 × 10⁵ N</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example 4 -->
+  <div class="example-card">
+    <div class="example-header" onclick="toggleEx(this)">
+      <span class="ex-badge">Example 4</span>
+      <h3>Car &amp; Boat Trailer — find friction</h3>
+      <span class="ex-toggle">▼</span>
+    </div>
+    <div class="example-body">
+      <div class="given-block">
+        <h4>Given</h4>
+        <ul>
+          <li>m (car) = 1100 kg</li>
+          <li>m (boat + trailer) = 700 kg</li>
+          <li>Total mass = 1800 kg</li>
+          <li>Driving force = 1900 N</li>
+          <li>a = 0.550 m/s²</li>
+        </ul>
+      </div>
+      <div class="solution-steps">
+        <div class="sol-step">
+          <h4>Set Up Net Force</h4>
+          <p style="font-family:'Space Mono',monospace; color:var(--text); font-size:0.9rem;">F_drive − f = ma</p>
+        </div>
+        <div class="sol-step">
+          <h4>Solve for Friction f</h4>
+          <p style="font-family:'Space Mono',monospace; color:var(--text); font-size:0.9rem;">f = F_drive − ma</p>
+          <p style="font-family:'Space Mono',monospace; font-size:0.82rem; color:var(--muted); margin-top:0.3rem;">f = 1900 − (1800)(0.550) = 1900 − 990</p>
+        </div>
+      </div>
+      <div class="answer-box">
+        <h4>Answer</h4>
+        <p>f = 910 N</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SUMMARY ══ -->
+  <div class="section-head" id="summary">
+    <span class="section-num">07</span>
+    <h2>Summary</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="summary-box">
+    <h3>Key Takeaways</h3>
+    <ul class="summary-list">
+      <li>Newton's 1st Law: inertia — objects resist changes in motion</li>
+      <li>Newton's 2nd Law: F_net = ma (constant mass only)</li>
+      <li>Newton's 3rd Law: every action has an equal, opposite reaction</li>
+      <li>Static friction opposes impending motion; f_s ≤ μ_s × F_⊥</li>
+      <li>Kinetic friction opposes actual sliding; f_k = μ_k × F_⊥</li>
+      <li>Friction magnitude does NOT depend on contact area</li>
+      <li>FBDs show only external forces acting ON the system</li>
+      <li>A massless rope transmits tension magnitude undiminished</li>
+      <li>At equilibrium (a = 0): net force in every direction = 0</li>
+      <li>Always check units — force answers should be in Newtons (N)</li>
+    </ul>
+  </div>
+
+  <a href="#top" class="back-top">↑ Back to top</a>
+
+</main>
+
+<script>
+  // Toggle worked examples
+  function toggleEx(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('.ex-toggle');
+    body.classList.toggle('open');
+    arrow.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+  }
+
+  // Active nav highlighting on scroll
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (active) {
+          active.classList.add('active');
+          active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { rootMargin: '-30% 0px -65% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
