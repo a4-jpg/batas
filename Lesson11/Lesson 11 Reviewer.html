@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC1015 · Lesson 11 Reviewer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0d0f14;
+    --surface: #151820;
+    --surface2: #1c2030;
+    --border: #2a2f45;
+    --accent: #5b8fff;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --accent4: #f97316;
+    --accent5: #f472b6;
+    --text: #e2e8f0;
+    --muted: #8892aa;
+    --card-radius: 14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,15,20,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.25rem;
+  }
+  .nav-inner {
+    max-width: 960px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 56px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent2);
+    white-space: nowrap;
+    margin-right: 0.5rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  nav a {
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  nav a:hover, nav a:focus {
+    color: var(--text);
+    border-color: var(--border);
+    background: var(--surface2);
+    outline: none;
+  }
+  nav a.active {
+    color: var(--accent2);
+    background: rgba(167,139,250,0.1);
+    border-color: rgba(167,139,250,0.35);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3.5rem 1.25rem 2rem;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent2);
+    background: rgba(167,139,250,0.1);
+    border: 1px solid rgba(167,139,250,0.3);
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-size: clamp(1.7rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #fff 40%, var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 560px;
+    margin: 0 auto 2rem;
+  }
+  .objectives {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .obj-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: left;
+    max-width: 280px;
+    line-height: 1.4;
+  }
+  .obj-chip span {
+    display: block;
+    color: var(--accent3);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── MAIN ─── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.25rem 5rem;
+  }
+
+  /* ─── LESSON DIVIDER ─── */
+  .lesson-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0 0.5rem;
+    padding: 1.1rem 1.4rem;
+    background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(91,143,255,0.05));
+    border: 1px solid rgba(167,139,250,0.25);
+    border-radius: var(--card-radius);
+  }
+  .lesson-divider .lesson-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--bg);
+    background: var(--accent2);
+    border-radius: 6px;
+    padding: 0.25rem 0.55rem;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .lesson-divider h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .lesson-divider p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2.2rem 0 0.9rem;
+  }
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--bg);
+    background: var(--accent);
+    border-radius: 6px;
+    padding: 0.2rem 0.45rem;
+    font-weight: 700;
+  }
+  .section-head h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text);
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 0.85rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: rgba(167,139,250,0.35); }
+  .card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+  .card p, .card li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .card ul, .card ol {
+    padding-left: 1.2rem;
+    margin-top: 0.4rem;
+  }
+  .card li + li { margin-top: 0.3rem; }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 5px;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .tag-blue   { background: rgba(91,143,255,0.15);  color: var(--accent); }
+  .tag-purple { background: rgba(167,139,250,0.15); color: var(--accent2); }
+  .tag-green  { background: rgba(52,211,153,0.15);  color: var(--accent3); }
+  .tag-orange { background: rgba(249,115,22,0.15);  color: var(--accent4); }
+  .tag-pink   { background: rgba(244,114,182,0.15); color: var(--accent5); }
+
+  /* Definition card */
+  .def-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2);
+    border-radius: var(--card-radius);
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 0.85rem;
+  }
+  .def-card .term {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-bottom: 0.35rem;
+    display: block;
+  }
+  .def-card p {
+    font-size: 0.87rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .def-card p strong { color: var(--text); }
+
+  /* Step cards */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .step-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1rem 1.1rem;
+  }
+  .step-card .step-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--bg);
+    background: var(--accent3);
+    border-radius: 5px;
+    padding: 0.15rem 0.45rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+  .step-card h5 {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+  }
+  .step-card p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* Comparison table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .compare-table th {
+    background: var(--surface2);
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.65rem 0.9rem;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  .compare-table td {
+    padding: 0.65rem 0.9rem;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    font-size: 0.84rem;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-table td strong { color: var(--text); }
+
+  /* level list */
+  .level-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+  }
+  .level-list li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .level-list li:last-child { border-bottom: none; }
+  .level-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--bg);
+    background: var(--accent3);
+    border-radius: 4px;
+    padding: 0.12rem 0.4rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .level-badge.blue   { background: var(--accent); }
+  .level-badge.purple { background: var(--accent2); }
+  .level-badge.orange { background: var(--accent4); }
+  .level-badge.pink   { background: var(--accent5); }
+
+  /* rs grid */
+  .rs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 0.65rem;
+    margin-top: 0.6rem;
+  }
+  .rs-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent4);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+  }
+  .rs-chip.blue  { border-left-color: var(--accent); }
+  .rs-chip.purple { border-left-color: var(--accent2); }
+  .rs-chip.green { border-left-color: var(--accent3); }
+  .rs-chip.pink  { border-left-color: var(--accent5); }
+  .rs-chip h5 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .rs-chip p {
+    font-size: 0.77rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Summary box */
+  .summary-box {
+    background: linear-gradient(135deg, rgba(91,143,255,0.07), rgba(167,139,250,0.07));
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: var(--card-radius);
+    padding: 1.6rem 1.8rem;
+    margin-top: 3rem;
+  }
+  .summary-box h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-bottom: 1rem;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+  .summary-list {
+    list-style: none;
+    padding: 0;
+  }
+  .summary-list li {
+    font-size: 0.86rem;
+    color: var(--muted);
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.55;
+  }
+  .summary-list li:last-child { border-bottom: none; }
+  .summary-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent3);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  /* Back to top */
+  .back-top {
+    display: block;
+    text-align: center;
+    margin-top: 2.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .back-top:hover { color: var(--accent2); }
+
+  /* scale grid */
+  .scale-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.7rem;
+    margin-top: 0.6rem;
+  }
+  .scale-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+  }
+  .scale-chip .sc-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+  .scale-chip h5 {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .scale-chip p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+</style>
+</head>
+<body id="top">
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-label">L11</span>
+    <a href="#objective">Objective Methods</a>
+    <a href="#projective">Projective Method</a>
+    <a href="#inkblots">Inkblots</a>
+    <a href="#pictures">Pictures</a>
+    <a href="#words">Words</a>
+    <a href="#sounds">Sounds</a>
+    <a href="#drawings">Figure Drawings</a>
+    <a href="#behavioral">Behavioral Methods</a>
+    <a href="#dichotomy">Dichotomy</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <div class="hero-badge">PSYC1015 · BS Psychology</div>
+  <h1>Lesson 11 Reviewer</h1>
+  <p>Personality Assessment Methods — Cohen &amp; Swerdlik (2018), 9th ed.</p>
+  <div class="objectives">
+    <div class="obj-chip"><span>OBJECTIVE METHODS</span>Short-answer, paper-pencil, or computer-administered; standardized scoring.</div>
+    <div class="obj-chip"><span>PROJECTIVE METHODS</span>Unstructured stimuli (inkblots, pictures, words, sounds, drawings) to reveal unconscious material.</div>
+    <div class="obj-chip"><span>BEHAVIORAL METHODS</span>Direct observation and recording of overt behavior in specific contexts.</div>
+  </div>
+</div>
+
+<main>
+
+<!-- ══════════════════════ LESSON 11 ══════════════════════ -->
+<div class="lesson-divider" id="objective">
+  <span class="lesson-num">LESSON 11</span>
+  <div>
+    <h2>Personality Assessment Methods</h2>
+    <p>Objective, Projective &amp; Behavioral — Presented 2025-11-21</p>
+  </div>
+</div>
+
+<!-- 01 OBJECTIVE METHODS -->
+<div class="section-head">
+  <span class="section-num">01</span>
+  <h3>Objective Methods of Personality Assessment</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">Objective Methods</span>
+  <p>Contain <strong>short-answer items</strong> for which the assessee's task is to select one response from two or more provided options. Usually administered by <strong>paper-and-pencil</strong> or <strong>computer</strong>. Scoring follows set procedures involving <strong>little, if any, judgment</strong> on the part of the scorer.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">Format</span>
+  <h4>Item Types &amp; Scoring Reference</h4>
+  <p>Objective personality tests may include items in a <strong>multiple-choice, true-false, or matching</strong> format. Unlike ability tests, a response is scored with reference to either:</p>
+  <ul class="level-list" style="margin-top:0.6rem;">
+    <li><span class="level-badge blue">[1]</span>The <strong>personality characteristic(s)</strong> being measured</li>
+    <li><span class="level-badge blue">[2]</span>The <strong>validity</strong> of the respondent's pattern of responses</li>
+  </ul>
+  <p style="margin-top:0.75rem; font-size:0.85rem;">If a respondent endorses items indicative of both the <em>presence</em> and <em>absence</em> of a trait — or items rarely endorsed by test-takers — the <strong>validity of the protocol is called into question</strong> and scrutiny may reveal an irregularity.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">Advantages</span>
+  <h4>Why Objective Tests Are Useful</h4>
+  <div class="rs-grid">
+    <div class="rs-chip green">
+      <h5>Speed</h5>
+      <p>Items can be answered quickly, allowing many items covering varied trait aspects.</p>
+    </div>
+    <div class="rs-chip green">
+      <h5>Clear Instructions</h5>
+      <p>Well-written items require little explanation — ideal for group and computerized administration.</p>
+    </div>
+    <div class="rs-chip green">
+      <h5>Reliable Scoring</h5>
+      <p>Items can be scored quickly by hand (template) or by computer with high consistency.</p>
+    </div>
+    <div class="rs-chip green">
+      <h5>Fast Interpretation</h5>
+      <p>Analysis may be nearly as fast as scoring, especially with custom software.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="tag tag-orange">Limitation</span>
+  <h4>How "Objective" Are They, Really?</h4>
+  <p>The term <em>objective</em> originally referred to the fact that items had only one correct answer. However, personality tests depend on <strong>self-report</strong>, which introduces a distinct lack of objectivity:</p>
+  <ul style="margin-top:0.5rem;">
+    <li>Self-reports of likes/dislikes, agreements, behaviors can be subjective and biased.</li>
+    <li>Test-takers may <strong>fake good</strong> (present themselves favorably) or <strong>fake bad</strong> (exaggerate problems).</li>
+    <li>The term <em>objective</em> is best understood as a shorthand for a <strong>test format</strong> — short-answer with little room for scorer discretion — rather than a claim about the content's objectivity.</li>
+  </ul>
+</div>
+
+<!-- 02 PROJECTIVE METHOD -->
+<div class="section-head" id="projective">
+  <span class="section-num">02</span>
+  <h3>Projective Method</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">Projective Hypothesis</span>
+  <p>Holds that an individual <strong>supplies structure to unstructured stimuli</strong> in a manner consistent with the individual's own unique pattern of <strong>conscious and unconscious</strong> needs, fears, desires, impulses, conflicts, and ways of perceiving and responding.</p>
+</div>
+
+<div class="def-card">
+  <span class="term">Projective Method</span>
+  <p>A technique of personality assessment in which judgment of the assessee's personality is made on the basis of performance on a task that involves <strong>supplying some sort of structure to unstructured or incomplete stimuli</strong>.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">Key Characteristics</span>
+  <h4>What Makes Projective Tests Different</h4>
+  <div class="rs-grid">
+    <div class="rs-chip purple">
+      <h5>Indirect</h5>
+      <p>Assessees are not directly asked to disclose information about themselves — they talk about "something else" (inkblots, pictures).</p>
+    </div>
+    <div class="rs-chip purple">
+      <h5>Faking Minimized</h5>
+      <p>The ability — and inclination — to fake responses is greatly reduced on projective tasks.</p>
+    </div>
+    <div class="rs-chip purple">
+      <h5>Language-Flexible</h5>
+      <p>Some tasks (e.g., drawings) require minimal language proficiency, suggesting cross-cultural potential.</p>
+    </div>
+    <div class="rs-chip purple">
+      <h5>Clinical Focus</h5>
+      <p>Born from rejection of normative statistics; focused on the unique way an individual perceives and responds to ambiguous stimuli.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 03 INKBLOTS -->
+<div class="section-head" id="inkblots">
+  <span class="section-num">03</span>
+  <h3>Inkblots as Projective Stimuli</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">The Rorschach Inkblot Test</span>
+  <p>Developed by <strong>Hermann Rorschach</strong>, who called it a "form interpretation test." Published in his 1921 monograph <em>Psychodiagnostics</em>. Consists of <strong>10 bilaterally symmetrical inkblots</strong> on separate cards. Rorschach died at age 38, a year after publication.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">Composition</span>
+  <h4>The 10 Rorschach Cards</h4>
+  <div class="scale-grid">
+    <div class="scale-chip">
+      <span class="sc-num">5 CARDS</span>
+      <h5>Achromatic</h5>
+      <p>Black-and-white only; no color.</p>
+    </div>
+    <div class="scale-chip">
+      <span class="sc-num">2 CARDS</span>
+      <h5>Black, White &amp; Red</h5>
+      <p>Include red inkblot areas in addition to black and white.</p>
+    </div>
+    <div class="scale-chip">
+      <span class="sc-num">3 CARDS</span>
+      <h5>Multicolored</h5>
+      <p>Full color inkblots with varied hues.</p>
+    </div>
+  </div>
+  <p style="margin-top:0.75rem; font-size:0.85rem; color:var(--muted);">There is no test manual included with the cards; no rationale for the color choices. Manuals were later developed, with Exner's <strong>Comprehensive System</strong> being the most widely used.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">Administration</span>
+  <h4>Three Phases of Rorschach Administration</h4>
+  <ul class="level-list">
+    <li>
+      <span class="level-badge blue">[1]</span>
+      <div>
+        <strong style="color:var(--text);">Initial Administration</strong> — Cards are presented one at a time (1–10). The test-taker answers "What might this be?" The examiner records verbatim responses, nonverbal gestures, response time, card position. <em>No discussion during this phase.</em>
+      </div>
+    </li>
+    <li>
+      <span class="level-badge blue">[2]</span>
+      <div>
+        <strong style="color:var(--text);">Inquiry</strong> — After all cards, the examiner asks questions to clarify <em>what</em> was seen and <em>which inkblot features</em> influenced the percept (perception). Provides data useful for scoring and interpretation. Also reveals whether original percepts are still seen.
+      </div>
+    </li>
+    <li>
+      <span class="level-badge blue">[3]</span>
+      <div>
+        <strong style="color:var(--text);">Testing the Limits</strong> — Optional third phase. Examiner restructures the situation with specific questions to gather additional personality data (e.g., can the person elaborate on details? respond with a new frame of reference? perform better with added structure?).
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">Scoring</span>
+  <h4>Rorschach Scoring Categories</h4>
+  <div class="steps-grid">
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent); color:#fff;">[1] LOCATION</span>
+      <h5>Where on the inkblot?</h5>
+      <p>Entire inkblot, large section, small section, minute detail, or white spaces.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent2); color:#fff;">[2] DETERMINANTS</span>
+      <h5>What qualities drove it?</h5>
+      <p>Form, color, shading, or movement the individual attributes to the inkblot.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent3); color:#0d0f14;">[3] CONTENT</span>
+      <h5>What was perceived?</h5>
+      <p>Human figures, animal figures, anatomy, blood, clouds, X-rays, sexual responses, etc.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent4); color:#fff;">[4] POPULARITY</span>
+      <h5>Common or rare?</h5>
+      <p>Popular = frequently seen by the general population. Rare = infrequent responses.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent5); color:#fff;">[5] FORM LEVEL</span>
+      <h5>How accurate?</h5>
+      <p>How well the perceived image matches the actual inkblot — rated adequate/inadequate or good/poor.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="tag tag-orange">Reliability &amp; Validity</span>
+  <h4>Psychometric Concerns &amp; Developments</h4>
+  <ul style="margin-top:0.3rem;">
+    <li>Split-half reliability is <strong>inappropriate</strong> because each card has a unique stimulus quality.</li>
+    <li>Test-retest reliability is problematic due to <strong>familiarity effects</strong> and because responses may reflect transient states, not enduring traits.</li>
+    <li>Exner's Comprehensive System improved <strong>inter-scorer reliability</strong> — McDowell &amp; Acklin (1996) reported an overall mean agreement of 87%.</li>
+    <li>In <strong>2011</strong>, the <em>Rorschach Performance Assessment System (R-PAS)</em> was published to leverage the Rorschach's strengths as a portable, complex behavioral task with standardized online scoring.</li>
+    <li>The Rorschach remains one of the most <strong>frequently used and taught</strong> psychological tests; widely used in forensic work and generally accepted by the courts.</li>
+  </ul>
+</div>
+
+<!-- 04 PICTURES -->
+<div class="section-head" id="pictures">
+  <span class="section-num">04</span>
+  <h3>Pictures as Projective Stimuli</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">Thematic Apperception Test (TAT)</span>
+  <p>Developed by <strong>Christiana D. Morgan &amp; Henry A. Murray</strong> (1935) at the Harvard Psychological Clinic. The most widely used picture storytelling projective test. Originally designed to elicit <strong>fantasy material</strong> from patients in psychoanalysis. Consists of <strong>31 cards</strong> (30 black-and-white picture cards + 1 blank card).</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">Administration</span>
+  <h4>How the TAT Is Given</h4>
+  <p>Test-takers are told it is a <strong>test of imagination</strong>. For each ambiguous picture they must create a story covering:</p>
+  <ul class="level-list" style="margin-top:0.5rem;">
+    <li><span class="level-badge blue">BEFORE</span>What events led up to the scene in the picture?</li>
+    <li><span class="level-badge blue">NOW</span>What is happening at that moment?</li>
+    <li><span class="level-badge blue">AFTER</span>What will the outcome be?</li>
+    <li><span class="level-badge blue">INNER</span>What are the thoughts and emotions of the people depicted?</li>
+  </ul>
+  <p style="margin-top:0.75rem; font-size:0.85rem;">For the <strong>blank card</strong>, the test-taker imagines a picture on it and creates a story. Card selection (typically 20) is tailored by age/gender. <em>Apperception</em> = to perceive in terms of past perceptions.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">Interpretation</span>
+  <h4>Murray's Key Interpretive Concepts</h4>
+  <div class="rs-grid">
+    <div class="rs-chip purple">
+      <h5>Need</h5>
+      <p>Determinants of behavior arising from <em>within</em> the individual.</p>
+    </div>
+    <div class="rs-chip purple">
+      <h5>Press</h5>
+      <p>Determinants of behavior arising from <em>within the environment</em>.</p>
+    </div>
+    <div class="rs-chip purple">
+      <h5>Thema</h5>
+      <p>A unit of <em>interaction between</em> needs and press — the narrative unit of analysis.</p>
+    </div>
+  </div>
+  <p style="margin-top:0.75rem; font-size:0.85rem;">The general principle is that the test-taker identifies with the <strong>protagonist</strong> and the protagonist's needs, conflicts, and environment reflect the test-taker's own concerns, hopes, fears, or desires.</p>
+  <p style="margin-top:0.5rem; font-size:0.85rem;">Raw material for interpretation includes: (1) the stories as told, (2) notes on the manner of responding, and (3) notes on extra-test behavior and verbalizations.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-orange">Limitations</span>
+  <h4>Psychometric Concerns with the TAT</h4>
+  <ul style="margin-top:0.3rem;">
+    <li>Different cards have different <strong>stimulus "pulls"</strong> (latent stimulus demands), making inter-card reliability difficult to determine.</li>
+    <li>Clinicians vary significantly in administration, scoring, and interpretation — limiting standardization.</li>
+    <li>Little direct evidence linking TAT stories to <strong>real-life behavior</strong>.</li>
+    <li>Results can be manipulated; easy to fake.</li>
+    <li>McClelland et al. (1989): self-report measures tap <em>self-attributed motives</em>; TAT taps <em>implicit motives</em> — non-conscious behavioral influences acquired from experience.</li>
+    <li>Despite limitations, the TAT remains commonly used because the underlying idea is <strong>intuitive</strong>.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">Other Picture Tests</span>
+  <h4>TAT-Like Instruments</h4>
+  <table class="compare-table">
+    <thead><tr><th>Test</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Social Situation Picture Test (SSPT)</strong></td>
+        <td>Developed 1932. Projective instrument designed for use with <em>juvenile delinquents</em>.</td>
+      </tr>
+      <tr>
+        <td><strong>Senior Apperception Technique (SAT)</strong></td>
+        <td>Features pictures of seniors; assumes elderly examinees will identify more strongly with age-matched images.</td>
+      </tr>
+      <tr>
+        <td><strong>Hand Test</strong></td>
+        <td>9 cards with pictures of hands + 1 blank card. Test-taker describes what the hands might be doing. Scored across 24 categories (affection, aggression, dependence, etc.).</td>
+      </tr>
+      <tr>
+        <td><strong>Apperceptive Personality Test (APT)</strong></td>
+        <td>8 cards with recognizable people in everyday settings. After a story, test-takers answer multiple-choice questions — introduces objectivity into scoring.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <span class="tag tag-pink">Hand Test Scoring</span>
+  <h4>Aggression Direction &amp; Reaction Categories</h4>
+  <div class="rs-grid">
+    <div class="rs-chip pink">
+      <h5>Intropunitive</h5>
+      <p>Aggression turned <em>inward</em>; self-directed.</p>
+    </div>
+    <div class="rs-chip pink">
+      <h5>Extrapunitive</h5>
+      <p>Aggression directed <em>outward</em>; expressed toward others.</p>
+    </div>
+    <div class="rs-chip pink">
+      <h5>Impunitive</h5>
+      <p>Aggression <em>evaded</em>; glossed over to avoid the situation.</p>
+    </div>
+  </div>
+  <p style="margin-top:0.75rem; font-size:0.85rem;">Reactions also grouped into: <strong>Obstacle Dominance</strong> (focus on frustrating barrier), <strong>Ego Defense</strong> (protect the frustrated person), and <strong>Need Persistence</strong> (focus on solving the problem). A <em>Group Conformity Rating (GCR)</em> shows how typical responses are relative to the standardization group.</p>
+</div>
+
+<!-- 05 WORDS -->
+<div class="section-head" id="words">
+  <span class="section-num">05</span>
+  <h3>Words as Projective Stimuli</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">Overview</span>
+  <h4>Semi-Structured Verbal Techniques</h4>
+  <p>Projective techniques that use <strong>words or open-ended phrases</strong> are called <em>semi-structured</em> — they allow varied responses but provide a framework. The two best-known types are <strong>Word Association Tests</strong> and <strong>Sentence Completion Tests</strong>.</p>
+</div>
+
+<div class="def-card">
+  <span class="term">Word Association</span>
+  <p>A task in which an assessee verbalizes the <strong>first word that comes to mind</strong> in response to a stimulus word. Responses are analyzed based on <strong>content, reaction time, popularity,</strong> and test-retest consistency.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">Historical Development</span>
+  <h4>Word Association Tests — Key Figures</h4>
+  <table class="compare-table">
+    <thead><tr><th>Figure / Year</th><th>Contribution</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Galton (1879)</strong></td>
+        <td>First to investigate word association. Presented unrelated words; recorded responses and response time.</td>
+      </tr>
+      <tr>
+        <td><strong>Cattell &amp; Bryant (1889)</strong></td>
+        <td>First to use printed stimulus word cards.</td>
+      </tr>
+      <tr>
+        <td><strong>Jung (1910)</strong></td>
+        <td>Proposed that selecting key "conflict words" allows word association to be used for <em>psychodiagnostic</em> purposes. Inspired Rapaport et al.</td>
+      </tr>
+      <tr>
+        <td><strong>Rapaport et al. (1945–46)</strong></td>
+        <td>Developed a 60-word test at the Menninger Clinic with 3 phases: (1) initial response + timing, (2) replication + timing, (3) inquiry into stimulus-response relationships.</td>
+      </tr>
+      <tr>
+        <td><strong>Kent-Rosanoff Test</strong></td>
+        <td>100 neutral stimulus words; frequency tables from 1,000 normal adults. Psychiatric patients showed <em>lower frequency</em> of popular responses than the normal standardization group.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">Rapaport Word Categories</span>
+  <h4>60-Word Test — Neutral vs. Traumatic Words</h4>
+  <div class="rs-grid">
+    <div class="rs-chip green">
+      <h5>Neutral Words</h5>
+      <p>e.g., chair, book, water, dance, taxi — emotionally benign.</p>
+    </div>
+    <div class="rs-chip orange">
+      <h5>Traumatic Words</h5>
+      <p>e.g., love, mother, father, suicide, fire, breast — words likely to touch sensitive personal material or attract associative disturbances.</p>
+    </div>
+  </div>
+</div>
+
+<div class="def-card">
+  <span class="term">Sentence Completion</span>
+  <p>A task in which the assessee is asked to <strong>finish an incomplete sentence or phrase</strong>. Responses are analyzed for themes, attitudes, beliefs, and personality traits.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">Sentence Completion Tests</span>
+  <h4>Major Instruments</h4>
+  <table class="compare-table">
+    <thead><tr><th>Test</th><th>Key Features</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Washington University Sentence Completion Test</strong></td>
+        <td>Based on Loevinger's theory of <em>self-concept development</em> (theoretically linked).</td>
+      </tr>
+      <tr>
+        <td><strong>Rotter Incomplete Sentences Blank</strong></td>
+        <td>Most popular among clinicians. Grade 9 through adulthood. Three levels: High School, College, Adult. 40 items scored on a 7-point scale from <em>need for therapy</em> to <em>extremely good adjustment</em>. Interpreted across: family attitudes, social/sexual attitudes, general attitudes, and character traits.</td>
+      </tr>
+      <tr>
+        <td><strong>Sacks Sentence Completion Test (SSCT)</strong></td>
+        <td>Multiple sets of sentence stems with different themes. Taps deeper levels of the psyche and unconscious. Reveals personality traits, coping mechanisms, and emotional states.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 06 SOUNDS -->
+<div class="section-head" id="sounds">
+  <span class="section-num">06</span>
+  <h3>Sounds as Projective Stimuli</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">Auditory Projective Tests</span>
+  <h4>Major Instruments &amp; Figures</h4>
+  <table class="compare-table">
+    <thead><tr><th>Test / Name</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Verbal Summator / Tautophone</strong></td>
+        <td>B.F. Skinner developed recorded muffled vowel-like sounds; believed it could "snare complexes." Rosenzweig &amp; Shakow renamed it the <em>tautophone</em> (from Greek: "repeating the same") and did research with it.</td>
+      </tr>
+      <tr>
+        <td><strong>Auditory Apperception Test (AAT)</strong></td>
+        <td>Test-taker creates a story based on three sounds. Examiner analyzes content and manner of response to identify unconscious themes.</td>
+      </tr>
+      <tr>
+        <td><strong>Azzageddi Test</strong></td>
+        <td>Created by Henry Murray; named after a Herman Melville character. Presents <em>spoken paragraphs</em> (not single words) — responses analyzed for unconscious motivations, attitudes, and personality traits.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.75rem; font-size:0.85rem; color:var(--muted);">Overall, auditory projective responses lacked the <strong>complexity and richness</strong> of inkblot, picture, or drawing responses, and no available scoring system proved very satisfactory.</p>
+</div>
+
+<!-- 07 FIGURE DRAWINGS -->
+<div class="section-head" id="drawings">
+  <span class="section-num">07</span>
+  <h3>The Production of Figure Drawings</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">Figure Drawing Test</span>
+  <p>A projective technique whereby the assessee <strong>produces a drawing</strong> that is analyzed on the basis of its content and related variables. Quick to administer (individually or in groups by non-clinicians); requires only pencil and paper. Classic reference: <em>Personality Projection in the Drawing of the Human Figure</em> by Karen Machover (1949).</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">Three Main Drawing Tests</span>
+  <h4>DAP, HTP, and KFD</h4>
+  <div class="steps-grid">
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent); color:#fff;">DAP</span>
+      <h5>Draw A Person Test</h5>
+      <p>Draw a person (8½×11 paper, pencil). Then draw a person of the <em>opposite sex</em>. Clinician follows up with questions: "Tell me a story about this figure," "What is the person doing?", "How is the person feeling?" Hypotheses formed from placement, size, pencil pressure, symmetry, shading, erasures, facial expression, posture, clothing.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent2); color:#fff;">HTP</span>
+      <h5>House-Tree-Person Test</h5>
+      <p>Buck (1948). Draw a <em>house</em>, a <em>tree</em>, and a <em>person</em>. How house and tree are represented is considered <strong>symbolically significant</strong> — analogous to how human figure features reflect psychological functioning.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent3); color:#0d0f14;">KFD</span>
+      <h5>Kinetic Family Drawing</h5>
+      <p>"Draw a picture of everyone in your family, including you, <em>DOING something</em>. Try to draw whole people, not cartoons or stick people." Detailed inquiry follows: identify figures, describe relationships, what they're doing and why. Especially valuable for understanding the examinee in relation to their family.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">Interpretation Focus</span>
+  <h4>What Figure Drawings Reveal (Per Emanuel Hammer)</h4>
+  <p>People project their <strong>self-image or self-concept</strong> in figure drawings (also in dreams and paintings). Hammer identified commonalities in drawings by persons from certain diagnostic groups.</p>
+  <ul style="margin-top:0.5rem;">
+    <li><strong>Placement</strong> on paper = how the individual functions within the environment.</li>
+    <li><strong>Characteristics of the drawn figure</strong> = reflect self-concept and psychological traits.</li>
+    <li>Drawings are both a <em>reflection of</em> and a <em>window into</em> personality.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="tag tag-orange">Related Instruments</span>
+  <h4>Kinetic Drawing Variations</h4>
+  <div class="rs-grid">
+    <div class="rs-chip blue">
+      <h5>Kinetic School Drawing (KSD)</h5>
+      <p>School adaptation of the KFD; examines the child's relationship to the school environment.</p>
+    </div>
+    <div class="rs-chip blue">
+      <h5>Kinetic Drawing System (KDS)</h5>
+      <p>Combines aspects of the KFD and KSD into a unified assessment tool.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 08 BEHAVIORAL METHODS -->
+<div class="section-head" id="behavioral">
+  <span class="section-num">08</span>
+  <h3>Behavioral Assessment Methods</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">Behavioral Assessment</span>
+  <p>An approach to personality assessment focused on <strong>direct observation and measurement of overt behavior</strong> in specific contexts. Rather than inferring underlying traits, it identifies specific behaviors, their antecedents, and their consequences.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">Core Features</span>
+  <h4>What Makes Behavioral Assessment Distinct</h4>
+  <div class="rs-grid">
+    <div class="rs-chip green">
+      <h5>Direct Observation</h5>
+      <p>Behavior is observed and recorded as it occurs in natural or analogue settings.</p>
+    </div>
+    <div class="rs-chip green">
+      <h5>Context-Specific</h5>
+      <p>Focuses on how behavior varies across different situations and environments.</p>
+    </div>
+    <div class="rs-chip green">
+      <h5>Overt Focus</h5>
+      <p>Emphasizes observable, measurable behaviors rather than inferred internal states.</p>
+    </div>
+    <div class="rs-chip green">
+      <h5>Antecedent-Behavior-Consequence</h5>
+      <p>Examines what triggers the behavior and what follows it (ABC model).</p>
+    </div>
+  </div>
+</div>
+
+<!-- 09 DICHOTOMY -->
+<div class="section-head" id="dichotomy">
+  <span class="section-num">09</span>
+  <h3>The Dichotomy &amp; A Perspective</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">Objective vs. Projective Dichotomy</span>
+  <h4>Comparing the Two Major Approaches</h4>
+  <table class="compare-table">
+    <thead><tr><th>Dimension</th><th>Objective Methods</th><th>Projective Methods</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Stimuli</strong></td>
+        <td>Structured; defined items with set response options</td>
+        <td>Unstructured or ambiguous; open-ended</td>
+      </tr>
+      <tr>
+        <td><strong>Scoring</strong></td>
+        <td>Standardized; little scorer judgment needed</td>
+        <td>Requires clinical expertise; higher subjectivity</td>
+      </tr>
+      <tr>
+        <td><strong>Faking</strong></td>
+        <td>More vulnerable to faking good/bad</td>
+        <td>Faking is greatly minimized</td>
+      </tr>
+      <tr>
+        <td><strong>Reliability</strong></td>
+        <td>Generally high (standardized procedures)</td>
+        <td>Variable; inter-scorer reliability challenges</td>
+      </tr>
+      <tr>
+        <td><strong>Cultural Use</strong></td>
+        <td>May be culturally biased in content</td>
+        <td>Some promise of cross-cultural utility (esp. non-verbal)</td>
+      </tr>
+      <tr>
+        <td><strong>Speed</strong></td>
+        <td>Fast to administer and score</td>
+        <td>More time-intensive; requires clinical training</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">A Perspective</span>
+  <h4>Academics vs. Practitioners</h4>
+  <p>An ongoing debate exists between <strong>academic researchers</strong> (who emphasize psychometric rigor — reliability, validity, standardization) and <strong>clinicians</strong> (who value the rich, in-depth, individualized information projective tests provide).</p>
+  <ul style="margin-top:0.5rem;">
+    <li>Researchers tend to favor objective methods for their measurable psychometric properties.</li>
+    <li>Clinicians prize projective methods for the unique window they provide into unconscious processes and personality dynamics.</li>
+    <li>Both approaches are complementary — a comprehensive assessment often uses <strong>multiple methods</strong> to form a fuller picture of the individual.</li>
+  </ul>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary-box">
+  <h3>Key Takeaways — Lesson 11</h3>
+  <ul class="summary-list">
+    <li>Objective methods use structured short-answer formats (true-false, multiple-choice); scored with minimal judgment; vulnerable to self-report biases like faking good/bad.</li>
+    <li>The term "objective" describes the test <em>format</em>, not the objectivity of the content — self-report is inherently subjective.</li>
+    <li>Projective methods rest on the Projective Hypothesis: individuals impose their own psychological patterns onto ambiguous stimuli.</li>
+    <li>Projective tests are indirect — assessees respond to inkblots/pictures, not direct questions about themselves — minimizing faking.</li>
+    <li>The Rorschach consists of 10 bilateral inkblots; administered in 3 phases: Initial Administration → Inquiry → Testing the Limits.</li>
+    <li>Rorschach scoring categories: Location, Determinants, Content, Popularity, Form Level.</li>
+    <li>Exner's Comprehensive System is the most widely used Rorschach scoring method; R-PAS (2011) is the newest standardized system.</li>
+    <li>TAT (Morgan &amp; Murray, 1935): 31 cards; test-takers construct stories covering before, now, after, and inner states. Interpreted via Need, Press, and Thema.</li>
+    <li>Other picture tests: SSPT (juvenile delinquents), SAT (seniors), Hand Test (24 scoring categories), APT (adds multiple-choice for objectivity).</li>
+    <li>Word Association: Galton (1879) started it; Jung (1910) proposed psychodiagnostic use; Rapaport et al. created a 60-word neutral/traumatic test.</li>
+    <li>Sentence Completion: semi-structured; Rotter ISB (most popular, 7-point scale) and SSCT (multiple theme sets) are key instruments.</li>
+    <li>Auditory projective tests (Tautophone, AAT, Azzageddi) largely failed — responses lacked richness and scoring was unsatisfactory.</li>
+    <li>Figure Drawing Tests (DAP, HTP, KFD) project self-concept; analyzed via placement, size, pressure, shading, erasures, and figure characteristics.</li>
+    <li>Behavioral assessment focuses on direct observation of overt behavior, its antecedents, and its consequences — context-specific and empirical.</li>
+    <li>No single method is superior; a comprehensive personality assessment typically combines objective, projective, and behavioral approaches.</li>
+  </ul>
+</div>
+
+<a href="#top" class="back-top">↑ Back to top</a>
+
+</main>
+
+<script>
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (active) {
+          active.classList.add('active');
+          active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { rootMargin: '-25% 0px -65% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
