@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC1015 · Lessons 9–10 Reviewer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0d0f14;
+    --surface: #151820;
+    --surface2: #1c2030;
+    --border: #2a2f45;
+    --accent: #5b8fff;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --accent4: #f97316;
+    --accent5: #f472b6;
+    --text: #e2e8f0;
+    --muted: #8892aa;
+    --card-radius: 14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,15,20,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.25rem;
+  }
+  .nav-inner {
+    max-width: 960px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 56px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent2);
+    white-space: nowrap;
+    margin-right: 0.5rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  nav a {
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  nav a:hover, nav a:focus {
+    color: var(--text);
+    border-color: var(--border);
+    background: var(--surface2);
+    outline: none;
+  }
+  nav a.active {
+    color: var(--accent2);
+    background: rgba(167,139,250,0.1);
+    border-color: rgba(167,139,250,0.35);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3.5rem 1.25rem 2rem;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent2);
+    background: rgba(167,139,250,0.1);
+    border: 1px solid rgba(167,139,250,0.3);
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-size: clamp(1.7rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #fff 40%, var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 560px;
+    margin: 0 auto 2rem;
+  }
+  .objectives {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .obj-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: left;
+    max-width: 280px;
+    line-height: 1.4;
+  }
+  .obj-chip span {
+    display: block;
+    color: var(--accent3);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── MAIN ─── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.25rem 5rem;
+  }
+
+  /* ─── LESSON DIVIDER ─── */
+  .lesson-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0 0.5rem;
+    padding: 1.1rem 1.4rem;
+    background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(91,143,255,0.05));
+    border: 1px solid rgba(167,139,250,0.25);
+    border-radius: var(--card-radius);
+  }
+  .lesson-divider .lesson-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--bg);
+    background: var(--accent2);
+    border-radius: 6px;
+    padding: 0.25rem 0.55rem;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .lesson-divider h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .lesson-divider p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2.2rem 0 0.9rem;
+  }
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--bg);
+    background: var(--accent);
+    border-radius: 6px;
+    padding: 0.2rem 0.45rem;
+    font-weight: 700;
+  }
+  .section-head h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text);
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 0.85rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: rgba(167,139,250,0.35); }
+  .card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+  .card p, .card li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .card ul, .card ol {
+    padding-left: 1.2rem;
+    margin-top: 0.4rem;
+  }
+  .card li + li { margin-top: 0.3rem; }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 5px;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .tag-blue   { background: rgba(91,143,255,0.15);  color: var(--accent); }
+  .tag-purple { background: rgba(167,139,250,0.15); color: var(--accent2); }
+  .tag-green  { background: rgba(52,211,153,0.15);  color: var(--accent3); }
+  .tag-orange { background: rgba(249,115,22,0.15);  color: var(--accent4); }
+  .tag-pink   { background: rgba(244,114,182,0.15); color: var(--accent5); }
+
+  /* Definition card */
+  .def-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2);
+    border-radius: var(--card-radius);
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 0.85rem;
+  }
+  .def-card .term {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-bottom: 0.35rem;
+    display: block;
+  }
+  .def-card p {
+    font-size: 0.87rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .def-card p strong { color: var(--text); }
+
+  /* Step cards */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .step-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 1rem 1.1rem;
+  }
+  .step-card .step-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--bg);
+    background: var(--accent3);
+    border-radius: 5px;
+    padding: 0.15rem 0.45rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+  .step-card h5 {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+  }
+  .step-card p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* Comparison table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .compare-table th {
+    background: var(--surface2);
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.65rem 0.9rem;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  .compare-table td {
+    padding: 0.65rem 0.9rem;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    font-size: 0.84rem;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .compare-table td strong { color: var(--text); }
+
+  /* Scale grid */
+  .scale-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.7rem;
+    margin-top: 0.6rem;
+  }
+  .scale-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+  }
+  .scale-chip .sc-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+  .scale-chip h5 {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .scale-chip p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  /* Summary box */
+  .summary-box {
+    background: linear-gradient(135deg, rgba(91,143,255,0.07), rgba(167,139,250,0.07));
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: var(--card-radius);
+    padding: 1.6rem 1.8rem;
+    margin-top: 3rem;
+  }
+  .summary-box h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-bottom: 1rem;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+  .summary-list {
+    list-style: none;
+    padding: 0;
+  }
+  .summary-list li {
+    font-size: 0.86rem;
+    color: var(--muted);
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.55;
+  }
+  .summary-list li:last-child { border-bottom: none; }
+  .summary-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent3);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  /* Back to top */
+  .back-top {
+    display: block;
+    text-align: center;
+    margin-top: 2.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .back-top:hover { color: var(--accent2); }
+
+  /* numbered level list */
+  .level-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+  }
+  .level-list li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .level-list li:last-child { border-bottom: none; }
+  .level-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--bg);
+    background: var(--accent3);
+    border-radius: 4px;
+    padding: 0.12rem 0.4rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .level-badge.blue  { background: var(--accent); }
+  .level-badge.purple { background: var(--accent2); }
+  .level-badge.orange { background: var(--accent4); }
+  .level-badge.pink  { background: var(--accent5); }
+
+  /* response style chips */
+  .rs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 0.65rem;
+    margin-top: 0.6rem;
+  }
+  .rs-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent4);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+  }
+  .rs-chip h5 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .rs-chip p {
+    font-size: 0.77rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body id="top">
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-label">L9–10</span>
+    <a href="#edu">Education</a>
+    <a href="#rti">RtI Model</a>
+    <a href="#achievement">Achievement</a>
+    <a href="#aptitude">Aptitude</a>
+    <a href="#diagnostic">Diagnostic</a>
+    <a href="#psychoed">Psychoed Batteries</a>
+    <a href="#other-tools">Other Tools</a>
+    <a href="#personality">Personality</a>
+    <a href="#traits">Traits & States</a>
+    <a href="#basic-q">Basic Questions</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <div class="hero-badge">PSYC1015 · BS Psychology</div>
+  <h1>Lessons 9–10 Reviewer</h1>
+  <p>Assessment for Education &amp; Personality Assessment — Cohen &amp; Swerdlik (2018), 9th ed.</p>
+  <div class="objectives">
+    <div class="obj-chip"><span>LESSON 9</span>Assessment for Education: RtI, Achievement, Aptitude, Diagnostic Tests, Psychoed Batteries</div>
+    <div class="obj-chip"><span>LESSON 10</span>Personality Assessment: Traits, Types, States, Basic Questions, Developing Instruments</div>
+  </div>
+</div>
+
+<main>
+
+<!-- ══════════════════════ LESSON 9 ══════════════════════ -->
+<div class="lesson-divider" id="edu">
+  <span class="lesson-num">LESSON 9</span>
+  <div>
+    <h2>Assessment for Education</h2>
+    <p>Intervention, Tests, Checklists — Presented 2025-11-21</p>
+  </div>
+</div>
+
+<!-- 01 THE CASE FOR & AGAINST -->
+<div class="section-head">
+  <span class="section-num">01</span>
+  <h3>The Case For &amp; Against Educational Testing</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">Overview</span>
+  <h4>Moderate Pro-Testing View</h4>
+  <p>The argument <em>against</em> standardized tests as the primary cause of educational failure is countered by a moderate view that sees standardized tools of assessment as a <strong>necessary and desirable</strong> element of an educational system.</p>
+  <ul style="margin-top:0.65rem;">
+    <li>Tests used for <strong>screening purposes</strong> can identify at-risk students.</li>
+    <li><strong>Diagnostic data</strong> can pinpoint areas of weakness or strength for individual students.</li>
+    <li>Test data can help educators <strong>track progress</strong> of single or multiple students, providing insights for remediation or educational interventions.</li>
+  </ul>
+</div>
+
+<!-- 02 RtI MODEL -->
+<div class="section-head" id="rti">
+  <span class="section-num">02</span>
+  <h3>The Response to Intervention (RtI) Model</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">Specific Learning Disability (SLD)</span>
+  <p>A disorder that affects one or more basic psychological processes involved in using or understanding language — both spoken and written. Can result in imperfect abilities in <strong>listening, thinking, speaking, reading, writing, spelling,</strong> or doing <strong>mathematical calculations</strong>.</p>
+</div>
+
+<div class="def-card">
+  <span class="term">Response to Intervention (RtI) Model</span>
+  <p>A <strong>multilevel prevention framework</strong> used in educational settings to maximize student achievement. Primary objective: <strong>accelerate learning</strong> for all students by providing appropriate intervention and instruction tailored to their needs. Also serves as a process to <strong>identify students with learning disabilities</strong>.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">RtI Steps</span>
+  <h4>How RtI Works (5-Step Cycle)</h4>
+  <ul class="level-list">
+    <li><span class="level-badge blue">1</span>Teachers provide <strong>evidence-based instruction</strong>.</li>
+    <li><span class="level-badge blue">2</span>Student learning of that instruction is <strong>regularly evaluated</strong>.</li>
+    <li><span class="level-badge blue">3</span><strong>Intervention</strong>, if required, occurs as an appropriate adjustment in the instruction.</li>
+    <li><span class="level-badge blue">4</span><strong>Reevaluation</strong> of learning takes place.</li>
+    <li><span class="level-badge blue">5</span>Intervention and <strong>reassessment</strong> occur as necessary.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">Three Levels</span>
+  <h4>RtI is Multilevel — At Least 3 Levels of Intervention</h4>
+  <div class="steps-grid">
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent); color:#fff;">LEVEL 1</span>
+      <h5>Classroom (Universal)</h5>
+      <p>The classroom environment wherein <em>all students</em> are being taught whatever the teacher is teaching.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent2); color:#fff;">LEVEL 2</span>
+      <h5>Small Group</h5>
+      <p>A small group of learners who have failed to make adequate classroom progress are <em>segregated for special teaching</em>.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent4); color:#fff;">LEVEL 3</span>
+      <h5>Individual</h5>
+      <p><em>Individually tailored and administered instruction</em> for students who have failed to respond to Level 2.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="tag tag-orange">Key Terms</span>
+  <h4>Related Assessment Concepts</h4>
+  <table class="compare-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Problem-Solving Model</strong></td>
+        <td>Use of interventions tailored to students' individual needs, selected by a <em>multidisciplinary team</em> of school professionals.</td>
+      </tr>
+      <tr>
+        <td><strong>General Intervention</strong></td>
+        <td>An intervention selected by the school's administration, designed to address the needs of <em>multiple students</em>.</td>
+      </tr>
+      <tr>
+        <td><strong>Integrative Assessment</strong></td>
+        <td>A multidisciplinary approach to evaluation that assimilates input from relevant sources.</td>
+      </tr>
+      <tr>
+        <td><strong>Dynamic Assessment</strong></td>
+        <td>Differs from static tests by using a <strong>test → intervention → retest</strong> model to explore learning potential. Originally developed for children but usable with any age.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 03 ACHIEVEMENT TESTS -->
+<div class="section-head" id="achievement">
+  <span class="section-num">03</span>
+  <h3>Achievement Tests</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">Achievement Tests</span>
+  <p>Designed to measure <strong>accomplishment</strong> — the degree of learning that has taken place as a result of exposure to a relatively <em>defined learning experience</em>. Can be standardized or non-standardized. Used to assess student progress, compare accomplishments to peers, and inform instructional strategies. A sound achievement test <strong>adequately samples the targeted subject matter</strong> and reliably gauges learning.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">General Achievement</span>
+  <h4>Measures of General Achievement — Batteries</h4>
+  <table class="compare-table">
+    <thead><tr><th>Test</th><th>Key Details</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Achievement Batteries</strong></td>
+        <td>Cover multiple areas; can be administered individually or in groups; divided into several subtests.</td>
+      </tr>
+      <tr>
+        <td><strong>Wide Range Achievement Test-4 (WRAT-4)</strong></td>
+        <td>Measures reading, spelling, arithmetic, and (new in 4th ed.) reading comprehension.</td>
+      </tr>
+      <tr>
+        <td><strong>STEP Battery</strong></td>
+        <td>Comprehensive K–12 achievement test. Assesses reading, vocabulary, math, writing, study skills, science, social studies. Also includes a behavior inventory, educational environment questionnaire, and activities inventory. Commonly used to <strong>identify gifted children</strong>.</td>
+      </tr>
+      <tr>
+        <td><strong>WIAT-III</strong></td>
+        <td>16-subtest battery for individuals aged <strong>4 to 50</strong>. Yields data on reading, writing, mathematics, listening, and speaking. Used in school and clinical settings.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">School Levels</span>
+  <h4>Achievement in Specific Subject Areas by Level</h4>
+  <ul class="level-list">
+    <li><span class="level-badge">ELEMENTARY</span>Focuses on basic skills (reading, writing, math). Various reading achievement tests available. Most measures are <em>teacher-made tests</em>.</li>
+    <li><span class="level-badge purple">SECONDARY</span>Cooperative Achievement Test — separate tests in English, math, literature, social studies, science, and foreign languages. May also assess <em>minimum competencies</em> for high school diploma.</li>
+    <li><span class="level-badge orange">COLLEGE</span>Assess whether college credit should be awarded for learning inside or outside the classroom. Often take the form of <em>end-of-major outcomes assessments</em>.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">CBA &amp; CBM</span>
+  <h4>Curriculum-Based Assessment &amp; Measurement</h4>
+  <table class="compare-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>CBA (Curriculum-Based Assessment)</strong></td>
+        <td>Assessment of information acquired from teachings at school.</td>
+      </tr>
+      <tr>
+        <td><strong>CBM (Curriculum-Based Measurement)</strong></td>
+        <td>A type of CBA that uses <em>standardized procedures</em> to evaluate student performance on curriculum-based tasks.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.75rem; font-size:0.85rem; color:var(--muted);">Achievement test items can be categorized as: <strong style="color:var(--text);">[1] Fact-Based Items</strong> — rely on rote memory &nbsp;|&nbsp; <strong style="color:var(--text);">[2] Conceptual Items</strong> — require application of knowledge.</p>
+</div>
+
+<!-- 04 APTITUDE TESTS -->
+<div class="section-head" id="aptitude">
+  <span class="section-num">04</span>
+  <h3>Aptitude Tests</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">Aptitude Tests</span>
+  <p>Also known as <strong>prognostic tests</strong>. Tend to focus more on <em>informal learning or life experiences</em> rather than structured learning. Used to make predictions about a broad range of information and abilities. Compare: achievement tests assess what was learned; aptitude tests predict future performance.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">Preschool Level</span>
+  <h4>Assessment at the Preschool Level</h4>
+  <p>The <strong>preschool period</strong> covers the first five years of life — a time of profound change when basic reflexes and sensorimotor milestones develop (crawling, walking, grasping).</p>
+  <ul style="margin-top:0.6rem;">
+    <li>Assessment involves observation of behavior, skills, and development over time.</li>
+    <li>Tracks: <strong>language development, fine/gross motor skills, social-emotional development, and cognitive abilities.</strong></li>
+    <li>Screening for <strong>developmental delays or disabilities</strong> (e.g., autism, hearing loss) enables early intervention.</li>
+    <li><strong>Parental involvement</strong> is a key component — parents provide important developmental information.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="tag tag-orange">Checklists &amp; Rating Scales</span>
+  <h4>Tools Used in Assessment</h4>
+  <table class="compare-table">
+    <thead><tr><th>Tool</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Checklist</strong></td>
+        <td>A questionnaire that marks the <em>presence or absence</em> of a specific item.</td>
+      </tr>
+      <tr>
+        <td><strong>Rating Scale</strong></td>
+        <td>A form used by an evaluator to make a <em>relative judgment</em> of a specified variable or list of variables. Both can be economical, quick, and assess frequency of behavior.</td>
+      </tr>
+      <tr>
+        <td><strong>APGAR Score</strong></td>
+        <td>A rating scale that evaluates newborn infants' health — developed by <strong>Virginia Apgar</strong>. Measures five variables: <strong>Activity, Pulse, Grimace, Appearance, Respiration</strong>.</td>
+      </tr>
+      <tr>
+        <td><strong>Informal Evaluation</strong></td>
+        <td>A brief, unofficial assessment conducted by anyone for any reason without following professional standards.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <span class="tag tag-pink">Behavior Checklists</span>
+  <h4>Key Behavioral Assessment Tools</h4>
+  <div class="steps-grid">
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent5); color:#fff;">CBCL</span>
+      <h5>Achenbach Child Behavior Checklist</h5>
+      <p>For ages <strong>4–18</strong>. Covers competence items (activities, social relations, school performance) and behavioral/emotional problems. Completed by those with close relationships to the subject.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent5); color:#fff;">CRS-R</span>
+      <h5>Connors Rating Scales — Revised</h5>
+      <p>Used to screen for <strong>ADHD</strong> and other behavior problems.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent5); color:#fff;">BASC-2</span>
+      <h5>Behavior Assessment System for Children-2</h5>
+      <p>Uses teacher and parent ratings to identify adaptive difficulties on <strong>16 scales</strong> (ranging from ADLs to study skills).</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent5); color:#fff;">SRP</span>
+      <h5>Self-Report of Personality</h5>
+      <p>May be administered if respondents are believed to have <em>sufficient insight</em> into their own behavior.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">Elementary Level</span>
+  <h4>School Readiness — Elementary School</h4>
+  <p>School readiness tests assess an incoming student's abilities, since children of the same chronological age may <em>vary widely</em> in their abilities.</p>
+  <table class="compare-table" style="margin-top:0.65rem;">
+    <thead><tr><th>Test</th><th>Details</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>MRT6 — Metropolitan Readiness Tests, 6th Ed.</strong></td>
+        <td>Untimed battery assessing development of reading and math skills needed for early formal school learning. Orally administered (~90 min). Two levels:<br>
+        <strong>Level I</strong> (Individual) — beginning/middle kindergarteners<br>
+        <strong>Level II</strong> (Group) — end of kindergarten through 1st grade</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">Secondary Level</span>
+  <h4>Scholastic Aptitude Test (SAT)</h4>
+  <p>Consists of two parts: <strong>(1)</strong> A multipart test (reading, writing, and mathematics) and <strong>(2)</strong> SAT subject tests.</p>
+  <ul class="level-list" style="margin-top:0.5rem;">
+    <li><span class="level-badge blue">READING</span>Measured through reading comprehension tasks — short passages followed by sentence completion items.</li>
+    <li><span class="level-badge purple">WRITING</span>Tests grammar, usage, and word choice via multiple-choice items and an essay question.</li>
+    <li><span class="level-badge orange">MATH</span>Probes algebra, geometry, basic statistics, and probability.</li>
+    <li><span class="level-badge pink">SUBJECT TESTS</span>One-hour tests measuring achievement in specific subject areas (English, History, Math, Science, Languages).</li>
+  </ul>
+  <p style="margin-top:0.65rem; font-size:0.84rem; color:var(--muted);">SAT scores combined with high school GPA yield the <strong style="color:var(--text);">best available predictor of academic success in college</strong>, according to its developers.</p>
+</div>
+
+<div class="def-card">
+  <span class="term">ACT Assessment</span>
+  <p>A <strong>curriculum-based test</strong> that measures high school subject areas. Predictive of academic success and creativity. The ACT and SAT are <strong>highly correlated with each other</strong> and with general intelligence. Scores help admissions committees determine candidates likely to succeed and serve a <em>gatekeeping function</em> for institutions.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-orange">College Level &amp; Beyond</span>
+  <h4>Graduate &amp; Professional Aptitude Tests</h4>
+  <table class="compare-table">
+    <thead><tr><th>Test</th><th>Key Details</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>GRE (Graduate Record Examinations)</strong></td>
+        <td>Entrance exam for graduate school. General Test contains: <br>
+        <strong>Verbal</strong> — analyze/evaluate written materials, recognize relationships<br>
+        <strong>Quantitative</strong> — basic mathematical concepts, quantitative reasoning<br>
+        <strong>Analytical Writing</strong> — critical thinking, articulate and argue ideas effectively</td>
+      </tr>
+      <tr>
+        <td><strong>MAT (Miller Analogies Test)</strong></td>
+        <td>100-item, multiple-choice analogy test. Draws on the examinee's ability to perceive relationships, general intelligence, vocabulary, and academic learning.</td>
+      </tr>
+      <tr>
+        <td><strong>MCAT</strong></td>
+        <td>Medical College Admission Test. Four sections: Verbal Reasoning, Physical Sciences, Writing Sample, and Biological Sciences.</td>
+      </tr>
+      <tr>
+        <td><strong>Seashore Measures of Musical Talents</strong></td>
+        <td>Classic measure of musical aptitude. Six subtests measuring specific aspects of musical talent.</td>
+      </tr>
+      <tr>
+        <td><strong>Horn Art Aptitude Inventory</strong></td>
+        <td>Measures various aspects of artistic aptitude.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 05 DIAGNOSTIC TESTS -->
+<div class="section-head" id="diagnostic">
+  <span class="section-num">05</span>
+  <h3>Diagnostic Tests</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">Diagnostic Tests</span>
+  <p>Used to <strong>identify specific deficits</strong> in a student's knowledge or skills for the purpose of targeted intervention. Typically administered to students who have already shown <em>poor performance</em> in a subject area. Usually contain subtests to analyze different aspects of the subject area being tested — but do <strong>not necessarily provide</strong> information on the underlying causes of the difficulty.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">Evaluative vs. Diagnostic</span>
+  <h4>Two Main Categories of Test Data</h4>
+  <table class="compare-table">
+    <thead><tr><th>Type</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Evaluative</strong></td>
+        <td>Applied to tests used to make <em>judgments</em> — e.g., pass/fail, admit/reject decisions.</td>
+      </tr>
+      <tr>
+        <td><strong>Diagnostic</strong></td>
+        <td>Applied to tests used to <em>pinpoint a student's difficulty</em>, usually for remedial purposes.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">Reading Tests</span>
+  <h4>Key Diagnostic Reading Tests</h4>
+  <div class="scale-grid">
+    <div class="scale-chip">
+      <span class="sc-num">STANFORD</span>
+      <h5>Stanford Diagnostic Reading Test</h5>
+      <p>Grades 1–12. Measures vocabulary, comprehension, and word analysis.</p>
+    </div>
+    <div class="scale-chip">
+      <span class="sc-num">METROPOLITAN</span>
+      <h5>Metropolitan Reading Instructional Tests</h5>
+      <p>Assesses early reading skills: readiness, word recognition, and comprehension.</p>
+    </div>
+    <div class="scale-chip">
+      <span class="sc-num">DRS</span>
+      <h5>Diagnostic Reading Scales</h5>
+      <p>Measures phonological awareness, decoding, and reading comprehension.</p>
+    </div>
+    <div class="scale-chip">
+      <span class="sc-num">DURRELL</span>
+      <h5>Durrell Analysis of Reading Test</h5>
+      <p>Grades 2–8. Assesses word recognition, decoding, and comprehension.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">WRMT-III</span>
+  <h4>Woodcock Reading Mastery Tests — Revised (WRMT-III)</h4>
+  <p>Paper-and-pencil measure of reading readiness, achievement, and difficulties. Ages <strong>4.5 to 80</strong>. Takes 15–45 minutes. Five original subtests + three new in the third edition:</p>
+  <ul class="level-list" style="margin-top:0.5rem;">
+    <li><span class="level-badge blue">1</span><strong>Letter Identification</strong> — naming letters in different forms (cursive/printed, upper/lowercase).</li>
+    <li><span class="level-badge blue">2</span><strong>Word Identification</strong> — reading isolated words of increasing difficulty aloud.</li>
+    <li><span class="level-badge blue">3</span><strong>Word Attack</strong> — pronouncing nonsense syllables using phonetic and structural analysis.</li>
+    <li><span class="level-badge blue">4</span><strong>Word Comprehension</strong> — assessing word meaning using a four-part analogy format.</li>
+    <li><span class="level-badge blue">5</span><strong>Passage Comprehension</strong> — supplying a missing word in a phrase, sentence, or short paragraph.</li>
+    <li><span class="level-badge purple">NEW</span><strong>Phonological Awareness</strong> — new in 3rd edition.</li>
+    <li><span class="level-badge purple">NEW</span><strong>Listening Comprehension</strong> — new in 3rd edition.</li>
+    <li><span class="level-badge purple">NEW</span><strong>Oral Reading Fluency</strong> — new in 3rd edition.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="tag tag-orange">Math Tests</span>
+  <h4>Key Diagnostic Math Tests</h4>
+  <table class="compare-table">
+    <thead><tr><th>Test</th><th>Key Details</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>SDMT4 — Stanford Diagnostic Mathematics Test, 4th Ed.</strong></td>
+        <td>Evaluates mathematical knowledge and skill. Subtests assess basic concepts, computation, applications, and problem-solving.</td>
+      </tr>
+      <tr>
+        <td><strong>KeyMath 3 Diagnostic System (KeyMath3-DA)</strong></td>
+        <td>Comprehensive, norm-referenced test for ages <strong>4½ to 21</strong>. 10 subtests. Measures mathematical knowledge and application, problem solving, and quantitative reasoning. Provides specific recommendations for intervention.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 06 PSYCHOEDUCATIONAL BATTERIES -->
+<div class="section-head" id="psychoed">
+  <span class="section-num">06</span>
+  <h3>Psychoeducational Test Batteries</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">Psychoeducational Test Batteries</span>
+  <p>Test kits that contain two types of tests: <strong>[1]</strong> Those that measure <em>abilities related to academic success</em> and <strong>[2]</strong> Those that measure <em>educational achievement</em> in areas such as reading and arithmetic. Allow for normative comparisons as well as individual evaluation of strengths and weaknesses.</p>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">K-ABC</span>
+  <h4>Kaufman Assessment Battery for Children (K-ABC)</h4>
+  <p>Designed for ages <strong>2½ to 12½</strong>. Includes intelligence and achievement subtests.</p>
+  <ul style="margin-top:0.55rem;">
+    <li>Intelligence subtests divided into: <strong>Simultaneous skills</strong> and <strong>Sequential skills</strong> (reflecting Luria's two information-processing skills).</li>
+    <li>A third factor identified as <em>verbal comprehension and reading achievement</em>.</li>
+    <li>A student's processing strength determines the teaching method used.</li>
+  </ul>
+  <p style="margin-top:0.65rem; font-size:0.84rem; color:var(--muted);"><strong style="color:var(--text);">KABC-II</strong> expanded age range to <strong>3–18</strong>. 10 new subtests added; 8 existing removed; only 8 original subtests remained. Added grounding in <strong>Cattell-Horn-Carroll (CHC) theory</strong> alongside Luria's theory.</p>
+  <div class="steps-grid" style="margin-top:0.75rem;">
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent); color:#fff;">MODEL 1</span>
+      <h5>CHC Model</h5>
+      <p>For children from a <em>mainstream cultural and language background</em>.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent2); color:#fff;">MODEL 2</span>
+      <h5>Luria Model</h5>
+      <p>Used if Crystallized Ability would <em>not be a fair indicator</em> of the child's cognitive ability. <strong>Excludes verbal ability.</strong></p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">WJ IV</span>
+  <h4>Woodcock-Johnson IV (WJ IV)</h4>
+  <p>Designed for ages <strong>2 to 90</strong>. Based on <strong>Cattell-Horn-Carroll (CHC) theory</strong>. Consists of three co-normed batteries:</p>
+  <div class="steps-grid" style="margin-top:0.6rem;">
+    <div class="step-card">
+      <span class="step-num">BATTERY 1</span>
+      <h5>Tests of Achievement</h5>
+      <p>Measures academic skills across multiple domains.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">BATTERY 2</span>
+      <h5>Tests of Cognitive Ability</h5>
+      <p>Yields GIA, Gf (fluid), Gc (crystallized), and Gf-Gc composite measures.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num">BATTERY 3</span>
+      <h5>Tests of Oral Language</h5>
+      <p>12 tests total — 9 English language tests + 3 parallel Spanish tests.</p>
+    </div>
+  </div>
+  <table class="compare-table" style="margin-top:0.75rem;">
+    <thead><tr><th>Battery Type</th><th>Best Used For</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Standard Battery</strong></td>
+        <td>Brief screenings, periodic re-evaluations, and relatively pinpointed assessments related to instruction, performance level, or RtI.</td>
+      </tr>
+      <tr>
+        <td><strong>Extended Battery</strong></td>
+        <td>Most comprehensive and detailed evaluation of an assessee's strengths and weaknesses or educational progress.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 07 OTHER TOOLS -->
+<div class="section-head" id="other-tools">
+  <span class="section-num">07</span>
+  <h3>Other Tools of Assessment in Educational Settings</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">Performance Assessment</span>
+  <h4>Performance, Portfolio &amp; Authentic Assessment</h4>
+  <table class="compare-table">
+    <thead><tr><th>Type</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Performance Assessment</strong></td>
+        <td>Any assessment that goes beyond multiple-choice and requires the examinee to <em>perform a task or demonstrate a skill</em>. Evaluated by criteria established by experts; focuses on knowledge, skills, and values.</td>
+      </tr>
+      <tr>
+        <td><strong>Performance Task</strong></td>
+        <td>A work sample designed to elicit representative knowledge, skills, and values from a particular domain of study.</td>
+      </tr>
+      <tr>
+        <td><strong>Portfolio Assessment</strong></td>
+        <td>A form of performance assessment — evaluation of one's <em>work samples or portfolio</em>.</td>
+      </tr>
+      <tr>
+        <td><strong>Authentic Assessment</strong></td>
+        <td>Evaluation of relevant, meaningful tasks that demonstrate a student's ability to <em>transfer learning to real-world activities</em>. Performance-based; evaluates mastery of academic subject matter.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <span class="tag tag-orange">Peer Appraisal</span>
+  <h4>Peer Appraisal Techniques</h4>
+  <p><strong>Peer Appraisal</strong> — a method of evaluation that involves obtaining feedback from an individual's peers. Useful for identifying individuals experiencing difficulties, and allows a perspective from those alongside the person being evaluated.</p>
+  <div class="steps-grid" style="margin-top:0.65rem;">
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent4); color:#fff;">TECHNIQUE 1</span>
+      <h5>"Guess Who?" Technique</h5>
+      <p>Descriptive sentences are read or handed to students as questionnaires. Students are asked to <em>guess who</em> they refer to. Used in elementary schools.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent4); color:#fff;">TECHNIQUE 2</span>
+      <h5>Nominating Techniques</h5>
+      <p>Involves selecting or nominating individuals for different activities.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent4); color:#fff;">VISUAL</span>
+      <h5>Sociogram</h5>
+      <p>Peer appraisal results illustrated using figures representing individuals, with lines/arrows indicating types of interaction.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="tag tag-pink">Study Habits &amp; Attitudes</span>
+  <h4>Measuring Study Habits, Interests &amp; Attitudes</h4>
+  <p>Academic performance depends on ability <em>and</em> motivation. Various assessments measure contributing factors.</p>
+  <table class="compare-table" style="margin-top:0.65rem;">
+    <thead><tr><th>Tool</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Study Habit Checklist</strong></td>
+        <td>For grades 9–14. 37 items assessing study habits related to note taking, reading material, and general study practices.</td>
+      </tr>
+      <tr>
+        <td><strong>What I Like to Do Interest Inventory</strong></td>
+        <td>150 forced-choice items assessing four interest areas: academic, artistic, occupational, and leisure time activities.</td>
+      </tr>
+      <tr>
+        <td><strong>Survey of School Attitudes &amp; Quality of School Life Scales</strong></td>
+        <td>Attitude inventories assessing student attitudes toward a variety of school-related factors. General in scope.</td>
+      </tr>
+      <tr>
+        <td><strong>SSHA — Survey of Study Habits and Attitudes</strong></td>
+        <td>Grades 7 through college. 100 items. Two forms: <strong>Form H</strong> (grades 7–12) and <strong>Form C</strong> (college) — each ~20–25 min. 5-point scale (rarely → almost always). Six areas: Delay Avoidance, Work Methods, Study Habits, Teacher Approval, Education Acceptance, Study Attitudes. Yields: study skills score, attitude score, and total orientation score.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════ LESSON 10 ══════════════════════ -->
+<div class="lesson-divider" id="personality" style="margin-top:3.5rem;">
+  <span class="lesson-num">LESSON 10</span>
+  <div>
+    <h2>Personality Assessment</h2>
+    <p>Traits, Types, States &amp; Basic Questions — Presented 2025-11-18</p>
+  </div>
+</div>
+
+<div class="section-head">
+  <span class="section-num">01</span>
+  <h3>Personality &amp; Personality Assessment</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="def-card">
+  <span class="term">Personality</span>
+  <p>An individual's <strong>unique constellation of psychological traits</strong> that is <em>relatively stable over time</em>. Examples: sense of humor, how you think and behave, how you see the world. When we talk about personality, we use words like <strong>trait, type,</strong> or <strong>state</strong>.</p>
+</div>
+
+<div class="def-card">
+  <span class="term">Personality Assessment</span>
+  <p>A way of measuring and evaluating various psychological characteristics — such as <strong>traits, values, interests, and attitudes</strong>.</p>
+</div>
+
+<!-- TRAITS TYPES STATES -->
+<div class="section-head" id="traits">
+  <span class="section-num">02</span>
+  <h3>Traits, Types, and States</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">Personality Traits</span>
+  <h4>What Are Traits?</h4>
+  <p><strong>Personality Traits</strong> — enduring and distinguishable ways in which individuals differ from one another. Used to identify threads of consistency in behavioral patterns.</p>
+  <ul style="margin-top:0.6rem;">
+    <li>Tend to remain <strong>consistent over time</strong> but can change or be expressed differently depending on the situation (<em>relatively enduring</em>).</li>
+    <li>The context in which the behavior is displayed is important (<em>contextual</em>).</li>
+    <li>Different situations can require different trait terms (<em>distinguishable</em>).</li>
+    <li>Trait terms are always <strong>relative</strong> and depend on both the behavior and the context.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">Personality Types</span>
+  <h4>What Are Types?</h4>
+  <p>Groups of personality traits commonly found together. Identified as a <em>specific category</em> of personality, described as a <strong>pattern</strong> rather than individual characteristics.</p>
+  <table class="compare-table" style="margin-top:0.6rem;">
+    <thead><tr><th>Typology</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>[1] Carl Jung's Typology</strong></td>
+        <td>Basis for the <em>Myers-Briggs Type Indicator (MBTI)</em>. Categorizes people based on preferences in perceiving and judging.</td>
+      </tr>
+      <tr>
+        <td><strong>[2] Holland's Self-Directed Search</strong></td>
+        <td>Six personality types: <strong>Artistic, Enterprising, Investigative, Social, Realistic, Conventional</strong>. Used for vocational guidance.</td>
+      </tr>
+      <tr>
+        <td><strong>[3] Type A &amp; Type B (Friedman &amp; Rosenman)</strong></td>
+        <td><strong>Type A:</strong> competitive, impatient, time-pressured, achievement-oriented. <strong>Type B:</strong> more mellow and laid-back. Assessed with the <em>Jenkins Activity Survey</em> (52-item self-report).</td>
+      </tr>
+      <tr>
+        <td><strong>[4] MMPI</strong></td>
+        <td>The most studied personality typology. Different <em>profiles</em> of scores are associated with different patterns of behavior. A <strong>profile</strong> = a description or graph showing how much a person exhibits certain characteristics.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">Personality States</span>
+  <h4>What Are States?</h4>
+  <p><strong>Personality State</strong> has two meanings in the literature:</p>
+  <ul style="margin-top:0.5rem;">
+    <li><strong>[1] Psychodynamic:</strong> describes the dynamic conflict between id, ego, and superego.</li>
+    <li><strong>[2] More Common:</strong> refers to the <em>temporary display</em> of a particular personality trait.</li>
+  </ul>
+  <p style="margin-top:0.65rem; font-size:0.85rem; color:var(--muted);"><strong style="color:var(--text);">Trait</strong> = relatively <em>long-lasting</em> predisposition. &nbsp;|&nbsp; <strong style="color:var(--text);">State</strong> = relatively <em>temporary</em> one. Most personality tests do <strong>not</strong> differentiate between the two.</p>
+</div>
+
+<div class="def-card">
+  <span class="term">State-Trait Anxiety Inventory (STAI)</span>
+  <p>Created by <strong>Charles D. Spielberger</strong> and colleagues. Asks people to describe their anxiety as: <strong>(1)</strong> they feel <em>right now</em> or <strong>(2)</strong> <em>in general</em> — rating intensity or frequency. Distinguishes between enduring anxiety <strong>traits</strong> and temporary anxiety <strong>states</strong>.</p>
+</div>
+
+<!-- BASIC QUESTIONS -->
+<div class="section-head" id="basic-q">
+  <span class="section-num">03</span>
+  <h3>Personality Assessment: Some Basic Questions</h3>
+  <div class="section-line"></div>
+</div>
+
+<div class="card">
+  <span class="tag tag-blue">Overview</span>
+  <h4>The Key Questions in Personality Assessment</h4>
+  <p>Personality assessment is not just about <em>why</em> we do it. Important factors that influence results:</p>
+  <ul style="margin-top:0.55rem;">
+    <li><strong>WHO</strong> — who is being assessed, and who is doing the assessment?</li>
+    <li><strong>WHAT</strong> — what aspects of personality are being assessed?</li>
+    <li><strong>WHERE</strong> — where is the assessment taking place?</li>
+    <li><strong>HOW</strong> — how is it being conducted?</li>
+  </ul>
+</div>
+
+<div class="card">
+  <span class="tag tag-purple">WHO</span>
+  <h4>Who Is Assessed? Who Does the Assessing?</h4>
+  <p>Some methods rely on the <strong>assessee's self-report</strong>; others rely on <strong>informants</strong>.</p>
+  <table class="compare-table" style="margin-top:0.6rem;">
+    <thead><tr><th>Source</th><th>Details</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Self-Report</strong></td>
+        <td>Information from the person being assessed — diaries, oral/written questions, or test items. Used for very <em>private information</em> only the person can provide. Often used to understand <strong>self-concept</strong>.</td>
+      </tr>
+      <tr>
+        <td><strong>Self-Concept</strong></td>
+        <td>Beliefs, opinions, and attitudes about oneself. A <em>self-concept measure</em> gathers this info and compares it to how others view themselves on the same factors.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="steps-grid" style="margin-top:0.75rem;">
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent2); color:#fff;">TOOL</span>
+      <h5>Beck Self-Concept Test</h5>
+      <p>Asks respondents to <em>compare themselves to others</em> on various traits.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent2); color:#fff;">TOOL</span>
+      <h5>Piers-Harris Self-Concept Scale</h5>
+      <p>For children. 80 self-statements covering 6 areas: (1) behavior, (2) intellectual/school status, (3) physical appearance, (4) anxiety, (5) popularity, (6) happiness and satisfaction.</p>
+    </div>
+    <div class="step-card">
+      <span class="step-num" style="background:var(--accent2); color:#fff;">TOOL</span>
+      <h5>BYI-II — Beck Youth Inventories, 2nd Ed.</h5>
+      <p>Inventories measuring depression, anxiety, anger, and disruptive behavior in children/adolescents aged <strong>7–18</strong>. Includes a self-concept measure.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="tag tag-orange">Rater Biases</span>
+  <h4>Considerations When One Person Evaluates Another</h4>
+  <div class="rs-grid">
+    <div class="rs-chip">
+      <h5>Leniency / Severity</h5>
+      <p>Raters vary in how generous or strict they are in their ratings, affecting accuracy.</p>
+    </div>
+    <div class="rs-chip">
+      <h5>Error of Central Tendency</h5>
+      <p>A tendency to rate everyone <em>near the midpoint</em> of a rating scale.</p>
+    </div>
+    <div class="rs-chip">
+      <h5>Halo Effect</h5>
+      <p>A favorable response bias where positive impressions in one area influence all other ratings.</p>
+    </div>
+    <div class="rs-chip">
+      <h5>Context Effects</h5>
+      <p>Different raters may have different perspectives based on the context in which they typically interact with the individual.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <span class="tag tag-green">WHAT</span>
+  <h4>What Is Assessed? — Content &amp; Response Style</h4>
+  <p>Tests measure both <strong>primary content areas</strong> (targeted traits or states; behavior in certain contexts) and the test-taker's <strong>response style</strong>.</p>
+  <p style="margin-top:0.5rem;"><strong style="color:var(--text);">Response Style</strong> — how a person answers test items or interview questions <em>regardless of the content</em>.</p>
+  <div class="rs-grid" style="margin-top:0.75rem;">
+    <div class="rs-chip">
+      <h5>[1] Socially Desirable Responding</h5>
+      <p>Tendency to present oneself in a favorable, socially acceptable light.</p>
+    </div>
+    <div class="rs-chip">
+      <h5>[2] Acquiescence</h5>
+      <p>Tendency to <em>agree</em> with whatever is presented.</p>
+    </div>
+    <div class="rs-chip">
+      <h5>[3] Nonacquiescence</h5>
+      <p>Tendency to <em>disagree</em> with whatever is presented.</p>
+    </div>
+    <div class="rs-chip">
+      <h5>[4] Deviance</h5>
+      <p>Tendency to make unusual or uncommon responses.</p>
+    </div>
+    <div class="rs-chip">
+      <h5>[5] Extreme</h5>
+      <p>Tendency to make extreme, rather than middle, ratings on a rating scale.</p>
+    </div>
+    <div class="rs-chip">
+      <h5>[6] Gambling / Cautiousness</h5>
+      <p>Tendency to guess — or not guess — when in doubt.</p>
+    </div>
+    <div class="rs-chip">
+      <h5>[7] Overly Positive</h5>
+      <p>Tendency to claim extreme virtue through self-presentation in a superlative manner.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary-box">
+  <h3>Key Takeaways — Lessons 9 &amp; 10</h3>
+  <ul class="summary-list">
+    <li>Standardized tests serve screening, diagnostic, and progress-tracking purposes — a pro-testing moderate view.</li>
+    <li>SLD affects psychological processes for using/understanding language; RtI is a multilevel framework to maximize achievement and identify SLDs.</li>
+    <li>RtI has 5 steps and 3 levels (Universal → Small Group → Individual).</li>
+    <li>Dynamic Assessment uses a test → intervention → retest model to explore learning potential.</li>
+    <li>Achievement tests measure degree of learning from a defined experience; aptitude (prognostic) tests predict future performance.</li>
+    <li>WIAT-III covers ages 4–50 with 16 subtests; STEP Battery is used to identify gifted children.</li>
+    <li>Diagnostic tests identify specific deficits for intervention but do not explain the cause.</li>
+    <li>WRMT-III covers ages 4.5–80 with 5 original + 3 new subtests; KeyMath3-DA covers ages 4½–21.</li>
+    <li>K-ABC/KABC-II grounds assessment in Luria's theory (sequential vs. simultaneous) and CHC theory.</li>
+    <li>WJ IV has three co-normed batteries (Achievement, Cognitive Ability, Oral Language) for ages 2–90.</li>
+    <li>Performance, portfolio, and authentic assessment go beyond multiple-choice to evaluate real-world skills.</li>
+    <li>SSHA (Survey of Study Habits &amp; Attitudes) covers 6 areas and yields study skills, attitude, and total orientation scores.</li>
+    <li>Personality = unique, relatively stable constellation of psychological traits.</li>
+    <li>Traits are enduring and distinguishable; types are clustered trait patterns; states are temporary expressions of traits.</li>
+    <li>STAI (Spielberger) distinguishes between trait anxiety (enduring) and state anxiety (temporary).</li>
+    <li>Response styles (acquiescence, halo effect, socially desirable responding) can bias personality assessment results.</li>
+  </ul>
+</div>
+
+<a href="#top" class="back-top">↑ Back to top</a>
+
+</main>
+
+<script>
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (active) {
+          active.classList.add('active');
+          active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { rootMargin: '-25% 0px -65% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
