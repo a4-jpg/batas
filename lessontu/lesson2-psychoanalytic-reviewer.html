@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Psychoanalytic Psychotherapy — Lesson 2 Reviewer</title>
+<meta name="description" content="Interactive study reviewer for Lesson 2: Psychoanalytic Psychotherapy." />
+
+<!-- Type: Bricolage Grotesque for headings (wide, slightly quirky), Newsreader for reading body -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. DESIGN TOKENS
+   Palette: cool "clinic paper" green-grey + deep teal ink,
+   plum for secondary emphasis. Light and dark are both authored,
+   and the page also follows the viewer's OS setting by default.
+   ============================================================ */
+:root{
+  --paper:#E8EDE6;
+  --surface:#FBFCFA;
+  --surface-2:#F1F4EE;
+  --ink:#16211F;
+  --muted:#5B6964;
+  --line:#CBD5CB;
+  --accent:#0F5B52;
+  --accent-soft:#D9E8E3;
+  --plum:#7B3B58;
+  --ok:#1C6B4A;
+  --ok-soft:#DCEEE2;
+  --bad:#A63232;
+  --bad-soft:#F6E0DE;
+  --mark:#FCE7A2;
+  --shadow:0 1px 0 rgba(22,33,31,.06), 0 10px 30px -22px rgba(22,33,31,.5);
+  --radius:14px;
+  --rail:252px;
+  --measure:70ch;
+}
+:root[data-theme="dark"]{
+  --paper:#0E1412;
+  --surface:#171F1D;
+  --surface-2:#1E2825;
+  --ink:#E4EBE7;
+  --muted:#93A29D;
+  --line:#2C3835;
+  --accent:#63D3BC;
+  --accent-soft:#12312C;
+  --plum:#E0A0BC;
+  --ok:#67D49C;
+  --ok-soft:#12301F;
+  --bad:#F08A80;
+  --bad-soft:#331817;
+  --mark:#5A4A12;
+  --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 34px -24px rgba(0,0,0,.9);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1412; --surface:#171F1D; --surface-2:#1E2825; --ink:#E4EBE7;
+    --muted:#93A29D; --line:#2C3835; --accent:#63D3BC; --accent-soft:#12312C;
+    --plum:#E0A0BC; --ok:#67D49C; --ok-soft:#12301F; --bad:#F08A80; --bad-soft:#331817;
+    --mark:#5A4A12; --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 34px -24px rgba(0,0,0,.9);
+  }
+}
+
+/* ============================================================
+   2. BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.ui{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;font-optical-sizing:auto}
+h1{font-size:clamp(2.1rem,6vw,3.5rem);line-height:1.02;letter-spacing:-.025em;font-weight:800;margin:0}
+h2{font-size:clamp(1.5rem,3.4vw,2.05rem);line-height:1.12;letter-spacing:-.02em;font-weight:700;margin:0}
+h3{font-size:1.14rem;line-height:1.25;letter-spacing:-.01em;font-weight:700;margin:0}
+p{margin:0 0 1rem;max-width:var(--measure)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+mark{background:var(--mark);color:inherit;border-radius:3px;padding:0 .12em}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:6px}
+hr.rule{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
+
+/* ============================================================
+   3. TOP BAR (sticky) — search, theme, mobile menu
+   ============================================================ */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  display:flex;align-items:center;gap:.6rem;
+  padding:.6rem clamp(.8rem,3vw,1.6rem);
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.02em;font-size:.98rem;white-space:nowrap}
+.brand span{color:var(--muted);font-weight:500}
+.topbar .grow{flex:1}
+.iconbtn{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:var(--surface);border:1px solid var(--line);border-radius:999px;
+  padding:.45rem .8rem;cursor:pointer;font-family:"Bricolage Grotesque",sans-serif;
+  font-size:.85rem;font-weight:600;
+}
+.iconbtn:hover{border-color:var(--accent)}
+.menubtn{display:none}
+
+/* Search */
+.search{position:relative;flex:1 1 420px;max-width:520px}
+.search input{
+  width:100%;padding:.55rem .9rem .55rem 2.2rem;
+  border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-size:.9rem;
+}
+.search input::placeholder{color:var(--muted)}
+.search .mag{position:absolute;left:.8rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.9rem;pointer-events:none}
+.results{
+  position:absolute;top:calc(100% + .45rem);left:0;right:0;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;display:none;max-height:60vh;overflow-y:auto;
+}
+.results.open{display:block}
+.results button{
+  display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;
+  padding:.6rem .85rem;border-bottom:1px solid var(--line);
+}
+.results button:last-child{border-bottom:0}
+.results button:hover,.results button:focus-visible{background:var(--surface-2)}
+.results .r-sec{font-family:"Bricolage Grotesque",sans-serif;font-size:.72rem;font-weight:700;color:var(--accent);display:block}
+.results .r-txt{font-size:.92rem;color:var(--muted);display:block;line-height:1.35}
+.results .empty{padding:.85rem;color:var(--muted);font-size:.92rem}
+
+/* ============================================================
+   4. SHELL: side rail + content
+   ============================================================ */
+.shell{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:clamp(1rem,3vw,2.5rem);
+  max-width:1280px;margin:0 auto;padding:0 clamp(.9rem,3vw,1.6rem) 5rem}
+.rail{position:sticky;top:76px;align-self:start;height:calc(100vh - 96px);overflow-y:auto;padding:1.4rem 0}
+.rail .label{font-family:"Bricolage Grotesque",sans-serif;font-size:.74rem;font-weight:700;color:var(--muted);margin:0 0 .7rem}
+.rail ol{list-style:none;margin:0;padding:0;counter-reset:nav}
+.rail li{counter-increment:nav}
+.rail a{
+  display:flex;gap:.6rem;align-items:baseline;text-decoration:none;
+  padding:.4rem .6rem;border-radius:9px;border-left:2px solid transparent;
+  font-family:"Bricolage Grotesque",sans-serif;font-size:.88rem;font-weight:600;color:var(--muted);line-height:1.3;
+}
+.rail a::before{content:counter(nav);font-size:.72rem;color:var(--line);font-weight:700;min-width:1ch}
+.rail a:hover{color:var(--ink);background:var(--surface-2)}
+.rail a.active{color:var(--accent);background:var(--accent-soft);border-left-color:var(--accent)}
+.rail a.active::before{color:var(--accent)}
+.rail .progwrap{margin:1.2rem .6rem 0;font-family:"Bricolage Grotesque",sans-serif;font-size:.76rem;color:var(--muted)}
+.progbar{height:5px;background:var(--surface-2);border-radius:999px;overflow:hidden;margin-top:.4rem;border:1px solid var(--line)}
+.progbar i{display:block;height:100%;width:0;background:var(--accent);transition:width .35s ease}
+
+/* ============================================================
+   5. HERO
+   ============================================================ */
+.hero{padding:clamp(2.2rem,7vw,4.4rem) 0 2rem;border-bottom:1px solid var(--line)}
+.hero .kicker{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.84rem;color:var(--accent);margin:0 0 .9rem}
+.hero h1{max-width:16ch}
+.hero .sub{margin-top:1.1rem;font-size:1.15rem;color:var(--muted);max-width:56ch}
+.hero .meta{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.chip{
+  font-family:"Bricolage Grotesque",sans-serif;font-size:.8rem;font-weight:600;
+  border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.3rem .75rem;color:var(--muted);
+}
+.indexgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.6rem;margin-top:2.2rem}
+.indexgrid a{
+  text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:.8rem .9rem;display:block;transition:border-color .2s ease,transform .2s ease;
+}
+.indexgrid a:hover{border-color:var(--accent);transform:translateY(-2px)}
+.indexgrid strong{font-family:"Bricolage Grotesque",sans-serif;font-size:.95rem;display:block;letter-spacing:-.01em}
+.indexgrid em{font-style:normal;color:var(--muted);font-size:.86rem}
+
+/* ============================================================
+   6. SECTIONS & CONTENT BLOCKS
+   ============================================================ */
+section.topic{padding:clamp(2.4rem,6vw,3.6rem) 0;border-bottom:1px solid var(--line)}
+section.topic > h2{max-width:22ch}
+.sec-intro{color:var(--muted);font-size:1.06rem;margin:.7rem 0 1.8rem;max-width:60ch}
+.lead{font-size:1.12rem}
+.topic h3{margin:2rem 0 .7rem}
+.topic ul,.topic ol{max-width:var(--measure);padding-left:1.15rem;margin:0 0 1.1rem}
+.topic li{margin:.3rem 0}
+
+/* Callout note */
+.note{
+  background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--plum);
+  border-radius:0 12px 12px 0;padding:1rem 1.1rem;margin:0 0 1.3rem;max-width:var(--measure);
+}
+.note h4{margin:0 0 .35rem;font-size:.95rem;color:var(--plum)}
+.note p:last-child{margin:0}
+
+/* Two-column compare (counselor vs psychotherapist) */
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:0 0 1.4rem}
+.compare .col{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem}
+.compare .col h4{margin:0 0 .6rem;font-family:"Bricolage Grotesque",sans-serif;font-size:1rem}
+.compare .col:first-child h4{color:var(--accent)}
+.compare .col:last-child h4{color:var(--plum)}
+.compare ul{list-style:none;padding:0;margin:0}
+.compare li{padding:.4rem 0;border-bottom:1px dashed var(--line);font-size:.98rem}
+.compare li:last-child{border-bottom:0}
+
+/* Accordion (native details, animated open) */
+.acc{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);margin:0 0 1.4rem}
+.acc details{border-bottom:1px solid var(--line)}
+.acc details:last-child{border-bottom:0}
+.acc summary{
+  cursor:pointer;list-style:none;padding:.9rem 1.05rem;display:flex;gap:.75rem;align-items:center;
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1rem;
+}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:hover{background:var(--surface-2)}
+.acc summary .plus{margin-left:auto;color:var(--accent);transition:transform .25s ease;font-size:1.1rem;line-height:1}
+.acc details[open] summary .plus{transform:rotate(45deg)}
+.acc .body{padding:0 1.05rem 1.05rem;color:var(--muted)}
+.acc .body p,.acc .body ul{max-width:none}
+.acc .body strong{color:var(--ink)}
+
+/* Flip cards */
+.flipgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.85rem;margin:0 0 1.2rem}
+.flip{perspective:1200px;background:none;border:0;padding:0;cursor:pointer;text-align:left;min-height:170px}
+.flip-inner{display:block;position:relative;width:100%;height:100%;min-height:170px;transition:transform .55s cubic-bezier(.2,.7,.3,1);transform-style:preserve-3d}
+.flip.is-flipped .flip-inner{transform:rotateY(180deg)}
+.face{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border:1px solid var(--line);border-radius:var(--radius);padding:1rem;background:var(--surface);
+  display:flex;flex-direction:column;justify-content:space-between;overflow:auto;
+}
+.face.back{transform:rotateY(180deg);background:var(--accent-soft);border-color:var(--accent)}
+.face .t{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1rem;line-height:1.2}
+.face .d{font-size:.95rem;color:var(--muted);line-height:1.5}
+.face.back .d{color:var(--ink)}
+.face .hint{font-family:"Bricolage Grotesque",sans-serif;font-size:.72rem;color:var(--muted);font-weight:600}
+.flip:hover .face{border-color:var(--accent)}
+
+/* Numbered steps — used only where content really is a sequence */
+.steps{counter-reset:step;list-style:none;padding:0;margin:0 0 1.4rem;max-width:var(--measure)}
+.steps li{counter-increment:step;display:grid;grid-template-columns:2rem 1fr;gap:.9rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps li::before{
+  content:counter(step);font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:.9rem;
+  color:var(--accent);background:var(--accent-soft);border-radius:8px;height:2rem;display:grid;place-items:center;
+}
+.steps strong{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:.98rem}
+.steps span{color:var(--muted);font-size:.98rem}
+
+/* ============================================================
+   7. QUIZ
+   ============================================================ */
+.quiz{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem;margin-top:2rem;box-shadow:var(--shadow)}
+.quiz .qhead{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:1rem}
+.quiz .qhead h3{font-size:1.05rem}
+.quiz .score{margin-left:auto;font-family:"Bricolage Grotesque",sans-serif;font-size:.82rem;color:var(--muted);font-weight:600}
+.q{padding:1rem 0;border-top:1px solid var(--line)}
+.q:first-of-type{border-top:0;padding-top:0}
+.q .stem{font-weight:500;margin:0 0 .75rem;max-width:var(--measure)}
+.q .stem b{font-family:"Bricolage Grotesque",sans-serif;color:var(--accent);font-size:.85rem;margin-right:.4rem}
+.opts{display:grid;gap:.45rem;max-width:var(--measure)}
+.opt{
+  display:flex;gap:.6rem;align-items:flex-start;text-align:left;width:100%;
+  background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:.6rem .8rem;cursor:pointer;
+  font-size:.98rem;transition:border-color .15s ease,background .15s ease;
+}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt .key{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.8rem;color:var(--muted);min-width:1.1ch}
+.opt.correct{background:var(--ok-soft);border-color:var(--ok)}
+.opt.correct .key{color:var(--ok)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt.wrong .key{color:var(--bad)}
+.fb{margin-top:.6rem;font-size:.95rem;border-radius:10px;padding:.6rem .8rem;max-width:var(--measure)}
+.fb.good{background:var(--ok-soft);color:var(--ok)}
+.fb.bad{background:var(--bad-soft);color:var(--bad)}
+.fb strong{font-family:"Bricolage Grotesque",sans-serif}
+.fb em{font-style:normal;color:var(--ink);display:block;margin-top:.2rem}
+.retry{margin-top:1rem}
+
+/* ============================================================
+   8. FOOTER + UTILITIES
+   ============================================================ */
+footer{max-width:1280px;margin:0 auto;padding:2.5rem clamp(.9rem,3vw,1.6rem) 4rem;color:var(--muted);font-size:.92rem}
+.flash{animation:flash 1.4s ease}
+@keyframes flash{0%,100%{background:transparent}20%{background:var(--mark)}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:.6rem;top:.6rem;z-index:99;background:var(--surface);padding:.5rem .8rem;border-radius:8px;border:1px solid var(--accent)}
+.hidden-by-search{display:none !important}
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .rail{
+    position:fixed;inset:57px 0 auto 0;height:auto;max-height:70vh;z-index:55;
+    background:var(--surface);border-bottom:1px solid var(--line);padding:1rem 1.1rem 1.4rem;
+    display:none;box-shadow:var(--shadow);
+  }
+  .rail.open{display:block}
+  .menubtn{display:inline-flex}
+  .brand span{display:none}
+  .search{flex:1 1 auto;min-width:0}
+}
+@media (max-width:560px){
+  body{font-size:1rem}
+  .brand{display:none}
+  .flipgrid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+@media print{
+  .topbar,.rail,.quiz{display:none}
+  .shell{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<a class="skip ui" href="#main">Skip to content</a>
+
+<!-- ===== Top bar ===== -->
+<header class="topbar">
+  <button class="iconbtn menubtn" id="menuBtn" aria-expanded="false" aria-controls="rail">☰ Topics</button>
+  <div class="brand">Lesson 2 <span>· Psychoanalytic Psychotherapy</span></div>
+  <div class="search">
+    <span class="mag" aria-hidden="true">⌕</span>
+    <input id="q" type="search" placeholder="Search terms — sublimation, transference…" autocomplete="off"
+           role="combobox" aria-expanded="false" aria-controls="results" aria-label="Search the reviewer" />
+    <div class="results" id="results" role="listbox"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="Switch colour theme">◐ <span id="themeLabel">Dark</span></button>
+</header>
+
+<div class="shell">
+  <!-- ===== Side rail navigation ===== -->
+  <nav class="rail" id="rail" aria-label="Topics">
+    <p class="label ui">Topics</p>
+    <ol id="navList"></ol>
+    <div class="progwrap">
+      <span id="progText">0 of 0 quiz questions answered</span>
+      <div class="progbar"><i id="progBar"></i></div>
+    </div>
+  </nav>
+
+  <!-- ===== Main ===== -->
+  <main id="main">
+    <div class="hero">
+      <p class="kicker ui">Study reviewer</p>
+      <h1>Psychoanalytic Psychotherapy</h1>
+      <p class="sub">Lesson 2, end to end — Freud’s view of human nature, the structure of personality, anxiety and its defenses, ego psychology and object relations, and the processes and techniques that make the unconscious conscious. Flip the cards, open the panels, then test yourself.</p>
+      <div class="meta">
+        <span class="chip ui">Mr. Symon M. Carpiso, RPm, RPsy</span>
+        <span class="chip ui">10 topics</span>
+        <span class="chip ui" id="qCountChip">— practice questions</span>
+      </div>
+      <div class="indexgrid" id="indexGrid"></div>
+    </div>
+
+    <div id="sections"></div>
+  </main>
+</div>
+
+<footer>
+  Reviewer built from the Lesson 2 slides. Figures and sources follow the deck: Sigmund Freud, Anna Freud (<em>The Ego and the Mechanisms of Defense</em>, 1936), Erik and Joan Erikson, object relations theorists, Yalom (2003), and Linehan’s DBT. Ego-defense definitions follow Table 4.1 of the course text.
+</footer>
+
+<script>
+/* ============================================================
+   DATA
+   All lesson content lives here so the page renders from one
+   source of truth — which also makes search and the quiz simple.
+   Block types: lead, p, h3, list, note, compare, acc, flip, steps
+   ============================================================ */
+const SECTIONS = [
+{
+  id:"nature", nav:"View of human nature", title:"The psychoanalytic view of human nature",
+  blurb:"Behavior is driven by forces the person does not choose and mostly cannot see.",
+  blocks:[
+    {t:"lead",text:"Human behavior is shaped by irrational forces, unconscious motives, and biological or instinctual drives."},
+    {t:"list",items:[
+      "Development is heavily influenced by the psychosexual stages of the first six years of life.",
+      "<strong>Life instincts (Eros)</strong> are oriented toward survival, growth, development, and creativity, and include all pleasurable acts aimed at gaining pleasure and avoiding pain.",
+      "<strong>Death instincts</strong> explain unconscious wishes to self-destruct or to harm others.",
+      "Sexual and aggressive drives are the two central motivators of human action."
+    ]},
+    {t:"note",h:"Why this matters clinically",text:"If the engine of behavior is unconscious, then insight — not advice — is the lever of change. Every technique later in this lesson follows from that single assumption."}
+  ],
+  quiz:[
+    {stem:"In Freudian theory, which two drives are the central motivators of human behavior?",
+     opts:["Belonging and esteem","Sexual and aggressive drives","Achievement and affiliation","Autonomy and competence"],ans:1,
+     why:"Eros and the aggressive or death instincts supply the psychic energy behind behavior."},
+    {stem:"Eros, the life instinct, is best described as…",
+     opts:["The wish to self-destruct","An orientation toward survival, growth, development, and creativity","The moral branch of personality","A defense against anxiety"],ans:1,
+     why:"Eros includes all pleasurable acts aimed at gaining pleasure and avoiding pain."},
+    {stem:"According to this model, which period lays the foundation of later personality?",
+     opts:["Adolescence","The first six years of life","Young adulthood","Late adulthood"],ans:1,
+     why:"The psychosexual stages of the first six years are treated as determinants of later personality."}
+  ]
+},
+{
+  id:"structure", nav:"Structure of personality", title:"Structure of personality",
+  blurb:"Id, ego, and superego compete for the same limited pool of psychic energy — and most of the contest happens out of awareness.",
+  blocks:[
+    {t:"flip",items:[
+      {f:"Id — pleasure principle",b:"The original system, present at birth. Source of instincts and psychic energy. Seeks immediate tension release and avoids pain. Illogical, amoral, impulsive, unconscious — and it never matures. The \"spoiled brat\" of personality."},
+      {f:"Ego — reality principle",b:"The executive of personality, in contact with the external world. Mediates between the id's impulses and environmental demands. Realistic, logical, planful; the seat of rationality and intelligence, distinguishing subjective from objective reality."},
+      {f:"Superego — moral code",b:"The judicial branch. Internalized parental and societal values. Strives for perfection rather than pleasure, inhibits id impulses, and steers the ego toward moralistic goals. Rewards with pride and self-love; punishes with guilt and inferiority."}
+    ]},
+    {t:"h3",text:"The unconscious"},
+    {t:"p",text:"The unconscious stores experiences, memories, and repressed material, and holds needs and motives that sit outside awareness and control. It is the root of most psychological functioning."},
+    {t:"h3",text:"Clinical evidence for the unconscious"},
+    {t:"list",items:[
+      "Dreams, as symbolic expressions of wishes and conflicts",
+      "Slips of the tongue and forgetting",
+      "Posthypnotic suggestions",
+      "Material produced through free association",
+      "Material produced through projective techniques",
+      "Psychotic symptoms carrying symbolic meaning"
+    ]},
+    {t:"h3",text:"Role in therapy"},
+    {t:"list",items:[
+      "The goal of psychoanalysis is to make unconscious motives conscious, which is what makes personal choice possible.",
+      "Unconscious processes are treated as the root of neurotic symptoms and maladaptive behavior.",
+      "Cure involves uncovering the meaning of symptoms and repressed material — not intellectual insight alone, but working through resistance and transference."
+    ]}
+  ],
+  quiz:[
+    {stem:"Which structure operates on the pleasure principle and never matures?",
+     opts:["Ego","Id","Superego","Preconscious"],ans:1,
+     why:"The id is present at birth, illogical, amoral and impulsive, seeking immediate tension release."},
+    {stem:"The ego is described as the \"executive\" of personality because it…",
+     opts:["Supplies psychic energy","Mediates between id impulses and the demands of reality","Stores repressed memories","Enforces the moral code"],ans:1,
+     why:"Guided by the reality principle, the ego is realistic, logical and planful."},
+    {stem:"Guilt and feelings of inferiority are the punishments delivered by which structure?",
+     opts:["Id","Ego","Superego","Unconscious"],ans:2,
+     why:"The superego rewards with pride and self-love and punishes with guilt and inferiority."},
+    {stem:"Which of the following is NOT listed as clinical evidence for the unconscious?",
+     opts:["Slips of the tongue","Posthypnotic suggestions","Standardized intelligence scores","Dreams"],ans:2,
+     why:"The evidence listed is dreams, slips and forgetting, posthypnotic suggestion, free association, projective techniques, and symbolic psychotic symptoms."}
+  ]
+},
+{
+  id:"anxiety", nav:"Anxiety", title:"Anxiety",
+  blurb:"A state of tension produced when id, ego, and superego fight over the same psychic energy.",
+  blocks:[
+    {t:"list",items:[
+      "A feeling of dread arising from repressed feelings, memories, desires, or experiences.",
+      "A state of tension that motivates action.",
+      "It develops out of conflict among the id, the ego, and the superego over psychic energy.",
+      "Its function is to serve as a warning signal of impending danger."
+    ]},
+    {t:"compare",left:{h:"Reality anxiety",items:["Fear of danger from the external world","Proportional to the actual threat"]},
+                  right:{h:"Neurotic and moral anxiety",items:["Neurotic: fear that instincts will get out of control and lead to punishment; the ego struggles to restrain the id","Moral: fear of one's own conscience, with guilt arising when one acts against the moral code"]}},
+    {t:"note",h:"Quick discrimination",text:"Ask what is feared. The world → reality anxiety. My own impulses → neurotic anxiety. My own conscience → moral anxiety."}
+  ],
+  quiz:[
+    {stem:"A student feels intense guilt after cheating, even though nobody knows. This is…",
+     opts:["Reality anxiety","Neurotic anxiety","Moral anxiety","Signal relief"],ans:2,
+     why:"Moral anxiety is fear of one's own conscience; guilt arises from acting against the moral code."},
+    {stem:"Neurotic anxiety is the fear that…",
+     opts:["The external world will cause harm","Instincts will get out of control and lead to punishment","The therapist will reject the client","Repressed memories are false"],ans:1,
+     why:"Here the ego is struggling to restrain the id."},
+    {stem:"What function does anxiety serve in this model?",
+     opts:["It discharges psychic energy permanently","It warns of impending danger and motivates action","It replaces the superego","It confirms a fixation"],ans:1,
+     why:"Anxiety is a state of tension that acts as a warning signal."}
+  ]
+},
+{
+  id:"defenses", nav:"Ego-defense mechanisms", title:"Ego-defense mechanisms",
+  blurb:"Eleven defenses from Table 4.1. Tap a card for what each one does.",
+  blocks:[
+    {t:"h3",text:"Purpose and characteristics"},
+    {t:"list",items:[
+      "They help the person cope with anxiety and keep the ego from being overwhelmed.",
+      "They are normal and adaptive when used flexibly — the problem is a lifestyle built on avoidance.",
+      "They deny or distort reality, and they operate on an unconscious level.",
+      "Their use varies with the individual's developmental level and is activated by the degree of anxiety."
+    ]},
+    {t:"flip",items:[
+      {f:"Repression",b:"Threatening or painful thoughts and feelings are excluded from awareness — an involuntary removal from consciousness. The basis of many other defenses and of neurotic disorders; painful events of the first five or six years stay buried yet still influence later behavior."},
+      {f:"Denial",b:"\"Closing one's eyes\" to a threatening aspect of reality. The simplest defense, distorting what the person thinks, feels, or perceives in a traumatic situation; it generally works at preconscious and conscious levels."},
+      {f:"Reaction formation",b:"Actively expressing the opposite impulse when faced with a threatening one — concealing hate behind a facade of love, or masking cruelty with excessive kindness."},
+      {f:"Projection",b:"Attributing one's own unacceptable desires and impulses to others. Self-deception in which lustful or aggressive impulses belong to \"those people out there, but not me.\""},
+      {f:"Displacement",b:"Discharging impulses by shifting from a threatening object to a safer target — the man intimidated by his boss who comes home and unloads hostility on his children."},
+      {f:"Rationalization",b:"Manufacturing good reasons to explain away a bruised ego, such as deciding you never really wanted the job you did not get."},
+      {f:"Sublimation",b:"Diverting sexual or aggressive energy into socially acceptable and sometimes admirable channels, such as channeling aggression into athletics."},
+      {f:"Regression",b:"Returning to an earlier phase of development with fewer demands — frightened schoolchildren who weep, cling, or thumb-suck under stress."},
+      {f:"Introjection",b:"Taking in and \"swallowing\" the values and standards of others. Positively, absorbing parental or therapist values; negatively, prisoners in concentration camps who coped by identifying with the aggressor's values."},
+      {f:"Identification",b:"Identifying with successful causes, organizations, or people so as to be seen as worthwhile. Part of normal development, but defensive when used by people who feel basically inferior."},
+      {f:"Compensation",b:"Masking perceived weaknesses or developing certain positive traits to make up for limitations — \"don't see the ways I am inferior, see my accomplishments.\""}
+    ]}
+  ],
+  quiz:[
+    {stem:"A man humiliated by his supervisor goes home and snaps at his children. Which defense is this?",
+     opts:["Projection","Displacement","Reaction formation","Sublimation"],ans:1,
+     why:"Displacement shifts the impulse from a threatening object to a safer target."},
+    {stem:"Freud regarded which defense as the basis of many other ego defenses and of neurotic disorders?",
+     opts:["Repression","Denial","Compensation","Regression"],ans:0,
+     why:"Repression is the involuntary removal of threatening material from consciousness."},
+    {stem:"A person who harbors hostility toward a colleague treats them with conspicuous sweetness. This is…",
+     opts:["Rationalization","Introjection","Reaction formation","Identification"],ans:2,
+     why:"Reaction formation expresses the opposite of the threatening impulse."},
+    {stem:"Channeling aggressive energy into competitive sport is an example of…",
+     opts:["Sublimation","Denial","Projection","Regression"],ans:0,
+     why:"Sublimation diverts the energy into socially acceptable, often praised channels."},
+    {stem:"Which statement about ego defenses is accurate?",
+     opts:["They are always pathological","They operate consciously and are deliberately chosen","They are normal and adaptive when used flexibly, and they distort reality unconsciously","They appear only in psychosis"],ans:2,
+     why:"They become a problem when they harden into an avoidance lifestyle."}
+  ]
+},
+{
+  id:"development", nav:"Development of personality", title:"Development of personality",
+  blurb:"Unmet needs in an early stage leave a fixation that shows up as immature adult behavior.",
+  blocks:[
+    {t:"list",items:[
+      "The psychoanalytic model traces psychosexual and psychosocial stages from infancy to adulthood.",
+      "The first six years of life form the foundation of later personality.",
+      "Needs that go unmet during early stages produce fixation and immature behavior in adulthood."
+    ]},
+    {t:"h3",text:"Key psychosexual stages and their adult residue"},
+    {t:"acc",items:[
+      {q:"Oral stage",a:"<p>Issues carried forward: difficulty trusting oneself and others, fear of intimacy, and low self-esteem.</p>"},
+      {q:"Anal stage",a:"<p>Issues carried forward: problems expressing anger, denial of personal power, and lack of autonomy.</p>"},
+      {q:"Phallic stage",a:"<p>Issues carried forward: inability to accept one's sexuality, and problems with self-acceptance as a man or woman.</p>"}
+    ]}
+  ],
+  quiz:[
+    {stem:"Difficulty trusting others and fear of intimacy are associated with unmet needs in which stage?",
+     opts:["Oral","Anal","Phallic","Latency"],ans:0,
+     why:"Low self-esteem and trouble trusting self and others are the listed oral-stage issues."},
+    {stem:"Problems expressing anger and a denial of personal power point back to which stage?",
+     opts:["Oral","Anal","Phallic","Genital"],ans:1,
+     why:"Autonomy struggles are the anal-stage residue."},
+    {stem:"What is the term for the result of needs going unmet in an early psychosexual stage?",
+     opts:["Catharsis","Fixation","Sublimation","Individuation"],ans:1,
+     why:"Fixation shows up later as immature behavior in adulthood."}
+  ]
+},
+{
+  id:"ego-psych", nav:"Ego psychology", title:"Ego psychology",
+  blurb:"Anna Freud and Erik Erikson move the spotlight from drives to the ego and the whole life span.",
+  blocks:[
+    {t:"h3",text:"Anna Freud (1895–1982)"},
+    {t:"list",items:[
+      "Her writing focused on normal and disturbed children.",
+      "She expanded psychoanalysis by considering maturation beyond the sexual and aggressive drives, showing gradual growth toward ego development — for example, from an egocentric focus to awareness of peers as real people.",
+      "She highlighted the progression from dependence to self-mastery, and emphasized treating both ego and id.",
+      "Her book <em>The Ego and the Mechanisms of Defense</em> (1936) described ten known defenses and added two: <strong>identification with the aggressor</strong> (adopting the role of the one who caused the trauma) and <strong>altruism</strong> (helping others to avoid feelings of helplessness).",
+      "She recognized defenses as both adaptive and maladaptive, and acknowledged defenses against external reality, not only internal drives."
+    ]},
+    {t:"h3",text:"Erik Erikson (1902–1994)"},
+    {t:"list",items:[
+      "A student of Anna Freud and a key figure in ego psychology.",
+      "He extended Freud's theory by adding psychosocial stages across the whole life span.",
+      "Each stage presents a crisis or developmental task that shapes growth; unresolved crises create difficulty at later stages.",
+      "Unlike Freud's stages, Erikson's stages remain in play throughout life. His work with children and adolescents and his focus on the identity crisis were major influences."
+    ]},
+    {t:"steps",items:[
+      {h:"Infancy — Trust vs. Mistrust (oral)",d:"Trust in the caregiver for basic needs becomes the foundation for later relationships. Failure brings anxiety and nontrusting relationships."},
+      {h:"Early childhood — Autonomy vs. Shame and Doubt (anal)",d:"Mastery of self-control, from toilet training to independence. Over-criticism breeds doubt and dependency."},
+      {h:"Preschool — Initiative vs. Guilt (phallic)",d:"Initiative develops through play and creativity. Blocked initiative produces guilt about self-expression."},
+      {h:"School age — Industry vs. Inferiority (latency)",d:"Learning skills, competence, and sex-role identity. Failure leads to feelings of inadequacy and inferiority."},
+      {h:"Adolescence — Identity vs. Role Confusion (genital)",d:"Building a self-image, career and educational goals, and a sense of life meaning. Failure brings confusion and lack of direction."},
+      {h:"Young adulthood — Intimacy vs. Isolation (genital)",d:"Developing close relationships and cooperation. Failure brings loneliness and alienation."},
+      {h:"Middle adulthood — Generativity vs. Stagnation (genital)",d:"Contributing to others through productivity and responsibility. Failure brings apathy and stagnation."},
+      {h:"Late adulthood — Integrity vs. Despair (genital)",d:"Reflecting on life with satisfaction and wisdom. Failure brings regret and despair."},
+      {h:"Very late life — Disgust vs. Wisdom (Joan Erikson)",d:"A movement toward gerotranscendence: peace of mind and spirituality."}
+    ]}
+  ],
+  quiz:[
+    {stem:"Which two defenses did Anna Freud add to the ten already described?",
+     opts:["Denial and projection","Identification with the aggressor and altruism","Sublimation and compensation","Regression and introjection"],ans:1,
+     why:"Both appear in The Ego and the Mechanisms of Defense (1936)."},
+    {stem:"A key difference between Erikson's stages and Freud's is that Erikson's…",
+     opts:["End at age six","Remain in play throughout life","Are purely biological","Ignore early childhood"],ans:1,
+     why:"Erikson added psychosocial stages across the whole life span, each posing a crisis or task."},
+    {stem:"An adolescent who cannot form a self-image or sense of direction is struggling with…",
+     opts:["Industry vs. Inferiority","Identity vs. Role Confusion","Intimacy vs. Isolation","Initiative vs. Guilt"],ans:1,
+     why:"Failure at this stage brings confusion and lack of direction."},
+    {stem:"Generativity vs. Stagnation is the task of…",
+     opts:["School age","Young adulthood","Middle adulthood","Late adulthood"],ans:2,
+     why:"It involves contributing to others through productivity and responsibility; failure brings apathy."},
+    {stem:"Who extended Erikson's model with a ninth stage, Disgust vs. Wisdom?",
+     opts:["Anna Freud","Joan Erikson","Margaret Mahler","Melanie Klein"],ans:1,
+     why:"It describes a movement toward gerotranscendence in very late life."}
+  ]
+},
+{
+  id:"object", nav:"Object relations", title:"Object relations psychology",
+  blurb:"The unit of study shifts from drives to relationships — especially the earliest one.",
+  blocks:[
+    {t:"list",items:[
+      "The focus is the child's relationships with significant others, the love objects, especially the mother.",
+      "The emphasis falls on how the child internalizes these relationships, consciously or unconsciously.",
+      "Early internalized relationships go on to shape adult personality and later interactions.",
+      "The concern is with the intrapsychic processes of the infant and child, not just external behavior.",
+      "A key concept is <strong>individuation</strong>: the child's separation from the mother in order to become independent.",
+      "This differs from Freud's focus on drives and stages by highlighting relationships instead."
+    ]},
+    {t:"note",h:"One-line summary",text:"For Freud, the child seeks pleasure. For object relations theorists, the child seeks a relationship — and carries that relationship inside for life."}
+  ],
+  quiz:[
+    {stem:"In object relations theory, the term \"object\" refers to…",
+     opts:["A fixation","A significant other, or love object","A defense mechanism","A therapeutic technique"],ans:1,
+     why:"The focus is the child's relationships with significant others, especially the mother."},
+    {stem:"Individuation refers to…",
+     opts:["The child's separation from the mother to become independent","The therapist's neutrality","The discharge of aggressive drives","A form of resistance"],ans:0,
+     why:"It is the key developmental concept in this approach."},
+    {stem:"Object relations psychology differs from classical Freudian theory mainly by emphasizing…",
+     opts:["Drives and psychosexual stages","Relationships and their internalization","Behavioral conditioning","Cognitive distortions"],ans:1,
+     why:"Early internalized relationships shape adult personality and later interactions."}
+  ]
+},
+{
+  id:"process", nav:"The therapy process", title:"Processes in psychoanalytic therapy",
+  blurb:"Aims, the therapist's stance, and the three phenomena that carry the work: transference, working through, countertransference.",
+  blocks:[
+    {t:"h3",text:"Aims and goals"},
+    {t:"list",items:[
+      "The primary aim is to help clients cope with and solve their own problems, and to increase adaptive functioning by reducing symptoms and resolving conflicts.",
+      "Core Freudian goals: make the unconscious conscious, and strengthen the ego so behavior is guided by reality rather than by instincts or guilt.",
+      "Expected outcomes reach past symptom relief to modification of personality and character structure, and deeper self-understanding.",
+      "The process brings out unconscious material, reconstructs and analyzes childhood experience, and aims at insight joined to emotional experience — not intellectual understanding alone."
+    ]},
+    {t:"h3",text:"The therapist's function and role"},
+    {t:"acc",items:[
+      {q:"The classical stance",a:"<p>The therapist takes an anonymous, neutral position — the <strong>blank screen</strong> approach — and avoids self-disclosure so that a transference relationship can form. The client projects feelings from past caregivers onto the therapist, and that projection becomes the material for analysis.</p>"},
+      {q:"The contemporary relational stance",a:"<p>Full neutrality and anonymity are rejected. The emphasis moves to the therapeutic alliance and to repairing ruptures in it, with <strong>empathic attunement</strong> used to understand the client's inner world.</p>"},
+      {q:"What the therapist actually does",a:"<p>Helps clients gain freedom to love, work, and play. Fosters self-awareness, honesty, realistic management of anxiety, and better relationships, and strengthens control over impulsive and irrational behavior. Listens respectfully and openly to both spoken and unspoken material, attending to resistances, gaps, inconsistencies, dreams, and free associations, and uses interpretation with tact and timing to uncover unconscious material. The goal is to teach clients the meaning of their own processes, promoting insight and change.</p>"},
+      {q:"Conditions for change",a:"<p>Change depends more on the client's readiness than on the accuracy of the therapist. Ill-timed or rushed interpretations are ineffective. The work is like assembling puzzle pieces: reworking old patterns so the client is free for new behavior.</p>"}
+    ]},
+    {t:"h3",text:"Three phenomena during therapy"},
+    {t:"list",items:[
+      "<strong>Transference</strong> — the client's unconscious shifting onto the analyst of feelings, attitudes, and fantasies, positive and negative, that are reactions to significant figures from the developmental years.",
+      "<strong>Working through</strong> — repetitive and elaborate exploration of unconscious material and defenses, most of which originated early in life.",
+      "<strong>Countertransference</strong> — when there is inappropriate affect, when therapists respond in irrational ways, or when they lose objectivity because their own conflicts are triggered."
+    ]}
+  ],
+  quiz:[
+    {stem:"The \"blank screen\" stance is used primarily to…",
+     opts:["Save session time","Foster the transference relationship","Prevent resistance","Satisfy informed consent"],ans:1,
+     why:"Anonymity and avoided self-disclosure let the client project feelings from past caregivers onto the therapist."},
+    {stem:"Countertransference occurs when…",
+     opts:["The client repeats past relational patterns with the therapist","The therapist loses objectivity because their own conflicts are triggered","The client avoids a topic in free association","Interpretation is offered too early"],ans:1,
+     why:"It shows in inappropriate affect or irrational responses from the therapist."},
+    {stem:"Working through is best described as…",
+     opts:["A single insight that resolves a conflict","Repetitive, elaborate exploration of unconscious material and defenses","The first interview","A relaxation technique"],ans:1,
+     why:"Most of the material being reworked originated in early life."},
+    {stem:"According to the lesson, change depends most on…",
+     opts:["The accuracy of the therapist's interpretation","The client's readiness","The number of sessions","The theoretical school used"],ans:1,
+     why:"Ill-timed or rushed interpretations are ineffective no matter how accurate."}
+  ]
+},
+{
+  id:"techniques", nav:"Techniques", title:"Techniques in the psychoanalytic approach",
+  blurb:"Four techniques, each one a different route to the same destination: unconscious material made conscious.",
+  blocks:[
+    {t:"acc",items:[
+      {q:"Free association",a:"<p>Clients say whatever comes to mind without censorship, expressing thoughts and feelings freely even when trivial, illogical, or painful. Resistances and deviations are noted and interpreted later.</p><p>It opens access to unconscious wishes, conflicts, fantasies, and motivations, and may trigger recollections of past experience and emotional release, or <strong>catharsis</strong>. The analyst uses associations and blockages as cues to underlying anxiety or conflict, interprets the material to guide deeper insight, and takes nothing at face value — both spoken and unspoken material matter. Clients are encouraged to notice when openness starts to feel difficult.</p>"},
+      {q:"Interpretation",a:"<p>The analyst explains the meaning of client behavior as it appears in dreams, free association, resistances, defenses, and the therapeutic relationship itself, helping the ego assimilate new material and uncovering unconscious material more quickly.</p><p>Interpretations are based on the therapist's assessment of the client's personality and the past experiences contributing to present difficulty. The contemporary view treats interpretation as identifying, clarifying, and translating the client's material, shared collaboratively as a hypothesis in a process of mutual discovery.</p><p>Rules of thumb: interpret only when the material is near conscious awareness, begin with surface-level insight before going deeper, and avoid poorly timed interpretations, which are likely to be rejected. The goal is to expand the client's consciousness and help them make sense of their life experience.</p>"},
+      {q:"Analysis and interpretation of resistance",a:"<p><strong>Resistance</strong> is anything that hinders the progress of therapy and blocks unconscious material from reaching awareness. It takes the form of ideas, attitudes, feelings, or actions, conscious or unconscious, that maintain the status quo and resist change.</p><p>Freud viewed resistance as an unconscious defense against anxiety and pain, protecting the client from becoming aware of repressed impulses and feelings. It commonly shows up during free association or dream analysis, when the client avoids certain topics; clients often want to change while still clinging to familiar patterns, even painful ones.</p><p>The therapist creates a safe climate for recognizing and exploring resistance, pointing out and interpreting it carefully and starting with the most obvious. Resistance should not be framed as a lack of cooperation; it is used as a tool for insight. Working with it helps clients understand how they defend against anxiety and encourages acceptance of change — it is both a barrier and a valuable guide to the client's defenses.</p>"},
+      {q:"Analysis and interpretation of transference",a:"<p>Transference occurs when past relationships shape how clients perceive and relate to the therapist, giving them the chance to re-experience unconscious feelings and bring buried emotions, beliefs, and desires into awareness.</p><p>Interpretation reveals how clients repeat past relational patterns, in therapy and in current relationships, so they gain insight into unconscious dynamics and gradually change long-standing unhelpful behavior. It is the central technique of classical psychoanalysis and related therapies, and it produces here-and-now insight into the impact of the past on present functioning.</p><p>Through working through, transference interpretation lets clients revisit old conflicts; resolving them inside the therapeutic relationship promotes emotional growth. The effects of early relationships are counteracted by processing similar conflicts with the therapist, fostering awareness and personality change.</p>"}
+    ]},
+    {t:"note",h:"Exam trap",text:"Resistance and transference are both analyzed and both interpreted, but they answer different questions. Resistance asks what the client is avoiding; transference asks who the therapist has become in the client's mind."}
+  ],
+  quiz:[
+    {stem:"In free association, the client is instructed to…",
+     opts:["Report only clinically relevant memories","Say whatever comes to mind without censorship","Describe dreams in chronological order","Avoid painful material until trust is built"],ans:1,
+     why:"Even trivial, illogical, or painful content is expressed; blockages become cues to conflict."},
+    {stem:"Emotional release triggered by recalling past experience is called…",
+     opts:["Catharsis","Individuation","Fixation","Sublimation"],ans:0,
+     why:"Free association may trigger both recollection and catharsis."},
+    {stem:"Which guideline for interpretation is correct?",
+     opts:["Interpret the deepest material first to save time","Interpret only when the material is near conscious awareness","Interpret without explaining the reasoning","Interpret resistance as a lack of cooperation"],ans:1,
+     why:"Start at the surface and go deeper; poorly timed interpretations tend to be rejected."},
+    {stem:"Freud viewed resistance primarily as…",
+     opts:["Deliberate non-cooperation","An unconscious defense against anxiety and pain","Evidence of a weak alliance","A sign therapy should end"],ans:1,
+     why:"It protects the client from awareness of repressed impulses, and is used as a tool for insight."},
+    {stem:"Which technique is considered central to classical psychoanalysis for producing here-and-now insight into the past?",
+     opts:["Analysis of transference","Systematic desensitization","Socratic questioning","Empty chair work"],ans:0,
+     why:"Transference interpretation lets clients revisit and resolve old conflicts inside the therapy relationship."}
+  ]
+},
+{
+  id:"critique", nav:"Limitations and criticisms", title:"Limitations and criticisms",
+  blurb:"Where the approach is vulnerable, and how contemporary practice has answered.",
+  blocks:[
+    {t:"h3",text:"Practical limits"},
+    {t:"list",items:[
+      "It requires significant time, expense, and specially trained therapists.",
+      "Free association, dream analysis, and deep transference work are often impractical in ordinary settings.",
+      "Many severely disturbed clients lack the ego strength for classical analysis.",
+      "Traditional therapy is lengthy and intensive — a criticism that brief, time-limited psychodynamic therapy was developed to answer."
+    ]},
+    {t:"h3",text:"Criticisms of the stance and the theory"},
+    {t:"list",items:[
+      "The anonymous blank-screen stance can be too restrictive. Modern approaches emphasize therapist–client interaction and appropriate self-disclosure (Yalom, 2003), and a relational analytic approach that understands the past while engaging with the present.",
+      "<strong>Feminist critiques</strong> target the Oedipus and Electra complexes and the heavy emphasis on the mother–child relationship, including a tendency to blame mothers while fathers are absent from developmental explanations.",
+      "Alternative approaches such as DBT (Linehan) avoid mother-blaming and instead recognize invalidating environments.",
+      "The approach has been criticized as elitist and suited only to highly educated clients."
+    ]},
+    {t:"h3",text:"The defense"},
+    {t:"list",items:[
+      "Defenders argue that psychoanalysis is an evolving field that has been continually revised since Freud.",
+      "Contemporary adaptations highlight its potential in addressing crisis, trauma, and underserved populations."
+    ]}
+  ],
+  quiz:[
+    {stem:"Which development directly answers the criticism that psychoanalytic therapy is too lengthy?",
+     opts:["Dream analysis","Brief, time-limited psychodynamic therapy","The blank screen stance","Free association"],ans:1,
+     why:"It preserves psychodynamic aims within a limited number of sessions."},
+    {stem:"Feminist critiques of the approach focus on…",
+     opts:["Its use of behavioral homework","The Oedipus and Electra complexes and mother-blaming in developmental explanations","Its reliance on medication","Its short duration"],ans:1,
+     why:"Fathers are largely absent from those explanations while mothers carry the blame."},
+    {stem:"Which approach is cited as recognizing invalidating environments rather than blaming mothers?",
+     opts:["DBT (Linehan)","Reality therapy","Gestalt therapy","Classical analysis"],ans:0,
+     why:"It is offered as an alternative to the mother-blaming tendency."},
+    {stem:"Yalom (2003) is cited in support of…",
+     opts:["Strict therapist anonymity","Therapist–client interaction and appropriate self-disclosure","Ending transference analysis","Longer treatment"],ans:1,
+     why:"The blank-screen stance is seen as too restrictive by relational approaches."}
+  ]
+}
+];
+
+/* ============================================================
+   RENDERING
+   ============================================================ */
+const el = (tag, cls, html) => { const n=document.createElement(tag); if(cls) n.className=cls; if(html!=null) n.innerHTML=html; return n; };
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const secWrap = document.getElementById("sections");
+const navList = document.getElementById("navList");
+const indexGrid = document.getElementById("indexGrid");
+let totalQuestions = 0;
+
+/** Build one content block into DOM. */
+function renderBlock(b){
+  switch(b.t){
+    case "lead": return el("p","lead",b.text);
+    case "p":    return el("p",null,b.text);
+    case "h3":   return el("h3",null,b.text);
+    case "list": {
+      const list = el(b.ordered ? "ol" : "ul");
+      b.items.forEach(i => list.appendChild(el("li",null,i)));
+      return list;
+    }
+    case "note": {
+      const n = el("div","note");
+      n.appendChild(el("h4",null,b.h));
+      n.appendChild(el("p",null,b.text));
+      return n;
+    }
+    case "compare": {
+      const wrap = el("div","compare");
+      [b.left,b.right].forEach(c => {
+        const col = el("div","col");
+        col.appendChild(el("h4",null,c.h));
+        const ul = el("ul");
+        c.items.forEach(i => ul.appendChild(el("li",null,i)));
+        col.appendChild(ul);
+        wrap.appendChild(col);
+      });
+      return wrap;
+    }
+    case "acc": {
+      const wrap = el("div","acc");
+      b.items.forEach(item => {
+        const d = el("details");
+        d.innerHTML = "<summary>" + item.q + "<span class='plus' aria-hidden='true'>+</span></summary>" +
+                      "<div class='body'>" + item.a + "</div>";
+        wrap.appendChild(d);
+      });
+      return wrap;
+    }
+    case "flip": {
+      const grid = el("div","flipgrid");
+      b.items.forEach(item => {
+        const card = el("button","flip");
+        card.type = "button";
+        card.setAttribute("aria-pressed","false");
+        card.innerHTML =
+          "<span class='flip-inner'>" +
+            "<span class='face front'><span class='t'>" + item.f + "</span><span class='hint'>Tap to reveal</span></span>" +
+            "<span class='face back'><span class='d'>" + item.b + "</span><span class='hint'>Tap to flip back</span></span>" +
+          "</span>";
+        card.addEventListener("click", () => {
+          const on = card.classList.toggle("is-flipped");
+          card.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        grid.appendChild(card);
+      });
+      return grid;
+    }
+    case "steps": {
+      const ol = el("ol","steps");
+      b.items.forEach(s => {
+        const li = el("li");
+        li.innerHTML = "<div><strong>" + s.h + "</strong><span>" + s.d + "</span></div>";
+        ol.appendChild(li);
+      });
+      return ol;
+    }
+  }
+  return el("div");
+}
+
+/** Build the quiz for a section, with immediate per-question feedback. */
+function renderQuiz(sec){
+  if(!sec.quiz.length) return null;
+  const box = el("section","quiz");
+  box.setAttribute("aria-label","Practice quiz: " + sec.nav);
+
+  const head = el("div","qhead");
+  head.appendChild(el("h3",null,"Check yourself"));
+  const score = el("span","score ui","0 / " + sec.quiz.length + " correct");
+  head.appendChild(score);
+  box.appendChild(head);
+
+  let correct = 0, answered = 0;
+
+  sec.quiz.forEach((q,qi) => {
+    const qEl = el("div","q");
+    qEl.appendChild(el("p","stem","<b>Q" + (qi+1) + "</b>" + q.stem));
+    const opts = el("div","opts");
+    const buttons = [];
+
+    q.opts.forEach((text,oi) => {
+      const btn = el("button","opt");
+      btn.type = "button";
+      btn.innerHTML = "<span class='key'>" + "ABCD"[oi] + "</span><span>" + text + "</span>";
+      btn.addEventListener("click", () => {
+        if(btn.disabled) return;
+        buttons.forEach(b => b.disabled = true);
+        const right = oi === q.ans;
+        btn.classList.add(right ? "correct" : "wrong");
+        if(!right) buttons[q.ans].classList.add("correct");
+
+        const fb = el("div","fb " + (right ? "good" : "bad"));
+        fb.innerHTML = "<strong>" + (right ? "Correct." : "Not quite.") + "</strong><em>" + q.why + "</em>";
+        qEl.appendChild(fb);
+
+        answered++;
+        if(right) correct++;
+        score.textContent = correct + " / " + sec.quiz.length + " correct";
+        bumpProgress();
+      });
+      buttons.push(btn);
+      opts.appendChild(btn);
+    });
+
+    qEl.appendChild(opts);
+    box.appendChild(qEl);
+  });
+
+  const retry = el("button","iconbtn retry","↺ Reset this quiz");
+  retry.type = "button";
+  retry.addEventListener("click", () => {
+    answeredTotal -= answered;
+    correct = 0; answered = 0;
+    score.textContent = "0 / " + sec.quiz.length + " correct";
+    box.querySelectorAll(".fb").forEach(n => n.remove());
+    box.querySelectorAll(".opt").forEach(b => { b.disabled = false; b.classList.remove("correct","wrong"); });
+    updateProgressUI();
+  });
+  box.appendChild(retry);
+  return box;
+}
+
+/* Progress across all quizzes */
+let answeredTotal = 0;
+function bumpProgress(){ answeredTotal++; updateProgressUI(); }
+function updateProgressUI(){
+  const pct = totalQuestions ? Math.round((answeredTotal/totalQuestions)*100) : 0;
+  document.getElementById("progBar").style.width = pct + "%";
+  document.getElementById("progText").textContent = answeredTotal + " of " + totalQuestions + " quiz questions answered";
+}
+
+/* Build every section, the rail, and the hero index */
+SECTIONS.forEach(sec => {
+  totalQuestions += sec.quiz.length;
+
+  const s = el("section","topic");
+  s.id = sec.id;
+  s.appendChild(el("h2",null,sec.title));
+  s.appendChild(el("p","sec-intro",sec.blurb));
+  sec.blocks.forEach(b => s.appendChild(renderBlock(b)));
+  const quiz = renderQuiz(sec);
+  if(quiz) s.appendChild(quiz);
+  secWrap.appendChild(s);
+
+  const li = el("li");
+  li.innerHTML = "<a href='#" + sec.id + "'>" + sec.nav + "</a>";
+  navList.appendChild(li);
+
+  const card = el("a");
+  card.href = "#" + sec.id;
+  card.innerHTML = "<strong>" + sec.nav + "</strong><em>" + (sec.quiz.length ? sec.quiz.length + " questions" : "To prepare") + "</em>";
+  indexGrid.appendChild(card);
+});
+document.getElementById("qCountChip").textContent = totalQuestions + " practice questions";
+updateProgressUI();
+
+/* ============================================================
+   THEME TOGGLE (remembered per browser, storage may be blocked)
+   ============================================================ */
+const root = document.documentElement;
+const themeBtn = document.getElementById("themeBtn");
+const themeLabel = document.getElementById("themeLabel");
+
+function systemDark(){ return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches; }
+function applyTheme(mode){
+  root.setAttribute("data-theme", mode);
+  themeLabel.textContent = mode === "dark" ? "Light" : "Dark";
+  try{ localStorage.setItem("cp-theme", mode); }catch(e){}
+}
+try{
+  const saved = localStorage.getItem("cp-theme");
+  applyTheme(saved || (systemDark() ? "dark" : "light"));
+}catch(e){
+  applyTheme(systemDark() ? "dark" : "light");
+}
+themeBtn.addEventListener("click", () =>
+  applyTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark")
+);
+
+/* ============================================================
+   SCROLLSPY — highlight the topic you are reading
+   ============================================================ */
+const navLinks = [...navList.querySelectorAll("a")];
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id));
+    }
+  });
+}, { rootMargin:"-25% 0px -65% 0px", threshold:0 });
+SECTIONS.forEach(s => observer.observe(document.getElementById(s.id)));
+
+/* ============================================================
+   MOBILE MENU
+   ============================================================ */
+const rail = document.getElementById("rail");
+const menuBtn = document.getElementById("menuBtn");
+menuBtn.addEventListener("click", () => {
+  const open = rail.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+});
+navList.addEventListener("click", e => {
+  if(e.target.tagName === "A"){ rail.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); }
+});
+
+/* ============================================================
+   SEARCH
+   Indexes every paragraph, list item, card face and accordion
+   panel, then highlights matches in place and offers jump links.
+   ============================================================ */
+const searchable = [...secWrap.querySelectorAll("p, li, .face .t, .face .d, .acc summary, .steps strong, .steps span, .compare h4, h3")]
+  .filter(n => !n.closest(".quiz"))          // quizzes stay out of search so answers are not spoiled
+  .map(node => ({ node, text:node.textContent.trim(), section: node.closest(".topic") }));
+
+const input = document.getElementById("q");
+const results = document.getElementById("results");
+
+function clearHighlights(){
+  secWrap.querySelectorAll("mark[data-s]").forEach(m => {
+    const parent = m.parentNode;
+    parent.replaceChild(document.createTextNode(m.textContent), m);
+    parent.normalize();
+  });
+}
+
+/** Wrap every case-insensitive match inside an element's text nodes. */
+function highlight(node, term){
+  const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+  const targets = [];
+  while(walker.nextNode()){
+    if(walker.currentNode.nodeValue.toLowerCase().includes(term)) targets.push(walker.currentNode);
+  }
+  targets.forEach(tn => {
+    const frag = document.createDocumentFragment();
+    let rest = tn.nodeValue, idx;
+    while((idx = rest.toLowerCase().indexOf(term)) > -1){
+      if(idx) frag.appendChild(document.createTextNode(rest.slice(0,idx)));
+      const m = document.createElement("mark");
+      m.setAttribute("data-s","1");
+      m.textContent = rest.slice(idx, idx + term.length);
+      frag.appendChild(m);
+      rest = rest.slice(idx + term.length);
+    }
+    if(rest) frag.appendChild(document.createTextNode(rest));
+    tn.parentNode.replaceChild(frag, tn);
+  });
+}
+
+function snippet(text, term){
+  const i = text.toLowerCase().indexOf(term);
+  const start = Math.max(0, i - 35);
+  return (start ? "…" : "") + text.slice(start, i + term.length + 60).trim() + (text.length > i + term.length + 60 ? "…" : "");
+}
+
+let searchTimer;
+input.addEventListener("input", () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(runSearch, 120);
+});
+
+function runSearch(){
+  const term = input.value.trim().toLowerCase();
+  clearHighlights();
+  results.innerHTML = "";
+  if(term.length < 2){
+    results.classList.remove("open");
+    input.setAttribute("aria-expanded","false");
+    return;
+  }
+
+  const hits = searchable.filter(item => item.text.toLowerCase().includes(term));
+  hits.forEach(h => highlight(h.node, term));
+
+  if(!hits.length){
+    results.innerHTML = "<div class='empty'>No match for “" + esc(input.value) + "”. Try a shorter term, like “consent” or “values”.</div>";
+  }else{
+    hits.slice(0,8).forEach(h => {
+      const sectionTitle = h.section ? h.section.querySelector("h2").textContent : "";
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.innerHTML = "<span class='r-sec'>" + esc(sectionTitle) + "</span><span class='r-txt'>" + esc(snippet(h.text, term)) + "</span>";
+      btn.addEventListener("click", () => jumpTo(h.node));
+      results.appendChild(btn);
+    });
+    if(hits.length > 8){
+      const more = document.createElement("div");
+      more.className = "empty";
+      more.textContent = hits.length + " matches found — all of them are highlighted on the page.";
+      results.appendChild(more);
+    }
+  }
+  results.classList.add("open");
+  input.setAttribute("aria-expanded","true");
+}
+
+/** Scroll to a match, opening any accordion or flip card that hides it. */
+function jumpTo(node){
+  const details = node.closest("details");
+  if(details) details.open = true;
+  const flip = node.closest(".flip");
+  if(flip && node.closest(".back")){ flip.classList.add("is-flipped"); flip.setAttribute("aria-pressed","true"); }
+  results.classList.remove("open");
+  input.setAttribute("aria-expanded","false");
+  const target = flip || details || node;
+  target.scrollIntoView({behavior:"smooth", block:"center"});
+  target.classList.add("flash");
+  setTimeout(() => target.classList.remove("flash"), 1500);
+}
+
+/* Close the results panel on outside click or Escape */
+document.addEventListener("click", e => {
+  if(!e.target.closest(".search")) { results.classList.remove("open"); input.setAttribute("aria-expanded","false"); }
+});
+input.addEventListener("keydown", e => {
+  if(e.key === "Escape"){ input.value=""; runSearch(); input.blur(); }
+  if(e.key === "ArrowDown"){ const first = results.querySelector("button"); if(first){ e.preventDefault(); first.focus(); } }
+});
+
+/* Keyboard shortcut: "/" focuses search */
+document.addEventListener("keydown", e => {
+  if(e.key === "/" && document.activeElement !== input && !/input|textarea/i.test(document.activeElement.tagName)){
+    e.preventDefault(); input.focus();
+  }
+});
+</script>
+</body>
+</html>
