@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Counseling &amp; Psychotherapy — Lesson 1 Reviewer</title>
+<meta name="description" content="Interactive study reviewer for Lesson 1: Introduction to Counseling and Psychotherapy." />
+
+<!-- Type: Bricolage Grotesque for headings (wide, slightly quirky), Newsreader for reading body -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. DESIGN TOKENS
+   Palette: cool "clinic paper" green-grey + deep teal ink,
+   plum for secondary emphasis. Light and dark are both authored,
+   and the page also follows the viewer's OS setting by default.
+   ============================================================ */
+:root{
+  --paper:#E8EDE6;
+  --surface:#FBFCFA;
+  --surface-2:#F1F4EE;
+  --ink:#16211F;
+  --muted:#5B6964;
+  --line:#CBD5CB;
+  --accent:#0F5B52;
+  --accent-soft:#D9E8E3;
+  --plum:#7B3B58;
+  --ok:#1C6B4A;
+  --ok-soft:#DCEEE2;
+  --bad:#A63232;
+  --bad-soft:#F6E0DE;
+  --mark:#FCE7A2;
+  --shadow:0 1px 0 rgba(22,33,31,.06), 0 10px 30px -22px rgba(22,33,31,.5);
+  --radius:14px;
+  --rail:252px;
+  --measure:70ch;
+}
+:root[data-theme="dark"]{
+  --paper:#0E1412;
+  --surface:#171F1D;
+  --surface-2:#1E2825;
+  --ink:#E4EBE7;
+  --muted:#93A29D;
+  --line:#2C3835;
+  --accent:#63D3BC;
+  --accent-soft:#12312C;
+  --plum:#E0A0BC;
+  --ok:#67D49C;
+  --ok-soft:#12301F;
+  --bad:#F08A80;
+  --bad-soft:#331817;
+  --mark:#5A4A12;
+  --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 34px -24px rgba(0,0,0,.9);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1412; --surface:#171F1D; --surface-2:#1E2825; --ink:#E4EBE7;
+    --muted:#93A29D; --line:#2C3835; --accent:#63D3BC; --accent-soft:#12312C;
+    --plum:#E0A0BC; --ok:#67D49C; --ok-soft:#12301F; --bad:#F08A80; --bad-soft:#331817;
+    --mark:#5A4A12; --shadow:0 1px 0 rgba(0,0,0,.4), 0 14px 34px -24px rgba(0,0,0,.9);
+  }
+}
+
+/* ============================================================
+   2. BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.ui{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;font-optical-sizing:auto}
+h1{font-size:clamp(2.1rem,6vw,3.5rem);line-height:1.02;letter-spacing:-.025em;font-weight:800;margin:0}
+h2{font-size:clamp(1.5rem,3.4vw,2.05rem);line-height:1.12;letter-spacing:-.02em;font-weight:700;margin:0}
+h3{font-size:1.14rem;line-height:1.25;letter-spacing:-.01em;font-weight:700;margin:0}
+p{margin:0 0 1rem;max-width:var(--measure)}
+a{color:inherit}
+button{font:inherit;color:inherit}
+mark{background:var(--mark);color:inherit;border-radius:3px;padding:0 .12em}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:6px}
+hr.rule{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
+
+/* ============================================================
+   3. TOP BAR (sticky) — search, theme, mobile menu
+   ============================================================ */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  display:flex;align-items:center;gap:.6rem;
+  padding:.6rem clamp(.8rem,3vw,1.6rem);
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.02em;font-size:.98rem;white-space:nowrap}
+.brand span{color:var(--muted);font-weight:500}
+.topbar .grow{flex:1}
+.iconbtn{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:var(--surface);border:1px solid var(--line);border-radius:999px;
+  padding:.45rem .8rem;cursor:pointer;font-family:"Bricolage Grotesque",sans-serif;
+  font-size:.85rem;font-weight:600;
+}
+.iconbtn:hover{border-color:var(--accent)}
+.menubtn{display:none}
+
+/* Search */
+.search{position:relative;flex:1 1 420px;max-width:520px}
+.search input{
+  width:100%;padding:.55rem .9rem .55rem 2.2rem;
+  border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-size:.9rem;
+}
+.search input::placeholder{color:var(--muted)}
+.search .mag{position:absolute;left:.8rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.9rem;pointer-events:none}
+.results{
+  position:absolute;top:calc(100% + .45rem);left:0;right:0;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;display:none;max-height:60vh;overflow-y:auto;
+}
+.results.open{display:block}
+.results button{
+  display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;
+  padding:.6rem .85rem;border-bottom:1px solid var(--line);
+}
+.results button:last-child{border-bottom:0}
+.results button:hover,.results button:focus-visible{background:var(--surface-2)}
+.results .r-sec{font-family:"Bricolage Grotesque",sans-serif;font-size:.72rem;font-weight:700;color:var(--accent);display:block}
+.results .r-txt{font-size:.92rem;color:var(--muted);display:block;line-height:1.35}
+.results .empty{padding:.85rem;color:var(--muted);font-size:.92rem}
+
+/* ============================================================
+   4. SHELL: side rail + content
+   ============================================================ */
+.shell{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:clamp(1rem,3vw,2.5rem);
+  max-width:1280px;margin:0 auto;padding:0 clamp(.9rem,3vw,1.6rem) 5rem}
+.rail{position:sticky;top:76px;align-self:start;height:calc(100vh - 96px);overflow-y:auto;padding:1.4rem 0}
+.rail .label{font-family:"Bricolage Grotesque",sans-serif;font-size:.74rem;font-weight:700;color:var(--muted);margin:0 0 .7rem}
+.rail ol{list-style:none;margin:0;padding:0;counter-reset:nav}
+.rail li{counter-increment:nav}
+.rail a{
+  display:flex;gap:.6rem;align-items:baseline;text-decoration:none;
+  padding:.4rem .6rem;border-radius:9px;border-left:2px solid transparent;
+  font-family:"Bricolage Grotesque",sans-serif;font-size:.88rem;font-weight:600;color:var(--muted);line-height:1.3;
+}
+.rail a::before{content:counter(nav);font-size:.72rem;color:var(--line);font-weight:700;min-width:1ch}
+.rail a:hover{color:var(--ink);background:var(--surface-2)}
+.rail a.active{color:var(--accent);background:var(--accent-soft);border-left-color:var(--accent)}
+.rail a.active::before{color:var(--accent)}
+.rail .progwrap{margin:1.2rem .6rem 0;font-family:"Bricolage Grotesque",sans-serif;font-size:.76rem;color:var(--muted)}
+.progbar{height:5px;background:var(--surface-2);border-radius:999px;overflow:hidden;margin-top:.4rem;border:1px solid var(--line)}
+.progbar i{display:block;height:100%;width:0;background:var(--accent);transition:width .35s ease}
+
+/* ============================================================
+   5. HERO
+   ============================================================ */
+.hero{padding:clamp(2.2rem,7vw,4.4rem) 0 2rem;border-bottom:1px solid var(--line)}
+.hero .kicker{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.84rem;color:var(--accent);margin:0 0 .9rem}
+.hero h1{max-width:16ch}
+.hero .sub{margin-top:1.1rem;font-size:1.15rem;color:var(--muted);max-width:56ch}
+.hero .meta{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.chip{
+  font-family:"Bricolage Grotesque",sans-serif;font-size:.8rem;font-weight:600;
+  border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.3rem .75rem;color:var(--muted);
+}
+.indexgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.6rem;margin-top:2.2rem}
+.indexgrid a{
+  text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:.8rem .9rem;display:block;transition:border-color .2s ease,transform .2s ease;
+}
+.indexgrid a:hover{border-color:var(--accent);transform:translateY(-2px)}
+.indexgrid strong{font-family:"Bricolage Grotesque",sans-serif;font-size:.95rem;display:block;letter-spacing:-.01em}
+.indexgrid em{font-style:normal;color:var(--muted);font-size:.86rem}
+
+/* ============================================================
+   6. SECTIONS & CONTENT BLOCKS
+   ============================================================ */
+section.topic{padding:clamp(2.4rem,6vw,3.6rem) 0;border-bottom:1px solid var(--line)}
+section.topic > h2{max-width:22ch}
+.sec-intro{color:var(--muted);font-size:1.06rem;margin:.7rem 0 1.8rem;max-width:60ch}
+.lead{font-size:1.12rem}
+.topic h3{margin:2rem 0 .7rem}
+.topic ul,.topic ol{max-width:var(--measure);padding-left:1.15rem;margin:0 0 1.1rem}
+.topic li{margin:.3rem 0}
+
+/* Callout note */
+.note{
+  background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--plum);
+  border-radius:0 12px 12px 0;padding:1rem 1.1rem;margin:0 0 1.3rem;max-width:var(--measure);
+}
+.note h4{margin:0 0 .35rem;font-size:.95rem;color:var(--plum)}
+.note p:last-child{margin:0}
+
+/* Two-column compare (counselor vs psychotherapist) */
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin:0 0 1.4rem}
+.compare .col{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem}
+.compare .col h4{margin:0 0 .6rem;font-family:"Bricolage Grotesque",sans-serif;font-size:1rem}
+.compare .col:first-child h4{color:var(--accent)}
+.compare .col:last-child h4{color:var(--plum)}
+.compare ul{list-style:none;padding:0;margin:0}
+.compare li{padding:.4rem 0;border-bottom:1px dashed var(--line);font-size:.98rem}
+.compare li:last-child{border-bottom:0}
+
+/* Accordion (native details, animated open) */
+.acc{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);margin:0 0 1.4rem}
+.acc details{border-bottom:1px solid var(--line)}
+.acc details:last-child{border-bottom:0}
+.acc summary{
+  cursor:pointer;list-style:none;padding:.9rem 1.05rem;display:flex;gap:.75rem;align-items:center;
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1rem;
+}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:hover{background:var(--surface-2)}
+.acc summary .plus{margin-left:auto;color:var(--accent);transition:transform .25s ease;font-size:1.1rem;line-height:1}
+.acc details[open] summary .plus{transform:rotate(45deg)}
+.acc .body{padding:0 1.05rem 1.05rem;color:var(--muted)}
+.acc .body p,.acc .body ul{max-width:none}
+.acc .body strong{color:var(--ink)}
+
+/* Flip cards */
+.flipgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.85rem;margin:0 0 1.2rem}
+.flip{perspective:1200px;background:none;border:0;padding:0;cursor:pointer;text-align:left;min-height:170px}
+.flip-inner{display:block;position:relative;width:100%;height:100%;min-height:170px;transition:transform .55s cubic-bezier(.2,.7,.3,1);transform-style:preserve-3d}
+.flip.is-flipped .flip-inner{transform:rotateY(180deg)}
+.face{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border:1px solid var(--line);border-radius:var(--radius);padding:1rem;background:var(--surface);
+  display:flex;flex-direction:column;justify-content:space-between;overflow:auto;
+}
+.face.back{transform:rotateY(180deg);background:var(--accent-soft);border-color:var(--accent)}
+.face .t{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1rem;line-height:1.2}
+.face .d{font-size:.95rem;color:var(--muted);line-height:1.5}
+.face.back .d{color:var(--ink)}
+.face .hint{font-family:"Bricolage Grotesque",sans-serif;font-size:.72rem;color:var(--muted);font-weight:600}
+.flip:hover .face{border-color:var(--accent)}
+
+/* Numbered steps — used only where content really is a sequence */
+.steps{counter-reset:step;list-style:none;padding:0;margin:0 0 1.4rem;max-width:var(--measure)}
+.steps li{counter-increment:step;display:grid;grid-template-columns:2rem 1fr;gap:.9rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps li::before{
+  content:counter(step);font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:.9rem;
+  color:var(--accent);background:var(--accent-soft);border-radius:8px;height:2rem;display:grid;place-items:center;
+}
+.steps strong{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:.98rem}
+.steps span{color:var(--muted);font-size:.98rem}
+
+/* ============================================================
+   7. QUIZ
+   ============================================================ */
+.quiz{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem;margin-top:2rem;box-shadow:var(--shadow)}
+.quiz .qhead{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:1rem}
+.quiz .qhead h3{font-size:1.05rem}
+.quiz .score{margin-left:auto;font-family:"Bricolage Grotesque",sans-serif;font-size:.82rem;color:var(--muted);font-weight:600}
+.q{padding:1rem 0;border-top:1px solid var(--line)}
+.q:first-of-type{border-top:0;padding-top:0}
+.q .stem{font-weight:500;margin:0 0 .75rem;max-width:var(--measure)}
+.q .stem b{font-family:"Bricolage Grotesque",sans-serif;color:var(--accent);font-size:.85rem;margin-right:.4rem}
+.opts{display:grid;gap:.45rem;max-width:var(--measure)}
+.opt{
+  display:flex;gap:.6rem;align-items:flex-start;text-align:left;width:100%;
+  background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:.6rem .8rem;cursor:pointer;
+  font-size:.98rem;transition:border-color .15s ease,background .15s ease;
+}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt .key{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.8rem;color:var(--muted);min-width:1.1ch}
+.opt.correct{background:var(--ok-soft);border-color:var(--ok)}
+.opt.correct .key{color:var(--ok)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.opt.wrong .key{color:var(--bad)}
+.fb{margin-top:.6rem;font-size:.95rem;border-radius:10px;padding:.6rem .8rem;max-width:var(--measure)}
+.fb.good{background:var(--ok-soft);color:var(--ok)}
+.fb.bad{background:var(--bad-soft);color:var(--bad)}
+.fb strong{font-family:"Bricolage Grotesque",sans-serif}
+.fb em{font-style:normal;color:var(--ink);display:block;margin-top:.2rem}
+.retry{margin-top:1rem}
+
+/* ============================================================
+   8. FOOTER + UTILITIES
+   ============================================================ */
+footer{max-width:1280px;margin:0 auto;padding:2.5rem clamp(.9rem,3vw,1.6rem) 4rem;color:var(--muted);font-size:.92rem}
+.flash{animation:flash 1.4s ease}
+@keyframes flash{0%,100%{background:transparent}20%{background:var(--mark)}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:.6rem;top:.6rem;z-index:99;background:var(--surface);padding:.5rem .8rem;border-radius:8px;border:1px solid var(--accent)}
+.hidden-by-search{display:none !important}
+
+/* ============================================================
+   9. RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .rail{
+    position:fixed;inset:57px 0 auto 0;height:auto;max-height:70vh;z-index:55;
+    background:var(--surface);border-bottom:1px solid var(--line);padding:1rem 1.1rem 1.4rem;
+    display:none;box-shadow:var(--shadow);
+  }
+  .rail.open{display:block}
+  .menubtn{display:inline-flex}
+  .brand span{display:none}
+  .search{flex:1 1 auto;min-width:0}
+}
+@media (max-width:560px){
+  body{font-size:1rem}
+  .brand{display:none}
+  .flipgrid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+@media print{
+  .topbar,.rail,.quiz{display:none}
+  .shell{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<a class="skip ui" href="#main">Skip to content</a>
+
+<!-- ===== Top bar ===== -->
+<header class="topbar">
+  <button class="iconbtn menubtn" id="menuBtn" aria-expanded="false" aria-controls="rail">☰ Topics</button>
+  <div class="brand">Lesson 1 <span>· Counseling &amp; Psychotherapy</span></div>
+  <div class="search">
+    <span class="mag" aria-hidden="true">⌕</span>
+    <input id="q" type="search" placeholder="Search terms — bracketing, informed consent…" autocomplete="off"
+           role="combobox" aria-expanded="false" aria-controls="results" aria-label="Search the reviewer" />
+    <div class="results" id="results" role="listbox"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="Switch colour theme">◐ <span id="themeLabel">Dark</span></button>
+</header>
+
+<div class="shell">
+  <!-- ===== Side rail navigation ===== -->
+  <nav class="rail" id="rail" aria-label="Topics">
+    <p class="label ui">Topics</p>
+    <ol id="navList"></ol>
+    <div class="progwrap">
+      <span id="progText">0 of 0 quiz questions answered</span>
+      <div class="progbar"><i id="progBar"></i></div>
+    </div>
+  </nav>
+
+  <!-- ===== Main ===== -->
+  <main id="main">
+    <div class="hero">
+      <p class="kicker ui">Study reviewer</p>
+      <h1>Introduction to Counseling and Psychotherapy</h1>
+      <p class="sub">Everything from Lesson 1 — definitions, the major counseling models, what makes a counselor effective, the role of values, and the ethics that hold the work together. Flip the cards, open the panels, then test yourself.</p>
+      <div class="meta">
+        <span class="chip ui">Mr. Symon M. Carpiso, RPm, RPsy</span>
+        <span class="chip ui">8 topics</span>
+        <span class="chip ui" id="qCountChip">— practice questions</span>
+      </div>
+      <div class="indexgrid" id="indexGrid"></div>
+    </div>
+
+    <div id="sections"></div>
+  </main>
+</div>
+
+<footer>
+  Reviewer built from the Lesson 1 slides. Sources cited inside follow the deck: Corey et al. (2024), ACA Code of Ethics (2014), Remley &amp; Herlihy (2020), Kocet &amp; Herlihy (2014), Wampold (2001), Norcross &amp; Lambert (2019), Norcross &amp; Cooper (2021), Gold &amp; Hilsenroth (2009), Wise &amp; Barnett (2016), Knapp &amp; VandeCreek (2012).
+</footer>
+
+<script>
+/* ============================================================
+   DATA
+   All lesson content lives here so the page renders from one
+   source of truth — which also makes search and the quiz simple.
+   Block types: lead, p, h3, list, note, compare, acc, flip, steps
+   ============================================================ */
+const SECTIONS = [
+{
+  id:"defining", nav:"Defining the terms", title:"Defining counseling and psychotherapy",
+  blurb:"The two words are often used interchangeably in everyday talk. In practice they differ in depth, length, and focus.",
+  blocks:[
+    {t:"lead",text:"Technically, a <strong>counselor</strong> is an advisor: two people working together to solve a problem. The word is used alongside many kinds of advice-giving, inside and outside mental health."},
+    {t:"h3",text:"Counseling"},
+    {t:"p",text:"In a mental health context, counseling usually means a relatively <strong>brief treatment focused mainly on behavior</strong>. It targets a particular symptom or a problematic situation and offers suggestions and advice for handling it."},
+    {t:"h3",text:"Psychotherapy"},
+    {t:"p",text:"Psychotherapy is generally a <strong>longer-term treatment</strong> aimed at gaining insight into chronic physical and emotional problems. It concentrates on the person's thought processes and how past events may still be producing problems in the present."},
+    {t:"p",text:"Several approaches sit under the heading of psychotherapy, including cognitive behavioral therapy, dialectical behavior therapy, and psychoanalytic psychotherapy."},
+    {t:"compare",left:{h:"Counselor",items:["Short-term solution for present issues","Action and behavior focused","Secondary process","Offers guidance and support"]},
+                  right:{h:"Psychotherapist",items:["Long-term solution for recurring problems","Feeling and experience focused","Primary process","Talk therapy and other therapeutic strategies"]}},
+    {t:"note",h:"Watch the overlap",text:"The distinction is one of emphasis, not a wall. Many practitioners do both, and the same theories inform both."}
+  ],
+  quiz:[
+    {stem:"In mental health usage, counseling is generally described as a treatment that is…",
+     opts:["Relatively brief and focused primarily on behavior","Long-term and focused on unconscious conflict","Reserved for clients under 16","Delivered only in group settings"],ans:0,
+     why:"Counseling typically targets a specific symptom or situation over a shorter span, with suggestions and advice for dealing with it."},
+    {stem:"Which focus belongs to psychotherapy rather than counseling?",
+     opts:["Immediate advice for a present problem","Insight into chronic problems and the influence of past events","Scheduling and basic information","Short-term behavior change only"],ans:1,
+     why:"Psychotherapy leans on the client's thought processes and how past events keep causing present difficulty."},
+    {stem:"A counselor's role is most often summarized as which type of process?",
+     opts:["Primary process","Secondary process","Diagnostic process","Custodial process"],ans:1,
+     why:"In the comparison from the lesson, the counselor works as a secondary process while the psychotherapist works as a primary process."}
+  ]
+},
+{
+  id:"models", nav:"Counseling models", title:"Overview of contemporary counseling models",
+  blurb:"Four families of approaches, their founders, and what each one puts at the center of change.",
+  blocks:[
+    {t:"p",text:"Open a family to see the approaches inside it. Founders and key figures are worth memorizing — they are the most commonly tested details in this topic."},
+    {t:"acc",items:[
+      {q:"Psychodynamic approaches",a:"<p><strong>Psychoanalytic therapy</strong> — Founder: Sigmund Freud. A theory of personality development, a philosophy of human nature, and a method of therapy centered on unconscious factors that motivate behavior. Events of the first six years of life are treated as determinants of later personality.</p><p><strong>Adlerian therapy</strong> — Founder: Alfred Adler; key figure: Rudolf Dreikurs, who popularized it in the United States. A growth model stressing responsibility, creating one's own destiny, and finding meaning and goals for a purposeful life. Its concepts appear in most other current therapies.</p>"},
+      {q:"Experiential and relationship-oriented therapies",a:"<p><strong>Existential therapy</strong> — Key figures: Viktor Frankl, Rollo May, Irvin Yalom. A reaction against therapy as a system of well-defined techniques; it builds on the basic conditions of human existence such as choice, freedom and responsibility, and self-determination, and on the quality of the person-to-person relationship.</p><p><strong>Person-centered therapy</strong> — Founder: Carl Rogers; key figure: Natalie Rogers. Developed in the 1940s as a nondirective reaction against psychoanalysis. Based on a subjective view of human experiencing, it places faith in and gives responsibility to the client.</p><p><strong>Gestalt therapy</strong> — Founders: Fritz and Laura Perls; key figures: Miriam and Erving Polster. An experiential therapy stressing awareness and integration that grew as a reaction against analytic therapy; it integrates body and mind and emphasizes the therapeutic relationship.</p>"},
+      {q:"Cognitive behavioral approaches",a:"<p><strong>Behavior therapy</strong> — Key figures: B. F. Skinner, Albert Bandura, Marsha Linehan. Applies principles of learning to specific behavioral problems, with methods under continual experimentation and refinement. Mindfulness and acceptance-based approaches are growing quickly here.</p><p><strong>Cognitive behavior therapy</strong> — Founders: Albert Ellis and A. T. Beck. Ellis founded rational emotive behavior therapy, a highly didactic and action-oriented model; Beck founded cognitive therapy, giving thinking the primary role in influencing behavior. Judith Beck continues developing CBT, Christine Padesky developed strengths-based CBT, and Donald Meichenbaum contributed work on resilience in coping with trauma.</p><p><strong>Choice theory / Reality therapy</strong> — Founder: William Glasser; key figure: Robert Wubbolding. A short-term approach based on choice theory, focused on the client assuming responsibility in the present and learning more effective ways of meeting their needs.</p>"},
+      {q:"Systems and postmodern approaches",a:"<p><strong>Feminist therapy</strong> — Grew from the work of many women, among them Jean Baker Miller, Carolyn Zerbe Enns, Lillian Comas-Diaz, Thelma Bryant-Davis, and Laura Brown. A central concern is the psychological oppression of women; it explores identity development, self-concept, goals and aspirations, and emotional well-being within sociopolitical constraints.</p><p><strong>Postmodern approaches</strong> — Steve de Shazer and Insoo Kim Berg cofounded solution-focused brief therapy; Michael White and David Epston are the major figures in narrative therapy. Social constructionism, solution-focused brief therapy, narrative therapy, and motivational interviewing all assume there is no single truth and that reality is socially constructed. Clients are the experts on their own lives.</p><p><strong>Family systems therapy</strong> — Pioneers include Murray Bowen and Virginia Satir. A systemic approach assuming the key to changing the individual is understanding and working with the family.</p>"}
+    ]},
+    {t:"note",h:"Memory hook",text:"Freud and Adler look backward and inward; Frankl, Rogers and Perls look at experience and relationship; Skinner, Ellis and Beck look at learning and thinking; feminist, postmodern and family approaches look at context and system."}
+  ],
+  quiz:[
+    {stem:"Who founded Adlerian therapy, and who is credited with popularizing it in the United States?",
+     opts:["Alfred Adler; Rudolf Dreikurs","Carl Jung; Rollo May","Alfred Adler; Albert Ellis","Rudolf Dreikurs; Alfred Adler"],ans:0,
+     why:"Adler founded the approach; Dreikurs, following Adler, popularized it in the U.S."},
+    {stem:"Person-centered therapy was developed in the 1940s primarily as a reaction against…",
+     opts:["Behaviorism","Psychoanalysis","Family systems work","Reality therapy"],ans:1,
+     why:"Carl Rogers developed it as a nondirective reaction against psychoanalysis, giving responsibility to the client."},
+    {stem:"Which pairing is correct?",
+     opts:["Gestalt therapy — Fritz and Laura Perls","Reality therapy — Insoo Kim Berg","Narrative therapy — William Glasser","Existential therapy — B. F. Skinner"],ans:0,
+     why:"The Perls founded Gestalt therapy; Miriam and Erving Polster are key figures."},
+    {stem:"Solution-focused brief therapy, narrative therapy, and motivational interviewing share which assumption?",
+     opts:["Behavior is shaped mainly in the first six years","There is no single truth; reality is socially constructed","Symptoms are best treated with long-term analysis","The family is always the unit of treatment"],ans:1,
+     why:"These postmodern approaches treat reality as socially constructed and clients as the experts on their own lives."}
+  ]
+},
+{
+  id:"counselor", nav:"The counselor as therapist", title:"The counselor as therapist",
+  blurb:"Counseling is an intimate, person-to-person learning process — and the counselor's own person is part of the method.",
+  blocks:[
+    {t:"lead",text:"The counselor's authenticity is central to client growth."},
+    {t:"h3",text:"Authenticity matters"},
+    {t:"list",items:["Hiding behind roles or relying only on techniques limits effectiveness.","Genuineness and appropriate self-disclosure foster client honesty and trust."]},
+    {t:"h3",text:"Therapist as a person"},
+    {t:"list",items:["Research shows the therapist's personality and character strongly influence outcomes.","Clients value the counselor's person more than specific techniques."]},
+    {t:"h3",text:"The therapeutic relationship"},
+    {t:"list",items:["Personal and interpersonal factors — alliance, empathy, client agency — drive change.","Techniques are useful only when they support the relationship."]},
+    {t:"h3",text:"Evidence from research"},
+    {t:"list",items:["<strong>Wampold (2001):</strong> relationship factors outweigh techniques in effectiveness.","<strong>Norcross &amp; Lambert (2019):</strong> effective therapists balance methods with strong relationships.","<strong>Norcross &amp; Cooper (2021):</strong> therapists must respect the client's culture, values, and preferences."]}
+  ],
+  quiz:[
+    {stem:"According to Wampold (2001), what contributes more to effectiveness?",
+     opts:["Specific techniques","Relationship factors","Length of treatment","Theoretical purity"],ans:1,
+     why:"Relationship factors outweighed techniques; techniques matter when they support the relationship."},
+    {stem:"What does the lesson say clients value most?",
+     opts:["The counselor's credentials","The counselor's person, more than specific techniques","The cost of sessions","The number of techniques used"],ans:1,
+     why:"The therapist's personality and character strongly influence outcomes, and clients respond to the person."},
+    {stem:"Norcross and Cooper (2021) emphasize that therapists must…",
+     opts:["Apply one model consistently to all clients","Respect the client's culture, values, and preferences","Avoid self-disclosure entirely","Limit therapy to short-term work"],ans:1,
+     why:"Respecting culture, values, and preferences is part of adapting the relationship to the client."}
+  ]
+},
+{
+  id:"traits", nav:"Effective counselors", title:"Personal characteristics of effective counselors",
+  blurb:"Thirteen qualities from the lesson. Tap a card to reveal what each one means.",
+  blocks:[
+    {t:"p",text:"These are not a checklist to pass but a direction to keep growing in. Tap any card to flip it."},
+    {t:"flip",items:[
+      {f:"They have an identity",b:"They know who they are, what they can become, what they want from life, and what is essential."},
+      {f:"They respect and appreciate themselves",b:"They can give and receive help and love from their own sense of self-worth, and let others feel powerful with them."},
+      {f:"They are open to change",b:"They are willing to leave the security of the known, decide how they want to change, and work toward becoming that person."},
+      {f:"They make life-oriented choices",b:"They are aware of early decisions about self, others, and the world, are not victims of them, and will revise them if needed."},
+      {f:"They are authentic, sincere, and honest",b:"They do not hide behind rigid roles or facades; who they are personally and professionally is congruent."},
+      {f:"They have a sense of humor",b:"They can put life events in perspective and have not forgotten how to laugh, especially at their own contradictions."},
+      {f:"They can admit mistakes",b:"They do not dismiss their errors lightly, yet they do not choose to dwell on misery either."},
+      {f:"They live in the present",b:"Not riveted to the past or fixated on the future; they can be present with others in the now."},
+      {f:"They appreciate the influence of culture",b:"Aware of how their own culture affects them and respectful of diversity in social class, race, sexual orientation, and gender."},
+      {f:"They care about the welfare of others",b:"Concern grounded in respect, care, trust, and a real valuing of other people."},
+      {f:"They have good interpersonal skills",b:"They can enter another's world without getting lost in it, and build collaborative relationships toward shared goals."},
+      {f:"They find meaning in their work",b:"Deeply involved in the work and able to accept its rewards without becoming a slave to it."},
+      {f:"They are passionate and keep healthy boundaries",b:"Courage to pursue their dreams, plus the ability to be fully present for clients without carrying their problems into leisure hours. They know how to say no."}
+    ]}
+  ],
+  quiz:[
+    {stem:"\"They exhibit willingness and courage to leave the security of the known.\" Which characteristic is this?",
+     opts:["Having an identity","Being open to change","Having a sense of humor","Living in the present"],ans:1,
+     why:"Openness to change includes deciding how one wants to change and working toward it."},
+    {stem:"Maintaining healthy boundaries, as described in the lesson, means…",
+     opts:["Never disclosing anything personal","Being fully present for clients without carrying their problems into leisure hours","Refusing difficult cases","Keeping sessions strictly under an hour"],ans:1,
+     why:"It includes knowing how to say no, which keeps balance in the counselor's own life."},
+    {stem:"Effective therapists are described as making choices that are life oriented. This means they…",
+     opts:["Avoid making early decisions","Are not victims of early decisions and will revise them if necessary","Live mainly for future goals","Refuse to examine the past"],ans:1,
+     why:"They are aware of early decisions about self, others, and the world, and are committed to living fully rather than merely existing."}
+  ]
+},
+{
+  id:"care", nav:"Care for the counselor", title:"Care for the counselor",
+  blurb:"Why personal therapy is treated as part of professional preparation, not a sign of weakness.",
+  blocks:[
+    {t:"list",items:[
+      "Counselors benefit from experiencing therapy as clients (Norcross, 2005; Orlinsky et al., 2005).",
+      "The vast majority of mental health professionals undergo personal therapy, often more than once.",
+      "Benefits include self-awareness, self-acceptance, self-care, symptom reduction, and personal growth."
+    ]},
+    {t:"h3",text:"How personal therapy helps professionally"},
+    {t:"acc",items:[
+      {q:"Training model",a:"<p>Counselors observe and learn from experienced therapists by sitting in the client's chair.</p>"},
+      {q:"Skill enhancement",a:"<p>It improves interpersonal and therapeutic skills, and deepens appreciation of warmth, empathy, and the relationship itself.</p>"},
+      {q:"Stress management",a:"<p>It helps counselors cope with the demands of clinical work and gives insight into what it feels like to be a client.</p>"},
+      {q:"Handling transference and countertransference",a:"<p>It builds patience and tolerance, and prevents countertransference from harming clients.</p>"}
+    ]},
+    {t:"h3",text:"Personal blocks"},
+    {t:"list",items:[
+      "Counselors face their own struggles — anger, depression, intimacy, death.",
+      "They need not be conflict-free, but must be aware of personal issues and how these affect the work.",
+      "Early career experiences often surface the need for therapy to understand oneself and clients better."
+    ]},
+    {t:"note",h:"The core idea",text:"Counselors can only take clients as far as they themselves have gone. Personal therapy deepens compassion and patience, and builds appreciation for the courage clients show in self-exploration."},
+    {t:"h3",text:"Research evidence"},
+    {t:"list",items:[
+      "Graduate clinicians with personal therapy show greater confidence and better agreement with clients on the goals and tasks of treatment (Gold &amp; Hilsenroth, 2009).",
+      "Personal therapy guards against arrogance and supports humility.",
+      "Periodic personal therapy is an ideal self-care strategy (Wise &amp; Barnett, 2016), strengthening well-being and competence across a career."
+    ]}
+  ],
+  quiz:[
+    {stem:"Gold and Hilsenroth (2009) found that graduate clinicians who had personal therapy showed…",
+     opts:["Greater confidence and better agreement with clients on treatment goals and tasks","Shorter treatment durations","Fewer ethical complaints","Higher caseloads"],ans:0,
+     why:"Confidence and stronger alignment with clients on goals and tasks were the reported gains."},
+    {stem:"Wise and Barnett (2016) describe periodic personal therapy as…",
+     opts:["A last resort after burnout","An ideal self-care strategy across a career","A requirement for licensure","An alternative to supervision"],ans:1,
+     why:"It is framed as ongoing self-care that strengthens well-being and competence."},
+    {stem:"Which statement matches the lesson's view of personal blocks?",
+     opts:["Counselors must be conflict-free before practicing","Counselors need not be conflict-free but must be aware of personal issues and their impact","Personal struggles disqualify a counselor","Personal issues rarely affect clinical work"],ans:1,
+     why:"Awareness is the requirement, not the absence of personal struggle."}
+  ]
+},
+{
+  id:"values", nav:"The role of values", title:"The role of values in counseling",
+  blurb:"Values are always in the room. The ethical question is what the counselor does with them.",
+  blocks:[
+    {t:"list",items:[
+      "Values shape personal and professional actions.",
+      "They affect assessments, goals, interventions, the topics explored, evaluation, and how client issues are interpreted."
+    ]},
+    {t:"h3",text:"The counselor's role"},
+    {t:"list",items:[
+      "Total objectivity is impossible, but counselors strive to avoid imposing values.",
+      "Create a safe, accepting space for clients to explore their own values.",
+      "Help clients clarify goals, make informed choices, and take responsibility.",
+      "Respect the client's right to hold values different from yours, especially across cultures."
+    ]},
+    {t:"acc",items:[
+      {q:"Bracketing",a:"<p>Managing personal values so they do not interfere in counseling. Counselors set aside their beliefs in order to work effectively with diverse clients (Kocet &amp; Herlihy, 2014), avoiding further discrimination by honoring client worldviews.</p>"},
+      {q:"Value imposition",a:"<p>Occurs when counselors try to define a client's values, beliefs, or behaviors. It can be direct or indirect, intentional or unintentional. The <strong>ACA Code of Ethics (2014)</strong> states that counselors must not impose personal values and must respect diversity (Standard A.4.b).</p>"},
+      {q:"Ethical practice around values",a:"<p>Seek training to prevent imposing values, and explore personal values through personal therapy or self-reflection. When value conflicts arise, seek supervision or consultation. <strong>Referral is ethical only when you lack the competence or skills</strong> — not because you disagree with the client's values.</p>"},
+      {q:"Client-centered focus",a:"<p>Clients are vulnerable; judgment or rejection causes harm. Counseling is about the client's values and needs, not the counselor's. The task is to help clients clarify and apply their own values to the problems they face.</p>"}
+    ]}
+  ],
+  quiz:[
+    {stem:"Bracketing refers to…",
+     opts:["Grouping clients by presenting problem","Managing personal values so they do not interfere in counseling","Recording sessions for supervision","Limiting sessions to a fixed number"],ans:1,
+     why:"Kocet and Herlihy (2014) describe counselors setting aside beliefs to work effectively with diverse clients."},
+    {stem:"Under the ACA Code of Ethics (2014), Standard A.4.b, counselors must…",
+     opts:["Share their values openly to build trust","Refer clients whose values differ from theirs","Avoid imposing personal values and respect diversity","Document their values in the client record"],ans:2,
+     why:"Value imposition is prohibited, whether direct or indirect, intentional or unintentional."},
+    {stem:"When is referral due to a value conflict considered ethical?",
+     opts:["Whenever the counselor disagrees with the client","Only when the counselor lacks the competence or skills needed","Whenever the client requests a different counselor","Never, under any circumstance"],ans:1,
+     why:"Lack of competence justifies referral; value disagreement alone does not."}
+  ]
+},
+{
+  id:"ethics", nav:"Ethics in practice", title:"Ethical considerations in counseling practice",
+  blurb:"From minimum standards to positive ethics — plus consent, confidentiality, and boundaries.",
+  blocks:[
+    {t:"h3",text:"Three levels of ethical functioning"},
+    {t:"list",items:[
+      "<strong>Mandatory ethics</strong> — functioning at the minimum level of professional practice.",
+      "<strong>Aspirational ethics</strong> — focusing on what is in the best interests of clients.",
+      "<strong>Positive ethics</strong> — doing one's best for clients rather than simply meeting minimum ethical and legal standards to stay out of trouble (Knapp &amp; VandeCreek, 2012)."
+    ]},
+    {t:"h3",text:"Clients come first"},
+    {t:"p",text:"Counselors must stay aware of their own personal needs, unfinished business, potential personal problems, and countertransference. The guiding question through every session: <strong>whose needs are being met — my client's or my own?</strong>"},
+    {t:"h3",text:"How to make ethical decisions (Corey et al., 2024)"},
+    {t:"steps",items:[
+      {h:"Identify the problem or dilemma",d:"Gather information that clarifies its nature, and decide whether it is mainly ethical, legal, professional, clinical, or moral."},
+      {h:"Identify the potential issues",d:"Evaluate the rights, responsibilities, and welfare of everyone involved."},
+      {h:"Review the relevant ethics codes",d:"Consider whether your own values and ethics are consistent with, or in conflict with, the guidelines."},
+      {h:"Consider applicable laws and regulations",d:"Determine how they bear on the dilemma."},
+      {h:"Seek consultation from more than one source",d:"Obtain different perspectives and document the suggestions you received in the client's record."},
+      {h:"Brainstorm possible courses of action",d:"Keep discussing options with other professionals, include the client in the process, and document the discussion."},
+      {h:"Enumerate the consequences",d:"Reflect on the implications of each course of action for your client."},
+      {h:"Decide, act, and follow up",d:"Choose the best available course of action, evaluate the outcome, decide whether further action is needed, and document your reasons and evaluation measures."}
+    ]},
+    {t:"h3",text:"Informed consent"},
+    {t:"p",text:"Whatever your theoretical framework, informed consent is an ethical and legal requirement and an integral part of the therapeutic process. It forms the foundation of the therapeutic alliance, ensuring clients are informed about therapy, can make autonomous decisions, and become active partners in the work."},
+    {t:"acc",items:[
+      {q:"Key elements of informed consent",a:"<ul><li>Goals of counseling</li><li>Responsibilities of counselor and client</li><li>Confidentiality limits and exceptions</li><li>Legal and ethical parameters</li><li>Counselor's qualifications and background</li><li>Fees and services provided</li><li>Expected length of therapy</li><li>Benefits, risks, and supervision or consultation possibilities</li></ul>"},
+      {q:"Technology and privacy",a:"<p>Discuss the risks in email, texts, and workplace or home communication. A common safeguard is to limit technology use to scheduling and basic information.</p>"},
+      {q:"An ongoing process",a:"<p>Consent begins at the first session and continues throughout therapy. Balance too much information against too little, and make sure clients know the limits of confidentiality <em>before</em> they disclose — this matters especially with minors and sensitive topics.</p>"},
+      {q:"Format",a:"<p>Consent can be written, oral, or both. Oral consent must be documented in the clinical record. Written information protects both counselor and client and gives the client something to review and ask questions about.</p>"}
+    ]},
+    {t:"h3",text:"Confidentiality — exceptions (Remley &amp; Herlihy, 2020)"},
+    {t:"list",items:[
+      "When the therapist believes a client under the age of 16 is the victim of incest, rape, child abuse, or another crime.",
+      "When the therapist determines that the client needs hospitalization.",
+      "When information is made an issue in a court action.",
+      "When clients request that their records be released to them or to a third party."
+    ]},
+    {t:"h3",text:"Multiple relationships"},
+    {t:"p",text:"<strong>Dual or multiple relationships</strong>, sexual or nonsexual, occur when counselors take on two or more roles with a client, at the same time or one after another. The ACA (2014) uses the term <strong>nonprofessional relationships</strong>."},
+    {t:"acc",items:[
+      {q:"What makes multiple relationships problematic?",a:"<ul><li>They are pervasive</li><li>Difficult to recognize</li><li>Unavoidable at times</li><li>Potentially harmful, though not necessarily always harmful</li><li>They can also be beneficial</li><li>Experts give conflicting advice about them</li></ul>"},
+      {q:"Ways of minimizing harm",a:"<p>Set healthy boundaries early, with informed consent from the beginning and throughout. Involve clients in ongoing discussion and decision-making, and document it — including what you expect of them and what they can expect of you. Consult fellow professionals to maintain objectivity and catch unanticipated difficulties; you do not need to decide alone. When risk of harm is high, work under supervision and document it. Self-monitor throughout: whose needs are being met, and what is motivating you?</p>"},
+      {q:"Boundary crossing",a:"<p>A <strong>boundary crossing</strong> is a departure from commonly accepted practice that could potentially benefit a client. Attending a client's wedding, for example, extends a boundary but may be beneficial for that client.</p>"}
+    ]},
+    {t:"h3",text:"How to be an ethical counselor"},
+    {t:"list",items:[
+      "Knowing the code of ethics is essential, but the code does not make decisions for you.",
+      "Applying ethical guidelines takes sensitivity and judgment; answers are not always clear-cut.",
+      "Counselors take responsibility for acting in the best interests of clients.",
+      "Ethical questions evolve, and require continuous reexamination throughout a career.",
+      "Formal and informal discussions — training, supervision, peer consultation — help in handling dilemmas.",
+      "Becoming an ethical practitioner is not a destination but a lifelong journey."
+    ]}
+  ],
+  quiz:[
+    {stem:"Which term describes practitioners who aim to do their best for clients rather than just meet minimum standards?",
+     opts:["Mandatory ethics","Positive ethics","Procedural ethics","Defensive ethics"],ans:1,
+     why:"Knapp and VandeCreek (2012) describe positive ethics as going beyond staying out of trouble."},
+    {stem:"According to Corey et al. (2024), what is the FIRST step in ethical decision-making?",
+     opts:["Consult the ethics codes","Identify the problem or dilemma","Seek supervision","Brainstorm courses of action"],ans:1,
+     why:"You gather information first to see whether the problem is ethical, legal, professional, clinical, or moral."},
+    {stem:"If informed consent is obtained orally, what must happen?",
+     opts:["Nothing further is required","It must be documented in the clinical record","A witness must sign","It must be repeated every session"],ans:1,
+     why:"Consent may be written, oral, or both, but oral consent must be documented."},
+    {stem:"Which is listed as an exception to confidentiality (Remley &amp; Herlihy, 2020)?",
+     opts:["When the client misses three sessions","When the therapist determines the client needs hospitalization","When the client disagrees with the treatment plan","When the counselor changes agencies"],ans:1,
+     why:"Hospitalization, court actions, records requests, and suspected abuse of a client under 16 are the listed exceptions."},
+    {stem:"A boundary crossing is best described as…",
+     opts:["Any sexual contact with a client","A departure from commonly accepted practice that could potentially benefit a client","A violation always requiring referral","A failure to obtain informed consent"],ans:1,
+     why:"Attending a client's wedding is the lesson's example — an extended boundary that may benefit the client."},
+    {stem:"When a multiple relationship carries a high risk of harm, the lesson advises counselors to…",
+     opts:["Decide privately and quickly","Work under supervision and document it","End therapy immediately","Ask the client to sign a waiver"],ans:1,
+     why:"Supervision, consultation, documentation, and self-monitoring are the recommended safeguards."}
+  ]
+},
+{
+  id:"assignment", nav:"Assignment", title:"Assignment",
+  blurb:"What to prepare before the next meeting.",
+  blocks:[
+    {t:"list",ordered:true,items:[
+      "Identify and briefly explain the challenges of a novice therapist.",
+      "Handwritten, on yellow pad paper, limited to one page (back-to-back is allowed).",
+      "Have a soft copy of the PAP Code of Ethics (2022)."
+    ]},
+    {t:"note",h:"Before you close this page",text:"Run through the quizzes once more from the top. The questions you missed are the pages of the deck worth rereading."}
+  ],
+  quiz:[]
+}
+];
+
+/* ============================================================
+   RENDERING
+   ============================================================ */
+const el = (tag, cls, html) => { const n=document.createElement(tag); if(cls) n.className=cls; if(html!=null) n.innerHTML=html; return n; };
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const secWrap = document.getElementById("sections");
+const navList = document.getElementById("navList");
+const indexGrid = document.getElementById("indexGrid");
+let totalQuestions = 0;
+
+/** Build one content block into DOM. */
+function renderBlock(b){
+  switch(b.t){
+    case "lead": return el("p","lead",b.text);
+    case "p":    return el("p",null,b.text);
+    case "h3":   return el("h3",null,b.text);
+    case "list": {
+      const list = el(b.ordered ? "ol" : "ul");
+      b.items.forEach(i => list.appendChild(el("li",null,i)));
+      return list;
+    }
+    case "note": {
+      const n = el("div","note");
+      n.appendChild(el("h4",null,b.h));
+      n.appendChild(el("p",null,b.text));
+      return n;
+    }
+    case "compare": {
+      const wrap = el("div","compare");
+      [b.left,b.right].forEach(c => {
+        const col = el("div","col");
+        col.appendChild(el("h4",null,c.h));
+        const ul = el("ul");
+        c.items.forEach(i => ul.appendChild(el("li",null,i)));
+        col.appendChild(ul);
+        wrap.appendChild(col);
+      });
+      return wrap;
+    }
+    case "acc": {
+      const wrap = el("div","acc");
+      b.items.forEach(item => {
+        const d = el("details");
+        d.innerHTML = "<summary>" + item.q + "<span class='plus' aria-hidden='true'>+</span></summary>" +
+                      "<div class='body'>" + item.a + "</div>";
+        wrap.appendChild(d);
+      });
+      return wrap;
+    }
+    case "flip": {
+      const grid = el("div","flipgrid");
+      b.items.forEach(item => {
+        const card = el("button","flip");
+        card.type = "button";
+        card.setAttribute("aria-pressed","false");
+        card.innerHTML =
+          "<span class='flip-inner'>" +
+            "<span class='face front'><span class='t'>" + item.f + "</span><span class='hint'>Tap to reveal</span></span>" +
+            "<span class='face back'><span class='d'>" + item.b + "</span><span class='hint'>Tap to flip back</span></span>" +
+          "</span>";
+        card.addEventListener("click", () => {
+          const on = card.classList.toggle("is-flipped");
+          card.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        grid.appendChild(card);
+      });
+      return grid;
+    }
+    case "steps": {
+      const ol = el("ol","steps");
+      b.items.forEach(s => {
+        const li = el("li");
+        li.innerHTML = "<div><strong>" + s.h + "</strong><span>" + s.d + "</span></div>";
+        ol.appendChild(li);
+      });
+      return ol;
+    }
+  }
+  return el("div");
+}
+
+/** Build the quiz for a section, with immediate per-question feedback. */
+function renderQuiz(sec){
+  if(!sec.quiz.length) return null;
+  const box = el("section","quiz");
+  box.setAttribute("aria-label","Practice quiz: " + sec.nav);
+
+  const head = el("div","qhead");
+  head.appendChild(el("h3",null,"Check yourself"));
+  const score = el("span","score ui","0 / " + sec.quiz.length + " correct");
+  head.appendChild(score);
+  box.appendChild(head);
+
+  let correct = 0, answered = 0;
+
+  sec.quiz.forEach((q,qi) => {
+    const qEl = el("div","q");
+    qEl.appendChild(el("p","stem","<b>Q" + (qi+1) + "</b>" + q.stem));
+    const opts = el("div","opts");
+    const buttons = [];
+
+    q.opts.forEach((text,oi) => {
+      const btn = el("button","opt");
+      btn.type = "button";
+      btn.innerHTML = "<span class='key'>" + "ABCD"[oi] + "</span><span>" + text + "</span>";
+      btn.addEventListener("click", () => {
+        if(btn.disabled) return;
+        buttons.forEach(b => b.disabled = true);
+        const right = oi === q.ans;
+        btn.classList.add(right ? "correct" : "wrong");
+        if(!right) buttons[q.ans].classList.add("correct");
+
+        const fb = el("div","fb " + (right ? "good" : "bad"));
+        fb.innerHTML = "<strong>" + (right ? "Correct." : "Not quite.") + "</strong><em>" + q.why + "</em>";
+        qEl.appendChild(fb);
+
+        answered++;
+        if(right) correct++;
+        score.textContent = correct + " / " + sec.quiz.length + " correct";
+        bumpProgress();
+      });
+      buttons.push(btn);
+      opts.appendChild(btn);
+    });
+
+    qEl.appendChild(opts);
+    box.appendChild(qEl);
+  });
+
+  const retry = el("button","iconbtn retry","↺ Reset this quiz");
+  retry.type = "button";
+  retry.addEventListener("click", () => {
+    answeredTotal -= answered;
+    correct = 0; answered = 0;
+    score.textContent = "0 / " + sec.quiz.length + " correct";
+    box.querySelectorAll(".fb").forEach(n => n.remove());
+    box.querySelectorAll(".opt").forEach(b => { b.disabled = false; b.classList.remove("correct","wrong"); });
+    updateProgressUI();
+  });
+  box.appendChild(retry);
+  return box;
+}
+
+/* Progress across all quizzes */
+let answeredTotal = 0;
+function bumpProgress(){ answeredTotal++; updateProgressUI(); }
+function updateProgressUI(){
+  const pct = totalQuestions ? Math.round((answeredTotal/totalQuestions)*100) : 0;
+  document.getElementById("progBar").style.width = pct + "%";
+  document.getElementById("progText").textContent = answeredTotal + " of " + totalQuestions + " quiz questions answered";
+}
+
+/* Build every section, the rail, and the hero index */
+SECTIONS.forEach(sec => {
+  totalQuestions += sec.quiz.length;
+
+  const s = el("section","topic");
+  s.id = sec.id;
+  s.appendChild(el("h2",null,sec.title));
+  s.appendChild(el("p","sec-intro",sec.blurb));
+  sec.blocks.forEach(b => s.appendChild(renderBlock(b)));
+  const quiz = renderQuiz(sec);
+  if(quiz) s.appendChild(quiz);
+  secWrap.appendChild(s);
+
+  const li = el("li");
+  li.innerHTML = "<a href='#" + sec.id + "'>" + sec.nav + "</a>";
+  navList.appendChild(li);
+
+  const card = el("a");
+  card.href = "#" + sec.id;
+  card.innerHTML = "<strong>" + sec.nav + "</strong><em>" + (sec.quiz.length ? sec.quiz.length + " questions" : "To prepare") + "</em>";
+  indexGrid.appendChild(card);
+});
+document.getElementById("qCountChip").textContent = totalQuestions + " practice questions";
+updateProgressUI();
+
+/* ============================================================
+   THEME TOGGLE (remembered per browser, storage may be blocked)
+   ============================================================ */
+const root = document.documentElement;
+const themeBtn = document.getElementById("themeBtn");
+const themeLabel = document.getElementById("themeLabel");
+
+function systemDark(){ return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches; }
+function applyTheme(mode){
+  root.setAttribute("data-theme", mode);
+  themeLabel.textContent = mode === "dark" ? "Light" : "Dark";
+  try{ localStorage.setItem("cp-theme", mode); }catch(e){}
+}
+try{
+  const saved = localStorage.getItem("cp-theme");
+  applyTheme(saved || (systemDark() ? "dark" : "light"));
+}catch(e){
+  applyTheme(systemDark() ? "dark" : "light");
+}
+themeBtn.addEventListener("click", () =>
+  applyTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark")
+);
+
+/* ============================================================
+   SCROLLSPY — highlight the topic you are reading
+   ============================================================ */
+const navLinks = [...navList.querySelectorAll("a")];
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id));
+    }
+  });
+}, { rootMargin:"-25% 0px -65% 0px", threshold:0 });
+SECTIONS.forEach(s => observer.observe(document.getElementById(s.id)));
+
+/* ============================================================
+   MOBILE MENU
+   ============================================================ */
+const rail = document.getElementById("rail");
+const menuBtn = document.getElementById("menuBtn");
+menuBtn.addEventListener("click", () => {
+  const open = rail.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+});
+navList.addEventListener("click", e => {
+  if(e.target.tagName === "A"){ rail.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); }
+});
+
+/* ============================================================
+   SEARCH
+   Indexes every paragraph, list item, card face and accordion
+   panel, then highlights matches in place and offers jump links.
+   ============================================================ */
+const searchable = [...secWrap.querySelectorAll("p, li, .face .t, .face .d, .acc summary, .steps strong, .steps span, .compare h4, h3")]
+  .filter(n => !n.closest(".quiz"))          // quizzes stay out of search so answers are not spoiled
+  .map(node => ({ node, text:node.textContent.trim(), section: node.closest(".topic") }));
+
+const input = document.getElementById("q");
+const results = document.getElementById("results");
+
+function clearHighlights(){
+  secWrap.querySelectorAll("mark[data-s]").forEach(m => {
+    const parent = m.parentNode;
+    parent.replaceChild(document.createTextNode(m.textContent), m);
+    parent.normalize();
+  });
+}
+
+/** Wrap every case-insensitive match inside an element's text nodes. */
+function highlight(node, term){
+  const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+  const targets = [];
+  while(walker.nextNode()){
+    if(walker.currentNode.nodeValue.toLowerCase().includes(term)) targets.push(walker.currentNode);
+  }
+  targets.forEach(tn => {
+    const frag = document.createDocumentFragment();
+    let rest = tn.nodeValue, idx;
+    while((idx = rest.toLowerCase().indexOf(term)) > -1){
+      if(idx) frag.appendChild(document.createTextNode(rest.slice(0,idx)));
+      const m = document.createElement("mark");
+      m.setAttribute("data-s","1");
+      m.textContent = rest.slice(idx, idx + term.length);
+      frag.appendChild(m);
+      rest = rest.slice(idx + term.length);
+    }
+    if(rest) frag.appendChild(document.createTextNode(rest));
+    tn.parentNode.replaceChild(frag, tn);
+  });
+}
+
+function snippet(text, term){
+  const i = text.toLowerCase().indexOf(term);
+  const start = Math.max(0, i - 35);
+  return (start ? "…" : "") + text.slice(start, i + term.length + 60).trim() + (text.length > i + term.length + 60 ? "…" : "");
+}
+
+let searchTimer;
+input.addEventListener("input", () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(runSearch, 120);
+});
+
+function runSearch(){
+  const term = input.value.trim().toLowerCase();
+  clearHighlights();
+  results.innerHTML = "";
+  if(term.length < 2){
+    results.classList.remove("open");
+    input.setAttribute("aria-expanded","false");
+    return;
+  }
+
+  const hits = searchable.filter(item => item.text.toLowerCase().includes(term));
+  hits.forEach(h => highlight(h.node, term));
+
+  if(!hits.length){
+    results.innerHTML = "<div class='empty'>No match for “" + esc(input.value) + "”. Try a shorter term, like “consent” or “values”.</div>";
+  }else{
+    hits.slice(0,8).forEach(h => {
+      const sectionTitle = h.section ? h.section.querySelector("h2").textContent : "";
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.innerHTML = "<span class='r-sec'>" + esc(sectionTitle) + "</span><span class='r-txt'>" + esc(snippet(h.text, term)) + "</span>";
+      btn.addEventListener("click", () => jumpTo(h.node));
+      results.appendChild(btn);
+    });
+    if(hits.length > 8){
+      const more = document.createElement("div");
+      more.className = "empty";
+      more.textContent = hits.length + " matches found — all of them are highlighted on the page.";
+      results.appendChild(more);
+    }
+  }
+  results.classList.add("open");
+  input.setAttribute("aria-expanded","true");
+}
+
+/** Scroll to a match, opening any accordion or flip card that hides it. */
+function jumpTo(node){
+  const details = node.closest("details");
+  if(details) details.open = true;
+  const flip = node.closest(".flip");
+  if(flip && node.closest(".back")){ flip.classList.add("is-flipped"); flip.setAttribute("aria-pressed","true"); }
+  results.classList.remove("open");
+  input.setAttribute("aria-expanded","false");
+  const target = flip || details || node;
+  target.scrollIntoView({behavior:"smooth", block:"center"});
+  target.classList.add("flash");
+  setTimeout(() => target.classList.remove("flash"), 1500);
+}
+
+/* Close the results panel on outside click or Escape */
+document.addEventListener("click", e => {
+  if(!e.target.closest(".search")) { results.classList.remove("open"); input.setAttribute("aria-expanded","false"); }
+});
+input.addEventListener("keydown", e => {
+  if(e.key === "Escape"){ input.value=""; runSearch(); input.blur(); }
+  if(e.key === "ArrowDown"){ const first = results.querySelector("button"); if(first){ e.preventDefault(); first.focus(); } }
+});
+
+/* Keyboard shortcut: "/" focuses search */
+document.addEventListener("keydown", e => {
+  if(e.key === "/" && document.activeElement !== input && !/input|textarea/i.test(document.activeElement.tagName)){
+    e.preventDefault(); input.focus();
+  }
+});
+</script>
+</body>
+</html>
