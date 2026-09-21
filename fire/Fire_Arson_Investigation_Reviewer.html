@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔥 Fire Technology & Arson Investigation — Reviewer</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+:root{
+  --bg:#0c0d10;--surface:#13151c;--surface2:#1a1d28;--border:#252840;
+  --fire1:#ff4500;--fire2:#ff7700;--fire3:#ffaa00;--fire4:#ffe066;
+  --text:#eef0f8;--muted:#7b82a0;--green:#34d399;--blue:#60a5fa;
+  --r:14px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.65}
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(12,13,16,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;gap:.4rem;height:54px;padding:0 1.2rem;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.brand{font-family:'Space Mono',monospace;font-size:.75rem;color:var(--fire2);white-space:nowrap;margin-right:.5rem;letter-spacing:.06em}
+nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.78rem;font-weight:500;padding:.3rem .7rem;border-radius:20px;border:1px solid transparent;transition:all .18s;flex-shrink:0}
+nav a:hover{color:var(--text);border-color:var(--border);background:var(--surface2)}
+nav a.active{color:var(--fire2);background:rgba(255,119,0,.1);border-color:rgba(255,119,0,.35)}
+
+/* SEARCH */
+.search-wrap{max-width:1100px;margin:0 auto;padding:1rem 1.2rem .4rem}
+.search-box{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.7rem 1rem .7rem 2.6rem;color:var(--text);font-size:.88rem;font-family:'Space Grotesk',sans-serif;outline:none;transition:border-color .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237b82a0' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:.8rem center}
+.search-box:focus{border-color:var(--fire2)}
+.search-box::placeholder{color:var(--muted)}
+#search-count{font-size:.75rem;color:var(--muted);padding:.3rem 1.2rem;max-width:1100px;margin:0 auto;font-family:'Space Mono',monospace}
+.highlight{background:rgba(255,119,0,.25);border-radius:2px;color:var(--fire3)}
+
+/* HERO */
+.hero{max-width:1100px;margin:0 auto;padding:2.5rem 1.2rem 1.5rem;text-align:center}
+.hero-badge{display:inline-block;font-family:'Space Mono',monospace;font-size:.68rem;color:var(--fire2);background:rgba(255,119,0,.1);border:1px solid rgba(255,119,0,.3);padding:.28rem .85rem;border-radius:20px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem}
+.hero h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:.6rem;background:linear-gradient(135deg,#fff 30%,var(--fire2) 70%,var(--fire1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--muted);font-size:.92rem;max-width:560px;margin:0 auto 1.5rem}
+.flame-row{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem}
+.flame-chip{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.4rem .8rem;font-size:.75rem;color:var(--muted);text-align:left}
+.flame-chip span{color:var(--fire3);font-family:'Space Mono',monospace;font-size:.62rem;display:block;margin-bottom:.15rem}
+
+/* MAIN */
+main{max-width:1100px;margin:0 auto;padding:0 1.2rem 5rem}
+
+/* SECTION HEADER */
+.sec-head{display:flex;align-items:center;gap:.7rem;margin:2.5rem 0 1rem;scroll-margin-top:70px}
+.sec-num{font-family:'Space Mono',monospace;font-size:.68rem;color:#000;background:linear-gradient(135deg,var(--fire1),var(--fire2));border-radius:6px;padding:.2rem .45rem;font-weight:700;flex-shrink:0}
+.sec-head h2{font-size:.92rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text)}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border) 60%,transparent)}
+
+/* DEFINITION CARD */
+.def-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--fire2);border-radius:var(--r);padding:1.1rem 1.4rem;margin-bottom:.75rem;transition:border-color .2s}
+.def-card:hover{border-left-color:var(--fire1)}
+.def-card .term{font-family:'Space Mono',monospace;font-size:.78rem;font-weight:700;color:var(--fire2);margin-bottom:.3rem;display:block;text-transform:uppercase;letter-spacing:.04em}
+.def-card p,.def-card li{font-size:.86rem;color:var(--muted);line-height:1.65}
+.def-card p strong{color:var(--text)}
+.def-card ul{padding-left:1.1rem;margin-top:.35rem}
+.def-card li+li{margin-top:.25rem}
+
+/* TAG */
+.tag{display:inline-block;font-family:'Space Mono',monospace;font-size:.62rem;padding:.15rem .5rem;border-radius:5px;margin-bottom:.55rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.tag-fire{background:rgba(255,69,0,.15);color:var(--fire1)}
+.tag-orange{background:rgba(255,119,0,.15);color:var(--fire2)}
+.tag-gold{background:rgba(255,224,102,.15);color:var(--fire4)}
+.tag-green{background:rgba(52,211,153,.15);color:var(--green)}
+.tag-blue{background:rgba(96,165,250,.15);color:var(--blue)}
+.tag-purple{background:rgba(167,139,250,.15);color:#a78bfa}
+
+/* CARD */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem 1.4rem;margin-bottom:.75rem;transition:border-color .2s}
+.card:hover{border-color:rgba(255,119,0,.3)}
+.card h4{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.card p,.card li{font-size:.86rem;color:var(--muted);line-height:1.65}
+.card ul,.card ol{padding-left:1.2rem;margin-top:.35rem}
+.card li+li{margin-top:.28rem}
+.card p strong{color:var(--text)}
+
+/* COMPARE TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:.84rem;margin-top:.5rem}
+.tbl th{background:var(--surface2);color:var(--fire2);font-family:'Space Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;padding:.6rem .85rem;text-align:left;border-bottom:2px solid var(--border)}
+.tbl td{padding:.6rem .85rem;color:var(--muted);border-bottom:1px solid var(--border);vertical-align:top;font-size:.83rem}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:rgba(255,255,255,.018)}
+.tbl td strong{color:var(--text)}
+
+/* ACCORDION */
+.accordion{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:.65rem}
+.acc-btn{width:100%;background:var(--surface);border:none;padding:1rem 1.3rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;cursor:pointer;color:var(--text);font-size:.88rem;font-weight:600;font-family:'Space Grotesk',sans-serif;text-align:left;transition:background .15s}
+.acc-btn:hover{background:var(--surface2)}
+.acc-btn.open{background:var(--surface2);color:var(--fire2)}
+.acc-arrow{font-size:.75rem;color:var(--muted);transition:transform .25s;flex-shrink:0}
+.acc-btn.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{display:none;background:var(--surface2);padding:1.1rem 1.4rem;border-top:1px solid var(--border)}
+.acc-body.open{display:block}
+.acc-body p,.acc-body li{font-size:.86rem;color:var(--muted);line-height:1.65}
+.acc-body ul,.acc-body ol{padding-left:1.2rem;margin-top:.35rem}
+.acc-body li+li{margin-top:.28rem}
+.acc-body p strong,.acc-body li strong{color:var(--text)}
+.acc-body .tbl{margin-top:.5rem}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.7rem}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.65rem}
+
+/* MINI CARD */
+.mini{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem}
+.mini .sc{font-family:'Space Mono',monospace;font-size:.63rem;font-weight:700;color:var(--fire2);display:block;margin-bottom:.28rem;letter-spacing:.05em}
+.mini h5{font-size:.84rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.mini p{font-size:.78rem;color:var(--muted);line-height:1.45}
+
+/* LEVEL LIST */
+.lv-list{list-style:none;padding:0;margin-top:.5rem}
+.lv-list li{display:flex;gap:.7rem;align-items:flex-start;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.85rem;color:var(--muted);line-height:1.55}
+.lv-list li:last-child{border-bottom:none}
+.lv-badge{font-family:'Space Mono',monospace;font-size:.6rem;font-weight:700;color:#000;background:var(--fire2);border-radius:4px;padding:.1rem .38rem;flex-shrink:0;margin-top:.1rem}
+.lv-badge.red{background:var(--fire1)}
+.lv-badge.gold{background:var(--fire3)}
+.lv-badge.green{background:var(--green)}
+.lv-badge.blue{background:var(--blue)}
+.lv-badge.purple{background:#a78bfa}
+
+/* SUMMARY */
+.summary-box{background:linear-gradient(135deg,rgba(255,69,0,.07),rgba(255,119,0,.05));border:1px solid rgba(255,119,0,.25);border-radius:var(--r);padding:1.5rem 1.8rem;margin-top:3rem}
+.summary-box h3{font-size:.95rem;font-weight:700;color:var(--fire2);margin-bottom:.9rem;font-family:'Space Mono',monospace;letter-spacing:.04em}
+.s-list{list-style:none;padding:0}
+.s-list li{font-size:.84rem;color:var(--muted);padding:.4rem 0 .4rem 1.2rem;border-bottom:1px solid var(--border);position:relative;line-height:1.55}
+.s-list li:last-child{border-bottom:none}
+.s-list li::before{content:'🔥';position:absolute;left:0;font-size:.65rem;top:.55rem}
+
+/* ── QUIZ ── */
+#quiz{margin-top:.5rem}
+.quiz-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;margin-bottom:1.2rem}
+.score-box{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--fire2);background:rgba(255,119,0,.1);border:1px solid rgba(255,119,0,.3);padding:.35rem .9rem;border-radius:20px}
+#quiz-progress{height:4px;background:var(--border);border-radius:2px;margin-bottom:1.2rem}
+#quiz-bar{height:100%;background:linear-gradient(90deg,var(--fire1),var(--fire2));border-radius:2px;transition:width .4s ease;width:0}
+
+.q-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem 1.6rem;margin-bottom:1rem}
+.q-num{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--fire2);margin-bottom:.55rem;display:block;text-transform:uppercase;letter-spacing:.05em}
+.q-text{font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:.9rem;line-height:1.5}
+.opts{display:flex;flex-direction:column;gap:.45rem}
+.opt-btn{background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:.7rem 1rem;color:var(--muted);font-size:.85rem;font-family:'Space Grotesk',sans-serif;cursor:pointer;text-align:left;transition:all .18s;line-height:1.45}
+.opt-btn:hover:not(:disabled){border-color:var(--fire2);color:var(--text);background:rgba(255,119,0,.06)}
+.opt-btn.correct{border-color:var(--green)!important;background:rgba(52,211,153,.1)!important;color:var(--green)!important;font-weight:600}
+.opt-btn.wrong{border-color:var(--fire1)!important;background:rgba(255,69,0,.1)!important;color:var(--fire1)!important}
+.opt-btn:disabled{cursor:default}
+.rationale{display:none;margin-top:.8rem;background:rgba(255,224,102,.07);border:1px solid rgba(255,224,102,.2);border-radius:9px;padding:.8rem 1rem;font-size:.82rem;color:var(--muted);line-height:1.55}
+.rationale strong{color:var(--fire3)}
+.rationale.show{display:block}
+
+.quiz-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.2rem}
+.btn-fire{background:linear-gradient(135deg,var(--fire1),var(--fire2));color:#fff;border:none;border-radius:9px;padding:.65rem 1.3rem;font-size:.85rem;font-weight:700;font-family:'Space Grotesk',sans-serif;cursor:pointer;transition:opacity .18s}
+.btn-fire:hover{opacity:.88}
+.btn-ghost{background:var(--surface2);color:var(--muted);border:1px solid var(--border);border-radius:9px;padding:.65rem 1.3rem;font-size:.85rem;font-weight:600;font-family:'Space Grotesk',sans-serif;cursor:pointer;transition:all .18s}
+.btn-ghost:hover{color:var(--text);border-color:var(--fire2)}
+
+#quiz-result{display:none;text-align:center;padding:2rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);margin-top:1rem}
+#quiz-result h3{font-size:1.4rem;font-weight:700;margin-bottom:.5rem}
+#quiz-result p{color:var(--muted);font-size:.9rem}
+#result-score{font-size:2.5rem;font-weight:700;color:var(--fire2);font-family:'Space Mono',monospace;display:block;margin:.7rem 0}
+
+/* BACK TO TOP */
+.btt{display:block;text-align:center;margin-top:2rem;font-family:'Space Mono',monospace;font-size:.73rem;color:var(--muted);text-decoration:none;letter-spacing:.05em;transition:color .2s}
+.btt:hover{color:var(--fire2)}
+
+/* HIDDEN BY SEARCH */
+.search-hidden{display:none!important}
+</style>
+</head>
+<body id="top">
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="brand">🔥 FTAI</span>
+    <a href="#terms" class="nav-link">Key Terms</a>
+    <a href="#fire-triangle" class="nav-link">Fire Triangle</a>
+    <a href="#fuel" class="nav-link">Fuel</a>
+    <a href="#heat" class="nav-link">Heat & Temp</a>
+    <a href="#oxygen" class="nav-link">Oxygen</a>
+    <a href="#fire-behavior" class="nav-link">Fire Behavior</a>
+    <a href="#classes" class="nav-link">Fire Classes</a>
+    <a href="#causes" class="nav-link">Causes</a>
+    <a href="#laws" class="nav-link">Laws & BFP</a>
+    <a href="#firefighting" class="nav-link">Firefighting</a>
+    <a href="#extinguishers" class="nav-link">Extinguishers</a>
+    <a href="#detection" class="nav-link">Detection</a>
+    <a href="#quiz-sec" class="nav-link">Quiz 🎯</a>
+  </div>
+</nav>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <input type="text" id="searchInput" class="search-box" placeholder="Search key terms, laws, definitions… (e.g. backdraft, PD 1613, accelerant)" oninput="doSearch(this.value)">
+</div>
+<div id="search-count" style="display:none"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Criminology Board Exam Reviewer</div>
+  <h1>Fire Technology &amp;<br>Arson Investigation</h1>
+  <p>Complete reviewer covering fire chemistry, behavior, causes, laws, BFP, firefighting operations, and a practice quiz.</p>
+  <div class="flame-row">
+    <div class="flame-chip"><span>INSTRUCTOR</span>Rose Ann R. De Guzman, RCrim, MSCJ</div>
+    <div class="flame-chip"><span>KEY LAWS</span>RA 6975 · RA 9263 · RA 9514 · PD 1185/1613</div>
+    <div class="flame-chip"><span>INCLUDES</span>15-Question Interactive Quiz with Rationale</div>
+  </div>
+</div>
+
+<main>
+
+<!-- ══════════ 01 KEY TERMS ══════════ -->
+<div class="sec-head" id="terms">
+  <span class="sec-num">01</span>
+  <h2>Definition of Key Terminologies</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="def-card searchable">
+  <span class="term">Fire</span>
+  <p>The manifestation of <strong>rapid chemical reaction</strong> occurring between fuel and an oxidizer (typically oxygen in air). Such reaction releases energy in the form of <strong>heat and light</strong>. The active principle of burning, characterized by heat and light of combustion.</p>
+</div>
+<div class="def-card searchable">
+  <span class="term">Pyrolysis</span>
+  <p><strong>Chemical decomposition of matter through the action of heat</strong>. Causes a change from a solid state to vapour state. If the vapour mixes sufficiently with air and is heated to high temperature, combustion results.</p>
+</div>
+<div class="def-card searchable">
+  <span class="term">Combustion</span>
+  <p>A <strong>self-sustaining chemical reaction</strong> producing energy or products that cause more reactions of the same kind. Commonly known as <em>burning</em>.</p>
+</div>
+<div class="def-card searchable">
+  <span class="term">Spontaneous Combustion</span>
+  <p>The process of catching fire as a result of <strong>heat generated by internal chemical action</strong> — auto-ignition due to the gradual rising of heat in a confined space until ignition temperature is reached.</p>
+</div>
+<div class="def-card searchable">
+  <span class="term">Flame</span>
+  <p>Incandescent gases which accompany <strong>brisk or rapid oxidation</strong> of any combustible material. The burning gas or vapor of a fire that is visible as light of various colors.</p>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-orange">Products of Combustion</span>
+  <h4>The 4 Products of Combustion</h4>
+  <table class="tbl">
+    <thead><tr><th>Product</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fire Gases</strong></td><td>Those that remain after other products have cooled to normal temperature.</td></tr>
+      <tr><td><strong>Flame</strong></td><td>The luminous body of a burning gas. Becomes hotter and less luminous when mixed with more oxygen.</td></tr>
+      <tr><td><strong>Heat</strong></td><td>A form of energy measured in degrees of temperature. The product of combustion that <em>spreads fire</em>.</td></tr>
+      <tr><td><strong>Smoke</strong></td><td>Visible product of incomplete combustion. Usually a mixture of oxygen, nitrogen, CO₂, CO, and finely divided particles of soot and carbon.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════ 02 FIRE TRIANGLE ══════════ -->
+<div class="sec-head" id="fire-triangle">
+  <span class="sec-num">02</span>
+  <h2>Fire Triangle vs. Fire Tetrahedron</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid2">
+  <div class="card searchable">
+    <span class="tag tag-fire">Fire Triangle</span>
+    <h4>Three Elements (Glowing Mode)</h4>
+    <ul>
+      <li><strong>Heat</strong> — the trigger/source of ignition (open flame, electrical sparks, friction, hot surfaces, lightning)</li>
+      <li><strong>Fuel</strong> — the material that burns (solid, liquid, or gas): wood, gasoline, LPG, plastics, clothing</li>
+      <li><strong>Oxygen</strong> — supports combustion; comes from surrounding air (~21% of air by volume)</li>
+    </ul>
+    <p style="margin-top:.6rem;font-size:.8rem;color:var(--fire2)">🔺 Removing ANY one element extinguishes the fire.</p>
+  </div>
+  <div class="card searchable">
+    <span class="tag tag-orange">Fire Tetrahedron</span>
+    <h4>Four Elements (Flaming Mode)</h4>
+    <ul>
+      <li><strong>Oxygen</strong> (Oxidizing Agent) — supports the combustion process</li>
+      <li><strong>Fuel</strong> (Reducing Agent) — material or substance being burned</li>
+      <li><strong>Heat</strong> (Temperature) — raises fuel to its ignition temperature</li>
+      <li><strong>Self-Sustained Chemical Chain Reaction</strong> — 4th element; a series of continuous reactions where products of one initiate and sustain the next</li>
+    </ul>
+    <p style="margin-top:.6rem;font-size:.8rem;color:var(--fire2)">🔷 Explains the <em>flaming mode</em> of combustion. 16% O₂ = minimum for heat; 21% = normal.</p>
+  </div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-gold">Characteristics of Fire</span>
+  <h4>The 4 Characteristics of Fire</h4>
+  <div class="grid3" style="margin-top:.5rem">
+    <div class="mini"><span class="sc">FAST</span><h5>Fast</h5><p>Takes only minutes for thick black smoke and flames to fill a house.</p></div>
+    <div class="mini"><span class="sc">HOT</span><h5>Hot</h5><p>Room temp can be 100°F at floor level and rise to 600°F near the ceiling.</p></div>
+    <div class="mini"><span class="sc">DARK</span><h5>Dark</h5><p>Starts bright but quickly produces black smoke and complete darkness.</p></div>
+    <div class="mini"><span class="sc">DEADLY</span><h5>Deadly</h5><p>Smoke and toxic gases kill more people than flames do.</p></div>
+  </div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-fire">Types of Flames</span>
+  <h4>Classification of Flames</h4>
+  <table class="tbl">
+    <thead><tr><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Luminous Flame</strong></td><td>Orange-red; deposits soot due to <em>incomplete combustion</em>; low temperature.</td></tr>
+      <tr><td><strong>Non-Luminous Flame</strong></td><td>Blue; <em>complete combustion</em>; relatively high temperature.</td></tr>
+      <tr><td><strong>Premixed Flame</strong></td><td>Hydrocarbon thoroughly mixed with air before reaching the flame zone (e.g., Bunsen burner).</td></tr>
+      <tr><td><strong>Diffusion Flame</strong></td><td>Gas alone is forced through a nozzle and diffuses into surrounding atmosphere (e.g., candle flame, oxyacetylene torch).</td></tr>
+      <tr><td><strong>Laminar Flame</strong></td><td>Particle follows a smooth path through a gaseous flame.</td></tr>
+      <tr><td><strong>Turbulent Flame</strong></td><td>Unsteady, irregular flows; forms when size, gas density, or velocity is increased.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════ 03 FUEL ══════════ -->
+<div class="sec-head" id="fuel">
+  <span class="sec-num">03</span>
+  <h2>Fuel (Reducing Agent)</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="def-card searchable">
+  <span class="term">Fuel</span>
+  <p>Anything that will burn when heated with sufficient oxygen. The most important element of the fire triangle — it is what burns. Comes in three forms: <strong>solid, liquid, or gas</strong>. SOLID = molecules closely packed. LIQUID = loosely packed. GAS = free to move.</p>
+</div>
+
+<div class="accordion searchable">
+  <button class="acc-btn" onclick="toggleAcc(this)">
+    🪵 Solid Fuels <span class="acc-arrow">▼</span>
+  </button>
+  <div class="acc-body">
+    <table class="tbl">
+      <thead><tr><th>Type</th><th>Description / Examples</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Pyrolyzable Solid Fuels</strong></td><td>Ordinary combustibles: wood, paper, etc. — undergo pyrolysis to become flammable vapors.</td></tr>
+        <tr><td><strong>Non-Pyrolyzable Solid Fuels</strong></td><td>Difficult to ignite; no pyrolyzable elements (e.g., charcoal).</td></tr>
+        <tr><td><strong>Biomass</strong></td><td>Replaceable organic matter (wood, garbage, animal manure) used to produce energy.</td></tr>
+        <tr><td><strong>Fabrics & Textiles</strong></td><td>Fiber-based combustibles.</td></tr>
+        <tr><td><strong>Plastics</strong></td><td>Cellulose Nitrate (pyroxylin) — a chemical powder also used in bombs.</td></tr>
+        <tr><td><strong>Coal</strong></td><td>Black, combustible mineral solid from partial decomposition of matter.</td></tr>
+        <tr><td><strong>Peat</strong></td><td>Partially decayed plant matter found in swamps.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="accordion searchable">
+  <button class="acc-btn" onclick="toggleAcc(this)">
+    💧 Liquid Fuels <span class="acc-arrow">▼</span>
+  </button>
+  <div class="acc-body">
+    <p>Mainly made from <strong>Petroleum (crude oil)</strong> refined into gasoline, diesel oil, and kerosene.</p>
+    <table class="tbl" style="margin-top:.7rem">
+      <thead><tr><th>Type</th><th>Flash Point</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Flammable Liquids</strong></td><td>Flash point <strong>below 37.8°C (100°F)</strong> and vapor pressure not exceeding 40 psia.</td></tr>
+        <tr><td><strong>Combustible Liquids</strong></td><td>Flash point <strong>at or above 37.8°C (100°F)</strong>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="accordion searchable">
+  <button class="acc-btn" onclick="toggleAcc(this)">
+    💨 Gas Fuels <span class="acc-arrow">▼</span>
+  </button>
+  <div class="acc-body">
+    <p>Gaseous fuels: molecules in rapid movement and random motion; no definite shape or volume. Examples: <strong>acetylene, propane, butane</strong>.</p>
+    <table class="tbl" style="margin-top:.7rem">
+      <thead><tr><th>Classification</th><th>Types</th></tr></thead>
+      <tbody>
+        <tr><td><strong>By Source</strong></td><td><strong>Natural Gas</strong> — chiefly methane, mixed with foul-smelling sulfur compounds to detect leaks; Butane and propane become LPG/LNG under pressure.<br><strong>Manufactured Gas</strong> — produced from coal, petroleum, or biomass through heating and chemical procedures.</td></tr>
+        <tr><td><strong>By Physical Characteristic</strong></td><td><strong>Compressed Gas</strong> — exists solely in gaseous state under pressure.<br><strong>Liquefied Gas</strong> — partly liquid, partly gaseous inside container (e.g., LPG).<br><strong>Cryogenic Gas</strong> — liquefied at temperatures far below normal atmospheric temperature.</td></tr>
+        <tr><td><strong>By Usage</strong></td><td><strong>Fuel Gases</strong> — used for burning with air (natural gas, LPG).<br><strong>Industrial Gases</strong> — welding (O₂, acetylene), refrigeration (freon), etc.<br><strong>Medical Gases</strong> — anesthesia (nitrous oxide), respiratory therapy (O₂).</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-blue">Other Fuels</span>
+  <h4>Chemical &amp; Nuclear Fuels</h4>
+  <ul class="lv-list">
+    <li><span class="lv-badge red">CHEMICAL</span>Produced in solid and liquid form; create great amounts of heat and power; used chiefly in rocket engines. Common rocket fuel: <strong>hydrazine</strong>.</li>
+    <li><span class="lv-badge blue">NUCLEAR</span>Provide energy through <strong>fission</strong> (splitting nucleus) or <strong>fusion</strong> (combining two light nuclei) of atoms.</li>
+  </ul>
+</div>
+
+<!-- ══════════ 04 HEAT & TEMP ══════════ -->
+<div class="sec-head" id="heat">
+  <span class="sec-num">04</span>
+  <h2>Heat, Temperature &amp; Energy</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid2">
+  <div class="def-card searchable">
+    <span class="term">Heat</span>
+    <p>The energy component of the fire tetrahedron. When in contact with a fuel, it supports the combustion reaction. The source of ignition — can be a safety match, lighted candle, or more sophisticated chemical, mechanical, or electrical contrivance designed to start a blaze.</p>
+  </div>
+  <div class="def-card searchable">
+    <span class="term">Temperature</span>
+    <p>Measurement of the degree of <strong>thermal agitation of molecules</strong>; the hotness or coldness of something. Measured by a thermometer; expressed in <strong>°C, °F, and °K</strong>.</p>
+  </div>
+</div>
+
+<div class="accordion searchable">
+  <button class="acc-btn" onclick="toggleAcc(this)">
+    🌡️ Temperature Scales <span class="acc-arrow">▼</span>
+  </button>
+  <div class="acc-body">
+    <table class="tbl">
+      <thead><tr><th>Scale</th><th>Key Points</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Celsius</strong></td><td>Freezing: 0°C | Boiling: 100°C. Widely used for scientific works.</td></tr>
+        <tr><td><strong>Fahrenheit</strong></td><td>Freezing: 32°F | Boiling: 212°F. Used in English-speaking countries for non-scientific purposes.</td></tr>
+        <tr><td><strong>Kelvin (Absolute)</strong></td><td>Most common thermodynamic scale. Absolute zero = –273.15°C / –459.67°F.</td></tr>
+        <tr><td><strong>Rankine</strong></td><td>Absolute zero base; 1°R = 1°F. Freezing: 492°R | Boiling: 672°R.</td></tr>
+        <tr><td><strong>International Temperature Scale (1933)</strong></td><td>Adopted by 31 nations; based on Kelvin scale; uses platinum wire as standard (–190° to 660°C).</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-fire">Sources of Heat — Types of Energy</span>
+  <h4>Common Sources of Heat Energy</h4>
+  <ul class="lv-list">
+    <li><span class="lv-badge red">CHEMICAL</span>Most common source in combustion reactions. Heat generated when any combustible contacts oxygen (oxidation). Example: burning match, spontaneous heating.</li>
+    <li><span class="lv-badge gold">ELECTRICAL</span>Can generate temperatures high enough to ignite combustibles. Includes: <strong>over current/overload, arcing, sparking, static lightning</strong>.</li>
+    <li><span class="lv-badge blue">NUCLEAR</span>Generated when atoms split (fission) or combine (fusion). Example: nuclear reactors, solar energy (fusion).</li>
+    <li><span class="lv-badge green">MECHANICAL</span>Created by <strong>friction</strong> (two surfaces moving against each other) and <strong>compression</strong> (heat generated when gas is compressed).</li>
+  </ul>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-orange">Heat Transfer</span>
+  <h4>Three Methods of Heat Transfer</h4>
+  <div class="grid3" style="margin-top:.5rem">
+    <div class="mini"><span class="sc">CONDUCTION</span><h5>Conduction</h5><p>Transfer of heat by molecular activity within a material/medium (usually a solid). <strong>Direct contact</strong> is the underlying factor.</p></div>
+    <div class="mini"><span class="sc">CONVECTION</span><h5>Convection</h5><p>Transfer of heat through a <strong>circulating medium</strong> (usually air or liquid). Chiefly responsible for the <em>spread of fire in structures</em>.</p></div>
+    <div class="mini"><span class="sc">RADIATION</span><h5>Radiation</h5><p>Heat moves in waves and rays like sunlight at <strong>186,000 miles/second</strong>. Energy travels through materials and space as waves.</p></div>
+  </div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-gold">Latent Heat</span>
+  <h4>Latent Heat &amp; Phase Changes</h4>
+  <p>The quantity of heat absorbed by a substance when it changes phase. <strong>Specific Heat</strong> = heat required to raise 1 unit mass of a substance by 1 degree.</p>
+  <table class="tbl" style="margin-top:.5rem">
+    <thead><tr><th>Phase Change</th><th>Process</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Sublimation</strong></td><td>Solid → Gas</td></tr>
+      <tr><td><strong>Melting</strong></td><td>Solid → Liquid</td></tr>
+      <tr><td><strong>Vaporization</strong></td><td>Liquid → Vapor/Gas</td></tr>
+      <tr><td><strong>Condensation</strong></td><td>Steam/Vapor/Gas → Water</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════ 05 OXYGEN ══════════ -->
+<div class="sec-head" id="oxygen">
+  <span class="sec-num">05</span>
+  <h2>Oxygen (Oxidizing Agent)</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-fire">Oxygen Thresholds</span>
+  <h4>Oxygen Levels &amp; Fire</h4>
+  <p>Colorless, odorless gas. <strong>Air composition: 21% oxygen, 78% nitrogen, 1% other gases.</strong></p>
+  <table class="tbl" style="margin-top:.5rem">
+    <thead><tr><th>O₂ Level</th><th>Effect</th></tr></thead>
+    <tbody>
+      <tr><td><strong>21%</strong></td><td>Normal — produces fire in presence of fuel and heat.</td></tr>
+      <tr><td><strong>16–21%</strong></td><td>Can support fire point.</td></tr>
+      <tr><td><strong>14–15%</strong></td><td>Can support flash point.</td></tr>
+      <tr><td><strong>16%</strong></td><td>Minimum heat needed.</td></tr>
+      <tr><td><strong>12%</strong></td><td>Insufficient to produce fire.</td></tr>
+      <tr><td><strong>≤13%</strong></td><td>Flame ceases (Smoldering Phase).</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-orange">Properties of Fire</span>
+  <h4>Physical &amp; Chemical Properties</h4>
+  <table class="tbl">
+    <thead><tr><th>Property</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Specific Gravity</strong></td><td>Ratio of the weight of a solid/substance to the weight of an equal volume of water.</td></tr>
+      <tr><td><strong>Vapor Density</strong></td><td>Weight of a volume of pure gas compared to weight of a volume of dry air at same temperature and pressure.</td></tr>
+      <tr><td><strong>Vapor Pressure</strong></td><td>Force exerted by molecules on the surface of the liquid at equilibrium.</td></tr>
+      <tr><td><strong>Endothermic Reactions</strong></td><td>Changes where energy (heat) is <em>absorbed</em> before the reaction takes place.</td></tr>
+      <tr><td><strong>Exothermic Reactions</strong></td><td>Those that <em>release</em> or give off energy (heat) — produce substances with less energy than the reactants.</td></tr>
+      <tr><td><strong>Oxidation</strong></td><td>A chemical change that is exothermic — combustible material (fuel) and oxidizing agent (air) react. Rapid oxidation = actual burning.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════ 06 FIRE BEHAVIOR ══════════ -->
+<div class="sec-head" id="fire-behavior">
+  <span class="sec-num">06</span>
+  <h2>Fire Behavior, Stages &amp; Dangerous Conditions</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="grid2">
+  <div class="def-card searchable">
+    <span class="term">Thermal Balance</span>
+    <p>The <strong>rising movement or normal pattern of fire</strong> — normal behavior when the pattern is undisturbed.</p>
+  </div>
+  <div class="def-card searchable">
+    <span class="term">Thermal Imbalance</span>
+    <p>The <strong>abnormal movement of fire</strong> due to the interference of foreign matter. Often confuses the fire investigator in determining the exact point of origin.</p>
+  </div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-fire">Dangerous Fire Conditions</span>
+  <h4>Fatal Fire Behaviors</h4>
+  <div class="accordion" style="margin-top:.5rem;margin-bottom:0">
+    <button class="acc-btn" onclick="toggleAcc(this)">💥 Backdraft <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <p>The <strong>sudden and rapid (violent) burning of heated gases</strong> in a confined area that occurs in the form of an explosion. Occurs because of <em>improper ventilation</em>. When a door or window is suddenly opened in an improperly ventilated room, the room violently sucks oxygen from outside, causing a sudden combustion explosion.</p>
+    </div>
+  </div>
+  <div class="accordion" style="margin-bottom:0">
+    <button class="acc-btn" onclick="toggleAcc(this)">⚡ Flashover <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <p>The <strong>sudden ignition of accumulated radical gases</strong> produced during incomplete combustion of fuels. Initiated by a spark or flash when temperature reaches flash point. Accumulated radical gases suddenly burn, creating very intense fire capable of causing flames to jump (fireball) that can travel to 100 yards in seconds.</p>
+    </div>
+  </div>
+  <div class="accordion" style="margin-bottom:0">
+    <button class="acc-btn" onclick="toggleAcc(this)">🔥 Biteback <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <p>A fatal condition where <strong>the fire resists extinguishment operations</strong> and becomes stronger and bigger instead.</p>
+    </div>
+  </div>
+  <div class="accordion" style="margin-bottom:0">
+    <button class="acc-btn" onclick="toggleAcc(this)">✨ Flash Fire (Dust Explosion) <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <p>Better known as <strong>dust explosion</strong>. Happens when a metal post completely covered with dust is hit by lightning. Dust particles burn simultaneously, creating a violent chemical reaction with a very bright flash followed by an explosion.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-orange">Three Stages of Fire</span>
+  <h4>Incipient → Free Burning → Smoldering</h4>
+  <table class="tbl">
+    <thead><tr><th>Stage</th><th>Characteristics</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Incipient Phase (Initial Stage)</strong></td>
+        <td>Normal room temperature. Base temperature: 400–800/1,000°F. Ceiling temp: ~200°F. Pyrolysis products are mostly water vapor and CO₂; small quantities of CO and sulfides may be present.</td>
+      </tr>
+      <tr>
+        <td><strong>2. Free Burning Phase</strong></td>
+        <td>Materials burning in presence of adequate oxygen. Accelerated pyrolysis. Development of convection currents. Base temp: 800–1,000/1,330°F. Ceiling: 1,200–1,600°F. Pyrolytic decomposition moves upward (fire fingerprints). Occurrence of flashover.</td>
+      </tr>
+      <tr>
+        <td><strong>3. Smoldering Phase</strong></td>
+        <td>Flame ceases; dense smoke and heat fill the room. Oxygen drops to 13% or below. Products of incomplete combustion increase (CO, ignition temp ~1,125°F). Ceiling temp: 1,000–1,300°F. Heat and pressure build up. When sufficient oxygen is introduced → <strong>BACKDRAFT</strong>.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-gold">5 Stages of Fire</span>
+  <h4>Ignition → Growth → Flashover → Fully Developed → Decay</h4>
+  <ul class="lv-list">
+    <li><span class="lv-badge red">1</span><strong>Ignition</strong> — the four elements of fire tetrahedron come together; combustion begins.</li>
+    <li><span class="lv-badge gold">2</span><strong>Growth</strong> — a fire plume forms above burning fuel; draws/entrains air from surrounding space.</li>
+    <li><span class="lv-badge red">3</span><strong>Flashover</strong> — transition between growth and fully developed stages; all exposed combustible surfaces ignite.</li>
+    <li><span class="lv-badge red">4</span><strong>Fully Developed</strong> — all combustible materials in the compartment are involved in the fire.</li>
+    <li><span class="lv-badge gold">5</span><strong>Decay</strong> — fire consumes available fuel; rate of heat released begins to decline.</li>
+  </ul>
+</div>
+
+<!-- ══════════ 07 FIRE CLASSES ══════════ -->
+<div class="sec-head" id="classes">
+  <span class="sec-num">07</span>
+  <h2>Classification of Fire</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-fire">By Burning Fuel</span>
+  <h4>Classes of Fire (Based on Burning Fuel)</h4>
+  <div class="grid2" style="margin-top:.5rem">
+    <div class="mini"><span class="sc">CLASS A</span><h5>Ordinary Fires</h5><p>Wood, paper, textiles, rubber, and other <strong>carbonaceous materials</strong>.</p></div>
+    <div class="mini"><span class="sc">CLASS B</span><h5>Liquid Fires</h5><p>Flammable and combustible liquids: <strong>kerosene, gasoline, benzene, oil products, alcohol, hydrocarbon derivatives</strong>.</p></div>
+    <div class="mini"><span class="sc">CLASS C</span><h5>Electrical Fires</h5><p>Fires starting in <strong>live electrical wires, equipment, motors, appliances, telephone switchboards</strong>.</p></div>
+    <div class="mini"><span class="sc">CLASS D</span><h5>Metallic Fires</h5><p>Combustion of certain metals in finely divided forms: <strong>magnesium, potassium, powdered calcium, zinc, sodium, titanium</strong>.</p></div>
+  </div>
+</div>
+
+<!-- ══════════ 08 CAUSES ══════════ -->
+<div class="sec-head" id="causes">
+  <span class="sec-num">08</span>
+  <h2>Causes &amp; Classifications of Fire</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-orange">By Cause</span>
+  <h4>Four Classifications by Cause</h4>
+  <div class="accordion" style="margin-top:.5rem;margin-bottom:0">
+    <button class="acc-btn" onclick="toggleAcc(this)">🌩️ a. Natural / Providential Causes <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <p>Fires without direct human intervention.</p>
+      <ul>
+        <li><strong>Spontaneous Heating</strong> — automatic chemical reaction resulting in spontaneous combustion; gradual rising of heat in a confined space; sun rays focused through glasses acting as a convex lens.</li>
+        <li><strong>Lightning</strong> — a form of static electricity; a natural current with great magnitude.
+          <br>• <strong>Hot Bolt</strong> — longer duration; can only ignite combustibles; may be gradual or rapid.
+          <br>• <strong>Cold Bolt</strong> — shorter duration; capable of splintering property or blowing apart an entire structure; produces tremendous amperage and very high temperature.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="accordion" style="margin-bottom:0">
+    <button class="acc-btn" onclick="toggleAcc(this)">⚡ b. Accidental Causes <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <p>Purely accidental causes, negligence, and other forms of human error. Electrical accidents include:</p>
+      <ul>
+        <li><strong>Short Circuit</strong> — unusual/accidental connections between two points at different potentials in an electrical circuit of relatively low resistance.</li>
+        <li><strong>Arcing</strong> — production of sustained luminous electrical discharge between separated electrodes; electrical current crosses a gap between two conductors.</li>
+        <li><strong>Sparking</strong> — production of incandescent particles when two different potentials come in contact; occurs during short circuits or welding operations.</li>
+        <li><strong>Induced Current</strong> — sudden increase of electrical current resulting in burning of insulating materials, explosion of fuse box, or burning of electrical appliances.</li>
+        <li><strong>Overheating of Appliances</strong> — increase in amperage while current flows, damaging insulating materials (internal or external).</li>
+      </ul>
+    </div>
+  </div>
+  <div class="accordion" style="margin-bottom:0">
+    <button class="acc-btn" onclick="toggleAcc(this)">🔥 c. Intentional / Incendiary Causes (ARSON) <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <p>Deliberately set under circumstances where the person knows the fire should not be set. Indicators include preparations or traces of <strong>accelerant, plants, and trailers</strong>.</p>
+      <table class="tbl" style="margin-top:.5rem">
+        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Accelerant</strong></td><td>Highly flammable chemicals used to <em>facilitate flame propagation</em>.</td></tr>
+          <tr><td><strong>Plant</strong></td><td>The preparation and/or gathering of combustible materials needed to <em>start</em> a fire.</td></tr>
+          <tr><td><strong>Trailer</strong></td><td>The preparation of flammable substances in order to <em>spread</em> the fire.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="accordion" style="margin-bottom:0">
+    <button class="acc-btn" onclick="toggleAcc(this)">❓ d. Undetermined <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <p>Whenever the cause <strong>cannot be proven</strong>, the proper classification is <em>undetermined</em>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 09 LAWS & BFP ══════════ -->
+<div class="sec-head" id="laws">
+  <span class="sec-num">09</span>
+  <h2>Laws &amp; Bureau of Fire Protection (BFP)</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="accordion searchable">
+  <button class="acc-btn" onclick="toggleAcc(this)">📜 RA 6975 — DILG Act of 1990 (BFP Creation) <span class="acc-arrow">▼</span></button>
+  <div class="acc-body">
+    <p><strong>Republic Act No. 6975</strong> — the DILG Act of 1990 (Chapter 4, Sec. 53–59) created the <strong>Bureau of Fire Protection (BFP)</strong>.</p>
+    <ul>
+      <li>Responsible for prevention and suppression of all destructive fires.</li>
+      <li>BFP enforces the Fire Code and other related laws.</li>
+      <li>Has power to investigate all causes of fires and file proper complaints with the city or provincial prosecutor.</li>
+    </ul>
+    <p style="margin-top:.7rem"><strong>Key Distinctions:</strong></p>
+    <table class="tbl">
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Fire Suppression</strong></td><td>Slowing down the rate of burning.</td></tr>
+        <tr><td><strong>Fire Control</strong></td><td>Keeping the fire from spreading / holding fire to one area.</td></tr>
+        <tr><td><strong>Fire Extinguishment</strong></td><td>Putting the fire completely out.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="accordion searchable">
+  <button class="acc-btn" onclick="toggleAcc(this)">📜 RA 9263 — BFP Professionalization Act of 2004 <span class="acc-arrow">▼</span></button>
+  <div class="acc-body">
+    <p>Provides for the professionalization of the BFP and BJMP. Amended certain provisions of RA 6975.</p>
+    <p style="margin-top:.5rem"><strong>Key Appointments (Sec. 5, RA 9263):</strong></p>
+    <ul>
+      <li><strong>Fire/Jail Officer I to Senior Fire/Jail Officer IV</strong> — Appointed by Regional Director; attested by CSC.</li>
+      <li><strong>Fire/Jail Inspector to Superintendent</strong> — Appointed by Chief of the Fire Bureau; attested by CSC.</li>
+      <li><strong>Senior Superintendent</strong> — Appointed by Secretary of the DILG upon recommendation of Chief; attested by CSC.</li>
+      <li><strong>Chief Superintendent to Director</strong> — Appointed by the <em>President</em> upon recommendation of Secretary of the DILG; endorsed by Chairman of the CSC.</li>
+    </ul>
+    <p style="margin-top:.7rem;font-size:.8rem;color:var(--fire2)">⚠️ Chief of Fire Bureau serves a tour of duty not exceeding <strong>4 years</strong>. Cannot be someone retirable within 6 months.</p>
+  </div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-orange">BFP Rank Classification (RA 6975, Sec. 58)</span>
+  <h4>Fire Service Ranks (Highest to Lowest)</h4>
+  <div class="grid2" style="margin-top:.5rem">
+    <div class="mini">
+      <span class="sc">OFFICER RANKS</span>
+      <p style="font-size:.81rem;color:var(--muted)">Director<br>Chief Superintendent<br>Senior Superintendent<br>Superintendent<br>Chief Inspector<br>Senior Inspector<br>Inspector</p>
+    </div>
+    <div class="mini">
+      <span class="sc">FIRE OFFICER RANKS</span>
+      <p style="font-size:.81rem;color:var(--muted)">Senior Fire Officer IV<br>Senior Fire Officer III<br>Senior Fire Officer II<br>Senior Fire Officer I<br>Fire Officer III<br>Fire Officer II<br>Fire Officer I</p>
+    </div>
+  </div>
+</div>
+
+<div class="accordion searchable">
+  <button class="acc-btn" onclick="toggleAcc(this)">📋 BFP SOP IID 2008-01 — Jurisdiction by Damage Amount <span class="acc-arrow">▼</span></button>
+  <div class="acc-body">
+    <table class="tbl">
+      <thead><tr><th>Level / Officer</th><th>Jurisdiction</th></tr></thead>
+      <tbody>
+        <tr><td><strong>A. Municipal Fire Marshal (Level I)</strong></td><td>Damages NOT exceeding ₱20 Million</td></tr>
+        <tr><td><strong>B. City Fire Marshal (Level II)</strong></td><td>Damages NOT exceeding ₱30 Million</td></tr>
+        <tr><td><strong>C. District Fire Marshal (Level III)</strong></td><td>Damages above ₱30 Million but NOT exceeding ₱40 Million. Can assume investigation above ₱20M in municipal levels.</td></tr>
+        <tr><td><strong>D. Provincial Fire Marshal (Level III)</strong></td><td>Damages above ₱30 Million but NOT exceeding ₱40 Million. Can assume investigation above ₱20M in municipal levels.</td></tr>
+        <tr><td><strong>E. Regional Director (Level IV)</strong></td><td>Damages above ₱40 Million but NOT exceeding ₱60 Million</td></tr>
+        <tr><td><strong>F. Chief, BFP (National Level)</strong></td><td>Damages above ₱60 Million</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════ 10 FIREFIGHTING ══════════ -->
+<div class="sec-head" id="firefighting">
+  <span class="sec-num">10</span>
+  <h2>Fire Fighting Operations</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-fire">Operations Sequence</span>
+  <h4>Fire Fighting Operations Procedures (In Order)</h4>
+  <ul class="lv-list">
+    <li><span class="lv-badge red">1</span><strong>Pre-Fire Planning</strong> — developing systematic course of actions to realize the objectives of fire protection; establishing SOP in case fire breaks out.</li>
+    <li><span class="lv-badge gold">2</span><strong>Evaluation – Size-Up</strong> — on-the-spot planning; mental evaluation by the OIC to determine the appropriate course of action. Learn facts (5Ws 1H), understand fire behavior probabilities, know own capabilities, determine specific course of action.</li>
+    <li><span class="lv-badge green">3</span><strong>Evacuation</strong> — transferring people, livestock, and property away from the burning area to minimize damage.</li>
+    <li><span class="lv-badge blue">4</span><strong>Entry</strong> — accessing the burning structure. Forcible entry purposes: access for firefighters, rescue, aid in ventilation.</li>
+    <li><span class="lv-badge green">5</span><strong>Rescue</strong> — removing/extricating people and livestock from the burning building; conveying them to a secure place.</li>
+    <li><span class="lv-badge red">6</span><strong>Exposure</strong> — securing buildings near the burning structure to prevent fire from extending.</li>
+    <li><span class="lv-badge gold">7</span><strong>Confinement</strong> — restricting fire at the place it started; preventing extension from one section to another.</li>
+    <li><span class="lv-badge blue">8</span><strong>Ventilation</strong> — displacing toxic gases and heated atmosphere within the building with normal air. Types: (1) Vertical — top to bottom; (2) Cross/Horizontal — opens windows; (3) Mechanical Force — uses smoke ejector.</li>
+    <li><span class="lv-badge green">9</span><strong>Salvage</strong> — protecting properties from preventable damage. Steps: remove material outside, cover/protect materials with tarpaulins.</li>
+    <li><span class="lv-badge red">10</span><strong>Extinguishment</strong> — putting out the main body of fire using 4 general methods.</li>
+    <li><span class="lv-badge gold">11</span><strong>Overhaul</strong> — complete and detailed check of the structure to eliminate conditions that may cause re-flash; extinguishment of sparks or smoldering substances (embers) to prevent re-ignition.</li>
+    <li><span class="lv-badge blue">12</span><strong>Fire Scene Investigation</strong> — final stage; inquiry to determine the origin and cause of fire.</li>
+  </ul>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-orange">Four Methods of Extinguishment</span>
+  <h4>General Methods of Fire Extinguishment</h4>
+  <div class="grid2" style="margin-top:.5rem">
+    <div class="mini"><span class="sc">METHOD 1</span><h5>Temperature Reduction</h5><p>Cooling the temperature, usually done with <strong>water</strong>. Lowers temperature until fuel does not produce sufficient vapors.</p></div>
+    <div class="mini"><span class="sc">METHOD 2</span><h5>Fuel Removal</h5><p>Eliminating the fuel supply: stop liquid fuel flow, prevent flammable gas production, remove solid fuel, or allow fire to burn until fuel is consumed.</p></div>
+    <div class="mini"><span class="sc">METHOD 3</span><h5>Oxygen Dilution</h5><p>Reduction of oxygen concentration by introducing inert gases or separating oxygen from the fuel.</p></div>
+    <div class="mini"><span class="sc">METHOD 4</span><h5>Chemical Inhibition</h5><p>Agents like <strong>dry chemical and halon</strong> interrupt flame production. Effective only on burning gas and liquid fuels (not smoldering mode).</p></div>
+  </div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-blue">Fire Prevention Methods</span>
+  <h4>Three Main Methods of Fire Prevention</h4>
+  <ul class="lv-list">
+    <li><span class="lv-badge blue">1</span><strong>Laws and Regulations</strong> — codes and standards requiring fire retardant materials and proper electrical wiring in buildings.</li>
+    <li><span class="lv-badge blue">2</span><strong>Inspection of Buildings</strong> — fire brigades and public agencies inspect buildings for fire hazards and recommend corrective action.</li>
+    <li><span class="lv-badge blue">3</span><strong>Public Education</strong> — education about fire safety and prevention; teaching children and adults about fire hazards throughout the community.</li>
+  </ul>
+</div>
+
+<!-- ══════════ 11 EXTINGUISHERS ══════════ -->
+<div class="sec-head" id="extinguishers">
+  <span class="sec-num">11</span>
+  <h2>Fire Extinguishers</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="def-card searchable">
+  <span class="term">Fire Extinguisher</span>
+  <p>A mechanical device (usually metal) containing chemicals, fluids, or gases for stopping fires. A <strong>portable device</strong> used to put out fires of limited size before they propagate.</p>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-fire">Types of Fire Extinguishers</span>
+  <h4>Types &amp; Applicable Fire Classes</h4>
+  <table class="tbl">
+    <thead><tr><th>Type</th><th>Applicable Classes</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Water</strong></td><td>Class A</td></tr>
+      <tr><td><strong>CO₂</strong></td><td>Class B, C</td></tr>
+      <tr><td><strong>Dry Chemicals</strong></td><td>Class A, B, C</td></tr>
+      <tr><td><strong>Dry Powder</strong></td><td>Class D</td></tr>
+      <tr><td><strong>AFFF (Aqueous Film Forming Foam)</strong></td><td>Class B</td></tr>
+      <tr><td><strong>Halons (Halogenated Carbon)</strong></td><td>Class B, C</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-green">PASS Method</span>
+  <h4>Operating Procedure — P.A.S.S.</h4>
+  <ul class="lv-list">
+    <li><span class="lv-badge blue">P</span><strong>Pull</strong> the pin at the top of the extinguisher that keeps the handle from being pressed.</li>
+    <li><span class="lv-badge blue">A</span><strong>Aim</strong> the nozzle or outlet towards the fire — point at the BASE of the fire.</li>
+    <li><span class="lv-badge blue">S</span><strong>Squeeze</strong> the handle above the carrying handle to discharge the extinguishing agent.</li>
+    <li><span class="lv-badge blue">S</span><strong>Sweep</strong> the nozzle sideways at the BASE of the flame to disperse the extinguishing agent.</li>
+  </ul>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-orange">Required Markings (Rule 37, Sec. 106 of PD 1185)</span>
+  <h4>Labels Required on All Fire Extinguishers in the Philippines</h4>
+  <ul>
+    <li>Date of original filling</li>
+    <li>Chemical Contents</li>
+    <li>Type of extinguisher</li>
+    <li>Operating Instruction and Safe Procedure in usage</li>
+    <li>Name and address of the manufacturer</li>
+    <li>Name and address of the dealer</li>
+  </ul>
+</div>
+
+<!-- ══════════ 12 DETECTION ══════════ -->
+<div class="sec-head" id="detection">
+  <span class="sec-num">12</span>
+  <h2>Fire Detection Systems &amp; Ladders</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="card searchable">
+  <span class="tag tag-blue">Fire Detectors</span>
+  <h4>Classification of Fire Detectors</h4>
+  <div class="accordion" style="margin-top:.5rem;margin-bottom:0">
+    <button class="acc-btn" onclick="toggleAcc(this)">🌫️ Smoke Detectors <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <p>Designed to react and activate alarm when products of combustion enter their sensors. Attached to ceiling or wall.</p>
+      <table class="tbl">
+        <thead><tr><th>Type</th><th>How It Works</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ionization Detector</strong></td><td>Uses a <em>radioactive source</em> to transform air inside into a conductor of electrical current. Visible or invisible products of combustion entering the chamber interrupt current flow → activates alarm.</td></tr>
+          <tr><td><strong>Photoelectric Smoke Detector</strong></td><td>Uses a <em>projected light beam</em> (large areas) or a <em>reflected light beam/spot</em> type detector (small areas).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="accordion" style="margin-bottom:0">
+    <button class="acc-btn" onclick="toggleAcc(this)">🌡️ Heat Detectors <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <table class="tbl">
+        <thead><tr><th>Type</th><th>How It Works</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Rate-of-Rise Detector</strong></td><td>Calibrated so a <em>rapid increase in room temperature</em> activates the alarm. Allows temperature within a certain range but automatically activates when the permitted maximum is surpassed.</td></tr>
+          <tr><td><strong>Fixed-Temperature Detector</strong></td><td>Preset to activate at a <em>given temperature</em>. May come with a calibration screw to reset to avoid false alarms.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="accordion" style="margin-bottom:0">
+    <button class="acc-btn" onclick="toggleAcc(this)">💧 Sprinkler System <span class="acc-arrow">▼</span></button>
+    <div class="acc-body">
+      <p>A network of pipes installed throughout a building carrying water to nozzles in the ceiling. The <strong>heat from a fire causes the nozzles directly above the fire to open and spray water</strong>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="accordion searchable">
+  <button class="acc-btn" onclick="toggleAcc(this)">🪜 Ladders — Types, Parts &amp; Terminology <span class="acc-arrow">▼</span></button>
+  <div class="acc-body">
+    <p><strong>Two main categories:</strong> Ground ladders (10–55 ft.) and Aerial ladders.</p>
+    <p style="margin-top:.5rem"><strong>Purposes:</strong> rescue, stretch line into fire building, provide ventilation access.</p>
+    <table class="tbl" style="margin-top:.5rem">
+      <thead><tr><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Straight / Hook Ladder</strong></td><td>One section only; ranges from 12–16 ft. (common: 14 ft.).</td></tr>
+        <tr><td><strong>Extension Ladder</strong></td><td>Consists of a bed and one or more fly ladders. With stay pole = <em>tormentors</em>. Up to 35 ft.; over 35 ft. = <em>Bangor Ladder</em>.</td></tr>
+        <tr><td><strong>Attic Ladder</strong></td><td>Provides access to difficult places; can be folded or collapsed.</td></tr>
+        <tr><td><strong>Wall Ladder</strong></td><td>Best for rescue where ladder falls short; allows climbing/descending one storey at a time.</td></tr>
+        <tr><td><strong>Aerial Ladder</strong></td><td>Mounted on a turntable; extends up to 100 ft.; 3 or 4 metal fly sections; controlled by hydraulically controlled cables.</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:.7rem"><strong>Ladder Terminology:</strong></p>
+    <table class="tbl">
+      <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Bed Ladder</strong></td><td>The lowest section of an extension ladder.</td></tr>
+        <tr><td><strong>Fly Ladder</strong></td><td>The top section of an extension ladder.</td></tr>
+        <tr><td><strong>Butt / Heel</strong></td><td>The bottom end/part of a ladder that touches the ground.</td></tr>
+        <tr><td><strong>Halyard</strong></td><td>A rope or cable used to raise the fly ladder.</td></tr>
+        <tr><td><strong>Pawl / Dog</strong></td><td>Mechanism at the end of fly ladder that locks to the bed ladder.</td></tr>
+        <tr><td><strong>Rung</strong></td><td>The cross member of the ladder used for climbing.</td></tr>
+        <tr><td><strong>Stops</strong></td><td>Metal or wood blocks preventing the fly from extending too far.</td></tr>
+        <tr><td><strong>Guides</strong></td><td>Light metal strips guiding the fly ladder while raised or lowered.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary-box searchable">
+  <h3>⚡ Key Takeaways for the Board Exam</h3>
+  <ul class="s-list">
+    <li>Fire = rapid chemical reaction between fuel and oxidizer releasing heat and light.</li>
+    <li>Fire Triangle (3 elements: Heat + Fuel + Oxygen) → Glowing mode. Fire Tetrahedron (4 elements: + Chemical Chain Reaction) → Flaming mode.</li>
+    <li>Products of combustion: Fire Gases, Flame, Heat, Smoke. Fire characteristics: Fast, Hot, Dark, Deadly.</li>
+    <li>Flammable liquids: flash point BELOW 37.8°C. Combustible liquids: AT OR ABOVE 37.8°C.</li>
+    <li>21% O₂ = normal fire; 12% = insufficient; 13% or below = flame ceases (Smoldering Phase).</li>
+    <li>Backdraft = sudden burning in confined area (improper ventilation, explosion). Flashover = sudden ignition of accumulated radical gases. Biteback = fire resists extinguishment.</li>
+    <li>Three Stages: Incipient → Free Burning → Smoldering. Five Stages: Ignition → Growth → Flashover → Fully Developed → Decay.</li>
+    <li>Classes: A (ordinary), B (liquid), C (electrical), D (metallic).</li>
+    <li>Causes: Natural/Providential, Accidental, Intentional (Incendiary), Undetermined.</li>
+    <li>Accelerant = flammable chemical to facilitate flame propagation. Plant = gathering combustibles. Trailer = spreading substances.</li>
+    <li>RA 6975 created the BFP. RA 9263 = BFP Professionalization Act of 2004. Chief BFP = appointed by President; max 4-year tour of duty.</li>
+    <li>Municipal (≤₱20M) → City (≤₱30M) → District/Provincial (₱30–40M) → Regional (₱40–60M) → National BFP (above ₱60M).</li>
+    <li>PASS: Pull → Aim → Squeeze → Sweep. Dry Chemical extinguishers = Class A, B, C. Dry Powder = Class D.</li>
+    <li>Ionization detector = radioactive source. Photoelectric = light beam. Rate-of-rise = rapid temp increase. Fixed-temperature = preset temp.</li>
+    <li>12 firefighting operation steps: Pre-Planning → Size-Up → Evacuation → Entry → Rescue → Exposure → Confinement → Ventilation → Salvage → Extinguishment → Overhaul → Fire Scene Investigation.</li>
+  </ul>
+</div>
+
+<!-- ══════════ QUIZ ══════════ -->
+<div class="sec-head" id="quiz-sec">
+  <span class="sec-num">🎯</span>
+  <h2>Interactive Practice Quiz</h2>
+  <div class="sec-line"></div>
+</div>
+
+<div class="card">
+  <div class="quiz-header">
+    <div>
+      <h4 style="margin-bottom:.25rem">Fire Technology &amp; Arson Investigation</h4>
+      <p style="font-size:.82rem;color:var(--muted)">15 multiple-choice questions · Instant feedback with rationale</p>
+    </div>
+    <div class="score-box" id="score-display">Score: 0 / 15</div>
+  </div>
+  <div id="quiz-progress"><div id="quiz-bar"></div></div>
+  <div id="quiz"></div>
+  <div id="quiz-result">
+    <h3 id="result-emoji">🔥</h3>
+    <span id="result-score">0/15</span>
+    <p id="result-msg"></p>
+    <button class="btn-fire" onclick="resetQuiz()" style="margin-top:1.2rem">🔄 Retake Quiz</button>
+  </div>
+  <div class="quiz-actions" id="quiz-actions" style="display:none">
+    <button class="btn-fire" onclick="submitAll()">Submit All Answers</button>
+    <button class="btn-ghost" onclick="resetQuiz()">🔄 Reset</button>
+  </div>
+</div>
+
+<a href="#top" class="btt">↑ Back to top</a>
+</main>
+
+<script>
+// ── ACCORDION ──
+function toggleAcc(btn){
+  btn.classList.toggle('open');
+  const body = btn.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// ── SEARCH ──
+function doSearch(q){
+  const cards = document.querySelectorAll('.searchable');
+  const count = document.getElementById('search-count');
+  q = q.trim().toLowerCase();
+  if(!q){
+    cards.forEach(c=>c.classList.remove('search-hidden'));
+    // Remove highlights
+    cards.forEach(c=>{c.querySelectorAll('.highlight').forEach(h=>{
+      h.outerHTML=h.textContent;
+    });});
+    count.style.display='none';
+    return;
+  }
+  let found=0;
+  cards.forEach(c=>{
+    // Restore original text first
+    c.querySelectorAll('.highlight').forEach(h=>{h.outerHTML=h.textContent;});
+    const text=c.textContent.toLowerCase();
+    if(text.includes(q)){
+      c.classList.remove('search-hidden');
+      found++;
+      // Highlight
+      highlightNode(c,q);
+    } else {
+      c.classList.add('search-hidden');
+    }
+  });
+  count.style.display='block';
+  count.textContent=`Found ${found} result${found!==1?'s':''} for "${q}"`;
+}
+
+function highlightNode(node,q){
+  if(node.nodeType===3){
+    const idx=node.textContent.toLowerCase().indexOf(q);
+    if(idx>-1){
+      const span=document.createElement('mark');
+      span.className='highlight';
+      const range=document.createRange();
+      range.setStart(node,idx);
+      range.setEnd(node,idx+q.length);
+      range.surroundContents(span);
+    }
+    return;
+  }
+  if(node.nodeName==='MARK'||node.nodeName==='SCRIPT'||node.nodeName==='STYLE')return;
+  Array.from(node.childNodes).forEach(child=>highlightNode(child,q));
+}
+
+// ── NAV ACTIVE ──
+const allSections=document.querySelectorAll('.sec-head');
+const navLinks=document.querySelectorAll('.nav-link');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if(a){a.classList.add('active');a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+allSections.forEach(s=>io.observe(s));
+
+// ── QUIZ DATA ──
+const questions=[
+  {
+    q:"What is the 4th element added in the Fire Tetrahedron that is NOT in the Fire Triangle?",
+    opts:["Oxygen","Fuel","Self-Sustained Chemical Chain Reaction","Heat"],
+    ans:2,
+    rat:"The Fire Triangle has three elements: Heat, Fuel, and Oxygen. The Fire Tetrahedron adds a <strong>Self-Sustained Chemical Chain Reaction</strong> as the 4th element, which explains the flaming mode of combustion."
+  },
+  {
+    q:"Which classification of fire involves burning magnesium, potassium, sodium, and titanium?",
+    opts:["Class A","Class B","Class C","Class D"],
+    ans:3,
+    rat:"<strong>Class D fires</strong> are metallic fires resulting from the combustion of certain metals in finely divided forms, including magnesium, potassium, powdered calcium, zinc, sodium, and titanium."
+  },
+  {
+    q:"What is the minimum oxygen percentage needed to produce fire in the presence of fuel and heat?",
+    opts:["12%","14–15%","16–21%","21%"],
+    ans:3,
+    rat:"<strong>21% oxygen</strong> is the normal amount needed to produce fire. 12% is insufficient; 14–15% can support flash point; 16–21% can support fire point. At or below 13%, flames cease."
+  },
+  {
+    q:"An accelerant is best defined as:",
+    opts:["A tool used to trace fire spread patterns","Highly flammable chemicals used to facilitate flame propagation","The gathering of combustible materials to start a fire","The pattern left by fire on walls and floors"],
+    ans:1,
+    rat:"An <strong>accelerant</strong> is a highly flammable chemical used to facilitate flame propagation. A 'plant' refers to gathering combustible materials to start a fire, while a 'trailer' refers to flammable substances used to spread the fire."
+  },
+  {
+    q:"Backdraft occurs as a result of:",
+    opts:["Complete combustion in an open area","Improper ventilation in a confined area","The burning of metallic fuels","Rapid increase in oxygen concentration above 21%"],
+    ans:1,
+    rat:"<strong>Backdraft</strong> is the sudden and rapid violent burning of heated gases in a confined area that occurs in the form of an explosion due to <em>improper ventilation</em>. When a door or window is suddenly opened, oxygen rushes in, causing a combustion explosion."
+  },
+  {
+    q:"Under RA 6975, the Bureau of Fire Protection was created under which law?",
+    opts:["RA 9263","RA 9514","The DILG Act of 1990 (RA 6975)","PD 1613"],
+    ans:2,
+    rat:"The BFP was created under <strong>Republic Act No. 6975</strong>, known as the DILG Act of 1990 (Chapter 4, Sections 53–59), to be responsible for the prevention and suppression of all destructive fires."
+  },
+  {
+    q:"A fire with total damages exceeding ₱60 million is under the jurisdiction of:",
+    opts:["Regional Director for Fire Protection","Provincial Fire Marshal","District Fire Marshal","Chief, Bureau of Fire Protection (National Level)"],
+    ans:3,
+    rat:"Under BFP SOP IID 2008-01, the <strong>Chief of the Bureau of Fire Protection at the National Level</strong> — through its IID — has full responsibility to investigate fire incidents with total damages <em>above ₱60 million</em>."
+  },
+  {
+    q:"The P.A.S.S. method stands for:",
+    opts:["Push, Aim, Start, Spray","Pull, Aim, Squeeze, Sweep","Press, Activate, Shoot, Surround","Prepare, Approach, Saturate, Secure"],
+    ans:1,
+    rat:"<strong>P.A.S.S.</strong> stands for: <strong>P</strong>ull the pin → <strong>A</strong>im the nozzle at the base of the fire → <strong>S</strong>queeze the handle → <strong>S</strong>weep the nozzle sideways at the base of the flame."
+  },
+  {
+    q:"Which type of smoke detector uses a radioactive source to transform air into a conductor of electrical current?",
+    opts:["Photoelectric Detector","Rate-of-Rise Detector","Ionization Detector","Fixed-Temperature Detector"],
+    ans:2,
+    rat:"The <strong>Ionization Detector</strong> uses a radioactive source to transform the air inside it into a conductor of electrical current. Products of combustion entering the chamber interrupt the current flow, which activates the alarm."
+  },
+  {
+    q:"'Pyrolysis' is best defined as:",
+    opts:["The rapid chemical reaction between fuel and oxygen","The transfer of heat through a circulating medium","The chemical decomposition of matter through the action of heat","The self-sustained burning of heated gases"],
+    ans:2,
+    rat:"<strong>Pyrolysis</strong> is the chemical decomposition of matter through the action of heat, causing a change from a solid state to vapour state. If the vapour mixes sufficiently with air and is heated to high temperature, combustion results."
+  },
+  {
+    q:"Which type of fire extinguisher is appropriate for Class D (metallic) fires?",
+    opts:["CO₂","Dry Chemicals","AFFF (Aqueous Film Forming Foam)","Dry Powder"],
+    ans:3,
+    rat:"<strong>Dry Powder</strong> extinguishers are specifically designed for <strong>Class D (metallic)</strong> fires. CO₂ and Dry Chemical agents handle Class B/C fires. AFFF is for Class B (liquid) fires. Never use water on metallic fires."
+  },
+  {
+    q:"Under RA 9263, the Chief of the Fire Bureau is appointed by:",
+    opts:["The Secretary of the DILG","The Civil Service Commission","The President of the Philippines","The Chief of the PNP"],
+    ans:2,
+    rat:"Under <strong>RA 9263 (Section 5)</strong>, the Chief of the Fire Bureau (Fire/Jail Director level) is appointed by the <strong>President of the Philippines</strong> upon recommendation of the Secretary of the DILG, with the proper endorsement of the Chairman of the CSC."
+  },
+  {
+    q:"In the smoldering phase of fire, what critical event occurs when sufficient oxygen is introduced from outside?",
+    opts:["Flashover","Flashfire (Dust Explosion)","Backdraft","Biteback"],
+    ans:2,
+    rat:"During the <strong>Smoldering Phase</strong>, oxygen drops to 13% or below, building and room contains large quantities of superheated fuel under pressure. When sufficient supply of oxygen is introduced (e.g., door opened) — <strong>BACKDRAFT</strong> occurs."
+  },
+  {
+    q:"Heat transfer responsible for the spread of fire in structures is primarily:",
+    opts:["Conduction","Convection","Radiation","Pyrolysis"],
+    ans:1,
+    rat:"<strong>Convection</strong> is the transfer of heat through a circulating medium (usually air or liquid) and is chiefly responsible for the spread of fire in structures. Conduction requires direct contact between materials. Radiation travels in waves like sunlight."
+  },
+  {
+    q:"Which of the following is an indicator of an INTENTIONAL (incendiary) fire cause?",
+    opts:["Presence of spontaneous heating materials","Lightning strike on the building","Evidence of arcing in electrical wiring","Presence of accelerants, plants, and trailers at the fire scene"],
+    ans:3,
+    rat:"An intentional fire is <strong>deliberately set</strong> under circumstances where the person knows the fire should not be set. The presence of <strong>accelerants, plants, and trailers</strong> in the burned property are the key indicators of incendiary/intentional fire cause."
+  }
+];
+
+let score=0;
+let answered=new Set();
+
+function buildQuiz(){
+  const container=document.getElementById('quiz');
+  container.innerHTML='';
+  score=0;
+  answered.clear();
+  updateScore();
+  updateBar();
+  document.getElementById('quiz-result').style.display='none';
+  document.getElementById('quiz-actions').style.display='flex';
+
+  questions.forEach((q,i)=>{
+    const card=document.createElement('div');
+    card.className='q-card';
+    card.id=`qcard-${i}`;
+
+    const numEl=document.createElement('span');
+    numEl.className='q-num';
+    numEl.textContent=`Question ${i+1} of ${questions.length}`;
+    card.appendChild(numEl);
+
+    const qText=document.createElement('div');
+    qText.className='q-text';
+    qText.textContent=q.q;
+    card.appendChild(qText);
+
+    const opts=document.createElement('div');
+    opts.className='opts';
+    q.opts.forEach((opt,j)=>{
+      const btn=document.createElement('button');
+      btn.className='opt-btn';
+      btn.textContent=`${String.fromCharCode(65+j)}. ${opt}`;
+      btn.onclick=()=>selectAnswer(i,j,btn,opts);
+      opts.appendChild(btn);
+    });
+    card.appendChild(opts);
+
+    const rat=document.createElement('div');
+    rat.className='rationale';
+    rat.innerHTML=`<strong>💡 Rationale:</strong> ${q.rat}`;
+    card.appendChild(rat);
+
+    container.appendChild(card);
+  });
+}
+
+function selectAnswer(qi,optIdx,btn,optsEl){
+  if(answered.has(qi))return;
+  answered.add(qi);
+  const q=questions[qi];
+  const allBtns=optsEl.querySelectorAll('.opt-btn');
+  allBtns.forEach(b=>b.disabled=true);
+
+  if(optIdx===q.ans){
+    btn.classList.add('correct');
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    allBtns[q.ans].classList.add('correct');
+  }
+  btn.closest('.q-card').querySelector('.rationale').classList.add('show');
+  updateScore();
+  updateBar();
+
+  if(answered.size===questions.length){
+    setTimeout(showResult,600);
+  }
+}
+
+function submitAll(){
+  if(answered.size===questions.length){showResult();return;}
+  // Force show rationale for unanswered
+  questions.forEach((q,i)=>{
+    if(!answered.has(i)){
+      const card=document.getElementById(`qcard-${i}`);
+      const btns=card.querySelectorAll('.opt-btn');
+      btns.forEach(b=>b.disabled=true);
+      btns[q.ans].classList.add('correct');
+      card.querySelector('.rationale').classList.add('show');
+      answered.add(i);
+    }
+  });
+  updateBar();
+  showResult();
+}
+
+function showResult(){
+  document.getElementById('quiz-actions').style.display='none';
+  const result=document.getElementById('quiz-result');
+  result.style.display='block';
+  const pct=(score/questions.length)*100;
+  document.getElementById('result-score').textContent=`${score} / ${questions.length}`;
+  let emoji,msg;
+  if(pct>=90){emoji='🏆';msg='Outstanding! You are well-prepared for the board exam.';}
+  else if(pct>=75){emoji='🔥';msg='Great job! Review a few more topics and you are ready.';}
+  else if(pct>=60){emoji='📚';msg='Good effort. Revisit the sections on laws, fire classes, and behavior.';}
+  else{emoji='💪';msg='Keep studying! Focus on the key definitions, fire stages, and BFP laws.';}
+  document.getElementById('result-emoji').textContent=emoji;
+  document.getElementById('result-msg').textContent=msg;
+  result.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function updateScore(){
+  document.getElementById('score-display').textContent=`Score: ${score} / ${questions.length}`;
+}
+function updateBar(){
+  const pct=(answered.size/questions.length)*100;
+  document.getElementById('quiz-bar').style.width=pct+'%';
+}
+function resetQuiz(){buildQuiz();}
+
+buildQuiz();
+</script>
+</body>
+</html>
