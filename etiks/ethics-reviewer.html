@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ethics Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f5f0;--pane:#fff;--ink:#16212b;--mut:#5a6772;--line:#dde1d8;--a:#0e6b62;--a2:#e3a72f;--hot:#c8453a;--soft:#e6f0ec;
+--c1:#0e6b62;--c2:#b8541f;--c3:#5b4bb0;--c4:#1d5fa6;--c5:#a8325e;--c6:#3d4a56;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1618;--pane:#182226;--ink:#e8ede9;--mut:#9aa8ad;--line:#2a373c;--a:#4fc3b4;--a2:#f0c05a;--hot:#ef7d70;--soft:#1c2e2c;--c1:#4fc3b4;--c2:#f0955c;--c3:#a599f0;--c4:#6fb0ee;--c5:#f07fa6;--c6:#a7b5c0}}
+:root[data-theme="dark"]{--bg:#0f1618;--pane:#182226;--ink:#e8ede9;--mut:#9aa8ad;--line:#2a373c;--a:#4fc3b4;--a2:#f0c05a;--hot:#ef7d70;--soft:#1c2e2c;--c1:#4fc3b4;--c2:#f0955c;--c3:#a599f0;--c4:#6fb0ee;--c5:#f07fa6;--c6:#a7b5c0}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Source Serif 4",Georgia,serif}
+h1,h2,h3,.ui{font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--a2);z-index:20}
+header{padding:64px 6vw 40px;max-width:1200px;margin:auto}
+h1{font-size:clamp(2.6rem,8vw,6rem);line-height:.95;margin:0 0 18px;font-weight:800;letter-spacing:-.03em}
+header p{max-width:60ch;color:var(--mut);margin:0 0 22px}
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.92rem}
+.chain span{background:var(--soft);padding:5px 12px;border-radius:99px}.chain i{color:var(--a2);font-style:normal}
+.wrap{display:grid;grid-template-columns:230px 1fr;gap:36px;max-width:1200px;margin:auto;padding:0 6vw 80px}
+nav{position:sticky;top:20px;align-self:start;display:flex;flex-direction:column;gap:4px}
+nav a{display:flex;gap:10px;padding:9px 12px;border-radius:10px;color:var(--mut);text-decoration:none;font:600 .92rem "Bricolage Grotesque",sans-serif;border-left:4px solid transparent}
+nav a b{color:var(--k)}nav a.on{background:var(--pane);color:var(--ink);border-left-color:var(--k)}
+nav button{margin-top:10px;font:600 .8rem "Bricolage Grotesque";background:none;border:1px solid var(--line);color:var(--mut);border-radius:8px;padding:6px;cursor:pointer}
+main{min-width:0}
+section.m{background:var(--pane);border:1px solid var(--line);border-top:8px solid var(--k);border-radius:18px;padding:34px clamp(18px,4vw,44px);margin-bottom:34px}
+section.m>h2{font-size:clamp(1.7rem,4vw,2.5rem);margin:0 0 4px;line-height:1.05;letter-spacing:-.02em;color:var(--k)}
+.sub{color:var(--mut);margin:0 0 22px;font-style:italic}
+h3{font-size:1.15rem;margin:30px 0 10px}
+.big{background:var(--soft);border-left:6px solid var(--k);padding:16px 20px;border-radius:0 12px 12px 0;margin:20px 0;font-weight:600}
+.big small{display:block;font:600 .8rem "Bricolage Grotesque";color:var(--mut);margin-bottom:4px}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:0}
+dl div{border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+dt{font:700 1rem "Bricolage Grotesque";color:var(--k)}dd{margin:2px 0 0;font-size:.95rem;line-height:1.5}
+ul{padding-left:1.2em;margin:.4em 0}li{margin:.25em 0}
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.92rem;line-height:1.45}
+th{background:var(--k);color:#fff;font:700 .9rem "Bricolage Grotesque";text-align:left}
+:root[data-theme="dark"] th{color:#0f1618}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:600}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.card h4{margin:0 0 6px;font:700 1.02rem "Bricolage Grotesque";color:var(--k)}
+.card p{margin:.3em 0;font-size:.95rem}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0;font:700 .88rem "Bricolage Grotesque"}
+.flow span{background:var(--k);color:#fff;padding:6px 12px;border-radius:8px}
+:root[data-theme="dark"] .flow span{color:#0f1618}
+.flow i{font-style:normal;color:var(--mut)}
+details{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0}
+summary{cursor:pointer;font:700 1rem "Bricolage Grotesque";color:var(--k)}
+details p{margin:.6em 0 0;font-size:.95rem}
+.fc{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc button{all:unset;cursor:pointer;min-height:130px;padding:18px;border-radius:14px;background:var(--soft);border:1px solid var(--line);box-sizing:border-box;font:600 1rem/1.4 "Bricolage Grotesque",sans-serif;display:flex;flex-direction:column;justify-content:center}
+.fc button small{color:var(--mut);font-weight:500;margin-bottom:6px}
+.fc button.f{background:var(--k);color:#fff;font:400 .95rem/1.5 "Source Serif 4",serif}
+:root[data-theme="dark"] .fc button.f{color:#0f1618}
+.fc button:focus-visible,summary:focus-visible,nav a:focus-visible{outline:3px solid var(--a2);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 60px;font-size:.9rem}
+@media(max-width:860px){.wrap{display:block}nav{position:sticky;top:0;z-index:10;flex-direction:row;overflow-x:auto;background:var(--bg);padding:8px 0;margin:0 -6vw 20px;padding-left:6vw}nav a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent}nav a.on{border-bottom-color:var(--k)}nav button{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+<div id="bar"></div>
+<header>
+<h1>Ethics<br>Reviewer</h1>
+<p>Six lessons in one place: morality, culture, virtue, duty, and courage. Read a module, then test yourself with the flashcards at the end.</p>
+<div class="chain"><span>Standards</span><i>›</i><span>Culture</span><i>›</i><span>Virtue</span><i>›</i><span>Theories</span><i>›</i><span>Feelings &amp; reason</span><i>›</i><span>Courage</span></div>
+</header>
+<div class="wrap">
+<nav id="nav">
+<a href="#m1" style="--k:var(--c1)"><b>1</b>Morality &amp; dilemmas</a>
+<a href="#m2" style="--k:var(--c2)"><b>2</b>Culture &amp; values</a>
+<a href="#m3" style="--k:var(--c3)"><b>3</b>Virtue ethics</a>
+<a href="#m4" style="--k:var(--c4)"><b>4</b>Natural Law &amp; Kant</a>
+<a href="#m5" style="--k:var(--c5)"><b>5</b>Feelings &amp; courage</a>
+<a href="#m6" style="--k:var(--c6)"><b>6</b>Flashcards</a>
+<button id="th">Toggle dark / light</button>
+</nav>
+<main>
+
+<section class="m" id="m1" style="--k:var(--c1)">
+<h2>Fundamentals of morality and moral dilemmas</h2>
+<p class="sub">What makes something a moral matter, and what to do when duties collide.</p>
+<dl>
+<div><dt>Ethics</dt><dd>Systematic study of right and wrong.</dd></div>
+<div><dt>Morality</dt><dd>Practical application of ethical principles in conduct.</dd></div>
+<div><dt>Moral dilemma</dt><dd>Conflicting obligations; fulfilling one means violating another.</dd></div>
+<div><dt>Justice</dt><dd>Fair and equitable treatment of people.</dd></div>
+<div><dt>Social construct</dt><dd>Idea created and maintained by society.</dd></div>
+<div><dt>Universal truth / justice</dt><dd>Valid across cultures; impartial, equal treatment.</dd></div>
+</dl>
+<h3>Moral vs. non-moral standards</h3>
+<div class="tw"><table><tr><th>Moral</th><th>Non-moral</th></tr>
+<tr><td>Serious harm or benefit to people</td><td>Social practices, convention, taste</td></tr>
+<tr><td>Protect rights and well-being; overriding importance</td><td>Etiquette, dress, school or sports rules</td></tr>
+<tr><td>Independent of authority; law cannot make wrong right</td><td>Made or changed by institutions; varies by place</td></tr>
+<tr><td>Violation brings deep guilt</td><td>Violation brings embarrassment or disapproval</td></tr></table></div>
+<div class="big"><small>Memory hook</small>Moral standards ask “Right or wrong?” Non-moral standards ask “Appropriate or inappropriate?”</div>
+<p>Biblical angle: Micah 6:8 (justice, mercy, humility) and Proverbs 21:3 (doing right beats ritual). Customs never replace justice, honesty, and love.</p>
+<h3>Moral dilemmas</h3>
+<p>Three conditions: an obligation to act exists; several conflicting actions are open; each has strong arguments. Example: a drunk-driving friend asks for a false alibi (loyalty vs. honesty and justice).</p>
+<div class="two">
+<div class="card"><h4>Individual</h4><p>Personal conscience. A found wallet your family needs for medical bills.</p></div>
+<div class="card"><h4>Organizational</h4><p>Personal ethics vs. company policy. A firm secretly sells unsafe products.</p></div>
+<div class="card"><h4>Structural</h4><p>Social systems. Economic survival vs. public health.</p></div></div>
+<h3>Four foundations of moral reasoning</h3>
+<div class="flow"><span>Freedom</span><i>→</i><span>Responsibility</span><i>→</i><span>Reason</span><i>→</i><span>Impartiality</span><i>→</i><span>Ethical decision</span></div>
+<ul><li><b>Freedom:</b> no praise or blame without meaningful autonomy.</li><li><b>Responsibility:</b> free choices make us accountable for effects on others.</li><li><b>Reason:</b> judgments need evidence and logic, not emotion alone.</li><li><b>Impartiality:</b> everyone’s welfare counts equally; no automatic favoritism.</li></ul>
+<div class="big"><small>Takeaway</small>Moral reasoning is not deciding what we prefer. It means identifying standards, recognizing conflicting obligations, and judging responsibly.</div>
+</section>
+
+<section class="m" id="m2" style="--k:var(--c2)">
+<h2>Culture, relativism, and Filipino values</h2>
+<p class="sub">Culture shapes how we understand morality, but culture alone cannot determine it.</p>
+<div class="two">
+<div class="card"><h4>Cultural relativism</h4><p>Beliefs and practices should be understood in their cultural context. Encourages understanding before judging.</p></div>
+<div class="card"><h4>Ethnocentrism</h4><p>Treating our own culture as the standard for judging others.</p></div></div>
+<div class="big"><small>Cultural difference ≠ moral difference</small>Chopsticks vs. fork is cultural. Deception, harm, discrimination, and dignity raise real ethical questions.</div>
+<h3>Why relativism alone fails</h3>
+<ul><li>If acceptance made things right, harmful practices (discrimination, exploitation, corruption, denial of rights) could not be criticized.</li><li>“Everyone cheats here” does not make cheating right. Widely accepted can still be wrong.</li><li>People do criticize their own cultures, so culture is not the final authority.</li><li><b>Understanding ≠ approving.</b> Knowing why utang na loob matters does not justify every demand made in its name.</li></ul>
+<h3>Asian moral emphasis (broad tendencies, not universal rules)</h3>
+<p>Relationships, family, social harmony, duties tied to roles (child, parent, student, teacher, leader, citizen). Ask “What is best for me and the people connected to me?” Aim for balance between individual dignity and relational responsibility. Harmony becomes a problem when it means silence about wrongdoing, such as not reporting plagiarism to avoid conflict.</p>
+<h3>Filipino values: strength and danger</h3>
+<div class="tw"><table><tr><th>Value</th><th>Meaning</th><th>Misuse</th></tr>
+<tr><td>Kapwa</td><td>Shared identity; “us,” not only “me.” Builds empathy, solidarity.</td><td>Concern limited to own group</td></tr>
+<tr><td>Pakikipagkapwa-tao</td><td>Relating with consideration, respect, concern.</td><td>Can become excessive</td></tr>
+<tr><td>Pakikisama</td><td>Cooperation, belonging, smooth relationships.</td><td>“Pakikisama naman” pressure to cheat</td></tr>
+<tr><td>Utang na loob</td><td>Gratitude, reciprocity, relational duty.</td><td>Favoritism, e.g. hiring an unqualified relative</td></tr>
+<tr><td>Hiya</td><td>Sensitivity to expectations; dignity.</td><td>Hiding mistakes, silencing victims, not seeking help</td></tr>
+<tr><td>Bayanihan</td><td>Communal cooperation and help.</td><td>Helping only our own group</td></tr></table></div>
+<div class="flow"><span>Culture</span><i>→</i><span>Values</span><i>→</i><span>Moral beliefs</span><i>→</i><span>Moral judgment</span></div>
+<div class="big"><small>Final takeaway</small>Ask not only “Is this what our culture does?” but “Is it fair, just, respectful of dignity, and good for flourishing?” Which Filipino value should we preserve, and which practice should we question?</div>
+<details><summary>Practice: dilemmas to analyze</summary><p>Arts career vs. parents’ wishes. Friends say “friends help friends” and want you to cheat. A relative asks a favor for someone who once helped your family. A bullied student stays silent to spare family embarrassment. A community leader abuses power but exposing him creates conflict. For each: What value? Why does it matter? What is the ethical problem? Would relativism settle it? What would you do, and can you defend it?</p></details>
+</section>
+
+<section class="m" id="m3" style="--k:var(--c3)">
+<h2>Virtue ethics: Aristotle and Aquinas</h2>
+<p class="sub">Not only “What should I do?” but “What kind of person am I becoming?”</p>
+<div class="flow"><span>Choices</span><i>→</i><span>Actions</span><i>→</i><span>Habits</span><i>→</i><span>Character</span><i>→</i><span>Virtue</span><i>→</i><span>Purpose (telos)</span><i>→</i><span>Flourishing</span></div>
+<dl>
+<div><dt>Virtue</dt><dd>Good quality of character that helps us consistently choose right.</dd></div>
+<div><dt>Character</dt><dd>Who you have become through attitudes, choices, habits.</dd></div>
+<div><dt>Telos</dt><dd>End, goal, purpose: “What is this for?”</dd></div>
+<div><dt>Eudaimonia</dt><dd>Aristotle’s flourishing: living well, not a passing feeling.</dd></div>
+<div><dt>Phronesis</dt><dd>Practical wisdom: judging what to do in a real situation.</dd></div>
+<div><dt>Beatitude</dt><dd>Aquinas: perfect happiness, fulfilled in God.</dd></div>
+<div><dt>Moral disposition</dt><dd>Developed tendency to respond to moral situations in a certain way.</dd></div>
+</dl>
+<h3>Key ideas</h3>
+<ul><li><b>Habit:</b> we become what we repeatedly practice. One honest act is good; repeated honesty becomes character. Cheating works the same way in reverse.</li><li><b>Means vs. ultimate goal:</b> studying → passing → graduating → job → good life. Aristotle asks for the goal pursued for its own sake: eudaimonia.</li><li><b>Happiness is more than feeling.</b> A rich, dishonest person is not flourishing; an honest, caring one may be.</li><li><b>Golden Mean:</b> the fitting response between extremes, not mere halfway. Cowardice ← <b>Courage</b> → Recklessness. Too little anger ← appropriate → rage.</li><li><b>Practical wisdom example:</b> a friend asks about a weak presentation. “Perfect!” is kind but false; “Terrible” is honest but cold; wisdom combines both with an offer to help.</li></ul>
+<h3>Aristotle vs. Aquinas</h3>
+<div class="tw"><table><tr><th>Aristotle</th><th>Aquinas (1225–1274)</th></tr>
+<tr><td>Ultimate goal is eudaimonia</td><td>Ultimate end is God</td></tr>
+<tr><td>Virtue is necessary for flourishing</td><td>Virtue is necessary for moral and spiritual development</td></tr>
+<tr><td>Happiness means living well</td><td>Complete happiness cannot come from created things alone</td></tr>
+<tr><td>Reason guides moral action</td><td>Reason matters within a Christian framework</td></tr></table></div>
+<p>Aquinas’s virtues: <b>justice</b> (giving each their due), <b>courage</b> (facing difficulty for the good), <b>temperance</b> (desires do not rule us), <b>prudence</b> (wise decisions).</p>
+<div class="big"><small>Three questions</small>What kind of person am I becoming? What kind of life am I trying to live? What is my ultimate purpose?</div>
+<details><summary>Application: the future teacher</summary><p>A close friend and fellow teacher changes grades and says, “Don’t report me.” Virtue ethics asks what action to take and what habit silence would build. Virtues at stake: justice, honesty, courage, compassion, practical wisdom.</p></details>
+</section>
+
+<section class="m" id="m4" style="--k:var(--c4)">
+<h2>Natural Law, Kant, and right theories</h2>
+<p class="sub">Different theories can agree on an action while disagreeing about why it is right.</p>
+<h3>Natural Law (Aquinas)</h3>
+<p>Objective right and wrong grounded in human nature and practical reason. First principle: <b>good is to be done and pursued, evil avoided</b> (Summa Theologiae I–II, q. 94, a. 2).</p>
+<div class="flow"><span>Eternal law</span><i>→</i><span>Natural law</span><i>→</i><span>Human law</span></div>
+<ul><li>Basic goods: life, family, knowledge, social relationships, reasonable conduct.</li><li>Legal ≠ moral: a government cannot make intentional killing of the innocent good.</li><li><b>Strengths:</b> objective standard, criticizes unjust laws, ties ethics to flourishing.</li><li><b>Challenges:</b> what does human nature really require? Cultures and thinkers disagree on which goods are fundamental.</li></ul>
+<h3>Kant (1724–1804), deontology</h3>
+<p><i>Groundwork of the Metaphysics of Morals</i> (1785). Rightness is not mainly about consequences.</p>
+<dl>
+<div><dt>Good will</dt><dd>Good in itself. Intelligence, wealth, power can be misused. Not the same as “good intentions”: what counts is acting from duty.</dd></div>
+<div><dt>Duty</dt><dd>Moral requirement known by reason: “I ought,” not “I want.” Doing right because it is right.</dd></div>
+<div><dt>Hypothetical imperative</dt><dd>If you want X, do Y. Depends on a goal.</dd></div>
+<div><dt>Categorical imperative</dt><dd>Do this because it is morally required, whatever you want.</dd></div>
+</dl>
+<div class="big"><small>Formula of universal law</small>Act only on a maxim you can at the same time will to be a universal law.</div>
+<div class="flow"><span>Identify action</span><i>→</i><span>Find maxim (why?)</span><i>→</i><span>Universalize</span><i>→</i><span>Consistent?</span></div>
+<p>Lying to escape trouble fails: if everyone did it, trust and communication collapse. <b>Humanity formula:</b> treat persons always as ends, never merely as means. Paying a teacher is fine; lying to a worker about a promotion just to push productivity is not. Kant is not “follow any rule”: unjust laws or unethical orders are not automatically right.</p>
+<h3>Comparing the theories</h3>
+<div class="tw"><table><tr><th>Question</th><th>Natural Law</th><th>Kantian</th><th>Consequentialism</th></tr>
+<tr><td>Thinker</td><td>Aquinas</td><td>Kant</td><td>Bentham, Mill</td></tr>
+<tr><td>Basic question</td><td>What is genuinely good for humans?</td><td>Can my principle be universalized?</td><td>What gives the best outcome?</td></tr>
+<tr><td>Foundation</td><td>Human nature + practical reason</td><td>Rational autonomy + moral law</td><td>Value of outcomes</td></tr>
+<tr><td>Intention</td><td>Important</td><td>Extremely important</td><td>Usually secondary</td></tr>
+<tr><td>Consequences</td><td>Relevant, not decisive</td><td>Not the foundation</td><td>Central</td></tr>
+<tr><td>Lying</td><td>Violates human goods</td><td>Wrong if maxim fails universal test</td><td>Could be right if best result</td></tr>
+<tr><td>Moral law is…</td><td>Participation in eternal law</td><td>Law rational agents give themselves</td><td>Rules justified by results</td></tr></table></div>
+<p>Natural Law puts the <b>good before the right</b>; standard Kantian deontology grounds rightness in principle. Virtue ethics: right is what a virtuous person would characteristically do.</p>
+<details><summary>Case: the lost phone</summary><p>All three theories say return it. Natural Law weighs property, honesty, trust. Kant tests the maxim “I may keep valuables when unseen.” Consequentialism weighs losses and lost trust. Same verdict, different reasons.</p></details>
+<details><summary>Case: cheating to keep a scholarship</summary><p>Kant: the maxim “cheat whenever it helps” cannot be universalized. Natural Law: undermines truth, knowledge, justice, fairness. Consequentialism: unfair to others, weakens credentials and trust.</p></details>
+<div class="big"><small>Ethical maturity</small>It is not just knowing the answer but explaining why it is morally justified.</div>
+</section>
+
+<section class="m" id="m5" style="--k:var(--c5)">
+<h2>Feelings, reason, and moral courage</h2>
+<p class="sub">Feel, judge, evaluate, decide, act courageously.</p>
+<div class="big"><small>Central principle</small>Feelings awaken moral concern; reason evaluates it; impartiality disciplines it; courage puts it into action; character makes it a habit.</div>
+<h3>1. Feelings and decisions</h3>
+<p><b>Feeling:</b> conscious affective state. <b>Emotion:</b> affective, physiological, and cognitive response. <b>Moral motivation:</b> the force from recognizing to acting. <b>Empathy:</b> sharing another’s state. Compassion motivates helping, guilt discourages harm, indignation signals injustice, but emotion can distort when selective, excessive, or cut off from facts. Scholarship case: awarding the crying student solely for emotional display, over an equally needy calm one, is understandable but questionable.</p>
+<h3>2. Feelings and judgment</h3>
+<dl>
+<div><dt>Moral intuition</dt><dd>Automatic response before conscious reasoning.</dd></div>
+<div><dt>Moral emotion</dt><dd>Guilt, shame, compassion, indignation.</dd></div>
+<div><dt>Moral relativism</dt><dd>Truth or justification relative to cultural or individual frameworks.</dd></div>
+<div><dt>Partiality</dt><dd>Special consideration for those close to us.</dd></div>
+</dl>
+<p>Distinguish “I <i>feel</i> this is wrong” from “I have <i>sufficient reasons</i> to conclude it is wrong.” <b>Identifiable victim:</b> a campaign showing one starving child draws ₱5,000 gifts while thousands of equally needy children go unseen. Emotional visibility does not set moral weight.</p>
+<h3>3. Reason and impartiality</h3>
+<ul><li><b>Reason</b> weighs evidence; <b>moral reasoning</b> is practical reasoning about what we ought to do; a <b>principle</b> is a general standard.</li><li><b>Impartiality:</b> no unjustified preference for self, friends, or favored groups. <b>Consistency:</b> same principle in comparable cases. <b>Universalizability:</b> standards apply across comparable situations.</li><li><b>Impartial test:</b> “Would I weigh the same factors if none of the applicants were my friend?”</li></ul>
+<div class="big"><small>Core statement (Hume + Kant)</small>Emotion tells us something matters; reason helps decide how much moral weight it deserves.</div>
+<h3>4. Moral courage</h3>
+<p><b>Courage:</b> virtue of responding well to fear or danger. <b>Moral courage:</b> standing by justified values despite fear, opposition, pressure, or risk; facing social, professional, or personal costs. <b>Physical courage:</b> facing bodily danger. Courage is not absence of fear but not letting fear dictate action. Attributes: integrity, responsibility, honesty, advocacy, perseverance, acceptance of risk. Example: reporting cheating through proper channels despite being called a “snitch.”</p>
+<h3>5. Developing moral courage</h3>
+<dl>
+<div><dt>Moral character</dt><dd>Stable pattern of virtues and habits.</dd></div>
+<div><dt>Practical wisdom</dt><dd>Discerning what to do in this situation.</dd></div>
+<div><dt>Moral resilience</dt><dd>Keeping commitments despite setbacks.</dd></div>
+</dl>
+<ol><li>Clarify principles: “What do I believe is right, and why?”</li><li>Question emotions: reliable information or bias?</li><li>Practice small acts: admit mistakes, refuse to cheat, correct misinformation.</li><li>Prepare for pressure: anticipate “What if my friends reject me?”</li><li>Act through appropriate channels: <b>reason → judgment → prudence → action</b>, not public humiliation.</li></ol>
+<details><summary>Case: the viral donation</summary><p>A video of a malnourished child goes viral; a student gives most of their savings, then learns other local children are equally affected and the campaign lacks transparency. Ask: What emotions drove the gift? Did the story make this the most deserving case? What further information matters? What if questioning brings criticism? What habits make giving responsible?</p></details>
+<div class="big"><small>Takeaway</small>Moral maturity is not eliminating emotion but integrating emotion, reason, impartiality, and courage in pursuit of the right.</div>
+</section>
+
+<section class="m" id="m6" style="--k:var(--c6)">
+<h2>Flashcards</h2>
+<p class="sub">Tap a card to flip it. Try to answer aloud first.</p>
+<div class="fc" id="fc"></div>
+<h3>Exam distinctions</h3>
+<ul><li>Ethics = study; morality = practice.</li><li>Freedom makes agency possible; responsibility follows from free choice.</li><li>Understanding a practice ≠ approving it.</li><li>Good will ≠ merely good intentions.</li><li>Same conclusion ≠ same justification.</li></ul>
+</section>
+</main></div>
+<footer>Compiled from five ethics notes: fundamentals, Lesson 2, virtue frameworks, Natural Law and Kant, and feelings and moral courage.</footer>
+<script>
+const Q=[["Moral vs. non-moral standard?","Moral: serious harm/benefit, overriding, independent of authority. Non-moral: convention, taste, policy."],
+["Three levels of dilemma?","Individual (personal), organizational (institutional), structural (societal)."],
+["Four foundations of moral reasoning?","Freedom, responsibility, reason, impartiality."],
+["Ethnocentrism vs. cultural relativism?","Own culture as the standard vs. understand context before judging."],
+["Why is relativism alone insufficient?","Acceptance cannot make harmful practices right, and it blocks criticism, even of our own culture."],
+["Kapwa?","Shared identity or humanity: “us,” not just “me.”"],
+["When does hiya turn harmful?","When it hides mistakes, silences victims, or blocks seeking help."],
+["Utang na loob and injustice?","Gratitude is a virtue but does not justify favoritism or injustice."],
+["Telos?","End, goal, or purpose: what something is for."],
+["Eudaimonia?","Flourishing; living a truly good human life, not just a feeling."],
+["Golden Mean?","Fitting response between extremes, e.g. courage between cowardice and recklessness."],
+["Phronesis?","Practical wisdom: judging what is right in a particular situation."],
+["Aristotle vs. Aquinas on ultimate goal?","Eudaimonia vs. complete happiness (beatitude) in God."],
+["Natural Law first principle?","Good is to be done and pursued, evil avoided."],
+["Eternal, natural, human law?","God’s ordering; our rational participation in it; societies’ specific laws."],
+["Good will (Kant)?","Good in itself; acting from duty, not just from feeling or reward."],
+["Hypothetical vs. categorical imperative?","If you want X, do Y vs. do it because morality requires it."],
+["Universal law formula?","Act only on a maxim you can will as universal law."],
+["Humanity formula?","Treat persons as ends, never merely as means."],
+["Consequentialism vs. deontology?","Best outcomes decide vs. duty or principle decides."],
+["Identifiable victim effect?","Vivid single cases get outsized concern; emotion alone does not set moral weight."],
+["Impartial test?","Would I weigh the same factors if none were my friend?"],
+["What is moral courage?","Standing by justified values despite fear, pressure, or cost."],
+["Courage vs. fear?","Not absence of fear, but fear not dictating action."]];
+const fc=document.getElementById('fc');
+Q.forEach(([q,a])=>{const b=document.createElement('button');b.innerHTML='<small>Question</small>'+q;let f=0;
+b.onclick=()=>{f=!f;b.className=f?'f':'';b.innerHTML=f?a:'<small>Question</small>'+q}; fc.appendChild(b)});
+const S=[...document.querySelectorAll('section.m')],L=[...document.querySelectorAll('#nav a')],bar=document.getElementById('bar');
+function upd(){const h=document.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?scrollY/h*100:0)+'%';
+let c=0;S.forEach((s,i)=>{if(s.getBoundingClientRect().top<innerHeight*.35)c=i});L.forEach((a,i)=>a.classList.toggle('on',i===c))}
+addEventListener('scroll',upd,{passive:true});upd();
+document.getElementById('th').onclick=()=>{const r=document.documentElement,d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'};
+</script></body></html>
