@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Creative Writing Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f0e4;--pane:#fffdf8;--ink:#1d1a2b;--mut:#6b6574;--line:#e3dac8;--soft:#f1e8d6;
+--c1:#0f7a6e;--c2:#c2412d;--c3:#3b4cc0;--c4:#8a3a8f;--c5:#7a5a12;--hl:#f2b632;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14121c;--pane:#1d1a29;--ink:#f1ece0;--mut:#a39cae;--line:#332e44;--soft:#262237;--c1:#4fd1c0;--c2:#ff8a73;--c3:#8f9cff;--c4:#d68fe0;--c5:#e6c15a}}
+:root[data-theme="dark"]{--bg:#14121c;--pane:#1d1a29;--ink:#f1ece0;--mut:#a39cae;--line:#332e44;--soft:#262237;--c1:#4fd1c0;--c2:#ff8a73;--c3:#8f9cff;--c4:#d68fe0;--c5:#e6c15a}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Newsreader,Georgia,serif}
+h1,h2,h3,.u{font-family:Fraunces,Georgia,serif}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:20}
+header{padding:70px 6vw 36px;max-width:1200px;margin:auto}
+h1{font-size:clamp(2.6rem,8.5vw,6.4rem);line-height:.92;margin:0 0 18px;font-weight:800;letter-spacing:-.035em}
+h1 em{font-style:italic;font-weight:500;color:var(--c2)}
+header p{max-width:58ch;color:var(--mut);margin:0 0 20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{border:1.5px solid var(--ink);border-radius:99px;padding:3px 14px;font:600 .85rem Fraunces,serif}
+.wrap{display:grid;grid-template-columns:230px 1fr;gap:36px;max-width:1200px;margin:auto;padding:0 6vw 80px}
+nav{position:sticky;top:20px;align-self:start;display:flex;flex-direction:column;gap:4px}
+nav a{display:flex;gap:10px;padding:9px 12px;border-radius:10px;color:var(--mut);text-decoration:none;font:600 .92rem Fraunces,serif;border-left:4px solid transparent}
+nav a b{color:var(--k)}nav a.on{background:var(--pane);color:var(--ink);border-left-color:var(--k)}
+nav button{margin-top:10px;font:600 .8rem Fraunces;background:none;border:1px solid var(--line);color:var(--mut);border-radius:8px;padding:6px;cursor:pointer}
+main{min-width:0}
+section.m{background:var(--pane);border:1px solid var(--line);border-radius:18px;padding:34px clamp(18px,4vw,44px);margin-bottom:34px;position:relative;overflow:hidden}
+section.m::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--k)}
+section.m>h2{font-size:clamp(1.8rem,4.4vw,2.7rem);margin:0 0 4px;line-height:1.05;letter-spacing:-.02em;color:var(--k)}
+.sub{color:var(--mut);margin:0 0 22px;font-style:italic}
+h3{font-size:1.2rem;margin:30px 0 10px;border-bottom:2px solid var(--line);padding-bottom:4px}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:14px 20px;border-radius:0 12px 12px 0;margin:18px 0;font-weight:600}
+.big small{display:block;font:600 .78rem Fraunces;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin:0}
+dl div{border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:var(--bg)}
+dt{font:700 1rem Fraunces;color:var(--k)}dd{margin:2px 0 0;font-size:.95rem;line-height:1.5}
+ul,ol{padding-left:1.2em;margin:.4em 0}li{margin:.25em 0}
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:.92rem;line-height:1.45}
+th{background:var(--k);color:#fff;font:700 .9rem Fraunces;text-align:left}
+:root[data-theme="dark"] th{color:#14121c}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:600}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px 18px;background:var(--bg)}
+.card h4{margin:0 0 6px;font:700 1.02rem Fraunces;color:var(--k)}.card p{margin:.3em 0;font-size:.95rem}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0;font:700 .86rem Fraunces}
+.flow span{background:var(--k);color:#fff;padding:6px 12px;border-radius:8px}
+:root[data-theme="dark"] .flow span{color:#14121c}.flow i{font-style:normal;color:var(--mut)}
+details{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0}
+summary{cursor:pointer;font:700 1rem Fraunces;color:var(--k)}details p{margin:.6em 0 0;font-size:.95rem}
+svg.plot{width:100%;max-width:560px;display:block;margin:10px auto}
+svg.plot text{font:600 13px Fraunces,serif;fill:var(--ink)}svg.plot path{stroke:var(--k);fill:none;stroke-width:3}
+.fc{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.fc button{all:unset;cursor:pointer;min-height:130px;padding:18px;border-radius:14px;background:var(--soft);border:1px solid var(--line);box-sizing:border-box;font:600 1rem/1.4 Fraunces,serif;display:flex;flex-direction:column;justify-content:center}
+.fc button small{color:var(--mut);font-weight:500;margin-bottom:6px}
+.fc button.f{background:var(--k);color:#fff;font:400 .95rem/1.5 Newsreader,serif}
+:root[data-theme="dark"] .fc button.f{color:#14121c}
+button:focus-visible,summary:focus-visible,nav a:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 60px;font-size:.9rem}
+@media(max-width:860px){.wrap{display:block}nav{position:sticky;top:0;z-index:10;flex-direction:row;overflow-x:auto;background:var(--bg);padding:8px 0 8px 6vw;margin:0 -6vw 20px}nav a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent}nav a.on{border-bottom-color:var(--k)}nav button{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+<div id="bar"></div>
+<header>
+<h1>Creative<br>Writing <em>Reviewer</em></h1>
+<p>Everything from your three decks in one place: what creative writing is, the language writers use, and how to read and write fiction and poetry.</p>
+<div class="chips"><span>Foundations</span><span>Imagery &amp; diction</span><span>Fiction</span><span>Poetry</span><span>Flashcards</span></div>
+</header>
+<div class="wrap">
+<nav id="nav">
+<a href="#m1" style="--k:var(--c1)"><b>1</b>Writing foundations</a>
+<a href="#m2" style="--k:var(--c2)"><b>2</b>Imagery &amp; diction</a>
+<a href="#m3" style="--k:var(--c3)"><b>3</b>Fiction</a>
+<a href="#m4" style="--k:var(--c4)"><b>4</b>Poetry</a>
+<a href="#m5" style="--k:var(--c5)"><b>5</b>Flashcards</a>
+<button id="th">Toggle dark / light</button>
+</nav>
+<main>
+
+<section class="m" id="m1" style="--k:var(--c1)">
+<h2>Foundations of creative writing</h2>
+<p class="sub">What it is, and how it differs from technical and academic writing.</p>
+<h3>Five basic types of writing</h3>
+<dl>
+<div><dt>Technical</dt><dd>Specific information about a technical subject, for a specific audience and purpose.</dd></div>
+<div><dt>Creative</dt><dd>Fiction, poetry, short stories, plays, novels. Most different from technical.</dd></div>
+<div><dt>Expressive</dt><dd>Subjective response to personal experience (journals, diaries).</dd></div>
+<div><dt>Expository</dt><dd>“Exposes” a topic analytically and objectively (news reports). Explains without demanding action.</dd></div>
+<div><dt>Persuasive</dt><dd>Depends on emotional appeal; aims to change attitudes or motivate action.</dd></div>
+</dl>
+<h3>Technical vs. creative writing</h3>
+<div class="tw"><table><tr><th></th><th>Technical</th><th>Creative</th></tr>
+<tr><td>Content</td><td>Factual, straightforward</td><td>Imaginative, metaphoric or symbolic</td></tr>
+<tr><td>Audience</td><td>Specific</td><td>General</td></tr>
+<tr><td>Purpose</td><td>Inform, instruct, persuade</td><td>Entertain, provoke, captivate</td></tr>
+<tr><td>Style</td><td>Formal, standard, academic</td><td>Informal, artistic, figurative</td></tr>
+<tr><td>Tone</td><td>Objective</td><td>Subjective</td></tr>
+<tr><td>Vocabulary</td><td>Specialized</td><td>General, evocative</td></tr>
+<tr><td>Organization</td><td>Sequential, systematic</td><td>Arbitrary, artistic</td></tr></table></div>
+<p>Creative work is mostly self-created, while technical work relies on established facts. Humor and satire fit creative writing but not technical writing.</p>
+<h3>Imaginative vs. academic writing</h3>
+<div class="two">
+<div class="card"><h4>Academic</h4><p>Rigid, procedural, structured by strict guidelines. Conveys knowledge, data, information. Needs factual evidence. Everyone should master it.</p></div>
+<div class="card"><h4>Creative</h4><p>Inspired and artistic; uses word pictures, concepts, deep meaning. Allows more personal expression and no fixed style.</p></div></div>
+<div class="big"><small>Principal difference</small>Style is the chief difference between academic and creative writing.</div>
+<h3>What is creative writing?</h3>
+<p>“The art of making things up”: original, self-expressive writing that is not academic or technical but still attracts an audience. Its purpose is to entertain and share human experience (love, loss), reaching for truth about humanity through poetics and storytelling. The first step is to use your imagination.</p>
+<div class="two">
+<div class="card"><h4>Types</h4><p>Poetry, plays, movie/TV scripts, fiction (novels, novellas, short stories), songs, speeches, memoirs, personal essays. Memoirs and personal essays are nonfiction but can be creative, especially in first person.</p></div>
+<div class="card"><h4>Techniques</h4><p>Character and plot development, vivid setting, underlying theme, point of view, dialogue, anecdotes, metaphors and similes, figures of speech, imaginative language, emotional appeal, heavy description.</p></div></div>
+<h3>Sensory details</h3>
+<p>Sight, sound, touch, smell, taste engage readers and make writing universal and intimate. No one sense matters most; it depends on the scene, though imagery (sight) is common. Adjectives help set mood and tone and build voice.</p>
+<details><summary>Example: before and after</summary><p>Flat: “I went to the store and bought some flowers.” Vivid: yellow tulips in a rusty cart, minty dried eucalyptus, the stench of seafood. The details pull the reader into the scene.</p></details>
+</section>
+
+<section class="m" id="m2" style="--k:var(--c2)">
+<h2>Imagery, symbolism, and diction</h2>
+<p class="sub">The language tools writers use to create pictures and feeling.</p>
+<div class="big"><small>Imagery</small>Language that uses words or figures of speech to create a vivid mental picture or physical sensation. It is not always visual: it can appeal to any of the five senses.</div>
+<div class="tw"><table><tr><th>Type</th><th>Describes</th><th>Includes</th></tr>
+<tr><td>Visual</td><td>What we see</td><td>Color, shape, size, pattern</td></tr>
+<tr><td>Auditory</td><td>What we hear</td><td>Music, noise, silence</td></tr>
+<tr><td>Tactile</td><td>What we touch or feel</td><td>Temperature, texture, touch, movement</td></tr>
+<tr><td>Olfactory</td><td>What we smell</td><td>Fragrances, odors</td></tr>
+<tr><td>Gustatory</td><td>What we taste</td><td>Sweet, sour, salty, spicy, savory</td></tr></table></div>
+<p><b>Why use it:</b> we experience life through the senses, so imagery lets readers sympathize with characters and builds poetry, narratives, plays, film sets, and songs.</p>
+<h3>Symbolism</h3>
+<p>Carl Jung: a symbol is a term, name, or picture familiar in daily life that carries specific connotations beyond its obvious meaning. Symbols can be cultural or religious (a country’s flag, the cross).</p>
+<h3>Diction</h3>
+<p>Word choice: analyzing how a writer uses language for a distinct purpose and effect.</p>
+<div class="two">
+<div class="card"><h4>Informal vs. formal</h4><p>Informal (personal writing): bug, folks, job, kid, boss. Formal (academic or literary): germ, relatives, position, child, superior.</p></div>
+<div class="card"><h4>Types</h4><p><b>Colloquial:</b> conversational, maybe dialect. <b>Slang:</b> highly informal. <b>Jargon:</b> special language of a profession or group.</p></div></div>
+</section>
+
+<section class="m" id="m3" style="--k:var(--c3)">
+<h2>Reading and writing fiction</h2>
+<p class="sub">A series of imagined facts that illustrates truths about human life.</p>
+<p>Fiction need not present actual people, though characters and events may be based on real ones. It is not opposed to truth: its situations illustrate what may and can happen.</p>
+<h3>Principal types</h3>
+<div class="two">
+<div class="card"><h4>Short story</h4><p>Brief artistic prose centered on a single main incident, aiming at one dominant impression. Marked by economy, compression, emphasis.</p></div>
+<div class="card"><h4>Novel</h4><p>Book-length prose, usually 75,000 to 100,000 words. Room for more characters, a complicated plot, elaborate settings, more themes.</p></div></div>
+<h3>Genres of fiction</h3>
+<div class="tw"><table><tr><th>Genre</th><th>Key traits</th><th>Example</th></tr>
+<tr><td>Fable</td><td>Brief; states a moral explicitly; anthropomorphized animals or natural forces</td><td>Aesop, <i>The Hare and the Tortoise</i></td></tr>
+<tr><td>Parable</td><td>Brief, realistic plot; teaches a moral implicitly</td><td>Prodigal Son</td></tr>
+<tr><td>Tale</td><td>Strange, wonderful events, little characterization; the “yarn”</td><td><i>Jack and the Beanstalk</i></td></tr>
+<tr><td>Romantic</td><td>Adventure; remote time and place; dashing hero; optimistic; happy ending</td><td>Austen, <i>Sense and Sensibility</i></td></tr>
+<tr><td>Realistic</td><td>Ordinary people with real issues realistically handled</td><td>Sinclair Lewis, the Jameses</td></tr>
+<tr><td>Naturalistic</td><td>Ultra-realism; characters have little or no free will</td><td>Maupassant, <i>The Necklace</i></td></tr>
+<tr><td>Historical novel</td><td>Detailed reconstruction of another time and place</td><td>Scott, <i>Ivanhoe</i></td></tr>
+<tr><td>Psychological</td><td>Setting moves into a character’s mind; stream of consciousness</td><td>Joyce, <i>Ulysses</i></td></tr>
+<tr><td>Science fiction</td><td>Futuristic science, space/time travel, aliens, parallel universes</td><td>Faber, <i>Under the Skin</i></td></tr>
+<tr><td>Non-realistic</td><td>Supernatural or magic elements: fantasy, horror</td><td>Oates, <i>The Accursed</i></td></tr>
+<tr><td>Nonfiction novel</td><td>Reconstructed biography of real people and events</td><td>Capote, <i>In Cold Blood</i></td></tr>
+<tr><td>Epistolary</td><td>Told in letters, by one or several characters</td><td>Laclos, <i>Dangerous Liaisons</i></td></tr>
+<tr><td>Bildungsroman</td><td>“Novel of growth”: a youth struggles toward maturity and a worldview</td><td>Dickens, <i>Great Expectations</i></td></tr></table></div>
+<div class="flow"><span>Character</span><i>·</i><span>Point of view</span><i>·</i><span>Plot</span><i>·</i><span>Setting &amp; atmosphere</span><i>·</i><span>Conflict</span><i>·</i><span>Irony</span><i>·</i><span>Theme</span></div>
+<p>These are the seven elements of the genre.</p>
+
+<h3>1. Character</h3>
+<p>An imagined person in a story (not limited to humans), sometimes modeled on real people. The first essential ingredient of a successful story.</p>
+<dl>
+<div><dt>Stock / stereotyped</dt><dd>Needs less-detailed portrayal.</dd></div>
+<div><dt>Hero / heroine</dt><dd>Good lead who opposes the villain. In modern fiction the lead is often an ordinary person. An <b>antihero</b> is flawed and does not fit the heroic mold.</dd></div>
+<div><dt>Protagonist / antagonist</dt><dd>Neutral, older word for the lead (no implied virtue); the opponent is the antagonist.</dd></div>
+<div><dt>Major vs. minor</dt><dd>Lead characters are more complex than the other figures.</dd></div>
+<div><dt>Foil</dt><dd>Contrasts with the major character to highlight that character’s qualities.</dd></div>
+<div><dt>Flat vs. round</dt><dd>Flat: stock, barest description, advances plot. Round: usually the protagonist; complex, more than one trait.</dd></div>
+<div><dt>Static vs. dynamic</dt><dd>Static: no basic change. Dynamic: changes through the story; sudden changes should still be expected from events.</dd></div>
+</dl>
+<details><summary>Writing tips: creating characters</summary><p>Egri’s three dimensions: <b>physical</b> (body type, health, clothing, movement), <b>sociological</b> (name, status, race, family, residence, education, profession, beliefs), <b>psychological</b> (personality, speech, attitudes, habits, dreams, fears). Also: give the character a past; imagine them as real people with emotions and contradictions; show them in action.</p></details>
+
+<h3>2. Point of view</h3>
+<p>The narrator’s vantage point: <b>focus</b> works like a camera (the frame for characters and events); <b>voice</b> is the words that embody the story.</p>
+<div class="tw"><table><tr><th>Person</th><th>Pronouns</th><th>Effect</th></tr>
+<tr><td>First</td><td>I, we</td><td>Narrator participates; limited to the narrator’s knowledge</td></tr>
+<tr><td>Second</td><td>You</td><td>Addresses another character; reader feels like a character; conversational</td></tr>
+<tr><td>Third</td><td>he, she, they</td><td>Most common; non-participant narrator; “I/you/me” only in dialogue</td></tr></table></div>
+<div class="two">
+<div class="card"><h4>All-knowing (omniscient)</h4><p>Sees into every character’s mind, past and future. <b>Editorial omniscience:</b> occasional author opinions. <b>Authorial intrusion:</b> direct comment on an action that readers may find meddlesome.</p></div>
+<div class="card"><h4>Limited (selective omniscience / central intelligence)</h4><p>Term from Henry James. One major or minor character is the sole viewpoint; a non-participating witness.</p></div></div>
+<p><b>Devices:</b> <i>stream of consciousness</i> renders the unordered flow of impressions in the mind; <i>interior monologue</i> lets a character speak thoughts aloud for readers to overhear.</p>
+
+<h3>3. Plot</h3>
+<p>A sequence of events with a beginning, middle, and end; the story’s skeleton.</p>
+<svg class="plot" viewBox="0 0 560 190" role="img" aria-label="Plot diagram: exposition, rising action, climax, falling action, resolution"><path d="M20 160 H110 L280 30 L450 160 H540"/><text x="30" y="182">Exposition</text><text x="120" y="80">Rising action</text><text x="250" y="22">Climax</text><text x="350" y="80">Falling action</text><text x="450" y="182">Resolution</text></svg>
+<ul><li><b>Exposition:</b> introduces characters, situation, time, place. You may begin <i>in medias res</i> (in the middle of things).</li><li><b>Rising action:</b> conflict and complications, external or internal.</li><li><b>Climax:</b> point of greatest tension; starts the falling action.</li><li><b>Resolution / denouement:</b> “untying of a knot”; return to stability; a moment of insight. <b>Closed</b> ties up everything (like mysteries); <b>open</b> leaves thought-provoking loose ends.</li><li>Simple stories have one plot; complex ones over longer time are <b>modular or episodic</b>.</li></ul>
+
+<h3>4. Setting and atmosphere</h3>
+<p><b>Setting:</b> place and time (place is also called <b>locale</b>). <b>Atmosphere / mood:</b> evokes feelings in readers. Environments: <b>physical</b> (discernible things), <b>sociological</b> (cultural, economic, political), <b>psychological</b> (the place’s personality).</p>
+
+<h3>5. Conflict</h3>
+<p>An event or situation that shakes a stable situation; a struggle between opposing forces.</p>
+<div class="tw"><table><tr><th>Kind</th><th>Type</th><th>Meaning</th></tr>
+<tr><td>External</td><td>Man vs. nature</td><td>Against an animal or force of nature</td></tr>
+<tr><td>External</td><td>Man vs. man</td><td>Characters pitted against each other</td></tr>
+<tr><td>External</td><td>Man vs. society</td><td>Against man-made institutions</td></tr>
+<tr><td>Internal</td><td>Man vs. self</td><td>Overcoming one’s nature or choosing between paths</td></tr></table></div>
+
+<h3>6. Irony</h3>
+<p>Words used to mean the opposite, or a gap between expectation and reality.</p>
+<dl><div><dt>Verbal</dt><dd>A character says what they do not mean.</dd></div><div><dt>Situational</dt><dd>Outcome contradicts expectation (laughing at another’s misfortune that then befalls you).</dd></div><div><dt>Dramatic</dt><dd>Readers know what characters do not (<i>Romeo and Juliet</i>).</dd></div></dl>
+
+<h3>7. Theme</h3>
+<p>The central idea, thesis, or message, or an abstraction from it. To find it, look at: <b>dramatic issue</b> (the core premise, revolving around human needs), <b>moral</b> (an objective universal truth the story shows), and <b>insight</b> (deep, intuitive understanding of a person or thing).</p>
+<div class="big"><small>Narrative devices</small><b>Foreshadowing:</b> a hint of what will happen later. <b>Symbol:</b> a concrete thing standing for an abstraction. <b>Mood</b> is the author’s attitude toward the subject; <b>tone</b> is the attitude toward the audience.</div>
+</section>
+
+<section class="m" id="m4" style="--k:var(--c4)">
+<h2>Reading and writing poetry</h2>
+<p class="sub">Rhythm, sound, image, and density: from haiku to free verse.</p>
+<div class="two">
+<div class="card"><h4>Poetry vs. verse</h4><p><b>Poetry:</b> rhythmic expression of intense perceptions, often reserved for verse of high merit. <b>Verse:</b> the metrical line as the basic unit, or any metrical composition; does not indicate quality.</p></div>
+<div class="card"><h4>Poetry vs. prose (Stephen Minot)</h4><ol><li>Poetic line, not sentence, as primary unit</li><li>Images over abstractions</li><li>Cultivates sound of words</li><li>Develops rhythms</li><li>Density: implies far more than stated</li></ol></div></div>
+<h3>Essential elements</h3>
+<dl>
+<div><dt>Theme</dt><dd>Central idea or message.</dd></div>
+<div><dt>Tone</dt><dd>Poet’s attitude toward the audience (serious, humorous, formal, intimate, ironic, etc.).</dd></div>
+<div><dt>Mood</dt><dd>Poet’s attitude toward the subject matter.</dd></div>
+<div><dt>Atmosphere</dt><dd>Dominant emotional aura at any point; appeals to the five senses.</dd></div>
+<div><dt>Persona</dt><dd>Speaking voice of the poem; from the Greek mask worn by actors (<i>dramatis personae</i>).</dd></div>
+</dl>
+
+<h3>Eastern forms</h3>
+<div class="tw"><table><tr><th>Form</th><th>Structure</th><th>Notes</th></tr>
+<tr><td>Tanaga (Tagalog)</td><td>4 lines × 7 syllables; rhyme aabb</td><td>Traditionally untitled; stands on its own</td></tr>
+<tr><td>Diona (Tagalog)</td><td>3 lines × 8 syllables; monorhyme</td><td>“Pinoy haiku”; courting or wedding song</td></tr>
+<tr><td>Haiku</td><td>3 unrhymed lines, 5-7-5 (17 syllables)</td><td>Has a kireji (cutting word) and kigo (season word); topic nature. Masters: Basho, Buson, Issa (Edo Period)</td></tr>
+<tr><td>Tanka</td><td>5 unrhymed lines, 5-7-5-7-7 (31 syllables)</td><td>Upper phrase (3 lines): vivid image. Lower phrase (2 lines): insight. Personal emotion. Ono no Komachi (Heian)</td></tr>
+<tr><td>Renga</td><td>Collaborative; alternating 3- and 2-line stanzas</td><td>12, 36, 50, 100 or 1,000 stanzas</td></tr></table></div>
+<p>Tagalog poetry was first written down in the 18th century (Noceda and Sanlucar’s 1754 <i>Vocabulario</i>), which also lists riddles (bugtong), proverbs, and folk songs.</p>
+
+<h3>Western forms by strategy</h3>
+<dl>
+<div><dt>Narrative</dt><dd>Tells a story: ballad, metrical tale/romance, epic.</dd></div>
+<div><dt>Dramatic</dt><dd>Verse drama; dramatic monologue and soliloquy.</dd></div>
+<div><dt>Lyrical</dt><dd>Personal emotion in first person, melodious: sonnet, ode, elegy, villanelle.</dd></div>
+</dl>
+<div class="tw"><table><tr><th>Form</th><th>Structure</th></tr>
+<tr><td>Italian / Petrarchan sonnet</td><td>14 lines: octave abbaabba (problem, question, tension) + sestet cdecde / cdcdcd (resolution). Iambic hexameter.</td></tr>
+<tr><td>English / Shakespearean sonnet</td><td>3 quatrains + couplet: abab cdcd efef gg. Quatrains develop the thought, enhance it, reach the height; couplet gives the central theme. Iambic pentameter.</td></tr>
+<tr><td>Ode</td><td>Exalted tone and subject; solemn, vivid. Pindaric ode: strophe, antistrophe, epode.</td></tr>
+<tr><td>Elegy</td><td>Laments a death or contemplates death; no fixed pattern.</td></tr>
+<tr><td>Villanelle</td><td>19 lines: five tercets + final quatrain; rhyme aba aba aba aba aba abaa; line 1 repeats as the last line of stanzas 2 and 4, line 3 as the last line of stanzas 3 and 5.</td></tr></table></div>
+
+<h3>Rhyme</h3>
+<div class="two">
+<div class="card"><h4>By position</h4><p><b>End:</b> line endings. <b>Internal:</b> within a line or across lines. <b>Leonine:</b> last stressed syllable before the caesura rhymes with the line’s last. <b>Beginning:</b> first syllables of lines.</p></div>
+<div class="card"><h4>Other types</h4><p><b>Slant</b> (near, imperfect, off-rhyme, pararhyme): assonance or consonance. <b>Eye</b> (visual): looks alike, sounds different.</p></div></div>
+<div class="tw"><table><tr><th>Scheme</th><th>Pattern</th></tr>
+<tr><td>Alternate (cross, open)</td><td>abab</td></tr><tr><td>Enclosed</td><td>abba</td></tr>
+<tr><td>Chain (interlocking)</td><td>abab bcbc cdcd dede ff (Spenserian)</td></tr>
+<tr><td>Monorhyme</td><td>All lines the same rhyme</td></tr><tr><td>Couplet</td><td>aa</td></tr><tr><td>Triplet</td><td>aaa bbb ccc</td></tr></table></div>
+
+<h3>Rhythm and meter</h3>
+<p><b>Rhythm:</b> alternation of stressed and unstressed syllables (Greek <i>rhythmos</i>, “measured motion”). <b>Meter:</b> regular recurrence of rhythmic patterns.</p>
+<div class="two">
+<div class="card"><h4>4 types of meter</h4><ol><li><b>Quantitative:</b> long and short syllables</li><li><b>Accentual (sprung):</b> strong stresses, any number of unstressed</li><li><b>Syllabic:</b> fixed syllable count</li><li><b>Accentual-syllabic:</b> fixed accents and syllables</li></ol></div>
+<div class="card"><h4>Six feet</h4><ul><li><b>Iamb</b> ˘ ˊ (most common in English)</li><li><b>Trochee</b> ˊ ˘</li><li><b>Anapest</b> ˘ ˘ ˊ</li><li><b>Dactyl</b> ˊ ˘ ˘</li><li><b>Spondee</b> ˊ ˊ</li><li><b>Pyrrhic</b> ˘ ˘</li></ul></div></div>
+<p><b>Line lengths:</b> monometer (1 foot), dimeter (2), trimeter (3), tetrameter (4), pentameter (5), hexameter (6, Alexandrine), heptameter (7, fourteener).</p>
+
+<h3>Nonconventional forms</h3>
+<ul><li><b>Free verse</b> (<i>vers libre</i>): frees poetry from strict rhyme and meter; rhythm comes from the rise and fall of the whole poem. Early practitioners: Eliot, Emerson, Hulme, Pound, Whitman (first widely acclaimed American free-verse poet).</li><li><b>Enjambment:</b> thought spills over from one line to the next without pause or syntactic break, usually without punctuation.</li><li><b>Lineation:</b> line length and breaks shape the poem’s silhouette: long lines thick, short lines thin.</li><li><b>Typography:</b> style and arrangement of printed letters on the page.</li><li><b>Prose poetry:</b> hybrid; sentences and paragraphs, but with rhythm, figures of speech, voice, tone, mood.</li><li><b>Concrete poetry</b> (shaped, visual, pattern): shape of words and letters as an image, as in George Herbert’s “Easter Wings.”</li><li><b>Performance poetry</b> (spoken word, poetry slam): theatrical stage as page; live encounter builds community.</li></ul>
+<details><summary>Writing tips for poets</summary><p>Avoid verbosity in Japanese-inspired forms. A haiku needs a concrete environmental detail, a season or time-of-day allusion, and a subtle reflection on nature. A tanka’s upper phrase holds a powerful image; the lower, a poignant insight. For fixed forms, keep a list of rhyming words. An ode uses lofty words and elevated tone; an elegy uses solemn words and melancholic tone. End lines on heavy parts of speech (verbs, nouns, pronouns), occasionally on modifiers, and avoid ending on articles, prepositions, or conjunctions unless for emphasis. The end of a line is a one-beat pause; the end of a stanza a two-beat pause.</p></details>
+</section>
+
+<section class="m" id="m5" style="--k:var(--c5)">
+<h2>Flashcards</h2>
+<p class="sub">Tap a card to flip it. Try to answer aloud first.</p>
+<div class="fc" id="fc"></div>
+</section>
+</main></div>
+<footer>Compiled from three decks: First Topic (creative writing), Reading and Writing Fiction, Reading and Writing Poetry.</footer>
+<script>
+const Q=[["Style: academic vs. creative?","Academic follows strict guidelines; creative has no fixed style parameters. Style is the chief difference."],
+["Five basic types of writing?","Technical, creative, expressive, expository, persuasive."],
+["Purpose of creative writing?","To entertain and share human experience, getting at truth about humanity."],
+["Five senses in imagery?","Visual, auditory, tactile, olfactory, gustatory."],
+["Diction?","Word choice: informal vs. formal; colloquial, slang, jargon."],
+["Short story vs. novel?","Single incident and dominant impression vs. book-length (75,000 to 100,000 words)."],
+["Fable vs. parable?","Fable: explicit moral, anthropomorphized animals. Parable: realistic plot, implicit moral."],
+["Naturalistic fiction?","Ultra-realism; characters have little or no free will."],
+["Bildungsroman?","Novel of growth: a youth struggles toward maturity."],
+["Flat vs. round character?","Flat: stock, one-dimensional. Round: complex, usually the protagonist."],
+["Static vs. dynamic?","No basic change vs. changes through the story."],
+["Foil?","A contrast character that highlights the major character’s qualities."],
+["Authorial intrusion?","Narrator comments directly on an action, which readers may find meddlesome."],
+["Stream of consciousness?","Technique rendering unordered impressions flowing in the mind."],
+["Plot parts in order?","Exposition, rising action, climax, falling action, resolution/denouement."],
+["Open vs. closed denouement?","Open leaves loose ends; closed ties everything up."],
+["Three kinds of irony?","Verbal, situational, dramatic."],
+["Man vs. self is…?","Internal conflict: overcoming one’s nature or choosing between paths."],
+["Mood vs. tone?","Mood: attitude toward the subject. Tone: attitude toward the audience."],
+["Haiku structure?","3 unrhymed lines, 5-7-5; kireji and kigo; nature."],
+["Tanka structure?","5 lines, 5-7-5-7-7; image (upper), insight (lower)."],
+["Tanaga vs. diona?","Tanaga: 4×7 syllables, aabb. Diona: 3×8 syllables, monorhyme."],
+["Petrarchan vs. Shakespearean sonnet?","Octave + sestet (abbaabba…) vs. 3 quatrains + couplet (abab cdcd efef gg)."],
+["Villanelle?","19 lines, aba rhyme, two repeating refrains; five tercets + quatrain."],
+["Slant vs. eye rhyme?","Slant: similar sound (assonance, consonance). Eye: looks alike, sounds different."],
+["Iamb vs. trochee?","Iamb: unstressed-stressed. Trochee: stressed-unstressed."],
+["Enjambment?","A thought runs over from one line to the next without a pause."],
+["Concrete poetry?","Poetry whose visual shape on the page is part of the meaning."]];
+const fc=document.getElementById('fc');
+Q.forEach(([q,a])=>{const b=document.createElement('button');b.innerHTML='<small>Question</small>'+q;let f=0;
+b.onclick=()=>{f=!f;b.className=f?'f':'';b.innerHTML=f?a:'<small>Question</small>'+q};fc.appendChild(b)});
+const S=[...document.querySelectorAll('section.m')],L=[...document.querySelectorAll('#nav a')],bar=document.getElementById('bar');
+function upd(){const h=document.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?scrollY/h*100:0)+'%';
+let c=0;S.forEach((s,i)=>{if(s.getBoundingClientRect().top<innerHeight*.35)c=i});L.forEach((a,i)=>a.classList.toggle('on',i===c))}
+addEventListener('scroll',upd,{passive:true});upd();
+document.getElementById('th').onclick=()=>{const r=document.documentElement,d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'};
+</script></body></html>
