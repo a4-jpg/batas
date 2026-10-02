@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cybercrime Law Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2f5;--pane:#fff;--ink:#0d1b26;--mut:#587083;--line:#d5dee6;--soft:#e4edf3;--hl:#00b88a;
+--c1:#1565c0;--c2:#b3261e;--c3:#6a3fc2;--c4:#00796b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#081018;--pane:#0f1b27;--ink:#e6f1f7;--mut:#8aa4b5;--line:#1f3345;--soft:#15283a;--hl:#2af0b0;--c1:#6cb4ff;--c2:#ff7b72;--c3:#b79cff;--c4:#4fe3cf}}
+:root[data-theme="dark"]{--bg:#081018;--pane:#0f1b27;--ink:#e6f1f7;--mut:#8aa4b5;--line:#1f3345;--soft:#15283a;--hl:#2af0b0;--c1:#6cb4ff;--c2:#ff7b72;--c3:#b79cff;--c4:#4fe3cf}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 "Space Grotesk",system-ui,sans-serif}
+h1,h2,h3,.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:60}
+header{background:#06101a;color:#e6f1f7;padding:62px 6vw 46px;background-image:linear-gradient(rgba(42,240,176,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(42,240,176,.07) 1px,transparent 1px);background-size:34px 34px}
+header div{max-width:1240px;margin:auto}
+header .tag{font:700 .8rem "JetBrains Mono";color:#2af0b0;letter-spacing:.1em;margin-bottom:10px}
+h1{font-size:clamp(2.2rem,6.6vw,4.8rem);line-height:1;margin:0 0 14px;letter-spacing:-.04em}
+h1 span{color:#2af0b0}header p{max-width:60ch;margin:0;opacity:.8}
+.wrap{display:grid;grid-template-columns:290px 1fr;gap:34px;max-width:1240px;margin:auto;padding:30px 6vw 80px}
+aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:14px}
+aside input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;margin-bottom:10px}
+.g>button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;font-weight:700;font-size:.92rem}
+.g>button:hover{background:var(--soft)}.g>button i{width:10px;height:10px;border-radius:2px;background:var(--k);flex:none}
+.g>button::after{content:"›";margin-left:auto;transition:.2s;color:var(--mut)}.g.open>button::after{transform:rotate(90deg)}
+.g ul{list-style:none;margin:0 0 6px 14px;padding:0 0 0 12px;border-left:2px solid var(--line);display:none}.g.open ul{display:block}
+.g li a{display:block;padding:5px 10px;border-radius:8px;color:var(--mut);text-decoration:none;font-size:.87rem;line-height:1.35}
+.g li a:hover{color:var(--ink);background:var(--soft)}.g li a.on{color:var(--ink);font-weight:700;background:var(--soft);box-shadow:inset 3px 0 var(--k)}
+.g li.hide,.g.hide{display:none}
+#tb{all:unset;cursor:pointer;margin-top:8px;font-size:.8rem;color:var(--mut);padding:6px 10px;border:1px solid var(--line);border-radius:8px}
+#tg{display:none}main{min-width:0}
+section.m{background:var(--pane);border:1px solid var(--line);border-radius:16px;padding:32px clamp(18px,4vw,42px);margin-bottom:30px;border-top:6px solid var(--k)}
+section.m>h2{font-size:clamp(1.5rem,3.6vw,2.2rem);margin:0 0 4px;color:var(--k);line-height:1.15;letter-spacing:-.03em}
+.sub{color:var(--mut);margin:0 0 20px}
+h3{font-size:1.1rem;margin:32px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--line);letter-spacing:-.02em}
+h3 a{color:inherit;text-decoration:none}h3 a:hover::after{content:" #";color:var(--k)}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0;font-weight:600}
+.big small{display:block;font:700 .7rem "JetBrains Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:12px;margin:0}
+dl div,.card{border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg)}
+dt,.card h4{font-weight:700;color:var(--k);margin:0}dd{margin:2px 0 0;font-size:.94rem;line-height:1.5}
+.card h4{margin-bottom:5px}.card p{margin:.3em 0;font-size:.94rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
+ul.b,ol{padding-left:1.2em;margin:.4em 0}li{margin:.25em 0}
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.92rem;line-height:1.45}
+th{background:var(--k);color:#fff;text-align:left;font-family:"JetBrains Mono";font-size:.82rem}:root[data-theme="dark"] th{color:#081018}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) th,:root:not([data-theme="light"]) .flow span,:root:not([data-theme="light"]) .fx button.on,:root:not([data-theme="light"]) #card.f{color:#081018}}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:700}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0;font-weight:700;font-size:.85rem}
+.flow span{background:var(--k);color:#fff;padding:6px 12px;border-radius:6px}:root[data-theme="dark"] .flow span{color:#081018}.flow i{font-style:normal;color:var(--mut)}
+details{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0}
+summary{cursor:pointer;font-weight:700;color:var(--k)}details p{margin:.6em 0 0;font-size:.94rem}
+.fx{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;align-items:center}
+.fx button{all:unset;cursor:pointer;padding:6px 14px;border-radius:6px;border:1.5px solid var(--line);font-weight:600;font-size:.85rem}
+.fx button.on{background:var(--k);color:#fff;border-color:var(--k)}:root[data-theme="dark"] .fx button.on{color:#081018}
+#cnt{margin-left:auto;color:var(--mut);font-size:.88rem}
+#card{all:unset;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;width:100%;min-height:260px;padding:30px;border-radius:16px;background:var(--soft);border:2px solid var(--line);box-sizing:border-box;font:700 1.35rem/1.35 "JetBrains Mono",monospace}
+#card small{font:600 .72rem "JetBrains Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+#card.f{background:var(--k);border-color:var(--k);color:#fff;font:500 1.05rem/1.6 "Space Grotesk"}:root[data-theme="dark"] #card.f{color:#081018}
+#card.f small{color:inherit;opacity:.7}
+.fn{display:flex;gap:10px;justify-content:center;margin-top:14px}
+.fn button{all:unset;cursor:pointer;padding:9px 20px;border-radius:8px;border:1.5px solid var(--ink);font-weight:700;font-size:.9rem}
+.fn button:hover{background:var(--ink);color:var(--pane)}
+button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 60px;font-size:.9rem}
+@media(max-width:900px){.wrap{display:block;padding-top:20px}
+aside{position:fixed;inset:0 auto 0 0;width:min(320px,86vw);max-height:none;border-radius:0 14px 14px 0;z-index:50;transform:translateX(-105%);transition:.25s;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.5)}
+#tg{display:block;all:unset;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;background:var(--hl);color:#06101a;padding:12px 20px;border-radius:99px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style></head><body>
+<div id="bar"></div>
+<header><div><div class="tag">&gt; CRIM / CYBERCRIME &amp; ENVIRONMENTAL LAWS</div><h1>Cybercrime<br>Law <span>Reviewer</span></h1><p>Computer and internet basics, typologies of cybercrime, and Republic Act 10175. Choose any topic from the menu on the left.</p></div></header>
+<div class="wrap">
+<aside id="side"><input id="q" type="search" placeholder="Search topics…" aria-label="Search topics"><div id="tree"></div><button id="tb">Toggle dark / light</button></aside>
+<main>
+
+<section class="m" id="basics" style="--k:var(--c1)" data-title="Computers and the Internet">
+<h2>Computers and the Internet</h2><p class="sub">The technical foundation for understanding cybercrime.</p>
+
+<h3>Course objectives</h3>
+<ul class="b"><li>Learn definitions and typologies of cybercrime and environmental laws.</li><li>Understand the roles of hackers, victims, and IT managers in cybercrime.</li><li>Apply criminological theories and learn technical tools for collecting data in cyberspace.</li><li>Explain the roles of the private sector and law enforcement in investigating, prosecuting, and preventing cybercrime.</li><li>Apply the research process to cybercrime and environmental protection (per CHED Memo No. 05 for BS Criminology).</li></ul>
+<p><i>Note: the uploaded slides cover cybercrime only; the environmental law portion is not in them.</i></p>
+
+<h3>What is a computer?</h3>
+<p>A machine that performs processes and calculations based on instructions from software or hardware programs. Two categories of parts: <b>hardware</b> (physical structure) and <b>software</b> (operating system and applications). By size: <b>supercomputer</b> (fastest, largest, most expensive), <b>mainframe</b> (a bit smaller), <b>personal computer</b> (everyday use).</p>
+
+<h3>Hardware</h3>
+<div class="two">
+<div class="card"><h4>Input devices</h4><p>Enter data: keyboard, mouse, scanner, microphone, digital camera, PC video camera.</p></div>
+<div class="card"><h4>Output devices</h4><p>Give information to the user: monitor (screen), printer (hard copy), speaker (sound).</p></div></div>
+<h3>Software and storage</h3>
+<dl>
+<div><dt>System software (OS)</dt><dd>Runs the computer and controls its devices (Windows, macOS). Application software cannot work without it.</dd></div>
+<div><dt>Application software</dt><dd>Lets users do specific tasks: word processing (Word), spreadsheet (Excel), e-mail (Outlook), internet browser.</dd></div>
+<div><dt>Storage media</dt><dd>Hard drive (internal), floppy disk (portable, small), CD and DVD (more capacity, some rewritable), USB flash drive (tiny, high capacity).</dd></div>
+</dl>
+<h3>Computer care</h3>
+<p>Keep dust and food away, use clean hands, treat it with respect, avoid use during storms, use antivirus and get permission before downloading files, and handle CDs carefully. Scanning, defragging, and reformatting are left to experts.</p>
+
+<h3>History of the internet</h3>
+<div class="flow"><span>1962 ARPA research</span><i>→</i><span>ARPANET</span><i>→</i><span>1 Jan 1983 TCP/IP</span><i>→</i><span>1990 World Wide Web (Tim Berners-Lee)</span></div>
+<p>ARPA (US Department of Defense) laid the groundwork for ARPANET. Universities joined, growth exploded, and hypertext-based WWW made navigation easy.</p>
+<h3>Meaning of the internet</h3>
+<p>A global system of interconnected computer networks using the <b>TCP/IP</b> protocol suite. It lets connected computers exchange text, graphics, voice, video, and programs. Key uses: browsing, e-mail, streaming, online commerce.</p>
+<h3>Types of internet connections</h3>
+<div class="tw"><table><tr><th>Type</th><th>How it works</th><th>Speed</th></tr>
+<tr><td>Dial-up</td><td>Modem dials a phone number; analog over land line; cheap but slow</td><td>56k</td></tr>
+<tr><td>DSL</td><td>Always on; uses 2 lines so phone stays free; router</td><td>128k to 8 Mbps</td></tr>
+<tr><td>Cable</td><td>Cable modem over cable TV coax lines</td><td>512k to 20 Mbps</td></tr>
+<tr><td>Wi-Fi</td><td>Radio frequency; no phone lines or cables</td><td>5 to 20 Mbps</td></tr>
+<tr><td>Satellite</td><td>Via satellite in orbit; delayed connection</td><td>512k to 2 Mbps</td></tr>
+<tr><td>Cellular</td><td>Cell phones; 3G (~20 Mbps), 4G (peak goal 100 Mbps)</td><td>varies</td></tr></table></div>
+</section>
+
+<section class="m" id="types" style="--k:var(--c2)" data-title="Cybercrime Concepts and Types">
+<h2>Cybercrime: concepts and typologies</h2><p class="sub">Computer as target, tool, or evidence.</p>
+
+<h3>What is cybercrime?</h3>
+<p>A crime involving a computer and a network. The computer may be used to commit the crime, or may be its <b>target</b>. It includes offenses against individuals or groups with a criminal motive to harm reputation or cause physical, mental, or financial harm through the internet (chat rooms, e-mail, boards) and mobile phones (Bluetooth, SMS, MMS). Computer crime has two elements: <b>computer</b> and <b>crime</b>. <i>Charles Babbage</i>, with his analytical engine, is called a “father of the computer.”</p>
+<div class="two">
+<div class="card"><h4>Computer as target</h4><p>Needs technical knowledge: hacking, viruses and worms, denial of service, malware.</p></div>
+<div class="card"><h4>Computer as tool / weapon</h4><p>Less technical, exploits human weakness: internet fraud, spamming, phishing, carding, cyber terrorism, pornography. Damage is often psychological.</p></div></div>
+
+<h3>Cyber security and safety tips</h3>
+<p>Protects systems from unauthorized access, damage, or being made inaccessible. <b>Tips:</b> use antivirus software, install firewalls, uninstall unnecessary software, maintain backups, check security settings.</p>
+
+<h3>Four offense types (Convention on Cybercrime)</h3>
+<ol><li>Offenses against <b>confidentiality, integrity and availability</b> of computer data and systems (illegal access, interception, data and system interference, misuse of devices)</li><li><b>Computer-related</b> offenses (forgery, fraud)</li><li><b>Content-related</b> offenses (child pornography)</li><li><b>Copyright-related</b> offenses (infringement)</li></ol>
+
+<h3>Common types of cybercrime</h3>
+<div class="tw"><table><tr><th>Type</th><th>Meaning</th></tr>
+<tr><td>Financial crimes</td><td>Credit card fraud, money laundering</td></tr>
+<tr><td>Cyber pornography / online gambling</td><td>Porn websites and distribution; gambling sites hosted abroad</td></tr>
+<tr><td>IP crimes</td><td>Software piracy, copyright and trademark violations, theft of source code</td></tr>
+<tr><td>Email spoofing</td><td>E-mail appears to come from one source but was sent from another</td></tr>
+<tr><td>Cyber defamation</td><td>Defamation done through computers or the internet</td></tr>
+<tr><td>Cyber stalking</td><td>Following a person online with messages, constant e-mails</td></tr>
+<tr><td>Unauthorized access (hacking)</td><td>Illegal access to a system; also the gateway to other crimes</td></tr>
+<tr><td>Theft of information</td><td>Taking electronic data; can extend to identity theft</td></tr>
+<tr><td>Email bombing</td><td>Flooding an account or mail server with e-mails</td></tr>
+<tr><td>Salami attack</td><td>Tiny unnoticed deductions (e.g., 5 cents per customer) add up</td></tr>
+<tr><td>DoS / DDoS</td><td>Flooding a resource with requests until it crashes; DDoS uses many wide-spread perpetrators</td></tr>
+<tr><td>Virus vs. worm</td><td>Virus attaches to a file or host and spreads; worm copies itself without a host until resources are used up</td></tr>
+<tr><td>Logic bomb</td><td>Program that activates only on a trigger event or date</td></tr>
+<tr><td>Trojan</td><td>Unauthorized program hidden inside what looks legitimate</td></tr>
+<tr><td>Web jacking</td><td>Forcefully taking control of a website</td></tr>
+<tr><td>Cyber terrorism</td><td>Hacking to cause terror, violence, or fear</td></tr></table></div>
+
+<h3>Classification of computer crimes</h3>
+<dl>
+<div><dt>Financial and internet fraud</dt><dd>Intentional deception for gain. Internet fraud tricks victims out of money via chat rooms, e-mail, boards, websites.</dd></div>
+<div><dt>Computer fraud</dt><dd>Dishonest misrepresentation to cause loss: altering input data, altering or suppressing output, altering or deleting stored data.</dd></div>
+<div><dt>Bank fraud</dt><dd>Obtaining a financial institution’s money or assets by illegal means; white-collar crime.</dd></div>
+<div><dt>Carding</dt><dd>Using a stolen credit card to charge pre-paid or gift cards.</dd></div>
+<div><dt>Identity theft</dt><dd>Obtaining personally identifiable information to impersonate someone.</dd></div>
+<div><dt>Extortion</dt><dd>Getting money, property, or services through coercion. <b>Cyber-extortion:</b> threatening repeated DoS attacks unless paid.</dd></div>
+<div><dt>Cyberterrorism</dt><dd>Premeditated, politically motivated attack on information systems that threatens or causes violence.</dd></div>
+<div><dt>Cyberwarfare</dt><dd>Attacks against a nation-state (e.g., Estonia 2007, Georgia 2008).</dd></div>
+</dl>
+
+<h3>Malware, spam, and phishing</h3>
+<ul class="b"><li><b>Malware:</b> any intentionally harmful program: viruses, worms, Trojans, ransomware, spyware.</li><li><b>Spamming:</b> unwanted bulk messages sent indiscriminately (e-mail, forums, texts, social media).</li><li><b>Phishing:</b> disguising as a trustworthy entity to obtain usernames, passwords, card details, usually via e-mail spoofing to a fake lookalike site. A <b>social engineering</b> technique.</li></ul>
+
+<h3>Harassment, stalking, and other content</h3>
+<ul class="b"><li><b>Obscene or offensive content:</b> legality varies by country; child pornography is illegal in most jurisdictions.</li><li><b>Online harassment:</b> targets specific people (gender, race, religion, etc.); includes revenge porn. “True threats” are not protected speech.</li><li><b>Drug trafficking:</b> darknet markets (e.g., Silk Road) and encrypted messaging.</li></ul>
+<div class="two">
+<div class="card"><h4>Types of stalking</h4><p><b>Surveillance</b> (physical following), <b>cyber</b> (electronic means), <b>aggravated</b> (restraint, bodily harm, or violating a protection order). Stalking needs two or more occasions of proximity, non-consensual communication, or threats.</p></div>
+<div class="card"><h4>Types of stalker</h4><p>Rejected, resentful (revenge), predatory (power, sexual gratification), intimacy seeker, incompetent suitor, erotomania / morbidly infatuated.</p></div></div>
+
+<h3>Investigation and the hacker</h3>
+<p>A computer can be a <b>source of evidence</b> (digital forensics); log files may hold records of value. Investigations often begin with an <b>IP address trace</b>, though it is not always conclusive. Hacking knowledge now spreads widely online, so technical skill is less of a barrier. A <b>hacker</b> is someone proficient at programming and finding vulnerabilities; the term has taken on a negative meaning in crime.</p>
+</section>
+
+<section class="m" id="ra10175" style="--k:var(--c3)" data-title="RA 10175: Cybercrime Prevention Act">
+<h2>RA 10175: Cybercrime Prevention Act of 2012</h2><p class="sub">An act defining cybercrime and providing for prevention, investigation, suppression, and penalties.</p>
+
+<h3>Background and history</h3>
+<ul class="b"><li>Preceded by the <b>Electronic Commerce Act of 2000 (RA 8792)</b>.</li><li>Need: the <b>ILOVEYOU virus</b> (Onel de Guzman) exposed that existing laws gave no legal basis to criminalize computer crimes.</li><li>Born from <b>HB 5808</b> (Rep. Susan Yap-Sulit and 36 co-authors) and <b>Senate Bill 2976</b> (Sen. Edgardo Angara); passed June 5 and 4, 2012; signed by <b>President Benigno Aquino III on September 12, 2012</b>.</li><li>The libel clause: Sen. Sotto introduced the amendment on January 24, 2012, saying internet libel would make people more cautious.</li></ul>
+<h3>Key terms</h3>
+<dl>
+<div><dt>Access</dt><dd>Instructing, communicating with, storing or retrieving data in, or otherwise using a computer system’s resources.</dd></div>
+<div><dt>Cyber</dt><dd>A computer or computer network; the electronic medium of online communication.</dd></div>
+<div><dt>Interception</dt><dd>Listening to, recording, monitoring, or surveilling the content of communications, directly or through eavesdropping devices.</dd></div>
+</dl>
+
+<h3>Sec. 4(a): CIA offenses</h3>
+<div class="tw"><table><tr><th>Offense</th><th>Meaning</th></tr>
+<tr><td>Illegal access</td><td>Intentional access to a computer system, in whole or part, without right</td></tr>
+<tr><td>Illegal interception</td><td>Intentional interception by technical means (exception: service provider employees for quality checks, not random monitoring)</td></tr>
+<tr><td>Data interference</td><td>Intentional or reckless alteration, damage, deletion, or deterioration of computer data</td></tr>
+<tr><td>System interference</td><td>Intentional alteration or reckless hindering of a computer or network’s functioning</td></tr>
+<tr><td>Misuse of devices</td><td>Use, production, sale, procurement, importation, distribution of devices or passwords to commit offenses; possession with intent to use</td></tr>
+<tr><td>Cyber-squatting</td><td>Acquiring a domain name in bad faith to profit, mislead, or deprive others, when it is identical or confusingly similar to a trademark or a person’s name</td></tr></table></div>
+<h3>Sec. 4(b): computer-related offenses</h3>
+<dl>
+<div><dt>Computer-related forgery</dt><dd>Inputting, altering, or deleting data without right to produce unauthentic data, intending it be treated as authentic; or knowingly using such data.</dd></div>
+<div><dt>Computer-related fraud</dt><dd>Unauthorized input, alteration, or deletion of data or programs, or interference with a system, including phishing, to gain economic benefit.</dd></div>
+<div><dt>Computer-related identity theft</dt><dd>Intentional acquisition, use, misuse, transfer, possession, alteration, or deletion of identifying information of another without right.</dd></div>
+</dl>
+<h3>Sec. 4(c): content-related offenses</h3>
+<dl>
+<div><dt>Cybersex</dt><dd>Interactive prostitution or obscenity through cyberspace using webcams.</dd></div>
+<div><dt>Child pornography</dt><dd>Acts under RA 9775 committed via computer; penalty one degree higher.</dd></div>
+<div><dt>Unsolicited commercial communications</dt><dd>Prohibited unless prior consent, or with a simple opt-out, no disguised source, and no misleading information.</dd></div>
+<div><dt>Libel</dt><dd>Art. 355 of the Revised Penal Code, committed through a computer system.</dd></div>
+</dl>
+
+<h3>Secs. 5 to 9: other offenses and liability</h3>
+<ul class="b"><li><b>Sec. 5:</b> aiding or abetting, and attempt to commit cybercrime, are punishable.</li><li><b>Sec. 6:</b> crimes under the Revised Penal Code and special laws committed through ICT: penalty <b>one degree higher</b>.</li><li><b>Sec. 7:</b> prosecution is without prejudice to liability under the RPC or special laws.</li><li><b>Sec. 9 (corporate liability):</b> based on power of representation, authority to decide, or authority to exercise control. Fine at least <b>double</b>; officers directly responsible are jointly and severally liable; foreign corporations: persons directly responsible.</li></ul>
+<h3>Sec. 8: penalties</h3>
+<div class="tw"><table><tr><th>Offense</th><th>Penalty</th></tr>
+<tr><td>Sec. 4(a) and 4(b)</td><td><i>Prision mayor</i> or fine of at least ₱200,000 up to an amount commensurate to damage, or both</td></tr>
+<tr><td>Sec. 4(a) against critical infrastructure</td><td><i>Reclusion temporal</i> or fine of at least ₱500,000 up to damage incurred, or both</td></tr>
+<tr><td>Cybersex 4(c)(1)</td><td><i>Prision mayor</i> or fine ₱200,000 to ₱1,000,000, or both</td></tr>
+<tr><td>Child pornography 4(c)(2)</td><td>RA 9775 penalties, one degree higher</td></tr>
+<tr><td>Unsolicited communications 4(c)(3)</td><td><i>Arresto mayor</i> or fine ₱50,000 to ₱250,000, or both</td></tr>
+<tr><td>Sec. 5</td><td>One degree lower than the offense, or fine ₱100,000 to ₱500,000, or both</td></tr></table></div>
+
+<h3>Enforcement and procedure</h3>
+<ul class="b"><li><b>Law enforcement:</b> PNP and NBI (Sec. 10).</li><li><b>Real-time traffic data collection (Sec. 12):</b> with due cause. Traffic data covers origin, destination, route, time, date, size, duration, type of service, <b>not content or identities</b>.</li><li><b>Court warrant</b> requires written application, examination under oath, reasonable grounds that a crime was, is being, or is about to be committed; that evidence is essential; and that no other means are readily available.</li></ul>
+<div class="tw"><table><tr><th>Custody step</th><th>Period</th></tr>
+<tr><td>Preservation of data</td><td>Maximum 90 days</td></tr>
+<tr><td>Disclosure of data</td><td>Within 72 hours of the order</td></tr>
+<tr><td>Search and seizure / interception</td><td>Per warrant; extension up to 30 days</td></tr>
+<tr><td>Custody</td><td>Deposited with court in sealed package within 48 hours after the period expires</td></tr>
+<tr><td>Destruction</td><td>After the periods expire</td></tr></table></div>
+<h3>Jurisdiction and agencies</h3>
+<ul class="b"><li><b>Jurisdiction:</b> Regional Trial Court, if committed in the Philippines or using a computer system wholly or partly in the country.</li><li><b>DOJ:</b> central authority; extends assistance; issues orders to restrict or block access to data prima facie in violation (Sec. 19).</li><li><b>CICC (Sec. 18):</b> Cybercrime Investigation and Coordinating Center, an inter-agency body under the Office of the President, created within 30 days of effectivity.</li><li><b>Sec. 29:</b> repealing clause; modifies Sec. 33(a) of RA 8792.</li></ul>
+
+<h3>Supreme Court TRO and constitutional issues</h3>
+<div class="flow"><span>Oct 9, 2012: 120-day TRO</span><i>→</i><span>Feb 5, 2013: TRO extended until further orders</span></div>
+<p><b>Rights allegedly violated:</b> freedom of expression, freedom of the press, due process, equal protection, privacy of communication.</p>
+<div class="tw"><table><tr><th>Challenged section</th><th>Issue</th></tr>
+<tr><td>Sec. 4(c)(4)</td><td>Reclassifying libel as cybercrime</td></tr>
+<tr><td>Sec. 6</td><td>Increased punishment</td></tr>
+<tr><td>Sec. 7</td><td>Double jeopardy</td></tr>
+<tr><td>Sec. 12</td><td>Warrantless search</td></tr>
+<tr><td>Sec. 19</td><td>DOJ may restrict content without judicial determination</td></tr></table></div>
+<details><summary>Discussion questions from the slides</summary><p>Can someone who “shares,” “likes,” or retweets a libelous post be liable? What about a commenter who agrees? Can a court compel an ISP or Facebook to reveal who posted, and can those entities be liable? Can a blogger be sued for reader comments? Can someone in Metro Manila file an internet libel case in Zamboanga City because the complainant saw it there?</p></details>
+</section>
+
+<section class="m" id="cards" style="--k:var(--c4)" data-title="Flashcards">
+<h2>Flashcards</h2><p class="sub">Click the card or press Space to flip. Use ← → to move.</p>
+<h3 style="display:none">Deck</h3>
+<div class="fx" id="fx"><button data-f="all" class="on">All</button><button data-f="Basics">Basics</button><button data-f="Typology">Typology</button><button data-f="RA 10175">RA 10175</button><button id="sh">Shuffle</button><span id="cnt"></span></div>
+<button id="card" aria-live="polite"></button>
+<div class="fn"><button id="pv">← Prev</button><button id="nx">Next →</button></div>
+</section>
+</main></div>
+<button id="tg">☰ Topics</button>
+<footer>Compiled from “Introduction to Cybercrime and Environmental Laws and Protection” and “Cybercrime Law RA 10175.” Check penalties and section numbers against the official text.</footer>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const slug=t=>t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const tree=$('#tree'),links=[],groups=[];
+$$('section.m').forEach(s=>{const g=document.createElement('div');g.className='g';g.style.setProperty('--k',s.getAttribute('style').match(/--k:([^;]+)/)[1]);
+const b=document.createElement('button');b.innerHTML='<i></i>'+s.dataset.title;const ul=document.createElement('ul');
+b.onclick=()=>g.classList.toggle('open');
+$$('#'+s.id+' h3').forEach(h=>{if(h.style.display==='none')return;const id=s.id+'-'+slug(h.textContent);h.id=id;h.innerHTML='<a href="#'+id+'">'+h.textContent+'</a>';
+const li=document.createElement('li'),a=document.createElement('a');a.href='#'+id;a.textContent=h.textContent;a.onclick=()=>$('#side').classList.remove('open');li.appendChild(a);ul.appendChild(li);links.push({a,h,g});});
+g.append(b,ul);tree.appendChild(g);groups.push({g,s,b});});
+function spy(){const h=document.documentElement.scrollHeight-innerHeight;$('#bar').style.width=(h>0?scrollY/h*100:0)+'%';
+let cur=null;links.forEach(l=>{if(l.h.getBoundingClientRect().top<140)cur=l});
+links.forEach(l=>l.a.classList.toggle('on',l===cur));
+let sec=groups[0];groups.forEach(x=>{if(x.s.getBoundingClientRect().top<200)sec=x});
+if(!$('#q').value)groups.forEach(x=>x.g.classList.toggle('open',x===sec));
+if(cur&&!$('#side').matches(':hover'))cur.a.scrollIntoView({block:'nearest'});}
+addEventListener('scroll',spy,{passive:true});spy();
+groups.forEach(x=>x.b.addEventListener('click',()=>x.s.scrollIntoView()));
+$('#q').oninput=e=>{const v=e.target.value.toLowerCase().trim();
+groups.forEach(x=>{const any=!v||x.s.dataset.title.toLowerCase().includes(v);x.g.querySelectorAll('li').forEach(li=>li.classList.toggle('hide',!(!v||any||li.textContent.toLowerCase().includes(v))));
+const vis=!v||any||[...x.g.querySelectorAll('li')].some(li=>!li.classList.contains('hide'));x.g.classList.toggle('hide',!vis);if(v)x.g.classList.add('open');});spy();};
+$('#tg').onclick=()=>$('#side').classList.toggle('open');
+$('#tb').onclick=()=>{const r=document.documentElement,d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'};
+const D=[["Basics","Two categories of computer parts?","Hardware (physical) and software (OS and applications)."],
+["Basics","Three computer categories by size?","Supercomputer, mainframe, personal computer."],
+["Basics","Input vs. output devices?","Input enters data (keyboard, mouse, scanner). Output gives information (monitor, printer, speaker)."],
+["Basics","System vs. application software?","System software (OS) runs the computer; application software performs specific tasks."],
+["Basics","When did ARPANET adopt TCP/IP?","January 1, 1983."],
+["Basics","Who invented the World Wide Web?","Tim Berners-Lee, in 1990."],
+["Basics","What is the internet?","A global system of interconnected networks using the TCP/IP protocol suite."],
+["Basics","Which connection is always on and keeps the phone free?","DSL."],
+["Typology","Cybercrime in one line?","A crime involving a computer and a network, where the computer is a tool or the target."],
+["Typology","Computer as target vs. tool?","Target: hacking, viruses, DoS. Tool: fraud, phishing, cyber terrorism, pornography."],
+["Typology","Four offense types of the Convention on Cybercrime?","CIA offenses, computer-related, content-related, copyright-related."],
+["Typology","Email spoofing?","E-mail that seems to come from one source but was sent from another."],
+["Typology","Salami attack?","Tiny, unnoticed deductions from many accounts that add up."],
+["Typology","DoS vs. DDoS?","Flooding a resource until it crashes; DDoS uses many wide-spread perpetrators."],
+["Typology","Virus vs. worm?","Virus needs a host file; worm copies itself with no host."],
+["Typology","Logic bomb?","Program that activates only on a trigger event or date."],
+["Typology","Trojan?","Unauthorized program hidden inside a seemingly legitimate one."],
+["Typology","Web jacking?","Forcefully taking control of a website."],
+["Typology","Phishing?","Disguising as a trusted entity to get passwords or card details; social engineering."],
+["Typology","Cyber-extortion?","Threatening repeated attacks (e.g., DoS) unless money is paid."],
+["Typology","Carding?","Using a stolen credit card to charge pre-paid or gift cards."],
+["Typology","Three kinds of stalking?","Surveillance, cyber, aggravated."],
+["Typology","Predatory stalker?","Seeks power and sexual gratification; tracks victim by surveillance."],
+["RA 10175","Full title and year?","Cybercrime Prevention Act of 2012."],
+["RA 10175","Which virus prompted the law?","The ILOVEYOU virus (Onel de Guzman)."],
+["RA 10175","When was RA 10175 signed, and by whom?","September 12, 2012, by President Benigno Aquino III."],
+["RA 10175","Law before it on e-commerce?","Electronic Commerce Act of 2000 (RA 8792)."],
+["RA 10175","Three groups of punishable acts (Sec. 4)?","CIA offenses, computer-related offenses, content-related offenses."],
+["RA 10175","Cyber-squatting?","Bad-faith acquisition of a domain name that copies a trademark or name to profit or deprive others."],
+["RA 10175","Computer-related offenses?","Computer forgery, computer-related fraud, computer-related identity theft."],
+["RA 10175","Content-related offenses?","Cybersex, child pornography, unsolicited commercial communications, libel."],
+["RA 10175","When is spam allowed?","With prior consent, or with opt-out, a non-disguised source, and no misleading info."],
+["RA 10175","Penalty for Sec. 5 (aiding, abetting, attempt)?","One degree lower, or fine of ₱100,000 to ₱500,000, or both."],
+["RA 10175","Sec. 6 effect on penalties?","Crimes under RPC and special laws via ICT carry one degree higher."],
+["RA 10175","Corporate liability fine?","At least double the fines; officers directly responsible jointly and severally liable."],
+["RA 10175","Law enforcement agencies?","PNP and NBI."],
+["RA 10175","What does traffic data include?","Origin, destination, route, time, date, size, duration, service type; not content or identities."],
+["RA 10175","Data preservation period?","Maximum 90 days."],
+["RA 10175","Disclosure of data deadline?","Within 72 hours of the order."],
+["RA 10175","Custody deposit deadline?","Within 48 hours after the warrant period expires, sealed with the court."],
+["RA 10175","Which court has jurisdiction?","Regional Trial Court."],
+["RA 10175","What is the CICC?","Cybercrime Investigation and Coordinating Center, inter-agency body under the Office of the President."],
+["RA 10175","What does Sec. 19 allow?","DOJ may restrict or block access to data prima facie violating the Act."],
+["RA 10175","Supreme Court action on the law?","TRO on Oct 9, 2012 (120 days), extended Feb 5, 2013 until further orders."],
+["RA 10175","Sections challenged as unconstitutional?","Secs. 4(c)(4) libel, 6, 7 double jeopardy, 12 warrantless search, 19 DOJ blocking."]];
+let deck=[],i=0,flipped=0,filt='all';
+function build(){deck=D.filter(d=>filt==='all'||d[0]===filt);i=0;show()}
+function show(){flipped=0;const c=$('#card'),d=deck[i];c.className='';c.innerHTML='<small>'+d[0]+' · Question</small>'+d[1];$('#cnt').textContent=(i+1)+' / '+deck.length}
+function flip(){flipped=!flipped;const c=$('#card'),d=deck[i];c.className=flipped?'f':'';c.innerHTML=flipped?'<small>Answer</small>'+d[2]:'<small>'+d[0]+' · Question</small>'+d[1]}
+$('#card').onclick=flip;$('#nx').onclick=()=>{i=(i+1)%deck.length;show()};$('#pv').onclick=()=>{i=(i-1+deck.length)%deck.length;show()};
+$('#sh').onclick=()=>{for(let n=deck.length-1;n>0;n--){const j=Math.floor(Math.random()*(n+1));[deck[n],deck[j]]=[deck[j],deck[n]]}i=0;show()};
+$$('#fx [data-f]').forEach(b=>b.onclick=()=>{$$('#fx [data-f]').forEach(x=>x.classList.remove('on'));b.classList.add('on');filt=b.dataset.f;build()});
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;const r=$('#cards').getBoundingClientRect();if(r.top>innerHeight*.7||r.bottom<100)return;
+if(e.key==='ArrowRight')$('#nx').click();else if(e.key==='ArrowLeft')$('#pv').click();else if(e.key===' '){e.preventDefault();flip()}});
+build();
+</script></body></html>
