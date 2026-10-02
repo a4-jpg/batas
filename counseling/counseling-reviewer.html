@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Counseling &amp; Psychotherapy Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef0f6;--pane:#fff;--ink:#14172b;--mut:#626a85;--line:#dadfec;--soft:#e8ebf7;--hl:#f0b43c;
+--c1:#3a45b8;--c2:#c05a2a;--c3:#0f7a72;--c4:#8b3d92;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e101d;--pane:#171a2c;--ink:#eceefb;--mut:#9aa1c0;--line:#2a2f4a;--soft:#20243b;--c1:#8e9bff;--c2:#ff9a66;--c3:#52d6c9;--c4:#dc92e6}}
+:root[data-theme="dark"]{--bg:#0e101d;--pane:#171a2c;--ink:#eceefb;--mut:#9aa1c0;--line:#2a2f4a;--soft:#20243b;--c1:#8e9bff;--c2:#ff9a66;--c3:#52d6c9;--c4:#dc92e6}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:Gloock,Georgia,serif;font-weight:400}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:60}
+header{background:linear-gradient(135deg,#1b1f4d,#3a45b8 60%,#7a4bb0);color:#fff;padding:64px 6vw 48px}
+header div{max-width:1240px;margin:auto}
+h1{font-size:clamp(2.4rem,7vw,5.2rem);line-height:.98;margin:0 0 14px;letter-spacing:-.02em}
+header p{max-width:60ch;margin:0;opacity:.85}
+.wrap{display:grid;grid-template-columns:290px 1fr;gap:34px;max-width:1240px;margin:auto;padding:30px 6vw 80px}
+aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;background:var(--pane);border:1px solid var(--line);border-radius:16px;padding:14px}
+aside input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;margin-bottom:10px}
+.g>button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;font-weight:700;font-size:.93rem}
+.g>button:hover{background:var(--soft)}.g>button i{width:10px;height:10px;border-radius:50%;background:var(--k);flex:none}
+.g>button::after{content:"›";margin-left:auto;transition:.2s;color:var(--mut)}.g.open>button::after{transform:rotate(90deg)}
+.g ul{list-style:none;margin:0 0 6px 14px;padding:0 0 0 12px;border-left:2px solid var(--line);display:none}.g.open ul{display:block}
+.g li a{display:block;padding:5px 10px;border-radius:8px;color:var(--mut);text-decoration:none;font-size:.88rem;line-height:1.35}
+.g li a:hover{color:var(--ink);background:var(--soft)}.g li a.on{color:var(--ink);font-weight:700;background:var(--soft);box-shadow:inset 3px 0 var(--k)}
+.g li.hide,.g.hide{display:none}
+#tb{all:unset;cursor:pointer;margin-top:8px;font-size:.8rem;color:var(--mut);padding:6px 10px;border:1px solid var(--line);border-radius:8px}
+#tg{display:none}
+main{min-width:0}
+section.m{background:var(--pane);border:1px solid var(--line);border-radius:20px;padding:34px clamp(18px,4vw,44px);margin-bottom:30px;border-top:8px solid var(--k)}
+section.m>h2{font-size:clamp(1.8rem,4vw,2.6rem);margin:0 0 4px;color:var(--k);line-height:1.1}
+.sub{color:var(--mut);margin:0 0 20px}
+h3{font-size:1.35rem;margin:34px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--line)}
+h3 a{color:inherit;text-decoration:none}h3 a:hover::after{content:" #";color:var(--k)}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:14px 18px;border-radius:0 12px 12px 0;margin:16px 0;font-weight:600}
+.big small{display:block;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:12px;margin:0}
+dl div,.card{border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:var(--bg)}
+dt,.card h4{font-weight:700;color:var(--k);margin:0}dd{margin:2px 0 0;font-size:.94rem;line-height:1.5}
+.card h4{margin-bottom:5px}.card p{margin:.3em 0;font-size:.94rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
+ul.b,ol{padding-left:1.2em;margin:.4em 0}li{margin:.25em 0}
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.92rem;line-height:1.45}
+th{background:var(--k);color:#fff;text-align:left}:root[data-theme="dark"] th{color:#0e101d}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:700}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0;font-weight:700;font-size:.86rem}
+.flow span{background:var(--k);color:#fff;padding:6px 12px;border-radius:8px}:root[data-theme="dark"] .flow span{color:#0e101d}.flow i{font-style:normal;color:var(--mut)}
+details{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0}
+summary{cursor:pointer;font-weight:700;color:var(--k)}details p{margin:.6em 0 0;font-size:.94rem}
+.fx{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;align-items:center}
+.fx button{all:unset;cursor:pointer;padding:6px 14px;border-radius:99px;border:1.5px solid var(--line);font-weight:600;font-size:.86rem}
+.fx button.on{background:var(--k);color:#fff;border-color:var(--k)}:root[data-theme="dark"] .fx button.on{color:#0e101d}
+#cnt{margin-left:auto;color:var(--mut);font-size:.88rem}
+#card{all:unset;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;width:100%;min-height:260px;padding:30px;border-radius:20px;background:var(--soft);border:2px solid var(--line);box-sizing:border-box;font:1.5rem/1.35 Gloock,serif}
+#card small{font:600 .72rem "Instrument Sans";letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+#card.f{background:var(--k);border-color:var(--k);color:#fff;font:1.08rem/1.6 "Instrument Sans"}:root[data-theme="dark"] #card.f{color:#0e101d}
+#card.f small{color:inherit;opacity:.7}
+.fn{display:flex;gap:10px;justify-content:center;margin-top:14px}
+.fn button{all:unset;cursor:pointer;padding:9px 20px;border-radius:12px;border:1.5px solid var(--ink);font-weight:700;font-size:.9rem}
+.fn button:hover{background:var(--ink);color:var(--pane)}
+button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 60px;font-size:.9rem}
+@media(max-width:900px){.wrap{display:block;padding-top:20px}
+aside{position:fixed;inset:0 auto 0 0;width:min(320px,86vw);max-height:none;border-radius:0 16px 16px 0;z-index:50;transform:translateX(-105%);transition:.25s;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.45)}
+#tg{display:block;all:unset;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;background:var(--ink);color:var(--pane);padding:12px 20px;border-radius:99px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.3)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style></head><body>
+<div id="bar"></div>
+<header><div><h1>Counseling &amp;<br>Psychotherapy Reviewer</h1><p>Lesson 3: Jungian analytical psychotherapy and Adlerian therapy. Pick any topic from the menu on the left to jump straight to it.</p></div></header>
+<div class="wrap">
+<aside id="side"><input id="q" type="search" placeholder="Search topics…" aria-label="Search topics"><div id="tree"></div><button id="tb">Toggle dark / light</button></aside>
+<main>
+
+<section class="m" id="jung" style="--k:var(--c1)" data-title="Jungian Analytical Psychotherapy">
+<h2>Jungian analytical psychotherapy</h2><p class="sub">Individuation: becoming one’s true, whole self.</p>
+
+<h3>Human nature: four stages</h3>
+<p>Unlike Freud (childhood) and Erikson (lifespan), Jung stressed <b>middle age</b> as the key stage for growth and self-discovery. Personality keeps developing, shaped by culture and the unconscious.</p>
+<div class="tw"><table><tr><th>Stage</th><th>Key points</th></tr>
+<tr><td>Childhood</td><td>Governed by primitive urges. Parents help the child individuate. Experiences influence but do not fully shape personality (against Freud). Family-systems approach: treat the whole family. Born with an inherited collective unconscious.</td></tr>
+<tr><td>Adolescence</td><td>Identity exploration: relationships, career, values. Often confusing and unstable. Personality preferences emerge (introversion vs. extraversion). Parents may project fears or ambitions onto teens.</td></tr>
+<tr><td>Middle age</td><td>“Second half of life,” most significant. Energy turns inward; shift from extraversion to introversion. Task: integrate conscious and unconscious, toward individuation. Interest in midlife crises.</td></tr>
+<tr><td>Old age</td><td>Reflection and reconciliation. Confronting mortality and legacy; meaning eases acceptance of death. Repressed aspects may resurface. Still a time of growth.</td></tr></table></div>
+
+<h3>Major constructs of the psyche</h3>
+<dl>
+<div><dt>Personal conscious</dt><dd>Awareness of self and the outer world; current thoughts and easily retrieved memories. The only fully self-revealed part. Developing uniqueness and self-awareness is <b>individuation</b>.</dd></div>
+<div><dt>Ego</dt><dd>Center of consciousness and executive organizer. Manages thoughts, feelings, perceptions; decides what is recalled; balances conscious and unconscious. The psyche is self-regulating.</dd></div>
+<div><dt>Personal unconscious</dt><dd>Like Freud’s: repressed memories, forgotten experiences, suppressed behaviors. Emotionally charged; surfaces in dreams, fantasies, creative arts.</dd></div>
+<div><dt>Collective unconscious</dt><dd>Jung’s most distinctive idea: inherited, universal patterns shared by all humanity, made of archetypes. Like instinct (weaverbirds building nests). Reflects evolutionary heritage, not personal learning.</dd></div>
+</dl>
+<h3>Complexes</h3>
+<p>Repressed content plus strong emotion forms a <b>complex</b>: a cluster of emotionally loaded ideas that drives behavior. <b>Father complex</b>: control, protection (hero worship in women). <b>Mother complex</b>: nurturing, self-sacrifice. Others: God, martyr, superiority, Napoleon. Complexes come from personal experience but carry collective elements.</p>
+
+<h3>Archetypes</h3>
+<p>Universal symbolic images inherited from ancestral experience; found in cultures, myths, religions. Dormant until activated by significant events (e.g., love at first sight from the “ideal partner” archetype).</p>
+<div class="two">
+<div class="card"><h4>The Shadow</h4><p>Dark, repressed side; traits one denies or projects onto others. Projection leads to misreading others or acting out under stress.</p></div>
+<div class="card"><h4>Anima and animus</h4><p>Opposite-gender qualities within. <b>Anima</b>: feminine side in men (nurturing, playful). <b>Animus</b>: masculine side in women (assertive, ambitious).</p></div>
+<div class="card"><h4>The Self</h4><p>Central archetype of wholeness and integration of conscious and unconscious. Compared to <b>syzygy</b> (balanced alignment of anima and animus).</p></div></div>
+
+<h3>Goals and process of change</h3>
+<ul class="b"><li>Facilitate individuation; integrate personal conscious and unconscious; live authentically in the “here and now.”</li><li>Neurosis comes from a split between powerful complexes, often from trauma. Splitting is universal but pathological when it disrupts functioning. Symptoms are chances for growth.</li><li>Severe cases: “possessed by the complex” when archetypal forces overpower the ego.</li></ul>
+<div class="flow"><span>Catharsis</span><i>·</i><span>Analytical</span><i>·</i><span>Insight</span><i>·</i><span>Transformation</span></div>
+<p>Four <b>nonsequential</b> phases: <b>catharsis</b> (emotional release), <b>analytical</b> (dreams, transference, word association, personality types), <b>insight</b> (synthesize history to bring the unconscious into awareness), <b>transformational/individuation</b> (integrate insights, reconcile complexes, achieve wholeness).</p>
+
+<h3>Dream analysis</h3>
+<p>Primary route to the unconscious. Clients record dreams immediately on waking. Jung studied <b>series</b> of dreams for recurring themes, plus emotions and cultural context. Dreams can compensate for one-sided conscious attitudes; symbols need the client’s context.</p>
+<div class="flow"><span>1 Who/what/when/where</span><i>→</i><span>2 Complexes and emotions</span><i>→</i><span>3 Turning point</span><i>→</i><span>4 Conclusion and meaning</span></div>
+<div class="two">
+<div class="card"><h4>Association</h4><p>Client shares first thoughts about each dream element.</p></div>
+<div class="card"><h4>Amplification</h4><p>Expand images on three levels: <b>personal</b> (memories), <b>cultural</b> (symbols), <b>archetypal</b> (myth, folklore, religion).</p></div></div>
+
+<h3>Word association test</h3>
+<p>Developed by Jung and Eugen Bleuler: 100 neutral and charged words. Jung recorded reaction time and resistance. Complex indicators: delayed or unusual responses, perseveration, refusal. It showed complexes are measurable and observable.</p>
+
+<h3>Attitudes and psychological types</h3>
+<div class="two">
+<div class="card"><h4>Two attitudes</h4><p><b>Extraversion</b>: energy outward, sociable. <b>Introversion</b>: energy inward, reflective. Neither is superior; a continuum.</p></div>
+<div class="card"><h4>Four functions</h4><p><b>Rational</b> (judge): thinking, feeling. <b>Irrational</b> (perceive without judging): sensing, intuition. Each person has a dominant attitude and function; others stay undeveloped and surface in dreams.</p></div></div>
+<div class="tw"><table><tr><th>Type</th><th>Extravert</th><th>Introvert</th></tr>
+<tr><td>Thinking</td><td>Rule-bound, logical, detached; often scientists</td><td>Intellectual, rigid, subjective, aloof (Jung’s own type)</td></tr>
+<tr><td>Feeling</td><td>Warm, social, conforming</td><td>Quiet, repressed, seems cold</td></tr>
+<tr><td>Sensing</td><td>Pleasure-seeking, adventurous</td><td>Artistic, aesthetic</td></tr>
+<tr><td>Intuiting</td><td>Innovative, opportunistic</td><td>Visionary, eccentric, impractical</td></tr></table></div>
+
+<h3>Transference and countertransference</h3>
+<ul class="b"><li><b>Transference:</b> client projects thoughts and fears onto the therapist. <b>Countertransference:</b> therapist projects onto the client. Both must be analyzed.</li><li>Sources include personal experience, dreams, and archetypal projections.</li><li>Clients keep journals, reflect, and do creative activities. Therapists must resolve their own issues first, and both stay actively engaged.</li></ul>
+</section>
+
+<section class="m" id="adler" style="--k:var(--c2)" data-title="Adlerian Therapy">
+<h2>Adlerian therapy</h2><p class="sub">Style of life, social interest, and courage to change.</p>
+
+<h3>Style of life</h3>
+<p>How a person adapts, solves problems, and pursues goals; reflects a unique striving for perfection or superiority. Formed by <b>ages 4 to 5</b> and hard to change. Example: a bullied child who learns verbal manipulation may become a persuasive salesperson. Seen in five life tasks: <b>self-development, spiritual development, occupation, society, love</b>.</p>
+
+<h3>Social interest (Gemeinschaftsgefühl)</h3>
+<div class="flow"><span>Aptitude</span><i>→</i><span>Ability</span><i>→</i><span>Secondary dynamic characteristics</span></div>
+<ul class="b"><li>Innate but shaped by early relationships. The <b>mother–child bond</b> comes first; neglect or narrow focus can lead to dominating, exploiting, or avoiding.</li><li><b>Father:</b> models attitudes to family, work, society; detachment or authoritarianism inhibits it. <b>Marital relationship:</b> conflict models poor cooperation; forgiveness teaches empathy.</li><li><b>Low</b> social interest: self-centered, poor health. <b>High</b>: well-being and adaptation, even in old age. Adler believed it could help criminal populations.</li></ul>
+
+<h3>Inferiority and superiority</h3>
+<dl>
+<div><dt>Organ inferiority</dt><dd>Weaker organs prompt compensation; later Adler shifted to social inferiority.</dd></div>
+<div><dt>Inferiority as motivation</dt><dd>All infants feel inferior, which drives growth and mastery. Only a problem when it becomes a complex.</dd></div>
+<div><dt>Inferiority complex</dt><dd>Belief of not being strong enough to solve life’s problems in a socially useful way. Common in neurotic clients.</dd></div>
+<div><dt>Superiority complex</dt><dd>Defense that masks inferiority: arrogance, boasting (“I must show that I am somebody”).</dd></div>
+</dl>
+<p><b>Threats to confidence:</b> physical disability, <b>pampering</b> (overindulgent, overdomineering, overpermissive, overprotective; Capron), and <b>neglect</b>. Pampered children lack independence; neglected ones withdraw.</p>
+
+<h3>Goals and the therapeutic relationship</h3>
+<ul class="b"><li><b>Psychotherapy</b> when lifestyle must change; <b>counseling</b> when change fits within the existing lifestyle (Dreikurs). Counseling suffices if only one life task is affected (Manaster and Corsini). Success sign: early recollections change over therapy (Mosak). In practice the difference is small; both aim to <b>increase social interest</b>.</li><li>Build mutual respect and trust; align goals; educate about realistic goals; keep encouraging; make goals explicit.</li><li><b>Empathy</b> addresses feelings and beliefs, since beliefs shape feelings (“I must please,” “Nothing ever works”).</li></ul>
+<details><summary>Example: Michelle and her boss</summary><p>Client can’t please the boss. A stronger response names the belief (“if you can’t please, there’s no point in trying”) and shows her agency to change her behavior.</p></details>
+
+<h3>Assessment: family constellation</h3>
+<p>The family is a microcosm of society where belonging and inferiority feelings first develop. Adlerians favor <b>family dynamics</b> over strict birth order. Therapists gather sibling descriptions, ages and spacing, trait ratings (hardest worker, bossiest), family events, parental values and discipline, and structural changes (divorce, death, remarriage). Data gathering may take 1 to 4 hours. Goal: understand the client’s perception of self and family.</p>
+
+<h3>Assessment: early recollections</h3>
+<ul class="b"><li>Specific childhood memories that reveal lifestyle and basic beliefs. <b>Accuracy does not matter; perception does.</b> Reports told by others do not count.</li><li>Adler used 1 to 2; Dreikurs often 10 or more. Ages 4 to 5 are especially useful.</li><li>Look for dominant themes, role (participant or observer), emotions, and consistency.</li></ul>
+
+<h3>Assessment: dreams</h3>
+<p>Dreams are purposeful, not random; symbols have no fixed meaning. They show whether a person is stuck or moving, change as therapy progresses, and are used with family constellation and early recollections.</p>
+
+<h3>Basic mistakes</h3>
+<p>Early self-defeating beliefs that oppose social interest (avoidance, self-centeredness, power seeking). People guard them with safeguarding mechanisms.</p>
+<div class="tw"><table><tr><th>Category</th><th>Example</th></tr>
+<tr><td>Overgeneralizations</td><td>“Everyone should like me.” “I never do anything right.”</td></tr>
+<tr><td>False or impossible goals of security</td><td>“People want to take advantage of me.”</td></tr>
+<tr><td>Misperceptions of life’s demands</td><td>“Life is too hard.”</td></tr>
+<tr><td>Minimization or denial of worth</td><td>“I’m stupid.”</td></tr>
+<tr><td>Faulty values</td><td>“You have to cheat to get ahead.”</td></tr></table></div>
+
+<h3>Assets, insight, and interpretation</h3>
+<ul class="b"><li><b>Assets</b> (honesty, skills, responsibility) balance discouragement and strengthen motivation in long analyses.</li><li><b>Interpretation</b> targets goals and purposes, not labels. Make it tentative: “Is it possible that…”, “I wonder if…”. Avoid “You feel insecure.”</li></ul>
+
+<h3>Reorientation techniques</h3>
+<p>Clients actively change beliefs and behaviors, take risks, and try new patterns (Dreikurs).</p>
+<div class="tw"><table><tr><th>Technique</th><th>What it does</th></tr>
+<tr><td>Immediacy</td><td>Addresses what is happening now; points out mismatch between words and nonverbal cues, tentatively.</td></tr>
+<tr><td>Encouragement</td><td>Primary ingredient; focuses on strengths and solutions; builds willingness to take risks. More than “just try harder.”</td></tr>
+<tr><td>Acting as if</td><td>Behave as though the desired outcome will succeed, like trying on a new suit; builds self-efficacy.</td></tr>
+<tr><td>Catching oneself</td><td>Notice unwanted behavior after, then during, then before it happens; leads to an “Aha!” moment.</td></tr>
+<tr><td>Creating images</td><td>Mentally rehearse success (e.g., assertively asking a roommate to stop smoking).</td></tr>
+<tr><td>Spitting in the client’s soup</td><td>Name the purpose behind a behavior so it loses its appeal.</td></tr>
+<tr><td>Avoiding the tar baby</td><td>Don’t get stuck in the client’s sticky self-defeating patterns; don’t react as others do.</td></tr>
+<tr><td>Push-button technique</td><td>Recall a pleasant memory, then an unpleasant one, then the pleasant again: we choose feelings by what we think about (Mosak).</td></tr>
+<tr><td>Paradoxical intention</td><td>“Prescribing the symptom”: exaggerate the problem behavior until it loses appeal.</td></tr>
+<tr><td>Homework</td><td>Simple tasks between sessions, reviewed weekly; never controlling the client’s life.</td></tr></table></div>
+
+<h3>Limitations and criticisms</h3>
+<ul class="b"><li>Lack of systematization; vague concepts that are hard to research.</li><li>Poetic and lecture-based rather than scientific.</li><li>Translation inconsistencies; not scholarly by modern standards.</li></ul>
+</section>
+
+<section class="m" id="assign" style="--k:var(--c3)" data-title="Assignment: Dead Poets Society">
+<h2>Assignment: <i>Dead Poets Society</i></h2><p class="sub">Apply Adlerian concepts to the 1989 film directed by Peter Weir.</p>
+
+<h3>Guide questions</h3>
+<div class="two">
+<div class="card"><h4>A. Lifestyle assessment</h4><p>Neil Perry’s family constellation and how his parents shaped his lifestyle and goals. Possible basic mistakes in his thinking.</p></div>
+<div class="card"><h4>B. Inferiority and superiority</h4><p>How Neil, Todd, and Mr. Keating feel inferior and how they compensate.</p></div>
+<div class="card"><h4>C. Social interest and courage</h4><p>Who shows social interest? How does encouragement (or its lack) affect Neil? How does Keating’s teaching reflect empowerment and courage?</p></div>
+<div class="card"><h4>D. Reorientation and change</h4><p>Moments when characters act differently. Which techniques would you use as Neil’s therapist?</p></div></div>
+<h3>Format and rubric</h3>
+<p>Essay of 2 to 3 pages, typed, double-spaced, with name and section; hardcopy at next meeting. Optional extra credit: write a therapeutic dialogue between an Adlerian counselor and Neil.</p>
+<div class="tw"><table><tr><th>Criteria</th><th>Description</th><th>Points</th></tr>
+<tr><td>Application of Adlerian concepts</td><td>Accurate, relevant use of ideas</td><td>30</td></tr>
+<tr><td>Depth of analysis</td><td>Insightful interpretation of behavior and motivation</td><td>25</td></tr>
+<tr><td>Clarity and organization</td><td>Logical flow, well-structured paragraphs</td><td>20</td></tr>
+<tr><td>Reflection</td><td>Empathy and understanding of human nature</td><td>15</td></tr>
+<tr><td>Creativity</td><td>Original insights</td><td>10</td></tr>
+<tr><td>Total</td><td></td><td>100</td></tr></table></div>
+</section>
+
+<section class="m" id="cards" style="--k:var(--c4)" data-title="Flashcards">
+<h2>Flashcards</h2><p class="sub">Click the card or press Space to flip. Use ← → to move.</p>
+<h3 style="display:none">Deck</h3>
+<div class="fx" id="fx"><button data-f="all" class="on">All</button><button data-f="Jung">Jung</button><button data-f="Adler">Adler</button><button id="sh">Shuffle</button><span id="cnt"></span></div>
+<button id="card" aria-live="polite"></button>
+<div class="fn"><button id="pv">← Prev</button><button id="nx">Next →</button></div>
+</section>
+</main></div>
+<button id="tg">☰ Topics</button>
+<footer>Compiled from Lesson 3: Introduction to Counseling and Psychotherapy (Jungian and Adlerian approaches).</footer>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const slug=t=>t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+/* nav */
+const tree=$('#tree'),links=[],groups=[];
+$$('section.m').forEach(s=>{const g=document.createElement('div');g.className='g';g.style.setProperty('--k',getComputedStyle(s).getPropertyValue('--k')||'');g.style.cssText+=';--k:'+s.getAttribute('style').match(/--k:([^;]+)/)[1];
+const b=document.createElement('button');b.innerHTML='<i></i>'+s.dataset.title;const ul=document.createElement('ul');
+b.onclick=()=>g.classList.toggle('open');
+$$('#'+s.id+' h3').forEach(h=>{if(h.style.display==='none')return;const id=s.id+'-'+slug(h.textContent);h.id=id;h.innerHTML='<a href="#'+id+'">'+h.textContent+'</a>';
+const li=document.createElement('li'),a=document.createElement('a');a.href='#'+id;a.textContent=h.textContent;a.onclick=()=>$('#side').classList.remove('open');li.appendChild(a);ul.appendChild(li);links.push({a,h,g});});
+g.append(b,ul);tree.appendChild(g);groups.push({g,s,b});});
+function spy(){const h=document.documentElement.scrollHeight-innerHeight;$('#bar').style.width=(h>0?scrollY/h*100:0)+'%';
+let cur=null;links.forEach(l=>{if(l.h.getBoundingClientRect().top<140)cur=l});
+links.forEach(l=>l.a.classList.toggle('on',l===cur));
+let sec=groups[0];groups.forEach(x=>{if(x.s.getBoundingClientRect().top<200)sec=x});
+if(!$('#q').value)groups.forEach(x=>x.g.classList.toggle('open',x===sec));
+if(cur&&!$('#side').matches(':hover'))cur.a.scrollIntoView({block:'nearest'});}
+addEventListener('scroll',spy,{passive:true});spy();
+groups.forEach(x=>x.b.addEventListener('click',()=>{x.s.scrollIntoView()}));
+$('#q').oninput=e=>{const v=e.target.value.toLowerCase().trim();
+groups.forEach(x=>{let any=!v||x.s.dataset.title.toLowerCase().includes(v);x.g.querySelectorAll('li').forEach((li,i)=>{const m=!v||any||li.textContent.toLowerCase().includes(v);li.classList.toggle('hide',!m);});
+const vis=!v||any||[...x.g.querySelectorAll('li')].some(li=>!li.classList.contains('hide'));x.g.classList.toggle('hide',!vis);if(v)x.g.classList.add('open');});spy();};
+$('#tg').onclick=()=>$('#side').classList.toggle('open');
+$('#tb').onclick=()=>{const r=document.documentElement,d=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);r.dataset.theme=d?'light':'dark'};
+/* flashcards */
+const D=[["Jung","Jung’s four stages of development?","Childhood, adolescence, middle age, old age. Middle age is the most important."],
+["Jung","Which stage did Jung stress most?","Middle age: the “second half of life,” turning inward toward individuation."],
+["Jung","Individuation?","Developing a unique, self-aware, whole self by integrating conscious and unconscious."],
+["Jung","Personal conscious?","Awareness of self and the outer world; the only fully self-revealed part."],
+["Jung","Role of the ego?","Center of consciousness and executive organizer; balances conscious and unconscious."],
+["Jung","Personal unconscious?","Repressed, forgotten, and suppressed material; emerges in dreams, fantasies, and art."],
+["Jung","What is a complex?","A cluster of emotionally loaded ideas formed by repressed content plus strong emotion."],
+["Jung","Father vs. mother complex?","Father: control and protection. Mother: nurturing and self-sacrifice."],
+["Jung","Collective unconscious?","Inherited universal patterns shared by all humanity, made of archetypes."],
+["Jung","Archetype?","Universal symbolic image inherited from ancestral experience; dormant until activated."],
+["Jung","The Shadow?","Dark, repressed side of personality; traits denied or projected onto others."],
+["Jung","Anima vs. animus?","Anima: feminine side in men. Animus: masculine side in women."],
+["Jung","The Self?","Central archetype of wholeness and integration of conscious and unconscious."],
+["Jung","Four phases of Jungian therapy?","Catharsis, analytical, insight, transformational (individuation). Nonsequential."],
+["Jung","Association vs. amplification?","Association: first thoughts about dream elements. Amplification: expand on personal, cultural, archetypal levels."],
+["Jung","Four phases of a dream narrative?","Who/what/when/where; complexes and emotions; turning point; conclusion and meaning."],
+["Jung","Word association test?","Jung and Bleuler’s 100-word test; delays and odd responses reveal complexes."],
+["Jung","Rational vs. irrational functions?","Rational: thinking, feeling. Irrational: sensing, intuition."],
+["Jung","Jung’s own psychological type?","Thinking introvert."],
+["Jung","Transference vs. countertransference?","Client projects onto therapist vs. therapist projects onto client."],
+["Adler","Style of life?","Unique way a person adapts and strives for goals; formed by ages 4 to 5."],
+["Adler","Five life tasks?","Self-development, spiritual development, occupation, society, love."],
+["Adler","Social interest?","Gemeinschaftsgefühl: innate potential for cooperation and concern for others."],
+["Adler","Three stages of social interest?","Aptitude, ability, secondary dynamic characteristics."],
+["Adler","Four types of pampering?","Overindulgent, overdomineering, overpermissive, overprotective."],
+["Adler","Inferiority vs. superiority complex?","Belief one cannot solve life’s problems vs. defensive arrogance masking inferiority."],
+["Adler","Counseling vs. psychotherapy?","Counseling: change within the lifestyle. Psychotherapy: lifestyle itself must change."],
+["Adler","Early recollections?","Specific childhood memories revealing lifestyle; perception matters more than accuracy."],
+["Adler","Five basic mistakes?","Overgeneralization, false security goals, misperceived life demands, minimized worth, faulty values."],
+["Adler","How should interpretations be phrased?","Tentatively: “Is it possible that…”, “I wonder if…”."],
+["Adler","Acting as if?","Behave as if the desired outcome will succeed, building self-efficacy."],
+["Adler","Catching oneself?","Spotting unwanted behavior as it occurs, then anticipating it."],
+["Adler","Spitting in the client’s soup?","Naming a behavior’s purpose so it loses appeal."],
+["Adler","Avoiding the tar baby?","Not getting trapped in the client’s sticky self-defeating patterns."],
+["Adler","Push-button technique?","Switch between pleasant and unpleasant memories to show we choose our feelings."],
+["Adler","Paradoxical intention?","Prescribing the symptom: exaggerate the behavior until it loses appeal."],
+["Adler","Primary ingredient of Adlerian counseling?","Encouragement."],
+["Adler","Main criticisms of Adler?","Unsystematic, vague, poetic rather than scientific, translation issues."]];
+let deck=[],i=0,flipped=0,filt='all';
+function build(){deck=D.filter(d=>filt==='all'||d[0]===filt);i=0;show()}
+function show(){flipped=0;const c=$('#card'),d=deck[i];c.className='';c.style.setProperty('--k','var(--c4)');c.innerHTML='<small>'+d[0]+' · Question</small>'+d[1];$('#cnt').textContent=(i+1)+' / '+deck.length}
+function flip(){flipped=!flipped;const c=$('#card'),d=deck[i];c.className=flipped?'f':'';c.innerHTML=flipped?'<small>Answer</small>'+d[2]:'<small>'+d[0]+' · Question</small>'+d[1]}
+$('#card').onclick=flip;$('#nx').onclick=()=>{i=(i+1)%deck.length;show()};$('#pv').onclick=()=>{i=(i-1+deck.length)%deck.length;show()};
+$('#sh').onclick=()=>{for(let n=deck.length-1;n>0;n--){const j=Math.floor(Math.random()*(n+1));[deck[n],deck[j]]=[deck[j],deck[n]]}i=0;show()};
+$$('#fx [data-f]').forEach(b=>b.onclick=()=>{$$('#fx [data-f]').forEach(x=>x.classList.remove('on'));b.classList.add('on');filt=b.dataset.f;build()});
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;const r=$('#cards').getBoundingClientRect();if(r.top>innerHeight*.7||r.bottom<100)return;
+if(e.key==='ArrowRight')$('#nx').click();else if(e.key==='ArrowLeft')$('#pv').click();else if(e.key===' '){e.preventDefault();flip()}});
+build();
+</script></body></html>
