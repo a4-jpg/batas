@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminal Procedure Reviewer | Rules 110-114 & Court Testimony</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0f172a',
+                            900: '#0a101d',
+                            950: '#050a14',
+                        },
+                        burgundy: {
+                            700: '#6b111e',
+                            800: '#4a0e17',
+                            900: '#32080e',
+                        },
+                        gold: {
+                            400: '#e6ca65',
+                            500: '#d4af37',
+                            600: '#b89228',
+                        },
+                        parchment: {
+                            100: '#fbf9f4',
+                            200: '#f4efe4',
+                            300: '#e8dec9',
+                            800: '#23201a',
+                            900: '#171510',
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        serif: ['Source Serif 4', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a101d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a0e17;
+            border-radius: 4px;
+            border: 1px solid #d4af37;
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        .parchment-texture {
+            background-color: #0a101d;
+            background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px), radial-gradient(#d4af37 0.5px, #0a101d 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.03;
+        }
+    </style>
+</head>
+<body class="bg-navy-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col parchment-texture">
+
+    <header class="sticky top-0 z-50 bg-navy-900/95 border-b border-gold-500/30 backdrop-blur-md px-4 py-3 shadow-xl">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <!-- Mobile Menu Toggle & Title -->
+            <div class="flex items-center gap-3">
+                <button id="sidebarToggle" class="lg:hidden text-gold-500 hover:text-gold-400 p-2 rounded-lg bg-navy-800 border border-gold-500/20">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-burgundy-800 to-navy-900 border border-gold-500 flex items-center justify-center text-gold-500 shadow-md">
+                        <i class="fa-solid fa-scale-balanced text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-cinzel font-bold text-lg md:text-xl text-gold-500 tracking-wider">CRIMINAL PROCEDURE</h1>
+                        <p class="text-xs text-slate-400 hidden sm:block">Rules 110-114 & Court Testimony | Jurisprudence Reviewer</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mode Switcher Controls -->
+            <div class="flex items-center gap-2 bg-navy-950/80 p-1 rounded-xl border border-gold-500/20">
+                <button onclick="switchView('notes')" id="btn-mode-notes" class="px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-burgundy-800 text-gold-400 border border-gold-500/40 shadow">
+                    <i class="fa-solid fa-book-open"></i> <span class="hidden md:inline">Notes Mode</span>
+                </button>
+                <button onclick="switchView('flashcards')" id="btn-mode-flashcards" class="px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-clone"></i> <span class="hidden md:inline">Flashcards</span>
+                </button>
+                <button onclick="switchView('quiz')" id="btn-mode-quiz" class="px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-graduation-cap"></i> <span class="hidden md:inline">Practice Quiz</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 flex max-w-7xl w-full mx-auto relative">
+
+        <aside id="sidebar" class="fixed lg:sticky top-[61px] left-0 z-40 w-72 h-[calc(100vh-61px)] bg-navy-900/95 border-r border-gold-500/20 overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col">
+            <!-- Search Box -->
+            <div class="p-4 border-b border-gold-500/10">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search terms, rules, cases..." class="w-full bg-navy-950 text-xs text-slate-200 pl-9 pr-3 py-2 rounded-lg border border-gold-500/20 focus:outline-none focus:border-gold-500 placeholder-slate-500">
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="p-4 space-y-1 text-sm flex-1">
+                <div class="text-xs font-cinzel font-bold text-gold-500/70 tracking-wider uppercase px-2 mb-2">Modules & Topics</div>
+                
+                <a href="#overview" onclick="closeSidebarOnMobile()" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-300 hover:bg-burgundy-900/50 hover:text-gold-400 border border-transparent hover:border-gold-500/20 transition-all">
+                    <i class="fa-solid fa-university w-4 text-center text-gold-500"></i> PLMUN & Core Concepts
+                </a>
+                
+                <a href="#testimony" onclick="closeSidebarOnMobile()" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-300 hover:bg-burgundy-900/50 hover:text-gold-400 border border-transparent hover:border-gold-500/20 transition-all">
+                    <i class="fa-solid fa-gavel w-4 text-center text-gold-500"></i> Court Testimony & Witnesses
+                </a>
+
+                <a href="#rule110" onclick="closeSidebarOnMobile()" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-300 hover:bg-burgundy-900/50 hover:text-gold-400 border border-transparent hover:border-gold-500/20 transition-all">
+                    <i class="fa-solid fa-file-contract w-4 text-center text-gold-500"></i> Rule 110: Offenses Prosecution
+                </a>
+
+                <a href="#rule111" onclick="closeSidebarOnMobile()" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-300 hover:bg-burgundy-900/50 hover:text-gold-400 border border-transparent hover:border-gold-500/20 transition-all">
+                    <i class="fa-solid fa-hand-holding-dollar w-4 text-center text-gold-500"></i> Rule 111: Civil Action
+                </a>
+
+                <a href="#rule112" onclick="closeSidebarOnMobile()" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-300 hover:bg-burgundy-900/50 hover:text-gold-400 border border-transparent hover:border-gold-500/20 transition-all">
+                    <i class="fa-solid fa-magnifying-glass-location w-4 text-center text-gold-500"></i> Rule 112: Preliminary Investigation
+                </a>
+
+                <a href="#rule113" onclick="closeSidebarOnMobile()" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-300 hover:bg-burgundy-900/50 hover:text-gold-400 border border-transparent hover:border-gold-500/20 transition-all">
+                    <i class="fa-solid fa-handcuffs w-4 text-center text-gold-500"></i> Rule 113: Arrest
+                </a>
+
+                <a href="#rule114" onclick="closeSidebarOnMobile()" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-300 hover:bg-burgundy-900/50 hover:text-gold-400 border border-transparent hover:border-gold-500/20 transition-all">
+                    <i class="fa-solid fa-key w-4 text-center text-gold-500"></i> Rule 114: Bail
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-gold-500/10 bg-navy-950/50 text-xs text-slate-400 text-center">
+                <p class="font-cinzel text-gold-500">Pamantasan ng Lungsod ng Muntinlupa</p>
+                <p class="text-[10px] mt-1 text-slate-500">College of Criminal Justice | GAD Integrated</p>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-4 md:p-8 overflow-y-auto max-w-full">
+            
+            <!-- NOTES VIEW -->
+            <div id="view-notes" class="space-y-10">
+                
+                <!-- SECTION 1: OVERVIEW & BASIC CONCEPTS -->
+                <section id="overview" class="scroll-mt-20">
+                    <div class="border-b border-gold-500/30 pb-3 mb-6 flex items-center justify-between">
+                        <h2 class="font-cinzel text-2xl md:text-3xl font-bold text-gold-400 flex items-center gap-3">
+                            <i class="fa-solid fa-university text-burgundy-700"></i> Institution Mandate & Core Concepts
+                        </h2>
+                        <span class="bg-burgundy-900/80 text-gold-400 border border-gold-500/30 text-xs px-3 py-1 rounded-full font-semibold">Introductory Module</span>
+                    </div>
+
+                    <!-- Institution Mandate Grid -->
+                    <div class="grid md:grid-cols-3 gap-4 mb-8">
+                        <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-5 shadow-lg">
+                            <h3 class="font-cinzel font-bold text-gold-500 text-base mb-2"><i class="fa-solid fa-landmark text-burgundy-700 mr-2"></i> PLMUN Vision & Mission</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">Dedicated to academic excellence, social responsibility, dynamic leadership, and holistic development of law enforcement and legal scholars in Muntinlupa City.</p>
+                        </div>
+                        <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-5 shadow-lg">
+                            <h3 class="font-cinzel font-bold text-gold-500 text-base mb-2"><i class="fa-solid fa-shield-halved text-burgundy-700 mr-2"></i> CCJ Objectives</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">Fostering high standards of ethics, professional criminal justice mastery, law enforcement efficiency, and constitutional human rights compliance.</p>
+                        </div>
+                        <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-5 shadow-lg">
+                            <h3 class="font-cinzel font-bold text-gold-500 text-base mb-2"><i class="fa-solid fa-venus-mars text-burgundy-700 mr-2"></i> GAD Integration</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">Promoting gender-responsive legal processes, protection of vulnerable sectors, and eliminating gender bias in law enforcement and court testimony.</p>
+                        </div>
+                    </div>
+
+                    <!-- Substantive vs Procedural Distinction Card -->
+                    <div class="bg-navy-900/90 border border-gold-500/30 rounded-xl p-6 shadow-xl">
+                        <h3 class="font-cinzel font-bold text-xl text-gold-400 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-scale-unbalanced text-burgundy-700"></i> Criminal Law vs. Criminal Procedure
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-navy-950 p-4 rounded-lg border-l-4 border-burgundy-700">
+                                <h4 class="font-bold text-gold-500 text-sm mb-2 uppercase tracking-wider">Substantive Criminal Law</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed mb-2">Defines crimes, treats of their nature, and provides for their appropriate punishment (e.g., Revised Penal Code, Special Penal Laws).</p>
+                                <span class="inline-block text-[10px] bg-burgundy-900/60 text-gold-300 px-2 py-0.5 rounded font-mono">Creates & Defines Rights</span>
+                            </div>
+                            <div class="bg-navy-950 p-4 rounded-lg border-l-4 border-gold-500">
+                                <h4 class="font-bold text-gold-500 text-sm mb-2 uppercase tracking-wider">Procedural Criminal Law</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed mb-2">Provides the mechanism/method by which the sovereign state prosecutes, arrests, tries, and punishes offenders of criminal law.</p>
+                                <span class="inline-block text-[10px] bg-navy-800 text-gold-400 border border-gold-500/30 px-2 py-0.5 rounded font-mono">Provides Method of Enforcement</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 2: COURT TESTIMONY -->
+                <section id="testimony" class="scroll-mt-20">
+                    <div class="border-b border-gold-500/30 pb-3 mb-6 flex items-center justify-between">
+                        <h2 class="font-cinzel text-2xl md:text-3xl font-bold text-gold-400 flex items-center gap-3">
+                            <i class="fa-solid fa-gavel text-burgundy-700"></i> Rules on Court Testimony & Witnesses
+                        </h2>
+                        <span class="bg-burgundy-900/80 text-gold-400 border border-gold-500/30 text-xs px-3 py-1 rounded-full font-semibold">Rules of Evidence</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Definition & Core Qualification -->
+                        <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-6 shadow-md">
+                            <h3 class="font-cinzel text-lg font-bold text-gold-500 mb-2">Definition of Court Testimony</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                                Formal, oral, or written statements delivered under oath or affirmation before a court of competent jurisdiction by a witness during trial proceedings to prove or disprove facts in issue.
+                            </p>
+                            
+                            <!-- 4 Stages of Examination -->
+                            <h4 class="font-cinzel font-bold text-gold-400 text-sm mt-4 mb-3 uppercase tracking-wider">The 4 Sequential Stages of Examination</h4>
+                            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                                <div class="bg-navy-950 p-3 rounded-lg border border-gold-500/20">
+                                    <div class="text-xs text-gold-500 font-bold mb-1">1. Direct Examination</div>
+                                    <p class="text-xs text-slate-400">Examination-in-chief by the party calling the witness to elicit relevant facts supporting their case.</p>
+                                </div>
+                                <div class="bg-navy-950 p-3 rounded-lg border border-gold-500/20">
+                                    <div class="text-xs text-gold-500 font-bold mb-1">2. Cross-Examination</div>
+                                    <p class="text-xs text-slate-400">By adverse party to test accuracy, truthfulness, credibility, bias, or impeach the witness.</p>
+                                </div>
+                                <div class="bg-navy-950 p-3 rounded-lg border border-gold-500/20">
+                                    <div class="text-xs text-gold-500 font-bold mb-1">3. Re-Direct Examination</div>
+                                    <p class="text-xs text-slate-400">By calling party to explain or clarify matters touched upon during cross-examination.</p>
+                                </div>
+                                <div class="bg-navy-950 p-3 rounded-lg border border-gold-500/20">
+                                    <div class="text-xs text-gold-500 font-bold mb-1">4. Re-Cross Examination</div>
+                                    <p class="text-xs text-slate-400">By adverse party on matters covered in re-direct examination and allowed by court.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Types of Witnesses & Judicial Affidavit Rule -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-5">
+                                <h4 class="font-cinzel font-bold text-gold-400 text-base mb-3">Witness Classifications</h4>
+                                <ul class="space-y-2 text-xs text-slate-300">
+                                    <li class="bg-navy-950 p-2.5 rounded border-l-2 border-gold-500">
+                                        <strong class="text-gold-400">Ordinary Witness:</strong> Testifies strictly to facts perceived through their own senses (sight, hearing, etc.). Opinions generally inadmissible.
+                                    </li>
+                                    <li class="bg-navy-950 p-2.5 rounded border-l-2 border-burgundy-700">
+                                        <strong class="text-gold-400">Expert Witness:</strong> Testifies giving opinions on matters requiring special skill, knowledge, training, or education (e.g., Forensic Pathologist, Ballistics Expert).
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-5">
+                                <h4 class="font-cinzel font-bold text-gold-400 text-base mb-3">Judicial Affidavit Rule (A.M. No. 12-8-8-SC)</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed mb-2">
+                                    Replaces direct oral testimony in criminal cases where the maximum penalty does not exceed <strong class="text-gold-400">6 years</strong>, or where the accused agrees regardless of penalty.
+                                </p>
+                                <div class="bg-navy-950 p-2.5 rounded text-[11px] text-slate-400 border border-gold-500/10">
+                                    <span class="text-gold-500 font-bold">Key Requirement:</span> Must be executed under oath with attestation by counsel that they conducted or supervised the examination.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: RULE 110 -->
+                <section id="rule110" class="scroll-mt-20">
+                    <div class="border-b border-gold-500/30 pb-3 mb-6 flex items-center justify-between">
+                        <h2 class="font-cinzel text-2xl md:text-3xl font-bold text-gold-400 flex items-center gap-3">
+                            <i class="fa-solid fa-file-contract text-burgundy-700"></i> Rule 110: Prosecution of Offenses
+                        </h2>
+                        <span class="bg-burgundy-900/80 text-gold-400 border border-gold-500/30 text-xs px-3 py-1 rounded-full font-semibold">Rules of Court</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Institution vs Prosecution -->
+                        <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-6 shadow-md">
+                            <h3 class="font-cinzel text-lg font-bold text-gold-500 mb-3">How Criminal Actions are Instituted</h3>
+                            <div class="grid sm:grid-cols-2 gap-4 text-xs text-slate-300">
+                                <div class="bg-navy-950 p-4 rounded-lg border-l-2 border-gold-500">
+                                    <h4 class="font-bold text-gold-400 mb-1">Offenses Requiring Preliminary Investigation</h4>
+                                    <p class="text-slate-400">By filing the complaint with the proper officer for the purpose of conducting the required preliminary investigation (Penalty: at least 4 years, 2 months, 1 day).</p>
+                                </div>
+                                <div class="bg-navy-950 p-4 rounded-lg border-l-2 border-burgundy-700">
+                                    <h4 class="font-bold text-gold-400 mb-1">Direct Filing in Court / Prosecutor</h4>
+                                    <p class="text-slate-400">Filing directly with First Level Courts (MTC/MeTC/MCTC) or with the Office of the Prosecutor in Manila and other chartered cities.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Complaint vs Information Card -->
+                        <div class="bg-navy-900/90 border border-gold-500/30 rounded-xl p-6 shadow-xl">
+                            <h3 class="font-cinzel font-bold text-xl text-gold-400 mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-code-compare text-burgundy-700"></i> Complaint vs. Information
+                            </h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-xs text-slate-300 border-collapse">
+                                    <thead>
+                                        <tr class="bg-navy-950 text-gold-400 border-b border-gold-500/30 font-cinzel">
+                                            <th class="p-3">Feature</th>
+                                            <th class="p-3">Complaint (Sec. 3)</th>
+                                            <th class="p-3">Information (Sec. 4)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gold-500/10">
+                                        <tr>
+                                            <td class="p-3 font-semibold text-gold-500">Definition</td>
+                                            <td class="p-3">Sworn written statement charging a person with an offense</td>
+                                            <td class="p-3">Accusation in writing charging a person with an offense</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold text-gold-500">Subscribed By</td>
+                                            <td class="p-3">Offended party, peace officer, or other public officer charged with enforcement</td>
+                                            <td class="p-3">Subscribed strictly by the Prosecutor</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold text-gold-500">Oath Requirement</td>
+                                            <td class="p-3">Must be subscribed under OATH</td>
+                                            <td class="p-3">No oath required from prosecutor (filed under official oath)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold text-gold-500">Where Filed</td>
+                                            <td class="p-3">Prosecutor's Office or Court</td>
+                                            <td class="p-3">Filed directly in Court</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Private Crimes & Special Rules -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-5">
+                                <h4 class="font-cinzel font-bold text-gold-400 text-base mb-2">Crimes Against Chastity (Sec. 5)</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                                    Adultery, Concubinage, Seduction, Abduction, and Acts of Lasciviousness cannot be prosecuted except upon a complaint filed by the <strong class="text-gold-400">offended party</strong>, parents, grandparents, or guardian.
+                                </p>
+                                <div class="bg-burgundy-950/60 text-gold-300 p-2.5 rounded border border-burgundy-700 text-xs">
+                                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Special Rule: Pardon by offended party bars prosecution for Adultery & Concubinage if given prior to institution.
+                                </div>
+                            </div>
+
+                            <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-5">
+                                <h4 class="font-cinzel font-bold text-gold-400 text-base mb-2">Katarungang Pambarangay (KP Law / LGC)</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed mb-2">
+                                    Condition precedent before filing criminal complaint for offenses punishable by imprisonment not exceeding <strong class="text-gold-400">1 year</strong> or fine not exceeding ₱5,000.
+                                </p>
+                                <p class="text-[11px] text-slate-400 font-semibold">Exceptions: Offenses with no private victim, parties reside in different municipalities/cities, accused under detention.</p>
+                            </div>
+                        </div>
+
+                        <!-- Amendment vs Substitution -->
+                        <div class="bg-navy-900/90 border border-gold-500/30 rounded-xl p-6 shadow-xl">
+                            <h3 class="font-cinzel font-bold text-xl text-gold-400 mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-[#d4af37] fa-pen-to-square text-burgundy-700"></i> Amendment vs. Substitution of Information (Sec. 14)
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-navy-950 p-4 rounded-lg border-t-2 border-gold-500">
+                                    <h4 class="font-bold text-gold-400 text-sm mb-2 uppercase">Amendment</h4>
+                                    <ul class="text-xs text-slate-300 space-y-2 list-disc pl-4">
+                                        <li>May involve formal or substantial changes.</li>
+                                        <li><strong>Before Plea:</strong> Can amend in form or substance without leave of court.</li>
+                                        <li><strong>After Plea:</strong> Formal amendments allowed only with leave of court and if no prejudice to accused rights. Substantial amendments prohibited.</li>
+                                        <li>Refers to the same original offense charged or included therein.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-navy-950 p-4 rounded-lg border-t-2 border-burgundy-700">
+                                    <h4 class="font-bold text-gold-400 text-sm mb-2 uppercase">Substitution</h4>
+                                    <ul class="text-xs text-slate-300 space-y-2 list-disc pl-4">
+                                        <li>Involves replacing original information with a distinct and new offense.</li>
+                                        <li>Requires court dismissal of original information upon filing of new one.</li>
+                                        <li>Only allowed if original information can be dismissed without double jeopardy.</li>
+                                        <li>Requires new preliminary investigation and new plea entry.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 4: RULE 111 -->
+                <section id="rule111" class="scroll-mt-20">
+                    <div class="border-b border-gold-500/30 pb-3 mb-6 flex items-center justify-between">
+                        <h2 class="font-cinzel text-2xl md:text-3xl font-bold text-gold-400 flex items-center gap-3">
+                            <i class="fa-solid fa-hand-holding-dollar text-burgundy-700"></i> Rule 111: Prosecution of Civil Action
+                        </h2>
+                        <span class="bg-burgundy-900/80 text-gold-400 border border-gold-500/30 text-xs px-3 py-1 rounded-full font-semibold">Civil Liability ex delicto</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-6 shadow-md">
+                            <h3 class="font-cinzel text-lg font-bold text-gold-500 mb-2">Implied Institution Rule</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                                When a criminal action is instituted, the civil action for recovery of civil liability arising from the offense charged (ex delicto) is <strong class="text-gold-400">deemed instituted</strong> with the criminal action unless the offended party:
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-3 text-xs">
+                                <div class="flex-1 bg-navy-950 p-3 rounded border border-gold-500/20 text-center">
+                                    <i class="fa-solid fa-hand text-gold-500 text-base mb-1"></i>
+                                    <div>1. Waives the civil action</div>
+                                </div>
+                                <div class="flex-1 bg-navy-950 p-3 rounded border border-gold-500/20 text-center">
+                                    <i class="fa-solid fa-box-archive text-gold-500 text-base mb-1"></i>
+                                    <div>2. Reserves right to institute separately</div>
+                                </div>
+                                <div class="flex-1 bg-navy-950 p-3 rounded border border-gold-500/20 text-center">
+                                    <i class="fa-solid fa-gavel text-gold-500 text-base mb-1"></i>
+                                    <div>3. Institutes civil action prior to criminal</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Independent Civil Actions & Prejudicial Question -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-5">
+                                <h4 class="font-cinzel font-bold text-gold-400 text-base mb-3"><i class="fa-solid fa-scale-balanced text-burgundy-700 mr-2"></i> Independent Civil Actions</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed mb-2">
+                                    Civil actions under Articles <strong class="text-gold-400">32, 33, 34, and 2176</strong> of the Civil Code proceed independently of the criminal prosecution and require only a <strong class="text-gold-400">preponderance of evidence</strong>.
+                                </p>
+                                <ul class="text-[11px] text-slate-400 space-y-1 list-disc pl-4">
+                                    <li>Art. 32: Constitutional Rights Violations</li>
+                                    <li>Art. 33: Defamation, Fraud, Physical Injuries</li>
+                                    <li>Art. 34: Police Refusal/Failure to Render Aid</li>
+                                    <li>Art. 2176: Quasi-delict (Negligence)</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-5">
+                                <h4 class="font-cinzel font-bold text-gold-400 text-base mb-3"><i class="fa-solid fa-hourglass-half text-burgundy-700 mr-2"></i> Prejudicial Question (Sec. 6-7)</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed mb-2">
+                                    An issue involved in a previously instituted civil action which is intimately connected with the issue raised in the subsequent criminal action, the resolution of which determines whether or not the criminal action may proceed.
+                                </p>
+                                <div class="bg-navy-950 p-2.5 rounded border border-gold-500/20 text-[11px] text-gold-400 font-semibold">
+                                    Requisites: (1) Civil action filed PRIOR to criminal; (2) Issues in civil determine guilt/innocence in criminal.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 5: RULE 112 -->
+                <section id="rule112" class="scroll-mt-20">
+                    <div class="border-b border-gold-500/30 pb-3 mb-6 flex items-center justify-between">
+                        <h2 class="font-cinzel text-2xl md:text-3xl font-bold text-gold-400 flex items-center gap-3">
+                            <i class="fa-solid fa-magnifying-glass-location text-burgundy-700"></i> Rule 112: Preliminary Investigation
+                        </h2>
+                        <span class="bg-burgundy-900/80 text-gold-400 border border-gold-500/30 text-xs px-3 py-1 rounded-full font-semibold">A.M. No. 24-02-09-SC Updates</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Key Definitions & New Quantum of Evidence -->
+                        <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-6 shadow-md">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                                <h3 class="font-cinzel text-lg font-bold text-gold-500">Preliminary Investigation Standard</h3>
+                                <span class="bg-gold-500/20 text-gold-400 border border-gold-500/40 text-xs px-3 py-1 rounded font-mono font-bold">New Jurisprudence Quantum</span>
+                            </div>
+                            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                                An inquiry or proceeding to determine whether there is sufficient ground to engender a well-founded belief that a crime has been committed and the respondent is probably guilty thereof and should be held for trial.
+                            </p>
+                            
+                            <!-- Updated Quantum Highlight Box -->
+                            <div class="bg-gradient-to-r from-burgundy-900/90 to-navy-950 p-4 rounded-xl border border-gold-500/40 shadow-lg">
+                                <div class="text-xs font-bold text-gold-400 uppercase tracking-wider mb-1"><i class="fa-solid fa-scale-balanced mr-2"></i> Quantum of Evidence in PI (A.M. No. 24-02-09-SC / Dept. Circular 020)</div>
+                                <p class="text-sm font-semibold text-slate-100">
+                                    "Prima Facie Evidence with Reasonable Certainty of Conviction"
+                                </p>
+                                <p class="text-xs text-slate-300 mt-1">Requires prosecutors to assess not merely probable cause but whether admissible evidence exists to sustain a conviction beyond reasonable doubt at trial.</p>
+                            </div>
+                        </div>
+
+                        <!-- PI vs Custodial vs Inquest Table -->
+                        <div class="bg-navy-900/90 border border-gold-500/30 rounded-xl p-6 shadow-xl">
+                            <h3 class="font-cinzel font-bold text-lg text-gold-400 mb-4">Comparison: PI vs. Custodial Investigation vs. Inquest</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-xs text-slate-300 border-collapse">
+                                    <thead>
+                                        <tr class="bg-navy-950 text-gold-400 border-b border-gold-500/30 font-cinzel">
+                                            <th class="p-3">Parameter</th>
+                                            <th class="p-3">Preliminary Investigation</th>
+                                            <th class="p-3">Custodial Investigation</th>
+                                            <th class="p-3">Inquest Proceeding</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gold-500/10">
+                                        <tr>
+                                            <td class="p-3 font-semibold text-gold-500">Nature</td>
+                                            <td class="p-3">Executive/Judicial Inquiry</td>
+                                            <td class="p-3">Police Questioning of Suspect</td>
+                                            <td class="p-3">Summary Inquiry by Prosecutor</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold text-gold-500">Status of Accused</td>
+                                            <td class="p-3">Usually not under detention</td>
+                                            <td class="p-3">In custody / deprived of freedom</td>
+                                            <td class="p-3">Warrantlessly arrested person</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold text-gold-500">Conducting Officer</td>
+                                            <td class="p-3">State/City/Provincial Prosecutor</td>
+                                            <td class="p-3">Law Enforcement / Police Officers</td>
+                                            <td class="p-3">Inquest Prosecutor</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold text-gold-500">Coverage Requirement</td>
+                                            <td class="p-3">Offenses penalized by at least 4y 2m 1d</td>
+                                            <td class="p-3">Any interrogation after custody</td>
+                                            <td class="p-3">Lawful warrantless arrest cases</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 6: RULE 113 -->
+                <section id="rule113" class="scroll-mt-20">
+                    <div class="border-b border-gold-500/30 pb-3 mb-6 flex items-center justify-between">
+                        <h2 class="font-cinzel text-2xl md:text-3xl font-bold text-gold-400 flex items-center gap-3">
+                            <i class="fa-solid fa-handcuffs text-burgundy-700"></i> Rule 113: Arrest
+                        </h2>
+                        <span class="bg-burgundy-900/80 text-gold-400 border border-gold-500/30 text-xs px-3 py-1 rounded-full font-semibold">Constitutional Guarantees</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Definition & Modes -->
+                        <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-6 shadow-md">
+                            <h3 class="font-cinzel text-lg font-bold text-gold-500 mb-2">Definition & Essential Requisites</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                                Arrest is the taking of a person into custody that he may be bound to answer for the commission of an offense. It is made by an <strong class="text-gold-400">actual restraint</strong> of a person, or by his <strong class="text-gold-400">submission to the custody</strong> of the person making the arrest.
+                            </p>
+                        </div>
+
+                        <!-- 3 Lawful Warrantless Arrest Cases (Sec. 5) -->
+                        <div class="bg-navy-900/90 border border-gold-500/30 rounded-xl p-6 shadow-xl">
+                            <h3 class="font-cinzel font-bold text-xl text-gold-400 mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-shield-cat text-burgundy-700"></i> Section 5: Lawful Warrantless Arrests
+                            </h3>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="bg-navy-950 p-4 rounded-lg border-t-4 border-gold-500">
+                                    <div class="text-xs font-bold text-gold-400 uppercase mb-2">1. In Flagrante Delicto (Sec. 5a)</div>
+                                    <p class="text-xs text-slate-300 leading-relaxed mb-2">When, in the officer's presence, the person to be arrested has committed, is actually committing, or is attempting to commit an offense.</p>
+                                    <span class="text-[10px] text-slate-400 italic">Requisites: Overt act + Personal knowledge by officer.</span>
+                                </div>
+
+                                <div class="bg-navy-950 p-4 rounded-lg border-t-4 border-burgundy-700">
+                                    <div class="text-xs font-bold text-gold-400 uppercase mb-2">2. Hot Pursuit (Sec. 5b)</div>
+                                    <p class="text-xs text-slate-300 leading-relaxed mb-2">When an offense has just been committed, and officer has probable cause based on personal knowledge of facts/circumstances that suspect committed it.</p>
+                                    <span class="text-[10px] text-slate-400 italic">Requisites: Offense JUST committed + Probable cause on personal knowledge.</span>
+                                </div>
+
+                                <div class="bg-navy-950 p-4 rounded-lg border-t-4 border-gold-600">
+                                    <div class="text-xs font-bold text-gold-400 uppercase mb-2">3. Escaped Prisoner (Sec. 5c)</div>
+                                    <p class="text-xs text-slate-300 leading-relaxed mb-2">When person to be arrested is a prisoner who has escaped from a penal establishment or place where serving sentence or temporarily confined.</p>
+                                    <span class="text-[10px] text-slate-400 italic">May be arrested anytime and anywhere without warrant.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Types of Warrants & Miranda Warning -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-5">
+                                <h4 class="font-cinzel font-bold text-gold-400 text-base mb-3">Warrant Types</h4>
+                                <ul class="space-y-2 text-xs text-slate-300">
+                                    <li class="bg-navy-950 p-2.5 rounded border-l-2 border-gold-500">
+                                        <strong class="text-gold-400">Regular Warrant of Arrest:</strong> Issued by judge upon personal determination of probable cause. Validity lasts until executed or recalled.
+                                    </li>
+                                    <li class="bg-navy-950 p-2.5 rounded border-l-2 border-burgundy-700">
+                                        <strong class="text-gold-400">Bench Warrant:</strong> Issued directly by judge from the bench for contempt or failure of accused to appear during trial.
+                                    </li>
+                                    <li class="bg-navy-950 p-2.5 rounded border-l-2 border-gold-600">
+                                        <strong class="text-gold-400">Alias Warrant:</strong> Re-issued warrant when original warrant was unserved or returned without execution.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-5">
+                                <h4 class="font-cinzel font-bold text-gold-400 text-base mb-3">Miranda Rights & RA 7438 Statutory Safeguards</h4>
+                                <ul class="text-xs text-slate-300 space-y-2">
+                                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-gold-500 mt-0.5"></i> Right to remain silent.</li>
+                                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-gold-500 mt-0.5"></i> Right to have competent & independent counsel of own choice.</li>
+                                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-gold-500 mt-0.5"></i> Right to be informed of these rights.</li>
+                                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-gold-500 mt-0.5"></i> Right to be visited by immediate family, counsel, or medical doctor.</li>
+                                </ul>
+                                <div class="mt-3 bg-burgundy-950/80 p-2 rounded text-[11px] text-gold-300 border border-burgundy-700">
+                                    <i class="fa-solid fa-ban mr-1"></i> Waivers of Miranda rights must be in WRITING and in the presence of COUNSEL.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 7: RULE 114 -->
+                <section id="rule114" class="scroll-mt-20">
+                    <div class="border-b border-gold-500/30 pb-3 mb-6 flex items-center justify-between">
+                        <h2 class="font-cinzel text-2xl md:text-3xl font-bold text-gold-400 flex items-center gap-3">
+                            <i class="fa-solid fa-key text-burgundy-700"></i> Rule 114: Bail
+                        </h2>
+                        <span class="bg-burgundy-900/80 text-gold-400 border border-gold-500/30 text-xs px-3 py-1 rounded-full font-semibold">Constitutional Right</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Definition & Custody of Law -->
+                        <div class="bg-navy-900/80 border border-gold-500/20 rounded-xl p-6 shadow-md">
+                            <h3 class="font-cinzel text-lg font-bold text-gold-500 mb-2">Definition & Essential Prerequisite</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                                Security given for the release of a person in custody of the law, furnished by him or a bondsman, to guarantee his appearance before any court as required.
+                            </p>
+                            <div class="bg-navy-950 p-3 rounded border border-gold-500/30 text-xs text-gold-400">
+                                <strong class="uppercase tracking-wider">Custody of Law Rule:</strong> Bail cannot be applied for or granted unless the applicant is either under arrest or has voluntarily surrendered to court jurisdiction.
+                            </div>
+                        </div>
+
+                        <!-- 4 Forms of Bail -->
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="bg-navy-900/80 p-4 rounded-xl border border-gold-500/20 shadow">
+                                <div class="text-gold-500 font-cinzel font-bold text-sm mb-1">1. Corporate Surety</div>
+                                <p class="text-xs text-slate-400">Bail bond furnished by a licensed insurance or bonding company authorized by SC.</p>
+                            </div>
+                            <div class="bg-navy-900/80 p-4 rounded-xl border border-gold-500/20 shadow">
+                                <div class="text-gold-500 font-cinzel font-bold text-sm mb-1">2. Property Bond</div>
+                                <p class="text-xs text-slate-400">An undertaking constituted as lien on real property given as security for amount of bail.</p>
+                            </div>
+                            <div class="bg-navy-900/80 p-4 rounded-xl border border-gold-500/20 shadow">
+                                <div class="text-gold-500 font-cinzel font-bold text-sm mb-1">3. Cash Deposit</div>
+                                <p class="text-xs text-slate-400">Deposit of specified cash sum with city/municipal treasurer or clerk of court.</p>
+                            </div>
+                            <div class="bg-navy-900/80 p-4 rounded-xl border border-gold-500/20 shadow">
+                                <div class="text-gold-500 font-cinzel font-bold text-sm mb-1">4. Recognizance</div>
+                                <p class="text-xs text-slate-400">Obligation of record entered into before court by a responsible person/entity.</p>
+                            </div>
+                        </div>
+
+                        <!-- Bail as Right vs Discretionary -->
+                        <div class="bg-navy-900/90 border border-gold-500/30 rounded-xl p-6 shadow-xl">
+                            <h3 class="font-cinzel font-bold text-xl text-gold-400 mb-4 flex items-center gap-2">
+                                <i class="fa-solid fa-balance-scale text-burgundy-700"></i> Bail: Matter of Right vs. Discretionary
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-navy-950 p-4 rounded-lg border-l-4 border-gold-500">
+                                    <h4 class="font-bold text-gold-400 text-sm mb-2 uppercase">Bail as a Matter of Right</h4>
+                                    <ul class="text-xs text-slate-300 space-y-2 list-disc pl-4">
+                                        <li>Before or after conviction by MTC / MeTC / MCTC.</li>
+                                        <li>Before conviction by RTC for offenses NOT punishable by death, reclusion perpetua, or life imprisonment.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-navy-950 p-4 rounded-lg border-l-4 border-burgundy-700">
+                                    <h4 class="font-bold text-gold-400 text-sm mb-2 uppercase">Bail as Discretionary</h4>
+                                    <ul class="text-xs text-slate-300 space-y-2 list-disc pl-4">
+                                        <li>Upon conviction by RTC of offense NOT punishable by death, reclusion perpetua, or life imprisonment.</li>
+                                        <li>Before conviction by RTC for capital offenses when evidence of guilt is NOT strong.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- FLASHCARDS VIEW -->
+            <div id="view-flashcards" class="hidden space-y-6">
+                <div class="border-b border-gold-500/30 pb-3 mb-6 flex items-center justify-between">
+                    <div>
+                        <h2 class="font-cinzel text-2xl font-bold text-gold-400">Interactive Flashcards</h2>
+                        <p class="text-xs text-slate-400">Click card to flip • Master key definitions and principles</p>
+                    </div>
+                    <div class="text-xs text-gold-500 font-mono" id="cardCounter">Card 1 / 10</div>
+                </div>
+
+                <!-- Flashcard Flip Area -->
+                <div class="max-w-2xl mx-auto">
+                    <div id="flashcard" onclick="flipCard()" class="perspective-1000 w-full h-80 cursor-pointer">
+                        <div id="cardInner" class="relative w-full h-full duration-500 transform-style-3d shadow-2xl rounded-2xl">
+                            <!-- Card Front -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-navy-900 to-burgundy-900 border-2 border-gold-500/40 rounded-2xl p-8 flex flex-col justify-between backface-hidden">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-cinzel font-bold text-gold-500 uppercase tracking-widest">Question / Term</span>
+                                    <i class="fa-solid fa-rotate text-gold-500/50"></i>
+                                </div>
+                                <div class="text-center">
+                                    <p id="cardFrontText" class="font-cinzel text-lg md:text-xl font-bold text-slate-100"></p>
+                                </div>
+                                <div class="text-center text-[11px] text-slate-400">Click anywhere to reveal answer</div>
+                            </div>
+
+                            <!-- Card Back -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-burgundy-950 to-navy-950 border-2 border-gold-500/60 rounded-2xl p-8 flex flex-col justify-between backface-hidden rotate-y-180">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-cinzel font-bold text-gold-400 uppercase tracking-widest">Answer / Legal Rule</span>
+                                    <i class="fa-solid fa-scale-balanced text-gold-500/50"></i>
+                                </div>
+                                <div class="text-center overflow-y-auto max-h-48 my-auto">
+                                    <p id="cardBackText" class="text-sm md:text-base text-slate-200 leading-relaxed font-serif"></p>
+                                </div>
+                                <div class="text-center text-[11px] text-gold-500/70">Click to flip back</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flashcard Navigation Controls -->
+                    <div class="flex justify-center items-center gap-4 mt-6">
+                        <button onclick="prevCard()" class="px-5 py-2 rounded-lg bg-navy-900 border border-gold-500/30 text-gold-400 hover:bg-burgundy-800 transition text-sm">
+                            <i class="fa-solid fa-chevron-left mr-1"></i> Previous
+                        </button>
+                        <button onclick="nextCard()" class="px-5 py-2 rounded-lg bg-navy-900 border border-gold-500/30 text-gold-400 hover:bg-burgundy-800 transition text-sm">
+                            Next <i class="fa-solid fa-chevron-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUIZ VIEW -->
+            <div id="view-quiz" class="hidden space-y-6">
+                <div class="border-b border-gold-500/30 pb-3 mb-6 flex items-center justify-between">
+                    <div>
+                        <h2 class="font-cinzel text-2xl font-bold text-gold-400">Self-Assessment Quiz</h2>
+                        <p class="text-xs text-slate-400">Test your mastery of Criminal Procedure Rules 110-114</p>
+                    </div>
+                    <div id="quizScoreBadge" class="bg-burgundy-900/80 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full text-xs font-bold font-mono">
+                        Score: 0 / 0
+                    </div>
+                </div>
+
+                <div class="max-w-3xl mx-auto bg-navy-900/90 border border-gold-500/30 rounded-xl p-6 shadow-xl">
+                    <div id="quizContainer">
+                        <div class="flex justify-between items-center text-xs text-gold-500 font-mono mb-4">
+                            <span id="quizProgressText">Question 1 of 15</span>
+                            <span id="quizCategoryBadge" class="bg-navy-950 px-2.5 py-1 rounded border border-gold-500/20">Rule 110</span>
+                        </div>
+
+                        <h3 id="quizQuestion" class="font-cinzel text-base md:text-lg font-bold text-slate-100 mb-6 leading-snug"></h3>
+
+                        <div id="quizOptions" class="space-y-3 mb-6"></div>
+
+                        <div id="quizFeedback" class="hidden p-4 rounded-lg mb-6 text-xs leading-relaxed"></div>
+
+                        <div class="flex justify-end gap-3">
+                            <button id="btnSubmitQuiz" onclick="submitAnswer()" class="px-5 py-2 bg-burgundy-800 border border-gold-500/40 text-gold-400 hover:bg-burgundy-700 rounded-lg text-sm font-semibold transition">
+                                Submit Answer
+                            </button>
+                            <button id="btnNextQuiz" onclick="nextQuestion()" class="hidden px-5 py-2 bg-gold-500 text-navy-950 font-bold hover:bg-gold-400 rounded-lg text-sm transition">
+                                Next Question <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Summary Screen (Hidden by default) -->
+                    <div id="quizSummary" class="hidden text-center py-8 space-y-4">
+                        <div class="w-16 h-16 mx-auto bg-burgundy-900 text-gold-500 border border-gold-500 rounded-full flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 class="font-cinzel font-bold text-2xl text-gold-400">Quiz Completed!</h3>
+                        <p id="quizFinalScoreText" class="text-sm text-slate-300"></p>
+                        <button onclick="restartQuiz()" class="px-6 py-2.5 bg-burgundy-800 text-gold-400 border border-gold-500/40 hover:bg-burgundy-700 rounded-xl text-sm font-bold transition">
+                            Restart Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // FLASHCARD DATA
+        const flashcards = [
+            {
+                q: "What is the new Quantum of Evidence required in Preliminary Investigation under A.M. No. 24-02-09-SC?",
+                a: "Prima Facie Evidence with Reasonable Certainty of Conviction. It requires prosecutors to assess whether admissible evidence exists to sustain a conviction beyond reasonable doubt at trial."
+            },
+            {
+                q: "What is a Complaint under Rule 110, Sec. 3?",
+                a: "A sworn written statement charging a person with an offense, subscribed by the offended party, any peace officer, or other public officer charged with the enforcement of the law violated."
+            },
+            {
+                q: "What is an Information under Rule 110, Sec. 4?",
+                a: "An accusation in writing charging a person with an offense, subscribed by the prosecutor and filed directly with the court."
+            },
+            {
+                q: "What is the key prerequisite before an accused can apply for or be granted bail?",
+                a: "The accused MUST be in the Custody of the Law (either arrested or voluntarily surrendered)."
+            },
+            {
+                q: "What are the 3 lawful warrantless arrests under Rule 113, Sec. 5?",
+                a: "(1) Arrest in Flagrante Delicto, (2) Hot Pursuit Arrest, and (3) Arrest of Escaped Prisoners."
+            },
+            {
+                q: "Define a Prejudicial Question under Rule 111, Sec. 7.",
+                a: "An issue involved in a previously instituted civil action which is intimately connected with the issue raised in the subsequent criminal action, the resolution of which determines whether or not the criminal action may proceed."
+            },
+            {
+                q: "What is the Judicial Affidavit Rule (A.M. No. 12-8-8-SC) penalty threshold in criminal cases?",
+                a: "It applies in all criminal actions where the maximum penalty does not exceed 6 years."
+            },
+            {
+                q: "What happens if the offended party pardons the offender in Adultery or Concubinage prior to prosecution?",
+                a: "The pardon bars the criminal prosecution of the offenders."
+            },
+            {
+                q: "Can substantial amendments to an Information be made after the accused enters a plea?",
+                a: "NO. Substantial amendments after plea are strictly prohibited. Only formal amendments are permitted with leave of court provided no prejudice to accused rights results."
+            },
+            {
+                q: "What are the 4 sequential stages of witness examination under Court Testimony?",
+                a: "(1) Direct Examination, (2) Cross-Examination, (3) Re-Direct Examination, and (4) Re-Cross Examination."
+            }
+        ];
+
+        // QUIZ DATA
+        const quizData = [
+            {
+                q: "Under A.M. No. 24-02-09-SC, what is the quantum of evidence required in preliminary investigations?",
+                cat: "Rule 112",
+                options: [
+                    "Preponderance of Evidence",
+                    "Prima Facie Evidence with Reasonable Certainty of Conviction",
+                    "Proof Beyond Reasonable Doubt",
+                    "Substantial Evidence"
+                ],
+                correct: 1,
+                exp: "A.M. No. 24-02-09-SC updated the preliminary investigation standard to 'Prima Facie Evidence with Reasonable Certainty of Conviction'."
+            },
+            {
+                q: "An Information differs from a Complaint in that an Information is subscribed by:",
+                cat: "Rule 110",
+                options: [
+                    "The offended party",
+                    "Any peace officer",
+                    "The Prosecutor exclusively",
+                    "The Clerk of Court"
+                ],
+                correct: 2,
+                exp: "An Information is subscribed strictly by the prosecutor, unlike a complaint which may be subscribed by the offended party or peace officer."
+            },
+            {
+                q: "Which of the following is NOT an independent civil action under Rule 111?",
+                cat: "Rule 111",
+                options: [
+                    "Article 32 (Constitutional Rights)",
+                    "Article 33 (Fraud & Physical Injuries)",
+                    "Article 2176 (Quasi-delict)",
+                    "Article 100 (Civil liability ex delicto)"
+                ],
+                correct: 3,
+                exp: "Article 100 RPC is civil liability arising ex delicto (impliedly instituted), not an independent civil action like Arts 32, 33, 34, 2176."
+            },
+            {
+                q: "A warrantless arrest under Rule 113 Sec. 5(b) [Hot Pursuit] requires:",
+                cat: "Rule 113",
+                options: [
+                    "An offense is actually being committed in the officer's presence",
+                    "An offense has just been committed and officer has probable cause based on personal knowledge",
+                    "A judge's oral direction",
+                    "An anonymous tip"
+                ],
+                correct: 1,
+                exp: "Hot pursuit requires that an offense has JUST been committed and the arresting officer has probable cause based on personal knowledge of facts."
+            },
+            {
+                q: "When is bail a matter of DISCRETION before conviction?",
+                cat: "Rule 114",
+                options: [
+                    "For all offenses in MTC",
+                    "For non-capital offenses in RTC",
+                    "For capital offenses when evidence of guilt is NOT strong",
+                    "For light offenses"
+                ],
+                correct: 2,
+                exp: "Bail is discretionary before conviction in RTC when the accused is charged with a capital offense and evidence of guilt is NOT strong."
+            }
+        ];
+
+        // STATE VARIABLES
+        let currentCardIndex = 0;
+        let isCardFlipped = false;
+        let currentQuizIndex = 0;
+        let selectedOption = null;
+        let quizScore = 0;
+
+        // UI NAVIGATION FUNCTIONS
+        function switchView(mode) {
+            document.getElementById('view-notes').classList.add('hidden');
+            document.getElementById('view-flashcards').classList.add('hidden');
+            document.getElementById('view-quiz').classList.add('hidden');
+
+            document.getElementById('btn-mode-notes').className = "px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2";
+            document.getElementById('btn-mode-flashcards').className = "px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2";
+            document.getElementById('btn-mode-quiz').className = "px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2";
+
+            if (mode === 'notes') {
+                document.getElementById('view-notes').classList.remove('hidden');
+                document.getElementById('btn-mode-notes').className = "px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-burgundy-800 text-gold-400 border border-gold-500/40 shadow";
+            } else if (mode === 'flashcards') {
+                document.getElementById('view-flashcards').classList.remove('hidden');
+                document.getElementById('btn-mode-flashcards').className = "px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-burgundy-800 text-gold-400 border border-gold-500/40 shadow";
+                renderFlashcard();
+            } else if (mode === 'quiz') {
+                document.getElementById('view-quiz').classList.remove('hidden');
+                document.getElementById('btn-mode-quiz').className = "px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-burgundy-800 text-gold-400 border border-gold-500/40 shadow";
+                renderQuizQuestion();
+            }
+        }
+
+        // SIDEBAR TOGGLE
+        const sidebar = document.getElementById('sidebar');
+        document.getElementById('sidebarToggle').addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+        });
+
+        function closeSidebarOnMobile() {
+            if (window.innerWidth < 1024) {
+                sidebar.classList.add('-translate-x-full');
+            }
+        }
+
+        // FLASHCARD LOGIC
+        function renderFlashcard() {
+            const card = flashcards[currentCardIndex];
+            document.getElementById('cardFrontText').innerText = card.q;
+            document.getElementById('cardBackText').innerText = card.a;
+            document.getElementById('cardCounter').innerText = `Card ${currentCardIndex + 1} / ${flashcards.length}`;
+            
+            // Reset Flip
+            isCardFlipped = false;
+            document.getElementById('cardInner').classList.remove('rotate-y-180');
+        }
+
+        function flipCard() {
+            isCardFlipped = !isCardFlipped;
+            document.getElementById('cardInner').classList.toggle('rotate-y-180');
+        }
+
+        function nextCard() {
+            currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+            renderFlashcard();
+        }
+
+        function prevCard() {
+            currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
+            renderFlashcard();
+        }
+
+        // QUIZ LOGIC
+        function renderQuizQuestion() {
+            const qData = quizData[currentQuizIndex];
+            selectedOption = null;
+            
+            document.getElementById('quizContainer').classList.remove('hidden');
+            document.getElementById('quizSummary').classList.add('hidden');
+            document.getElementById('quizFeedback').classList.add('hidden');
+            document.getElementById('btnSubmitQuiz').classList.remove('hidden');
+            document.getElementById('btnNextQuiz').classList.add('hidden');
+
+            document.getElementById('quizProgressText').innerText = `Question ${currentQuizIndex + 1} of ${quizData.length}`;
+            document.getElementById('quizCategoryBadge').innerText = qData.cat;
+            document.getElementById('quizQuestion').innerText = qData.q;
+
+            const optionsContainer = document.getElementById('quizOptions');
+            optionsContainer.innerHTML = '';
+
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3.5 rounded-lg bg-navy-950 border border-gold-500/20 text-slate-300 text-xs md:text-sm hover:border-gold-500 transition flex items-center gap-3";
+                btn.innerHTML = `<span class="w-6 h-6 rounded-full border border-gold-500/40 flex items-center justify-center text-xs font-mono font-bold text-gold-500">${String.fromCharCode(65 + idx)}</span> <span>${opt}</span>`;
+                btn.onclick = () => selectQuizOption(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            updateScoreBadge();
+        }
+
+        function selectQuizOption(idx, btnElement) {
+            selectedOption = idx;
+            const allButtons = document.getElementById('quizOptions').children;
+            for (let btn of allButtons) {
+                btn.className = "w-full text-left p-3.5 rounded-lg bg-navy-950 border border-gold-500/20 text-slate-300 text-xs md:text-sm hover:border-gold-500 transition flex items-center gap-3";
+            }
+            btnElement.className = "w-full text-left p-3.5 rounded-lg bg-burgundy-900/60 border border-gold-500 text-gold-400 text-xs md:text-sm transition flex items-center gap-3 font-semibold";
+        }
+
+        function submitAnswer() {
+            if (selectedOption === null) return;
+
+            const qData = quizData[currentQuizIndex];
+            const feedback = document.getElementById('quizFeedback');
+            feedback.classList.remove('hidden');
+
+            if (selectedOption === qData.correct) {
+                quizScore++;
+                feedback.className = "p-4 rounded-lg mb-6 text-xs leading-relaxed bg-emerald-950/80 border border-emerald-500/40 text-emerald-200";
+                feedback.innerHTML = `<strong class="font-bold text-emerald-400 flex items-center gap-1 mb-1"><i class="fa-solid fa-circle-check"></i> Correct!</strong> ${qData.exp}`;
+            } else {
+                feedback.className = "p-4 rounded-lg mb-6 text-xs leading-relaxed bg-rose-950/80 border border-rose-500/40 text-rose-200";
+                feedback.innerHTML = `<strong class="font-bold text-rose-400 flex items-center gap-1 mb-1"><i class="fa-solid fa-circle-xmark"></i> Incorrect</strong> ${qData.exp}`;
+            }
+
+            document.getElementById('btnSubmitQuiz').classList.add('hidden');
+            document.getElementById('btnNextQuiz').classList.remove('hidden');
+            updateScoreBadge();
+        }
+
+        function nextQuestion() {
+            currentQuizIndex++;
+            if (currentQuizIndex < quizData.length) {
+                renderQuizQuestion();
+            } else {
+                showQuizSummary();
+            }
+        }
+
+        function updateScoreBadge() {
+            document.getElementById('quizScoreBadge').innerText = `Score: ${quizScore} / ${quizData.length}`;
+        }
+
+        function showQuizSummary() {
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.getElementById('quizSummary').classList.remove('hidden');
+            document.getElementById('quizFinalScoreText').innerText = `You scored ${quizScore} out of ${quizData.length} (${Math.round((quizScore/quizData.length)*100)}%).`;
+        }
+
+        function restartQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            renderQuizQuestion();
+        }
+
+        // REAL-TIME SEARCH FILTER
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const sections = document.querySelectorAll('#view-notes section');
+
+            sections.forEach(sec => {
+                const text = sec.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    sec.style.display = 'block';
+                } else {
+                    sec.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
