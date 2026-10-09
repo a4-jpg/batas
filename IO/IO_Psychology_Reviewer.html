@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>I/O Psychology Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2f5;--pane:#fff;--ink:#0d1b26;--mut:#587083;--line:#d5dee6;--soft:#e4edf3;--hl:#7c3aed;
+--c1:#1565c0;--c2:#7c3aed;--c3:#0f766e;--c4:#b45309;--c5:#be185d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a14;--pane:#111122;--ink:#e6e6f7;--mut:#8a8aaa;--line:#1f1f3a;--soft:#16162a;--hl:#a78bfa;--c1:#60a5fa;--c2:#a78bfa;--c3:#34d399;--c4:#fbbf24;--c5:#f472b6}}
+:root[data-theme="dark"]{--bg:#0a0a14;--pane:#111122;--ink:#e6e6f7;--mut:#8a8aaa;--line:#1f1f3a;--soft:#16162a;--hl:#a78bfa;--c1:#60a5fa;--c2:#a78bfa;--c3:#34d399;--c4:#fbbf24;--c5:#f472b6}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 "Space Grotesk",system-ui,sans-serif}
+h1,h2,h3,.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:60}
+header{background:#07071a;color:#e6e6f7;padding:62px 6vw 46px;background-image:linear-gradient(rgba(167,139,250,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(167,139,250,.07) 1px,transparent 1px);background-size:34px 34px}
+header div{max-width:1240px;margin:auto}
+header .tag{font:700 .8rem "JetBrains Mono";color:#a78bfa;letter-spacing:.1em;margin-bottom:10px}
+h1{font-size:clamp(2.2rem,6.6vw,4.8rem);line-height:1;margin:0 0 14px;letter-spacing:-.04em}
+h1 span{color:#a78bfa}header p{max-width:60ch;margin:0;opacity:.8}
+.wrap{display:grid;grid-template-columns:290px 1fr;gap:34px;max-width:1240px;margin:auto;padding:30px 6vw 80px}
+aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:14px}
+aside input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;margin-bottom:10px;outline:none}
+aside input:focus{border-color:var(--hl)}
+.g>button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;font-weight:700;font-size:.92rem}
+.g>button:hover{background:var(--soft)}.g>button i{width:10px;height:10px;border-radius:2px;background:var(--k);flex:none}
+.g>button::after{content:"›";margin-left:auto;transition:.2s;color:var(--mut)}.g.open>button::after{transform:rotate(90deg)}
+.g ul{list-style:none;margin:0 0 6px 14px;padding:0 0 0 12px;border-left:2px solid var(--line);display:none}.g.open ul{display:block}
+.g li a{display:block;padding:5px 10px;border-radius:8px;color:var(--mut);text-decoration:none;font-size:.87rem;line-height:1.35}
+.g li a:hover{color:var(--ink);background:var(--soft)}.g li a.on{color:var(--ink);font-weight:700;background:var(--soft);box-shadow:inset 3px 0 var(--k)}
+.g li.hide,.g.hide{display:none}
+#tb{all:unset;cursor:pointer;margin-top:8px;font-size:.8rem;color:var(--mut);padding:6px 10px;border:1px solid var(--line);border-radius:8px}
+#tg{display:none}main{min-width:0}
+section.m{background:var(--pane);border:1px solid var(--line);border-radius:16px;padding:32px clamp(18px,4vw,42px);margin-bottom:30px;border-top:6px solid var(--k)}
+section.m>h2{font-size:clamp(1.5rem,3.6vw,2.2rem);margin:0 0 4px;color:var(--k);line-height:1.15;letter-spacing:-.03em}
+.sub{color:var(--mut);margin:0 0 20px}
+h3{font-size:1.1rem;margin:32px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--line);letter-spacing:-.02em}
+h3 a{color:inherit;text-decoration:none}h3 a:hover::after{content:" #";color:var(--k)}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0;font-weight:600}
+.big small{display:block;font:700 .7rem "JetBrains Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:12px;margin:0}
+dl div,.card{border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg)}
+dt,.card h4{font-weight:700;color:var(--k);margin:0}dd{margin:2px 0 0;font-size:.94rem;line-height:1.5}
+.card h4{margin-bottom:5px}.card p{margin:.3em 0;font-size:.94rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+ul.b,ol{padding-left:1.2em;margin:.4em 0}li{margin:.25em 0}
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.92rem;line-height:1.45}
+th{background:var(--k);color:#fff;text-align:left;font-family:"JetBrains Mono";font-size:.82rem}
+:root[data-theme="dark"] th{color:#07071a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) th{color:#07071a}}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:700}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0;font-weight:700;font-size:.85rem}
+.flow span{background:var(--k);color:#fff;padding:6px 12px;border-radius:6px}
+:root[data-theme="dark"] .flow span{color:#07071a}
+.flow i{font-style:normal;color:var(--mut)}
+details{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0}
+summary{cursor:pointer;font-weight:700;color:var(--k)}details p,details ul{margin:.6em 0 0;font-size:.94rem}
+button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 60px;font-size:.9rem}
+.pill{display:inline-block;font:700 .72rem "JetBrains Mono";letter-spacing:.06em;text-transform:uppercase;background:var(--soft);color:var(--k);border:1px solid var(--line);border-radius:999px;padding:3px 10px;margin:2px 3px}
+.quote{background:var(--soft);border-left:4px solid var(--k);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0;font-style:italic;font-size:.95rem}
+.quote cite{display:block;font-style:normal;font-size:.8rem;color:var(--mut);margin-top:6px}
+.timeline{list-style:none;padding:0;margin:14px 0}
+.timeline li{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+.timeline li:last-child{border-bottom:none}
+.timeline li .yr{font:700 .82rem "JetBrains Mono";color:var(--k);min-width:52px;padding-top:2px}
+@media(max-width:900px){.wrap{display:block;padding-top:20px}
+aside{position:fixed;inset:0 auto 0 0;width:min(320px,86vw);max-height:none;border-radius:0 14px 14px 0;z-index:50;transform:translateX(-105%);transition:.25s;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.5)}
+#tg{display:block;all:unset;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;background:var(--hl);color:#07071a;padding:12px 20px;border-radius:99px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style></head><body>
+<div id="bar"></div>
+<header><div>
+  <div class="tag">&gt; PSYCH / INDUSTRIAL &amp; ORGANIZATIONAL PSYCHOLOGY</div>
+  <h1>I/O Psychology <span>Reviewer</span></h1>
+  <p>Definition, history, the two sides of the coin, fields, key figures, and the six major subject areas. Choose a topic from the menu on the left.</p>
+</div></header>
+<div class="wrap">
+<aside id="side">
+  <input id="q" type="search" placeholder="Search topics…" aria-label="Search topics">
+  <div id="tree"></div>
+  <button id="tb">Toggle dark / light</button>
+</aside>
+<main>
+
+<!-- ═══════════════════════════════ SECTION 1 ═══════════════════════════════ -->
+<section class="m" id="intro" style="--k:var(--c1)" data-title="What is I/O Psychology?">
+<h2>What is I/O Psychology?</h2>
+<p class="sub">Definition, scope, and the two-sided coin of the field.</p>
+
+<h3><a href="#intro-def">Core definition</a></h3>
+<div class="big"><small>Definition</small>Industrial and organizational psychology is the study of people working and the application of the principles of psychology to the organizational and work environment.</div>
+<p>It is a field concerned with both the <strong>study of psychological principles as a science</strong> and the <strong>application of those principles</strong> in real workplaces (Spector, 2008; Jex, 2002). The central goals are improving <strong>productivity</strong> and creating the best possible <strong>working environment</strong> for employees.</p>
+<p>Apart from sleeping, the average person spends more hours per week <strong>working</strong> than any other activity. That much time given to an activity deeply impacts a person's life — in both positive and negative ways. Studying how the working world affects behavior and psychological makeup is therefore a major focus of psychology.</p>
+
+<h3><a href="#intro-coin">The two-sided coin</a></h3>
+<div class="two">
+  <div class="card" style="border-top:4px solid var(--c1)">
+    <h4>🏭 The Industrial Side</h4>
+    <p>A <strong>top-down</strong> perspective. Focuses on understanding human behavior to improve:</p>
+    <ul class="b">
+      <li>Organizational efficiency</li>
+      <li>Employee selection</li>
+      <li>Employee training</li>
+      <li>Job design</li>
+    </ul>
+    <p>Views behavior to assess ways in which the <em>organization</em> can benefit from psychological principles.</p>
+  </div>
+  <div class="card" style="border-top:4px solid var(--c2)">
+    <h4>🤝 The Organizational Side</h4>
+    <p>A <strong>bottom-up</strong> perspective. Focuses on understanding behavior to enhance:</p>
+    <ul class="b">
+      <li>Employee satisfaction</li>
+      <li>Well-being in the workplace</li>
+      <li>Employee attitudes &amp; behavior</li>
+      <li>Job stress &amp; supervisory practices</li>
+    </ul>
+    <p>Improves the quality of life of <em>individuals</em> within the organization rather than the organization as a whole.</p>
+  </div>
+</div>
+
+<h3><a href="#intro-together">Together — not mutually exclusive</a></h3>
+<div class="quote">
+  "Motivation is relevant to the [industrial] concerns of employee efficiency and performance, but it is also relevant to the [organizational] concern with the happiness and well-being of employees."
+  <cite>— Spector (2008)</cite>
+</div>
+<p>Though each side approaches from a different perspective, they are <strong>not mutually exclusive</strong> in their goals, applications, or topics of interest. The same concept — like motivation — can be studied from both lenses simultaneously.</p>
+</section>
+
+<!-- ═══════════════════════════════ SECTION 2 ═══════════════════════════════ -->
+<section class="m" id="history" style="--k:var(--c2)" data-title="Historical Overview">
+<h2>Historical Overview</h2>
+<p class="sub">From the early 20th century to the modern field — origins, key figures, and pivotal events.</p>
+
+<h3><a href="#hist-pioneers">Early pioneers (pre-WWI)</a></h3>
+<p>I/O psychology had its origins in the <strong>early 20th century</strong>. Several influential psychologists studied issues we would now categorize as industrial psychology. Notably, <strong>Cattell, Münsterberg, and Scott</strong> had all been students of <strong>Wilhelm Wundt</strong>, the father of experimental psychology.</p>
+<dl>
+  <div><dt>James Cattell (1860–1944)</dt><dd>Columbia. Founded the <em>Psychological Corporation</em>, still operating today. Influenced students in industrial psychology.</dd></div>
+  <div><dt>Hugo Münsterberg (1863–1916)</dt><dd>Harvard. Published <em>Psychology and Industrial Efficiency</em> (1913), covering employee selection, training, and effective advertising.</dd></div>
+  <div><dt>Walter Dill Scott (1869–1955)</dt><dd>Northwestern. First psychologist to apply psychology to advertising, management, and personnel selection. Published <em>The Theory of Advertising</em> and <em>Psychology of Advertising</em> (1903).</dd></div>
+  <div><dt>Robert Yerkes (1876–1956)</dt><dd>Dartmouth. President of the APA at the start of WWI; organized psychological screening for the military.</dd></div>
+  <div><dt>Walter Bingham (1880–1952)</dt><dd>Dartmouth. Collaborated with Yerkes; later became chief psychologist for the War Department in WWII.</dd></div>
+  <div><dt>Lillian Gilbreth (1878–1972)</dt><dd>Purdue. Known as the <em>mother of modern management</em>. Pioneer of time-and-motion studies; first woman in the American Society of Mechanical Engineers (1926).</dd></div>
+</dl>
+
+<h3><a href="#hist-ww1">World War I — a catalyst</a></h3>
+<p>The United States entered WWI in <strong>April 1917</strong>, galvanizing psychologists to contribute to the military effort.</p>
+<div class="two">
+  <div class="card">
+    <h4>Army Alpha Test</h4>
+    <p>Developed under the <strong>Surgeon General's Office (SGO)</strong> led by Yerkes. Measured <em>mental abilities</em> for literate English-speaking draftees.</p>
+  </div>
+  <div class="card">
+    <h4>Army Beta Test</h4>
+    <p>A <em>non-verbal</em> form of the test administered to <strong>illiterate and non-English-speaking</strong> draftees. Ensured broader screening coverage.</p>
+  </div>
+</div>
+<p style="margin-top:14px">Scott and Bingham, under the <strong>Adjutant General's Office (AGO)</strong>, created a catalogue of occupational needs for the Army — essentially a job-description system and a system of performance ratings for officers.</p>
+
+<h3><a href="#hist-hawthorne">The Hawthorne Studies (1929–1932)</a></h3>
+<p>From 1929–1932, <strong>Elton Mayo (1880–1949)</strong> and colleagues conducted a landmark series of studies at <strong>Western Electric's Hawthorne Works</strong> near Chicago.</p>
+<div class="big"><small>Key Finding</small>The Hawthorne Effect — the increase in performance of individuals who are noticed, watched, and paid attention to by researchers or supervisors. Any change in a variable (even negative) led to improved productivity as long as attention was present. The effect faded when attention faded.</div>
+<p>These studies began as research into physical work environment factors (e.g., lighting), but researchers found <strong>psychological and social factors</strong> were more significant. They mark the <strong>origin of organizational psychology</strong>.</p>
+
+<h3><a href="#hist-1930s">1930s — Feelings, leadership, and group dynamics</a></h3>
+<p><strong>Kurt Lewin</strong> conducted influential research on leadership styles, team structure, and group dynamics. He is considered the founder of social psychology. His key contributions:</p>
+<ul class="b">
+  <li>Coined the term <strong>group dynamics</strong></li>
+  <li>Studied the effect of leadership style on aggression, group dynamics, and satisfaction (using children as subjects)</li>
+  <li>Research on group interactions, cooperation, competition, and communication</li>
+</ul>
+<p>Researchers also began studying <strong>employees' feelings about their jobs</strong> — leading to interest in job satisfaction and employee motivation.</p>
+
+<h3><a href="#hist-taylor">Frederick Taylor &amp; Scientific Management</a></h3>
+<p><strong>Frederick Taylor</strong> was an engineer who designed the workplace to maximize output and wages simultaneously. In <strong>1911</strong> he published <em>The Principles of Scientific Management</em>.</p>
+<div class="two">
+  <div class="card">
+    <h4>Key Experiment</h4>
+    <p>Workers handling heavy iron ingots. Introducing <em>work rests</em> increased productivity from <strong>12.5 → 47.0 tons/day</strong> with less fatigue and higher wages. Company cost dropped from <strong>9.2¢ → 3.9¢ per ton</strong>.</p>
+  </div>
+  <div class="card">
+    <h4>Criticisms</h4>
+    <p>Critics argued it would <em>exploit workers</em> and reduce headcount. The underlying assumption that only a manager could determine the most efficient work method was also controversial. Taylor believed workers were fundamentally lazy.</p>
+  </div>
+</div>
+
+<h3><a href="#hist-gilbreth">Lillian Gilbreth &amp; Human Efficiency</a></h3>
+<p>Gilbreth used <strong>time and motion studies</strong> with her husband Frank to reduce the number of motions needed to perform tasks. She investigated <strong>employee fatigue</strong> and found many workers were motivated by <em>money and job satisfaction</em>.</p>
+<p>In <strong>1914</strong> she published <em>The Psychology of Management: The Function of the Mind in Determining, Teaching, and Installing Methods of Least Waste</em>. Known as the <strong>mother of modern management</strong>.</p>
+<div class="big"><small>Gilbreth's Everyday Innovations</small>Shelves inside refrigerator doors · Foot-pedal-operated trash can lids</div>
+<p>Awarded the <strong>Hoover Medal</strong> of the American Society of Civil Engineers in 1966. First woman to join the American Society of Mechanical Engineers in 1926.</p>
+<div class="big"><small>Ergonomics Connection</small>Taylor and Gilbreth's work on machine–human fit led to the study of <strong>ergonomics</strong>, also known as human factors psychology.</div>
+
+<h3><a href="#hist-ww2">World War II — field expansion</a></h3>
+<p>WWII again drove I/O psychology's expansion. <strong>Walter Bingham</strong> was hired as chief psychologist for the <strong>War Department</strong> and developed new systems for:</p>
+<ul class="b">
+  <li>Job selection and classification</li>
+  <li>Training and performance review</li>
+  <li>Team development and morale change</li>
+  <li>Attitude change methods</li>
+</ul>
+<p>Other nations — Canada and the UK — saw parallel growth. After the war, concerns about fairness of employment tests arose, and ethnic/gender biases were evaluated. The APA created <strong>Division 14: Industrial and Business Psychology</strong>, which eventually evolved into the <strong>Society for Industrial and Organizational Psychology (SIOP)</strong>.</p>
+
+<h3><a href="#hist-modern">Modern I/O Psychology</a></h3>
+<p>Today, I/O psychology is a diverse and deep field of research and practice.</p>
+<div class="three">
+  <div class="card">
+    <h4>📊 SIOP</h4>
+    <p>The Society for Industrial and Organizational Psychology lists <strong>8,000+ members</strong> as a division of the APA.</p>
+  </div>
+  <div class="card">
+    <h4>📈 Job Growth</h4>
+    <p>The Bureau of Labor Statistics projected this profession to have the <strong>greatest growth</strong> of all job classifications in the 20 years after 2012.</p>
+  </div>
+  <div class="card">
+    <h4>💰 Salary</h4>
+    <p>Master's degree: <strong>$80,000+/year</strong>. Doctorate: <strong>$110,000+/year</strong> (Khanna, Medsker, &amp; Ginter, 2012).</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════ SECTION 3 ═══════════════════════════════ -->
+<section class="m" id="fields" style="--k:var(--c3)" data-title="Fields of I/O Psychology">
+<h2>Fields of I/O Psychology</h2>
+<p class="sub">Three broad subfields and four main work environments.</p>
+
+<h3><a href="#fields-three">Three broad subfields</a></h3>
+<div class="three">
+  <div class="card" style="border-top:4px solid var(--c1)">
+    <h4>1. Industrial Psychology</h4>
+    <p>Describes <strong>job requirements</strong> and assesses individuals for their ability to meet them. Covers employee selection, training, evaluation, and response to evaluations. Also considers <strong>legality of discrimination</strong> in hiring.</p>
+  </div>
+  <div class="card" style="border-top:4px solid var(--c2)">
+    <h4>2. Organizational Psychology</h4>
+    <p>Interested in how <strong>relationships among employees</strong> affect those employees and business performance. Studies worker satisfaction, motivation, commitment, leadership, organizational culture, and social norms. Also covers <strong>harassment and workplace violence</strong>.</p>
+  </div>
+  <div class="card" style="border-top:4px solid var(--c3)">
+    <h4>3. Human Factors Psychology</h4>
+    <p>Studies how workers <strong>interact with the tools of work</strong> and how to design those tools to optimize productivity, safety, and health. From chair-desk-computer fit to complex displays. Known as <strong>ergonomics</strong> in Europe.</p>
+  </div>
+</div>
+
+<h3><a href="#fields-envs">Four main work environments</a></h3>
+<dl>
+  <div><dt>🎓 Academia</dt><dd>Research universities, teaching, publishing scientific findings about workplace behavior and psychology.</dd></div>
+  <div><dt>🏛️ Government</dt><dd>Public sector organizations, military, policy development, civil service selection systems.</dd></div>
+  <div><dt>💼 Consulting</dt><dd>Advising businesses on hiring practices, organizational development, leadership, and culture change.</dd></div>
+  <div><dt>🏢 Business</dt><dd>Internal HR and organizational development roles within companies — training design, performance management, employee engagement.</dd></div>
+</dl>
+</section>
+
+<!-- ═══════════════════════════════ SECTION 4 ═══════════════════════════════ -->
+<section class="m" id="six-areas" style="--k:var(--c4)" data-title="Six Key Areas">
+<h2>Six Key Areas of I/O Psychology</h2>
+<p class="sub">According to Muchinsky (2012), most I/O psychologists work in one of these six major subject areas.</p>
+
+<h3><a href="#six-overview">Overview</a></h3>
+<div class="tw"><table>
+<thead><tr><th>#</th><th>Area</th><th>Core Focus</th></tr></thead>
+<tbody>
+  <tr><td>1</td><td>Training &amp; Development</td><td>Determining skills needed for specific jobs; developing and evaluating employee training programs</td></tr>
+  <tr><td>2</td><td>Employee Selection</td><td>Developing selection assessments and screening tests to determine applicant qualifications</td></tr>
+  <tr><td>3</td><td>Ergonomics</td><td>Designing procedures and equipment to maximize performance and minimize injury</td></tr>
+  <tr><td>4</td><td>Performance Management</td><td>Developing assessments and techniques to determine if employees are performing their jobs well</td></tr>
+  <tr><td>5</td><td>Work Life</td><td>Improving employee satisfaction and maximizing workforce productivity; improving quality of life at work</td></tr>
+  <tr><td>6</td><td>Organizational Development</td><td>Improving organizations through increasing profits, redesigning products, and improving organizational structure</td></tr>
+</tbody>
+</table></div>
+
+<h3><a href="#six-detail">Detailed breakdown</a></h3>
+
+<details open>
+  <summary>1 · Training &amp; Development</summary>
+  <p>Professionals in this area determine what types of <strong>skills are necessary to perform specific jobs</strong> and design, deliver, and evaluate employee training programs. This includes needs assessments, learning design, instructional methods, and measuring training effectiveness.</p>
+</details>
+
+<details>
+  <summary>2 · Employee Selection</summary>
+  <p>This area involves developing <strong>employee selection assessments</strong> — such as screening tests — to determine if job applicants are qualified for a particular position. Includes psychometric test development, structured interviews, assessment centers, and validation studies to ensure legal compliance.</p>
+</details>
+
+<details>
+  <summary>3 · Ergonomics</summary>
+  <p>The field of ergonomics involves <strong>designing procedures and equipment</strong> to maximize performance and minimize injury. I/O psychologists in this area study human-machine interaction, workspace design, cognitive workload, and fatigue to create safer, more efficient environments.</p>
+</details>
+
+<details>
+  <summary>4 · Performance Management</summary>
+  <p>I/O psychologists here develop <strong>assessments and techniques to determine if employees are doing their jobs well</strong>. This encompasses performance appraisal systems, feedback mechanisms, goal setting (e.g., MBO), and performance improvement plans.</p>
+</details>
+
+<details>
+  <summary>5 · Work Life</summary>
+  <p>This area focuses on <strong>improving employee satisfaction</strong> and maximizing workforce productivity. I/O psychologists may find ways to make jobs more rewarding, design programs that improve workplace quality of life, address work-life balance, burnout, and employee well-being.</p>
+</details>
+
+<details>
+  <summary>6 · Organizational Development</summary>
+  <p>I/O psychologists in this area help <strong>improve organizations</strong> — often through increasing profits, redesigning products, and improving organizational structure. It includes culture change initiatives, leadership development, team effectiveness, and change management.</p>
+</details>
+</section>
+
+<!-- ═══════════════════════════════ SECTION 5 ═══════════════════════════════ -->
+<section class="m" id="key-figures" style="--k:var(--c5)" data-title="Key Figures &amp; Concepts">
+<h2>Key Figures &amp; Concepts</h2>
+<p class="sub">Essential people and concepts to know for your exams.</p>
+
+<h3><a href="#kf-people">People to know</a></h3>
+<dl>
+  <div><dt>Wilhelm Wundt</dt><dd>Father of experimental psychology. Teacher of Cattell, Münsterberg, and Scott.</dd></div>
+  <div><dt>James Cattell (1860–1944)</dt><dd>Founded the Psychological Corporation; influenced I/O at Columbia.</dd></div>
+  <div><dt>Hugo Münsterberg (1863–1916)</dt><dd>Published <em>Psychology and Industrial Efficiency</em> (1913) — selection, training, advertising.</dd></div>
+  <div><dt>Walter Dill Scott (1869–1955)</dt><dd>First books on psychology in business (1903). Applied psych to advertising and personnel.</dd></div>
+  <div><dt>Robert Yerkes (1876–1956)</dt><dd>APA president 1917; organized Army Alpha/Beta testing in WWI.</dd></div>
+  <div><dt>Walter Bingham (1880–1952)</dt><dd>Developed Army officer selection in WWI; chief psychologist for War Dept. in WWII.</dd></div>
+  <div><dt>Millicent Pond</dt><dd>PhD from Yale; researched factory worker selection, pre-employment tests vs. job performance.</dd></div>
+  <div><dt>Elton Mayo (1880–1949)</dt><dd>Led the Hawthorne Studies (1929–1932); origin of organizational psychology.</dd></div>
+  <div><dt>Kurt Lewin</dt><dd>Founder of social psychology. Coined "group dynamics"; studied leadership styles.</dd></div>
+  <div><dt>Frederick Taylor</dt><dd>Engineer; published <em>Principles of Scientific Management</em> (1911); time and motion studies.</dd></div>
+  <div><dt>Lillian Gilbreth (1878–1972)</dt><dd>Mother of modern management; time-motion studies; ergonomics; first woman in ASME (1926).</dd></div>
+</dl>
+
+<h3><a href="#kf-concepts">Concepts to know</a></h3>
+<dl>
+  <div><dt>Hawthorne Effect</dt><dd>Increase in performance of individuals who are noticed, watched, or paid attention to by researchers/supervisors. Effect fades when attention fades.</dd></div>
+  <div><dt>Scientific Management</dt><dd>Taylor's theory: redesign workplaces to increase output and wages. Based on time-and-motion studies. Critics said it exploited workers and assumed workers were lazy.</dd></div>
+  <div><dt>Ergonomics / Human Factors</dt><dd>Study of machine–human fit. Designing tools and workplaces to optimize productivity, safety, and health.</dd></div>
+  <div><dt>Group Dynamics</dt><dd>Term coined by Kurt Lewin. The study of group interactions, cooperation, competition, and communication.</dd></div>
+  <div><dt>Army Alpha Test</dt><dd>WWII-era mental abilities test for literate English-speaking draftees. Developed under Surgeon General's Office.</dd></div>
+  <div><dt>Army Beta Test</dt><dd>Non-verbal version of Army Alpha for illiterate and non-English-speaking draftees.</dd></div>
+  <div><dt>APA Division 14</dt><dd>Industrial and Business Psychology division created by the APA; evolved into SIOP.</dd></div>
+  <div><dt>SIOP</dt><dd>Society for Industrial and Organizational Psychology. A division of the APA with 8,000+ members.</dd></div>
+  <div><dt>Psychological Corporation</dt><dd>Psychological consulting company founded by James Cattell; still operating today.</dd></div>
+  <div><dt>Hawthorne Works</dt><dd>Western Electric plant near Chicago; site of Mayo's landmark organizational psychology studies.</dd></div>
+</dl>
+
+<h3><a href="#kf-timeline">Historical timeline</a></h3>
+<ul class="timeline">
+  <li><span class="yr">1903</span><span>Walter Dill Scott publishes first books applying psychology to advertising and business.</span></li>
+  <li><span class="yr">1911</span><span>Frederick Taylor publishes <em>The Principles of Scientific Management</em>; Scott publishes <em>Influencing Men in Business</em>.</span></li>
+  <li><span class="yr">1913</span><span>Hugo Münsterberg publishes <em>Psychology and Industrial Efficiency</em>.</span></li>
+  <li><span class="yr">1914</span><span>Lillian Gilbreth publishes <em>The Psychology of Management</em>.</span></li>
+  <li><span class="yr">1916</span><span>Carnegie Institute of Technology hires Scott to conduct applied research on employee selection.</span></li>
+  <li><span class="yr">1917</span><span>US enters WWI. APA president Yerkes organizes military psychological screening. Army Alpha/Beta tests developed.</span></li>
+  <li><span class="yr">1920s</span><span>Millicent Pond researches factory worker selection; studies published in <em>Journal of Personnel Research</em>.</span></li>
+  <li><span class="yr">1929–32</span><span>Elton Mayo's Hawthorne Studies at Western Electric — origins of organizational psychology.</span></li>
+  <li><span class="yr">1930s</span><span>Kurt Lewin researches leadership styles, team structure, group dynamics. Focus shifts to employee feelings and job satisfaction.</span></li>
+  <li><span class="yr">WWII</span><span>Walter Bingham becomes chief psychologist for the War Dept. APA creates Division 14 (Industrial and Business Psychology).</span></li>
+  <li><span class="yr">Post-war</span><span>Concerns about bias in employment tests. Major research into job satisfaction and motivation. Division 14 evolves into SIOP.</span></li>
+  <li><span class="yr">1926</span><span>Gilbreth becomes first woman to join the American Society of Mechanical Engineers.</span></li>
+  <li><span class="yr">Today</span><span>SIOP has 8,000+ members. I/O psychology projected as fastest-growing field. Average doctorate salary: $110,000+.</span></li>
+</ul>
+</section>
+
+</main>
+</div>
+
+<footer>
+  <p>I/O Psychology Reviewer · Based on Spector (2008), Jex (2002), and Muchinsky (2012) · Slides 1–46</p>
+</footer>
+
+<button id="tg">☰ Menu</button>
+
+<script>
+// ── NAVIGATION TREE ──
+const sections=[
+  {id:"intro",label:"What is I/O Psychology?",color:"var(--c1)",subs:[
+    {id:"intro-def",label:"Core definition"},
+    {id:"intro-coin",label:"The two-sided coin"},
+    {id:"intro-together",label:"Two sides together"}
+  ]},
+  {id:"history",label:"Historical Overview",color:"var(--c2)",subs:[
+    {id:"hist-pioneers",label:"Early pioneers (pre-WWI)"},
+    {id:"hist-ww1",label:"World War I"},
+    {id:"hist-hawthorne",label:"Hawthorne Studies"},
+    {id:"hist-1930s",label:"1930s — Lewin & feelings"},
+    {id:"hist-taylor",label:"Frederick Taylor"},
+    {id:"hist-gilbreth",label:"Lillian Gilbreth"},
+    {id:"hist-ww2",label:"World War II"},
+    {id:"hist-modern",label:"Modern I/O Psychology"}
+  ]},
+  {id:"fields",label:"Fields of I/O Psychology",color:"var(--c3)",subs:[
+    {id:"fields-three",label:"Three subfields"},
+    {id:"fields-envs",label:"Four work environments"}
+  ]},
+  {id:"six-areas",label:"Six Key Areas",color:"var(--c4)",subs:[
+    {id:"six-overview",label:"Overview table"},
+    {id:"six-detail",label:"Detailed breakdown"}
+  ]},
+  {id:"key-figures",label:"Key Figures & Concepts",color:"var(--c5)",subs:[
+    {id:"kf-people",label:"People to know"},
+    {id:"kf-concepts",label:"Concepts to know"},
+    {id:"kf-timeline",label:"Historical timeline"}
+  ]}
+];
+
+const tree=document.getElementById("tree");
+sections.forEach(s=>{
+  const g=document.createElement("div");g.className="g";g.dataset.sid=s.id;
+  g.style.setProperty("--k",s.color);
+  const btn=document.createElement("button");
+  btn.innerHTML=`<i></i>${s.label}`;
+  btn.onclick=()=>{g.classList.toggle("open");};
+  const ul=document.createElement("ul");
+  s.subs.forEach(sub=>{
+    const li=document.createElement("li");
+    li.innerHTML=`<a href="#${sub.id}" data-id="${sub.id}">${sub.label}</a>`;
+    ul.appendChild(li);
+  });
+  g.appendChild(btn);g.appendChild(ul);
+  tree.appendChild(g);
+});
+// open first group
+tree.querySelector(".g").classList.add("open");
+
+// ── SEARCH ──
+const qInput=document.getElementById("q");
+qInput.addEventListener("input",()=>{
+  const v=qInput.value.toLowerCase().trim();
+  document.querySelectorAll(".g").forEach(g=>{
+    let anyVis=false;
+    g.querySelectorAll("li").forEach(li=>{
+      const txt=li.textContent.toLowerCase();
+      const match=!v||txt.includes(v);
+      li.classList.toggle("hide",!match);
+      if(match)anyVis=true;
+    });
+    g.classList.toggle("hide",!anyVis&&!!v);
+    if(v&&anyVis)g.classList.add("open");
+  });
+});
+
+// ── DARK/LIGHT TOGGLE ──
+const tb=document.getElementById("tb");
+tb.onclick=()=>{
+  const cur=document.documentElement.dataset.theme;
+  document.documentElement.dataset.theme=cur==="dark"?"light":"dark";
+};
+
+// ── MOBILE SIDEBAR ──
+const tg=document.getElementById("tg");
+const side=document.getElementById("side");
+tg.onclick=()=>side.classList.toggle("open");
+side.addEventListener("click",e=>{if(e.target.tagName==="A")side.classList.remove("open");});
+
+// ── SCROLL PROGRESS BAR ──
+const bar=document.getElementById("bar");
+window.addEventListener("scroll",()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.width=(h>0?(window.scrollY/h)*100:0)+"%";
+});
+
+// ── ACTIVE NAV LINK ──
+const allH=document.querySelectorAll("h3[id],h2[id]");
+const navLinks={};
+document.querySelectorAll("aside a[data-id]").forEach(a=>{navLinks[a.dataset.id]=a;});
+const sectionEls=document.querySelectorAll("section.m");
+const groupMap={};
+sectionEls.forEach(s=>{const g=tree.querySelector(`.g[data-sid="${s.id}"]`);if(g)groupMap[s.id]=g;});
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const id=e.target.id;
+    document.querySelectorAll("aside a.on").forEach(a=>a.classList.remove("on"));
+    const a=navLinks[id];
+    if(a){
+      a.classList.add("on");
+      const parentG=a.closest(".g");
+      if(parentG){
+        document.querySelectorAll(".g.open").forEach(g=>{if(g!==parentG)g.classList.remove("open");});
+        parentG.classList.add("open");
+      }
+    }
+  });
+},{rootMargin:"-20% 0px -70% 0px"});
+
+allH.forEach(h=>io.observe(h));
+</script>
+</body></html>
