@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Counseling & Psychotherapy Interactive Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e101d;
+  --pane: #171a2c;
+  --ink: #eceefb;
+  --mut: #9aa1c0;
+  --line: #2a2f4a;
+  --soft: #20243b;
+  --hl: #f0b43c;
+  --c1: #52d6c9; /* Lesson 1 Soothing Teal */
+  --c2: #ff9a66; /* Lesson 2 Coral Warmth */
+  --c3: #8e9bff; /* Lesson 3 Indigo Intellect */
+  --c4: #dc92e6; /* Lesson 4 Existential Purple */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+:root[data-theme="light"] {
+  --bg: #f4f6fc;
+  --pane: #ffffff;
+  --ink: #14172b;
+  --mut: #626a85;
+  --line: #dadfec;
+  --soft: #e8ebf7;
+  --hl: #d98200;
+  --c1: #0f7a72;
+  --c2: #c05a2a;
+  --c3: #3a45b8;
+  --c4: #8b3d92;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16.5px/1.65 "Instrument Sans", system-ui, sans-serif; }
+h1, h2, h3 { font-family: Gloock, Georgia, serif; font-weight: 400; }
+#bar { position: fixed; top: 0; left: 0; height: 4px; width: 0; background: var(--hl); z-index: 60; }
+header { background: linear-gradient(135deg, #111428, #23284d 60%, #3b2a54); color: #fff; padding: 64px 6vw 48px; border-bottom: 1px solid var(--line); }
+header div { max-width: 1240px; margin: auto; }
+h1 { font-size: clamp(2.2rem, 6vw, 4.8rem); line-height: 1.05; margin: 0 0 14px; letter-spacing: -.02em; }
+header p { max-width: 65ch; margin: 0; opacity: .88; font-size: 1.05rem; }
+.wrap { display: grid; grid-template-columns: 290px 1fr; gap: 34px; max-width: 1240px; margin: auto; padding: 30px 6vw 80px; }
+aside { position: sticky; top: 16px; align-self: start; max-height: calc(100vh - 32px); overflow: auto; background: var(--pane); border: 1px solid var(--line); border-radius: 16px; padding: 14px; }
+aside input { width: 100%; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); font: inherit; font-size: .9rem; margin-bottom: 10px; }
+.g > button { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 10px; font-weight: 700; font-size: .92rem; }
+.g > button:hover { background: var(--soft); }
+.g > button i { width: 10px; height: 10px; border-radius: 50%; background: var(--k); flex: none; }
+.g > button::after { content: "›"; margin-left: auto; transition: .2s; color: var(--mut); }
+.g.open > button::after { transform: rotate(90deg); }
+.g ul { list-style: none; margin: 0 0 6px 14px; padding: 0 0 0 12px; border-left: 2px solid var(--line); display: none; }
+.g.open ul { display: block; }
+.g li a { display: block; padding: 5px 10px; border-radius: 8px; color: var(--mut); text-decoration: none; font-size: .88rem; line-height: 1.35; }
+.g li a:hover { color: var(--ink); background: var(--soft); }
+.g li a.on { color: var(--ink); font-weight: 700; background: var(--soft); box-shadow: inset 3px 0 var(--k); }
+.g li.hide, .g.hide { display: none; }
+#tb { all: unset; cursor: pointer; margin-top: 8px; font-size: .8rem; color: var(--mut); padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; width: 100%; text-align: center; box-sizing: border-box; }
+#tg { display: none; }
+main { min-width: 0; }
+section.m { background: var(--pane); border: 1px solid var(--line); border-radius: 20px; padding: 34px clamp(18px, 4vw, 44px); margin-bottom: 30px; border-top: 8px solid var(--k); }
+section.m > h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 4px; color: var(--k); line-height: 1.15; }
+.sub { color: var(--mut); margin: 0 0 20px; font-size: .98rem; }
+h3 { font-size: 1.35rem; margin: 34px 0 10px; padding-bottom: 5px; border-bottom: 2px solid var(--line); }
+h3 a { color: inherit; text-decoration: none; }
+h3 a:hover::after { content: " #"; color: var(--k); }
+dl { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 12px; margin: 14px 0; }
+dl div, .card { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: var(--bg); }
+dt, .card h4 { font-weight: 700; color: var(--k); margin: 0 0 4px; }
+dd { margin: 0; font-size: .94rem; line-height: 1.5; }
+.card p { margin: .3em 0; font-size: .94rem; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); gap: 14px; margin: 14px 0; }
+ul.b, ol { padding-left: 1.2em; margin: .4em 0; }
+li { margin: .3em 0; }
+.tw { overflow-x: auto; margin: 14px 0; border: 1px solid var(--line); border-radius: 12px; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: .92rem; line-height: 1.45; }
+th { background: var(--k); color: #fff; text-align: left; }
+:root[data-theme="light"] th { color: #fff; }
+th, td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+td:first-child { font-weight: 700; }
+.flow { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 14px 0; font-weight: 700; font-size: .86rem; }
+.flow span { background: var(--k); color: #0e101d; padding: 6px 12px; border-radius: 8px; }
+:root[data-theme="light"] .flow span { color: #fff; }
+.flow i { font-style: normal; color: var(--mut); }
+.fx { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; align-items: center; }
+.fx button { all: unset; cursor: pointer; padding: 6px 14px; border-radius: 99px; border: 1.5px solid var(--line); font-weight: 600; font-size: .86rem; }
+.fx button.on { background: var(--k); color: #0e101d; border-color: var(--k); }
+:root[data-theme="light"] .fx button.on { color: #fff; }
+#cnt { margin-left: auto; color: var(--mut); font-size: .88rem; font-weight: 600; }
+#card { all: unset; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; cursor: pointer; width: 100%; min-height: 270px; padding: 30px; border-radius: 20px; background: var(--soft); border: 2px solid var(--line); box-sizing: border-box; font: 1.4rem/1.4 Gloock, serif; transition: transform .15s ease; }
+#card:active { transform: scale(.99); }
+#card small { font: 600 .75rem "Instrument Sans"; letter-spacing: .08em; text-transform: uppercase; color: var(--mut); margin-bottom: 12px; }
+#card.f { background: var(--k); border-color: var(--k); color: #0e101d; font: 1.08rem/1.6 "Instrument Sans"; }
+:root[data-theme="light"] #card.f { color: #fff; }
+#card.f small { color: inherit; opacity: .8; }
+.fn { display: flex; gap: 10px; justify-content: center; margin-top: 14px; }
+.fn button { all: unset; cursor: pointer; padding: 9px 20px; border-radius: 12px; border: 1.5px solid var(--ink); font-weight: 700; font-size: .9rem; }
+.fn button:hover { background: var(--ink); color: var(--pane); }
+footer { text-align: center; color: var(--mut); padding: 0 6vw 60px; font-size: .9rem; }
+@media(max-width:900px){
+  .wrap { display: block; padding-top: 20px; }
+  aside { position: fixed; inset: 0 auto 0 0; width: min(320px, 86vw); max-height: none; border-radius: 0 16px 16px 0; z-index: 50; transform: translateX(-105%); transition: .25s; padding-top: calc(14px + env(safe-area-inset-top,0px)); }
+  aside.open { transform: none; box-shadow: 0 0 0 100vmax rgba(0,0,0,.5); }
+  #tg { display: block; all: unset; position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom,0px)); z-index: 40; background: var(--ink); color: var(--pane); padding: 12px 20px; border-radius: 99px; font-weight: 700; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,.4); }
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<header>
+  <div>
+    <h1>Counseling & Psychotherapy Reviewer</h1>
+    <p>Comprehensive Board Exam & Academic Module covering Introduction to Counseling, Psychoanalytic Psychotherapy, Jungian & Adlerian Approaches, and Existential Therapy.</p>
+  </div>
+</header>
+
+<div class="wrap">
+<aside id="side">
+  <input id="q" type="search" placeholder="Search topics & keywords…" aria-label="Search topics">
+  <div id="tree"></div>
+  <button id="tb">Toggle Dark / Light Mode</button>
+</aside>
+
+<main>
+
+<!-- LESSON 1 -->
+<section class="m" id="l1" style="--k:var(--c1)" data-title="Lesson 1: Intro & Ethics">
+  <h2>Lesson 1: Introduction & Ethical Foundations</h2>
+  <p class="sub">Defining Counseling vs. Psychotherapy, Contemporary Models, and Counselor Characteristics.</p>
+
+  <h3>Defining Counseling vs. Psychotherapy</h3>
+  <div class="tw">
+    <table>
+      <tr><th>Dimension</th><th>Counseling</th><th>Psychotherapy</th></tr>
+      <tr><td>Treatment Duration</td><td>Relatively brief & short-term</td><td>Longer-term, in-depth treatment</td></tr>
+      <tr><td>Core Focus</td><td>Behavior & specific present situations/symptoms</td><td>Thought processes, personality, chronic & past issues</td></tr>
+      <tr><td>Process Type</td><td>Action/Behavior-focused, secondary process</td><td>Feeling/Experience-focused, primary process</td></tr>
+      <tr><td>Goal</td><td>Guidance, problem-solving, immediate coping</td><td>Insight, structural personality overhaul, talk therapy</td></tr>
+    </table>
+  </div>
+
+  <h3>Overview of Contemporary Counseling Models</h3>
+  <dl>
+    <div><dt>Psychodynamic</dt><dd>Freud (Psychoanalytic) & Adler (Adlerian). Focuses on unconscious drives, early childhood determinants, and social interest/striving.</dd></div>
+    <div><dt>Experiential / Relationship</dt><dd>Existential (Frankl, May, Yalom), Person-Centered (Rogers), Gestalt (Perls). Focuses on human choice, awareness, and relationship quality.</dd></div>
+    <div><dt>Cognitive Behavioral (CBT)</dt><dd>Behavior (Skinner, Bandura), REBT (Ellis), Cognitive Therapy (Beck), Reality/Choice (Glasser). Focuses on action, learning, and thought restructuring.</dd></div>
+    <div><dt>Systems & Postmodern</dt><dd>Feminist, Solution-Focused Brief Therapy (de Shazer, Berg), Narrative (White, Epston), Family Systems (Bowen, Satir). Views reality as socially constructed.</dd></div>
+  </dl>
+
+  <h3>Personal Characteristics of Effective Counselors</h3>
+  <ul class="b">
+    <li><b>Authenticity & Identity:</b> Counselors know who they are, respect themselves, and avoid hiding behind rigid professional facades or roles.</li>
+    <li><b>Cultural Competence:</b> Respect for diversity, social class, gender, and personal value differences.</li>
+    <li><b>Humor & Present Awareness:</b> Ability to laugh at mistakes, live in the "now," and acknowledge errors without dwelling on misery.</li>
+    <li><b>Healthy Boundaries:</b> Ability to maintain balance, say "no," and avoid carrying client problems into personal leisure hours.</li>
+  </ul>
+
+  <h3>Care for the Counselor</h3>
+  <p>Personal therapy serves as a critical training and self-care model. It builds self-awareness, empathy, tolerance, and prevents <i>countertransference</i> from harming clients. Research confirms clinicians with personal therapy build stronger therapeutic alliances.</p>
+
+  <h3>Ethics, Values & Bracketing</h3>
+  <dl>
+    <div><dt>Bracketing</dt><dd>Setting aside personal values to avoid value imposition and honor client worldviews (ACA Code Standard A.4.b).</dd></div>
+    <div><dt>Mandatory vs. Aspirational</dt><dd>Mandatory ethics fulfills minimum legal standards; aspirational ethics aims for the absolute best interest of the client (Positive Ethics).</dd></div>
+    <div><dt>Informed Consent</dt><dd>An ongoing, written/oral process outlining therapy goals, benefits, risks, fees, and confidentiality limits.</dd></div>
+    <div><dt>Confidentiality Exceptions</dt><dd>Client under 16 victim of rape/abuse, hospitalization required, legal court order, or client requests record release.</dd></div>
+  </dl>
+</section>
+
+<!-- LESSON 2 -->
+<section class="m" id="l2" style="--k:var(--c2)" data-title="Lesson 2: Psychoanalytic Therapy">
+  <h2>Lesson 2: Psychoanalytic Psychotherapy</h2>
+  <p class="sub">Freudian Constructs, Personality Structure, Defense Mechanisms, and Psychosocial Growth.</p>
+
+  <h3>Structure of Personality (Freud)</h3>
+  <div class="two">
+    <div class="card">
+      <h4>Id (Pleasure Principle)</h4>
+      <p>Present at birth. Source of psychic energy and biological instincts. Illogical, impulsive, amoral, and completely unconscious "spoiled brat."</p>
+    </div>
+    <div class="card">
+      <h4>Ego (Reality Principle)</h4>
+      <p>Executive branch that mediates between the Id's urges and external reality. Logical, planful, seat of intelligence and rationality.</p>
+    </div>
+    <div class="card">
+      <h4>Superego (Moral Code)</h4>
+      <p>Judicial branch representing internalized societal/parental values. Strives for perfection rather than pleasure. Produces pride or guilt.</p>
+    </div>
+  </div>
+
+  <h3>Types of Anxiety</h3>
+  <ul class="b">
+    <li><b>Reality Anxiety:</b> Fear of real danger from the external world, proportional to actual threat.</li>
+    <li><b>Neurotic Anxiety:</b> Fear that instincts will get out of control and cause punishment (Ego vs. Id).</li>
+    <li><b>Moral Anxiety:</b> Fear of one's own conscience and feelings of guilt (Ego vs. Superego).</li>
+  </ul>
+
+  <h3>Ego-Defense Mechanisms</h3>
+  <div class="tw">
+    <table>
+      <tr><th>Mechanism</th><th>Definition & Clinical Behavior</th></tr>
+      <tr><td>Repression</td><td>Involuntary removal of threatening/painful thoughts from conscious awareness. Basis of Freud's defenses.</td></tr>
+      <tr><td>Denial</td><td>Distorting or "closing one's eyes" to trauma at preconscious/conscious levels.</td></tr>
+      <tr><td>Reaction Formation</td><td>Expressing conscious attitudes completely opposite to disturbing unconscious desires (e.g., masking hate with fake love).</td></tr>
+      <tr><td>Projection</td><td>Attributing one's own unacceptable impulses to others ("They are aggressive, not me").</td></tr>
+      <tr><td>Displacement</td><td>Directing discharge of energy/hostility onto a safer, accessible target instead of the original threat.</td></tr>
+      <tr><td>Rationalization</td><td>Manufacturing "logical" good reasons to explain away disappointment or a bruised ego.</td></tr>
+      <tr><td>Sublimation</td><td>Diverting aggressive/sexual energy into socially acceptable, productive, or creative outlets.</td></tr>
+      <tr><td>Regression</td><td>Reverting to earlier, immature developmental phases faced with severe stress (e.g., thumb-sucking).</td></tr>
+      <tr><td>Introjection / Identification</td><td>Swallowing values of others / identifying with successful causes or aggressors to enhance self-worth.</td></tr>
+      <tr><td>Compensation</td><td>Masking weaknesses by developing positive traits to balance limitations.</td></tr>
+    </table>
+  </div>
+
+  <h3>Psychosocial Stages (Erik Erikson)</h3>
+  <p>Anna Freud expanded ego psychology, while Erikson introduced 8 lifespan psychosocial stages driven by developmental crises:</p>
+  <div class="flow">
+    <span>Trust vs. Mistrust</span><i>→</i>
+    <span>Autonomy vs. Shame</span><i>→</i>
+    <span>Initiative vs. Guilt</span><i>→</i>
+    <span>Industry vs. Inferiority</span><i>→</i>
+    <span>Identity vs. Role Conf.</span><i>→</i>
+    <span>Intimacy vs. Isolation</span><i>→</i>
+    <span>Generativity vs. Stagnation</span><i>→</i>
+    <span>Integrity vs. Despair</span>
+  </div>
+
+  <h3>Psychoanalytic Techniques</h3>
+  <dl>
+    <div><dt>Free Association</dt><dd>Saying whatever comes to mind without censorship to access repressed unconscious material.</dd></div>
+    <div><dt>Interpretation</dt><dd>Explaining meanings of behaviors, dreams, and resistance when material is near conscious awareness.</dd></div>
+    <div><dt>Transference & Working-Through</dt><dd>Unconscious shifting of feelings onto therapist; working-through entails repetitive exploration of defenses.</dd></div>
+  </dl>
+</section>
+
+<!-- LESSON 3 -->
+<section class="m" id="l3" style="--k:var(--c3)" data-title="Lesson 3: Jungian & Adlerian">
+  <h2>Lesson 3: Jungian & Adlerian Approaches</h2>
+  <p class="sub">Analytical Psychotherapy, Archetypes, Style of Life, and Reorientation Techniques.</p>
+
+  <h3>Jungian Analytical Psychotherapy</h3>
+  <p>Carl Jung emphasized <b>Middle Age</b> as the vital stage for growth. His core concepts include:</p>
+  <div class="two">
+    <div class="card">
+      <h4>Archetypes & Collective Unconscious</h4>
+      <p><b>Collective Unconscious:</b> Universal inherited ancestral memories. <b>Archetypes:</b> Symbolic patterns including <i>Shadow</i> (dark side), <i>Anima/Animus</i> (opposite gender self), and <i>Self</i> (syzygy/wholeness).</p>
+    </div>
+    <div class="card">
+      <h4>Jungian Typology</h4>
+      <p>2 Attitudes: <b>Extraversion vs. Introversion</b>.<br>4 Functions: Rational (<i>Thinking/Feeling</i>) and Irrational (<i>Sensing/Intuition</i>).</p>
+    </div>
+  </div>
+
+  <h3>Adlerian Therapy & Style of Life</h3>
+  <p>Alfred Adler focused on <b>Gemeinschaftsgefühl (Social Interest)</b>, innate potential for community living shaped by the mother-child bond. Key constructs include:</p>
+  <ul class="b">
+    <li><b>Style of Life:</b> Unique way of striving for perfection, set by ages 4-5 across 5 life tasks (Self, Spiritual, Work, Society, Love).</li>
+    <li><b>Inferiority vs. Superiority Complex:</b> Universal inferiority feelings drive growth. Complex occurs when one feels incapable of solving problems; superiority complex masks inferiority with arrogance.</li>
+    <li><b>Basic Mistakes:</b> Self-defeating beliefs (Overgeneralizations, False Security, Misperceptions, Minimized Worth, Faulty Values).</li>
+  </ul>
+
+  <h3>Adlerian Reorientation Techniques</h3>
+  <div class="tw">
+    <table>
+      <tr><th>Technique</th><th>Description & Clinical Purpose</th></tr>
+      <tr><td>Immediacy</td><td>Addressing nonverbal mismatches occurring in the present moment tentatively.</td></tr>
+      <tr><td>Acting As If</td><td>Behaving as though a desired behavior will succeed to build self-efficacy.</td></tr>
+      <tr><td>Catching Oneself</td><td>Noticing unwanted behavior before/during execution ("Aha!" moment).</td></tr>
+      <tr><td>Spitting in the Soup</td><td>Exposing hidden purposes of unhelpful behavior to destroy its appeal.</td></tr>
+      <tr><td>Push-Button Technique</td><td>Switching between positive and negative memories to prove we control emotions.</td></tr>
+      <tr><td>Paradoxical Intention</td><td>Prescribing and exaggerating the symptom until it loses power.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- LESSON 4 -->
+<section class="m" id="l4" style="--k:var(--c4)" data-title="Lesson 4: Existential Therapy">
+  <h2>Lesson 4: Existential Therapy</h2>
+  <p class="sub">Philosophical Roots, Core Dimensions of Human Existence, and Therapeutic Presence.</p>
+
+  <h3>Philosophical Foundations</h3>
+  <dl>
+    <div><dt>Kierkegaard</dt><dd>Creative anxiety, despair, fear, dread, guilt, and confronting nothingness.</dd></div>
+    <div><dt>Nietzsche</dt><dd>Will to power, confronting mortality, death, and personal assertion.</dd></div>
+    <div><dt>Heidegger & Sartre</dt><dd>Authentic being, isolation, freedom, responsibility, choice, and meaninglessness.</dd></div>
+    <div><dt>Buber & Yalom</dt><dd>I-Thou genuine encounters, interpersonal connections, and ultimate concerns (death, freedom, isolation, meaninglessness).</dd></div>
+  </dl>
+
+  <h3>Basic Dimensions of the Human Condition</h3>
+  <ul class="b">
+    <li><b>Capacity for Self-Awareness:</b> Freedom to choose expanded through awareness.</li>
+    <li><b>Freedom and Responsibility:</b> We are the authors of our lives; avoiding choices leads to inauthenticity.</li>
+    <li><b>Identity & Striving for Meaning:</b> Finding purpose in an inherently indifferent world.</li>
+    <li><b>Existential Anxiety & Death Awareness:</b> Anxiety is an inevitable part of living; confronting mortality gives life urgency.</li>
+  </ul>
+
+  <h3>Existential Strategies & Interventions</h3>
+  <div class="two">
+    <div class="card">
+      <h4>Therapeutic Presence</h4>
+      <p>The primary intervention is the authentic I-Thou relationship itself, grounded in deep listening and phenomenological attunement.</p>
+    </div>
+    <div class="card">
+      <h4>Telling the Story (Myth)</h4>
+      <p>Clients share personal myths and narratives to integrate past, present, and future into a coherent, meaningful self.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FLASHCARDS SECTION -->
+<section class="m" id="cards" style="--k:var(--hl)" data-title="Interactive Flashcards (200 Q&A)">
+  <h2>Interactive Review Flashcards</h2>
+  <p class="sub">200 High-Yield Questions (50 per Lesson). Click card or press Space to flip. Use ← → keys to navigate.</p>
+  
+  <div class="fx" id="fx">
+    <button data-f="all" class="on">All (200)</button>
+    <button data-f="L1">Lesson 1 (50)</button>
+    <button data-f="L2">Lesson 2 (50)</button>
+    <button data-f="L3">Lesson 3 (50)</button>
+    <button data-f="L4">Lesson 4 (50)</button>
+    <button id="sh">🔀 Shuffle</button>
+    <span id="cnt"></span>
+  </div>
+
+  <button id="card" aria-live="polite"></button>
+
+  <div class="fn">
+    <button id="pv">← Previous</button>
+    <button id="nx">Next →</button>
+  </div>
+</section>
+
+</main>
+</div>
+
+<button id="tg">☰ Topics</button>
+
+<footer>Comprehensive Counseling & Psychotherapy Educational Library. Native Standalone Deployment for GitHub Pages.</footer>
+
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const slug = t => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+/* Navigation Tree & Search */
+const tree = $('#tree'), links = [], groups = [];
+$$('section.m').forEach(s => {
+  const g = document.createElement('div');
+  g.className = 'g';
+  const color = getComputedStyle(s).getPropertyValue('--k') || '#52d6c9';
+  g.style.setProperty('--k', color);
+
+  const b = document.createElement('button');
+  b.innerHTML = '<i></i>' + s.dataset.title;
+  const ul = document.createElement('ul');
+
+  b.onclick = () => g.classList.toggle('open');
+
+  $$('#' + s.id + ' h3').forEach(h => {
+    const id = s.id + '-' + slug(h.textContent);
+    h.id = id;
+    h.innerHTML = '<a href="#' + id + '">' + h.textContent + '</a>';
+    const li = document.createElement('li'), a = document.createElement('a');
+    a.href = '#' + id;
+    a.textContent = h.textContent;
+    a.onclick = () => $('#side').classList.remove('open');
+    li.appendChild(a);
+    ul.appendChild(li);
+    links.push({ a, h, g });
+  });
+
+  g.append(b, ul);
+  tree.appendChild(g);
+  groups.push({ g, s, b });
+});
+
+function spy() {
+  const h = document.documentElement.scrollHeight - innerHeight;
+  $('#bar').style.width = (h > 0 ? scrollY / h * 100 : 0) + '%';
+  let cur = null;
+  links.forEach(l => { if (l.h.getBoundingClientRect().top < 140) cur = l; });
+  links.forEach(l => l.a.classList.toggle('on', l === cur));
+  let sec = groups[0];
+  groups.forEach(x => { if (x.s.getBoundingClientRect().top < 200) sec = x; });
+  if (!$('#q').value) groups.forEach(x => x.g.classList.toggle('open', x === sec));
+}
+addEventListener('scroll', spy, { passive: true });
+spy();
+
+groups.forEach(x => x.b.addEventListener('click', () => { x.s.scrollIntoView(); }));
+
+$('#q').oninput = e => {
+  const v = e.target.value.toLowerCase().trim();
+  groups.forEach(x => {
+    let any = !v || x.s.dataset.title.toLowerCase().includes(v);
+    x.g.querySelectorAll('li').forEach(li => {
+      const m = !v || any || li.textContent.toLowerCase().includes(v);
+      li.classList.toggle('hide', !m);
+    });
+    const vis = !v || any || [...x.g.querySelectorAll('li')].some(li => !li.classList.contains('hide'));
+    x.g.classList.toggle('hide', !vis);
+    if (v) x.g.classList.add('open');
+  });
+  spy();
+};
+
+$('#tg').onclick = () => $('#side').classList.toggle('open');
+$('#tb').onclick = () => {
+  const r = document.documentElement;
+  const isDark = r.dataset.theme === 'dark' || (!r.dataset.theme && matchMedia('(prefers-color-scheme:dark)').matches);
+  r.dataset.theme = isDark ? 'light' : 'dark';
+};
+
+/* 200 FLASHCARDS DATA GENERATOR (50 PER LESSON) */
+const rawDeck = [];
+
+// LESSON 1 (50 Items)
+const l1Data = [
+  ["Technical literal meaning of counselor?", "Advisor"],
+  ["Core duration difference between counseling & psychotherapy?", "Counseling is brief/short-term; Psychotherapy is long-term"],
+  ["Focus of mental health counseling?", "Behavior, present symptoms, and specific situations"],
+  ["Focus of psychotherapy?", "Thought processes, chronic issues, and past influence on present"],
+  ["Who is the founder of Psychoanalytic therapy?", "Sigmund Freud"],
+  ["Who is credited with popularizing Adlerian therapy in the US?", "Rudolf Dreikurs"],
+  ["Key figures of Existential therapy?", "Viktor Frankl, Rollo May, Irvin Yalom"],
+  ["Founder of Person-Centered therapy?", "Carl Rogers"],
+  ["Founders of Gestalt therapy?", "Fritz and Laura Perls"],
+  ["Key figures in Behavior therapy?", "B.F. Skinner, Albert Bandura, Marsha Linehan"],
+  ["Founder of REBT (Rational Emotive Behavior Therapy)?", "Albert Ellis"],
+  ["Founder of Cognitive Therapy?", "Aaron T. Beck"],
+  ["Developer of Strengths-Based CBT?", "Christine Padesky"],
+  ["Developer of Choice Theory / Reality Therapy?", "William Glasser"],
+  ["Cofounders of Solution-Focused Brief Therapy (SFBT)?", "Steve de Shazer and Insoo Kim Berg"],
+  ["Major figures in Narrative Therapy?", "Michael White and David Epston"],
+  ["Pioneers of Family Systems Therapy?", "Murray Bowen and Virginia Satir"],
+  ["Central premise of Postmodern approaches?", "There is no single truth; reality is socially constructed"],
+  ["What drives client change according to research (Wampold 2001)?", "Therapeutic alliance/relationship factors > specific techniques"],
+  ["Why is counselor authenticity crucial?", "Hiding behind rigid roles limits client trust and growth"],
+  ["What is Bracketing in counseling?", "Setting aside personal values so they do not interfere with client work"],
+  ["Which ACA Code standard mandates value non-imposition?", "Standard A.4.b"],
+  ["Difference between Mandatory and Aspirational ethics?", "Mandatory is minimum legal standards; Aspirational aims for client best interest"],
+  ["What is Positive Ethics?", "Practicing to do one's best for clients rather than just avoiding trouble"],
+  ["What is Countertransference?", "Unconscious emotional reaction of the therapist toward the client"],
+  ["Primary ethical purpose of Informed Consent?", "Empowers client autonomy and establishes a collaborative alliance"],
+  ["When does Informed Consent begin?", "At the initial session and continues throughout therapy"],
+  ["Four legal exceptions to confidentiality?", "Child abuse/incest, hospitalization needed, court order, client release request"],
+  ["Age limit cited by Remley & Herlihy for mandatory abuse reporting?", "Under 16 years old"],
+  ["What defines a dual or multiple relationship?", "Assuming two or more professional or nonprofessional roles simultaneously with a client"],
+  ["What is a boundary crossing?", "Departure from standard practice that potentially benefits the client (e.g. attending wedding)"],
+  ["What is a boundary violation?", "A serious breach that harms or exploits the client"],
+  ["How can counselors minimize harm in multiple relationships?", "Set healthy boundaries early, seek supervision, and document discussions"],
+  ["Key benefit of personal therapy for graduate clinicians?", "Greater confidence, self-awareness, and better goal agreement with clients"],
+  ["Who recommended periodic therapy as ideal self-care?", "Wise & Barnett (2016)"],
+  ["According to Norcross & Cooper (2021), counselors must respect what?", "Client culture, values, preferences, and social background"],
+  ["Primary risk of tech communication in therapy?", "Privacy and confidentiality breaches"],
+  ["First step in Corey et al. ethical decision-making model?", "Identify the problem or dilemma"],
+  ["Why is consultation important in ethical dilemmas?", "Provides diverse professional perspectives and objectivity"],
+  ["Should client referral occur over value conflicts?", "No; referral is ethical only for lack of clinical skill/competence"],
+  ["Core focus of Feminist Therapy?", "Addressing psychological oppression and sociopolitical constraints on women"],
+  ["In postmodern therapy, who is the expert?", "The client is the expert in their own life"],
+  ["What is the 'blank screen' stance?", "Therapist anonymity to foster transference (Freudian)"],
+  ["Why do counselors practice self-care?", "To prevent burnout and maintain clinical competence"],
+  ["What defines an effective counselor's sense of humor?", "Ability to laugh at oneself and keep life in perspective"],
+  ["Is total counselor value-objectivity possible?", "No, but value imposition must be actively prevented"],
+  ["Format options for Informed Consent?", "Written, oral, or both (oral must be documented)"],
+  ["What does 'Secondary Process' refer to in counseling comparison?", "Action and behavior-focused interventions"],
+  ["What does 'Primary Process' refer to in psychotherapy comparison?", "Feeling and experience-focused interventions"],
+  ["Main takeaway of Counselor as Therapist?", "The therapist as a person strongly determines therapeutic success"]
+];
+l1Data.forEach(d => rawDeck.push(["L1", d[0], d[1]]));
+
+// LESSON 2 (50 Items)
+const l2Data = [
+  ["What rule governs the Id?", "Pleasure Principle"],
+  ["What rule governs the Ego?", "Reality Principle"],
+  ["Which personality structure is present at birth?", "Id"],
+  ["Which structure acts as the judicial branch of personality?", "Superego"],
+  ["What are Freud's two central motivators of human action?", "Sexual and aggressive drives"],
+  ["Life instincts are collectively termed?", "Eros"],
+  ["Death instincts explain unconscious desires for what?", "Self-destruction or aggression"],
+  ["Root of most psychological functioning in psychoanalysis?", "The Unconscious"],
+  ["Name 3 clinical evidences for the unconscious.", "Dreams, slips of the tongue, free association material"],
+  ["Primary goal of Freudian psychoanalytic therapy?", "Make unconscious motives conscious and strengthen the ego"],
+  ["Define Reality Anxiety.", "Fear of real danger from external world proportional to threat"],
+  ["Define Neurotic Anxiety.", "Fear that instincts will get out of control and result in punishment"],
+  ["Define Moral Anxiety.", "Fear of conscience and guilt when acting against moral codes"],
+  ["Involuntary removal of painful thoughts from awareness is called?", "Repression"],
+  ["Distorting traumatic reality at preconscious levels is called?", "Denial"],
+  ["Acting completely opposite to disturbing desires is called?", "Reaction Formation"],
+  ["Attributing unacceptable impulses to others is called?", "Projection"],
+  ["Shifting hostility from a threatening target to a safer one is?", "Displacement"],
+  ["Creating logical excuses for disappointments is called?", "Rationalization"],
+  ["Diverting aggressive/sexual drives into athletic or artistic tasks is?", "Sublimation"],
+  ["Reverting to infantile behavior under stress is?", "Regression"],
+  ["Swallowing parental values is termed?", "Introjection"],
+  ["Masking perceived weakness by excelling in another area is?", "Compensation"],
+  ["Adopting the role of a traumatizer is called?", "Identification with the aggressor"],
+  ["Who wrote 'The Ego and the Mechanisms of Defense' (1936)?", "Anna Freud"],
+  ["Anna Freud added which two defenses?", "Identification with the aggressor and Altruism"],
+  ["Who developed the 8 psychosocial stages across the lifespan?", "Erik Erikson"],
+  ["Erikson's stage during Infancy?", "Trust vs. Mistrust"],
+  ["Erikson's stage during Early Childhood?", "Autonomy vs. Shame & Doubt"],
+  ["Erikson's stage during Preschool age?", "Initiative vs. Guilt"],
+  ["Erikson's stage during School Age?", "Industry vs. Inferiority"],
+  ["Erikson's stage during Adolescence?", "Identity vs. Role Confusion"],
+  ["Erikson's stage during Young Adulthood?", "Intimacy vs. Isolation"],
+  ["Erikson's stage during Middle Adulthood?", "Generativity vs. Stagnation"],
+  ["Erikson's stage during Late Adulthood?", "Integrity vs. Despair"],
+  ["Focus of Object Relations Psychology?", "Child's internalized relationships with significant others (mother)"],
+  ["Key concept of separation from mother in Object Relations?", "Individuation"],
+  ["Core technique where client speaks without censorship?", "Free Association"],
+  ["When should a therapist share an interpretation?", "When material is near conscious awareness"],
+  ["Anything that blocks unconscious material from awareness is?", "Resistance"],
+  ["How should resistance be viewed in therapy?", "As an unconscious defense against anxiety, not a lack of cooperation"],
+  ["Unconscious shifting of client feelings onto therapist is?", "Transference"],
+  ["Repetitive exploration of unconscious material in analysis is?", "Working-Through"],
+  ["Primary limitation of classical psychoanalysis?", "Requires significant time, expense, and trained analysts"],
+  ["Feminist critique of Freudian psychoanalysis?", "Heavy mother-blaming and Oedipus/Electra emphasis"],
+  ["Catharsis refers to what?", "Emotional release and expression"],
+  ["Function of anxiety in Freudian theory?", "Warning signal of impending danger"],
+  ["What is the 'blank screen' approach?", "Neutral posture to foster client transference"],
+  ["Is insight alone sufficient for Freudian cure?", "No, must include emotional working-through"],
+  ["What age range lays the personality foundation in Freud's view?", "First six years of life"]
+];
+l2Data.forEach(d => rawDeck.push(["L2", d[0], d[1]]));
+
+// LESSON 3 (50 Items)
+const l3Data = [
+  ["Which life stage did Carl Jung stress most for development?", "Middle Age"],
+  ["Jung's four development stages?", "Childhood, Adolescence, Middle Age, Old Age"],
+  ["Jungian process of developing wholeness and self-awareness?", "Individuation"],
+  ["Jung's center of personal consciousness?", "The Ego"],
+  ["Universal inherited patterns in Jungian theory are called?", "Archetypes"],
+  ["Where do archetypes reside?", "Collective Unconscious"],
+  ["Dark, repressed, denied side of personality in Jungian theory?", "The Shadow"],
+  ["Feminine archetype in men?", "Anima"],
+  ["Masculine archetype in women?", "Animus"],
+  ["Jungian archetype of wholeness and integration?", "The Self"],
+  ["Four nonsequential phases of Jungian therapy?", "Catharsis, Analytical, Insight, Transformational"],
+  ["Four phases of Jungian dream narrative?", "Recount facts, explore complexes, turning point, conclusion"],
+  ["Expanding dream images via personal, cultural, and archetypal levels is?", "Amplification"],
+  ["Who co-developed the Word Association Test with Jung?", "Eugen Bleuler"],
+  ["Two Jungian psychological attitudes?", "Extraversion and Introversion"],
+  ["Two rational Jungian functions?", "Thinking and Feeling"],
+  ["Two irrational Jungian functions?", "Sensing and Intuition"],
+  ["Jung's personal psychological type?", "Thinking Introvert"],
+  ["Adlerian term for Social Interest?", "Gemeinschaftsgefühl"],
+  ["First crucial relationship fostering social interest?", "Mother-child bond"],
+  ["Adler's term for unique adaptation and goal striving?", "Style of life"],
+  ["By what age is the Adlerian style of life formed?", "Ages 4 to 5"],
+  ["Five Adlerian life tasks?", "Self, Spiritual, Occupation, Society, Love"],
+  ["Belief that one cannot solve problems in a socially useful way is?", "Inferiority Complex"],
+  ["Defense mechanism masking inferiority with arrogance is?", "Superiority Complex"],
+  ["Capron's four pampering types?", "Overindulgent, Overdomineering, Overpermissive, Overprotective"],
+  ["Difference between Adlerian Counseling and Psychotherapy?", "Counseling fits existing lifestyle; Psychotherapy changes lifestyle"],
+  ["Sign of successful Adlerian psychotherapy?", "Shift in Early Recollections"],
+  ["Primary ingredient in Adlerian counseling?", "Encouragement"],
+  ["Adlerian assessment focused on sibling interactions and family roles?", "Family Constellation"],
+  ["How long can Adlerian family data gathering take?", "1 to 4 hours"],
+  ["Key requirement for valid Early Recollections?", "Must be a specific personal memory, not a second-hand report"],
+  ["Are Early Recollections evaluated for objective historical accuracy?", "No, personal subjective perception matters"],
+  ["Adlerian technique addressing present verbal/nonverbal mismatch?", "Immediacy"],
+  ["Adlerian technique of behaving as if outcome will succeed?", "Acting As If"],
+  ["Noticing unwanted behaviors before/during execution is?", "Catching Oneself"],
+  ["Exposing hidden payoff of unhelpful behavior is?", "Spitting in the Client's Soup"],
+  ["Avoiding getting trapped in client's sticky patterns is?", "Avoiding the Tar Baby"],
+  ["Adlerian visualization technique to rehearse success?", "Creating Images"],
+  ["Technique proving thoughts control feelings by memory switching?", "Push-Button Technique"],
+  ["Prescribing and exaggerating the symptom is called?", "Paradoxical Intention"],
+  ["Name 2 categories of Adlerian Basic Mistakes.", "Overgeneralizations and False goals of security"],
+  ["Which birth order child is often pampered and dependent?", "Youngest child"],
+  ["Which birth order child is highly competitive and easily discouraged?", "Second child"],
+  ["Main criticism of Adlerian theory?", "Vague concepts, lack of systematization, hard to research empirically"],
+  ["Do Adlerian dream symbols have fixed meanings?", "No, context and dreamer's personality are essential"],
+  ["What balances discouragement during long lifestyle analysis?", "Identifying Assets"],
+  ["How are Adlerian interpretations phrased?", "Tentatively ('Is it possible that...', 'I wonder if...')"],
+  ["What did Adler call body organs weaker than others?", "Organ Inferiority"],
+  ["Target of Adlerian therapy reorientation phase?", "Active behavioral and belief change"]
+];
+l3Data.forEach(d => rawDeck.push(["L3", d[0], d[1]]));
+
+// LESSON 4 (50 Items)
+const l4Data = [
+  ["Decade Existential therapy emerged in Europe?", "1940s–1950s (Post-WWII)"],
+  ["Primary crisis post-WWII driving existentialism?", "Alienation, isolation, and meaninglessness"],
+  ["Kierkegaard's central philosophical themes?", "Creative anxiety, despair, fear, dread, and guilt"],
+  ["Nietzsche's central contribution?", "Will to power, mortality, and personal assertion"],
+  ["Heidegger and Sartre focused on what concept?", "Authentic being, freedom, choice, and responsibility"],
+  ["Martin Buber introduced which relational concept?", "I-Thou genuine encounter"],
+  ["Irvin Yalom's four ultimate existential concerns?", "Death, Freedom, Isolation, Meaninglessness"],
+  ["Is Existential therapy a set of rigid techniques?", "No, it is an attitude and philosophy of being human"],
+  ["How is existential isolation softened according to Yalom?", "Through love and authentic connection"],
+  ["Central outcome/goal of Existential therapy?", "Increased self-awareness and authentic living"],
+  ["Rollo May's view on client freedom?", "Clients reclaim ownership of their inherent freedom"],
+  ["Primary intervention in Existential therapy?", "The therapeutic presence and authentic relationship"],
+  ["Phenomenological approach means what?", "Understanding the client's unique subjective experience"],
+  ["Purpose of telling stories/myths in therapy?", "To integrate past, present, and future into personal meaning"],
+  ["How are dreams used in Existential therapy?", "As tools for existential insight into fears, hopes, and choices"],
+  ["Significance of therapy termination in existential view?", "Final confrontation with reality, separation, and limits"],
+  ["Define Existential Anxiety.", "Inevitable tension arising from awareness of freedom and mortality"],
+  ["Define Neurotic Existential Anxiety.", "Anxiety out of proportion that immobilizes growth"],
+  ["What is Inauthenticity in existential terms?", "Lacking awareness of personal responsibility and making choices"],
+  ["What does 'I-It' relationship mean (Buber)?", "Relating to others as objects or tools rather than human beings"],
+  ["What does 'I-Thou' relationship mean (Buber)?", "Direct, mutual, authentic human-to-human connection"],
+  ["Which philosopher coined 'existence precedes essence'?", "Jean-Paul Sartre"],
+  ["Central focus of Frankl's Logotherapy?", "The human drive and search for meaning"],
+  ["Can existential isolation ever be completely removed?", "No, it is an inescapable dimension of human condition"],
+  ["What gives human life urgency and significance?", "Awareness of death and nonbeing"],
+  ["Why do some clients find existential therapy unsettling?", "It provides no prescriptive answers or quick technique fixes"],
+  ["Role of therapist presence in session?", "Compassion, deep attunement, mindfulness, and authentic listening"],
+  ["What is Bad Faith in existential terms?", "Excusing action by claiming one had no choice"],
+  ["Does existential therapy focus on past or present?", "Present choices and future directional meaning"],
+  ["Main limitation of existential research?", "Unscripted nature makes it difficult to evaluate with traditional quantitative metrics"],
+  ["What is freedom in existential terms?", "Power and duty to make choices and shape one's life"],
+  ["What accompanies freedom in existential theory?", "Responsibility for one's choices"],
+  ["How do existentialists view human nature?", "Fluid, evolving, dynamic, and self-creating"],
+  ["Primary role of existential therapist?", "Partner in exploration of authentic living"],
+  ["What happens when individuals deny freedom?", "They experience existential guilt and inauthenticity"],
+  ["What is Existential Guilt?", "Awareness of evading personal choices and failing to realize potential"],
+  ["How is anxiety viewed in existential therapy?", "As a potential catalyst for growth rather than pathology"],
+  ["Who wrote 'Love and Will'?", "Rollo May"],
+  ["Who wrote 'Existential Psychotherapy' (1980)?", "Irvin Yalom"],
+  ["What does 'Throwness' (Heidegger) mean?", "Conditions of life into which we are born without choice"],
+  ["Ultimate purpose of confronting death?", "To live fully and purposefully in the present"],
+  ["How is story-telling used in existential therapy?", "To find meaning in myths and life experiences"],
+  ["What is the therapeutic alliance stance?", "Existential partners sharing a genuine encounter"],
+  ["Why is closure in therapy important?", "It highlights the reality of endings inherent in all life"],
+  ["Can clients change without self-awareness?", "No, awareness is the prerequisite for choice"],
+  ["What is the existential stance on human suffering?", "Suffering can be transformed into achievement through meaning"],
+  ["Are techniques forbidden in existential therapy?", "No, but they are secondary to the relationship"],
+  ["How does existential therapy view symptoms?", "As expressions of incomplete self-realization"],
+  ["What is Umwelt, Mitwelt, Eigenwelt?", "Physical world (Umwelt), Social world (Mitwelt), Psychological self (Eigenwelt)"],
+  ["Final summary of existential purpose?", "To encourage clients to choose authentic living with courage"]
+];
+l4Data.forEach(d => rawDeck.push(["L4", d[0], d[1]]));
+
+/* Flashcard Engine */
+let activeDeck = [], cardIdx = 0, isFlipped = false, currentFilter = 'all';
+
+function initDeck() {
+  activeDeck = rawDeck.filter(d => currentFilter === 'all' || d[0] === currentFilter);
+  cardIdx = 0;
+  renderCard();
+}
+
+function renderCard() {
+  isFlipped = false;
+  const c = $('#card'), d = activeDeck[cardIdx];
+  c.className = '';
+  c.innerHTML = `<small>${d[0]} · Question</small>${d[1]}`;
+  $('#cnt').textContent = `${cardIdx + 1} / ${activeDeck.length}`;
+}
+
+function flipCard() {
+  isFlipped = !isFlipped;
+  const c = $('#card'), d = activeDeck[cardIdx];
+  c.className = isFlipped ? 'f' : '';
+  c.innerHTML = isFlipped 
+    ? `<small>Answer Key</small>${d[2]}` 
+    : `<small>${d[0]} · Question</small>${d[1]}`;
+}
+
+$('#card').onclick = flipCard;
+$('#nx').onclick = () => { cardIdx = (cardIdx + 1) % activeDeck.length; renderCard(); };
+$('#pv').onclick = () => { cardIdx = (cardIdx - 1 + activeDeck.length) % activeDeck.length; renderCard(); };
+$('#sh').onclick = () => {
+  for (let n = activeDeck.length - 1; n > 0; n--) {
+    const j = Math.floor(Math.random() * (n + 1));
+    [activeDeck[n], activeDeck[j]] = [activeDeck[j], activeDeck[n]];
+  }
+  cardIdx = 0;
+  renderCard();
+};
+
+$$('#fx [data-f]').forEach(b => b.onclick = () => {
+  $$('#fx [data-f]').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  currentFilter = b.dataset.f;
+  initDeck();
+});
+
+addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  const r = $('#cards').getBoundingClientRect();
+  if (r.top > innerHeight * .8 || r.bottom < 100) return;
+  if (e.key === 'ArrowRight') $('#nx').click();
+  else if (e.key === 'ArrowLeft') $('#pv').click();
+  else if (e.key === ' ') { e.preventDefault(); flipCard(); }
+});
+
+initDeck();
+</script>
+</body>
+</html>
