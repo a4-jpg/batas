@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>I-O Psychology Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f4f3;--pane:#ffffff;--ink:#14201f;--mut:#58686a;--line:#dbe3e2;--soft:#e7eeed;--hl:#ffb703;--onk:#fff;
+--c1:#0b7a75;--c2:#c2410c;--c3:#4f46e5;--c4:#a21caf;--c5:#a16207;--sea:#0f1b1c;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1516;--pane:#142021;--ink:#ecf4f3;--mut:#9bb0b0;--line:#26393a;--soft:#1b2d2e;--onk:#0c1516;--c1:#4fd1c5;--c2:#ff9b6b;--c3:#a5a0ff;--c4:#e79bf0;--c5:#f2c35b}}
+:root[data-theme="dark"]{--bg:#0c1516;--pane:#142021;--ink:#ecf4f3;--mut:#9bb0b0;--line:#26393a;--soft:#1b2d2e;--onk:#0c1516;--c1:#4fd1c5;--c2:#ff9b6b;--c3:#a5a0ff;--c4:#e79bf0;--c5:#f2c35b}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:22px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.68 Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.ys{font-family:Fraunces,Georgia,serif;font-weight:700}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:80}
+/* hero */
+.hero{background:var(--sea);color:#e9f6f8;position:relative}
+.hero .in{max-width:1280px;margin:auto;padding:54px 6vw 0;display:grid;grid-template-columns:1.05fr 1fr;gap:20px;align-items:end}
+.hero h1{font-size:clamp(2.5rem,6.4vw,5.3rem);line-height:1;margin:0 0 16px;letter-spacing:-.01em}
+.hero p.lead{max-width:50ch;margin:0 0 26px;color:#a9cbd2;font-size:1.06rem}
+.hero svg{border-radius:14px 14px 0 0;width:100%;height:auto;display:block;align-self:end}
+.wave1{animation:drift 16s linear infinite}.wave2{animation:drift 24s linear infinite reverse}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-300px)}}
+.tiles{max-width:1280px;margin:auto;padding:0 6vw;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;transform:translateY(34px);position:relative;z-index:2}
+.tile{display:block;text-decoration:none;color:var(--ink);background:var(--pane);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:12px;padding:14px 16px 12px}
+.tile:hover{border-color:var(--k)}.tile b{display:block;font:400 .78rem Figtree,system-ui,sans-serif;color:var(--k);font-weight:700;letter-spacing:.02em}
+.tile span{display:block;font:700 1.08rem/1.25 Fraunces,Georgia,serif;margin:2px 0 6px}.tile small{color:var(--mut);font-size:.82rem}
+.wrap{display:grid;grid-template-columns:304px 1fr;gap:34px;max-width:1280px;margin:0 auto;padding:78px 6vw 80px}
+/* sidebar */
+aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:14px;scrollbar-width:thin}
+.srch{position:relative}.srch input{width:100%;padding:10px 38px 10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.92rem}
+.srch kbd{position:absolute;right:10px;top:50%;transform:translateY(-50%);font:600 .72rem Figtree,system-ui,sans-serif;color:var(--mut);border:1px solid var(--line);border-radius:5px;padding:0 6px;background:var(--pane)}
+.prog{margin:12px 2px 10px;font-size:.8rem;color:var(--mut)}.prog div{height:6px;border-radius:4px;background:var(--soft);margin-top:5px;overflow:hidden}.prog i{display:block;height:100%;width:0;background:var(--hl);transition:width .3s}
+.g>button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;font-weight:700;font-size:.94rem;line-height:1.25}
+.g>button:hover{background:var(--soft)}.g>button i{width:12px;height:12px;border-radius:4px;background:var(--k);flex:none}
+.g>button small{display:block;font-weight:500;color:var(--mut);font-size:.78rem}.g>button em{margin-left:auto;font:600 .75rem Figtree,system-ui,sans-serif;color:var(--mut);font-style:normal}
+.g>button::after{content:"›";color:var(--mut);transition:.2s;margin-left:6px}.g.open>button::after{transform:rotate(90deg)}
+.g ul{list-style:none;margin:0 0 8px 15px;padding:0 0 0 10px;border-left:2px solid var(--line);display:none}.g.open ul{display:block}
+.g li.lbl{font:700 .7rem Figtree,system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--k);padding:10px 8px 3px}
+.g li.r{display:flex;align-items:flex-start;gap:2px}
+.g li.r .ck{all:unset;cursor:pointer;flex:none;width:20px;height:20px;margin:5px 0 0 0;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.7rem;color:transparent}
+.g li.r .ck:hover{border-color:var(--k)}.g li.r.done .ck{background:var(--k);border-color:var(--k);color:var(--onk)}
+.g li a{display:block;flex:1;padding:5px 8px;border-radius:7px;color:var(--mut);text-decoration:none;font-size:.88rem;line-height:1.35}
+.g li a:hover{color:var(--ink);background:var(--soft)}.g li a.on{color:var(--ink);font-weight:700;background:var(--soft);box-shadow:inset 3px 0 var(--k)}
+.g li.hide,.g.hide{display:none}.none{display:none;color:var(--mut);font-size:.88rem;padding:6px 10px}
+.tools{display:flex;gap:8px;margin-top:10px}.tools button{all:unset;cursor:pointer;font-size:.78rem;color:var(--mut);padding:5px 10px;border:1px solid var(--line);border-radius:8px}.tools button:hover{color:var(--ink)}
+#tg{display:none}main{min-width:0}
+/* lesson */
+section.lesson{background:var(--pane);border:1px solid var(--line);border-radius:18px;padding:0 clamp(18px,4vw,46px) 34px;margin-bottom:34px;overflow:hidden}
+.lh{margin:0 calc(-1 * clamp(18px,4vw,46px)) 22px;padding:30px clamp(18px,4vw,46px) 24px;background:var(--k);color:var(--onk);display:flex;gap:20px;align-items:center}
+.lh .num{font:800 clamp(3.6rem,9vw,6rem)/.8 Fraunces,Georgia,serif;opacity:.9}
+.lh h2{margin:0;font-size:clamp(1.6rem,3.8vw,2.5rem);line-height:1.08}.lh p{margin:6px 0 0;opacity:.88;font-size:.98rem}
+.part{font:700 .76rem Figtree,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--k);margin:34px 0 -14px;display:flex;align-items:center;gap:12px}
+.part::after{content:"";flex:1;height:1px;background:var(--line)}
+h3{font-size:1.5rem;margin:38px 0 10px;line-height:1.15;position:relative}
+h3 a.t{color:inherit;text-decoration:none}
+h3 .bt{all:unset;cursor:pointer;margin-left:8px;font:600 .74rem Figtree,system-ui,sans-serif;color:var(--mut);opacity:0;transition:.15s;border:1px solid var(--line);border-radius:6px;padding:1px 8px;vertical-align:middle;white-space:nowrap}
+h3:hover .bt,h3 .bt:focus-visible,h3 .bt.on{opacity:1}h3 .bt:hover{color:var(--k);border-color:var(--k)}h3 .mk.on{background:var(--k);color:var(--onk);border-color:var(--k)}
+h3:target{animation:flash 1.8s ease-out}@keyframes flash{from{background:rgba(255,201,77,.45)}to{background:transparent}}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:14px 18px;border-radius:0 12px 12px 0;margin:18px 0;font-weight:600}
+.big small{display:block;font:700 .72rem Figtree,system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin:0}
+dl div,.card{border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:var(--bg)}
+dt,.card h4{font-weight:700;color:var(--k);margin:0}dd{margin:2px 0 0;font-size:.95rem;line-height:1.5}
+.card h4{margin-bottom:5px}.card p{margin:.3em 0;font-size:.95rem}.card ul{margin:.3em 0;padding-left:1.1em;font-size:.95rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0}
+.vs>div{padding:16px 20px}.vs>div:first-child{background:var(--soft)}.vs h4{margin:0 0 8px;font:700 1.2rem Fraunces;color:var(--k)}.vs ul{margin:0;padding-left:1.1em}.vs li{margin:.35em 0;font-size:.96rem}
+ul.b,ol{padding-left:1.2em;margin:.4em 0}li{margin:.25em 0}
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:12px;position:relative}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:.93rem;line-height:1.45}
+th{background:var(--k);color:var(--onk);text-align:left;font:700 .82rem Figtree,system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:700}tr:last-child td{border-bottom:0}
+.qz{all:unset;cursor:pointer;float:right;margin:0 0 8px 8px;font-size:.78rem;font-weight:600;color:var(--k);border:1.5px solid var(--k);padding:3px 11px;border-radius:99px}.qz.on{background:var(--k);color:var(--onk)}
+.tq{margin:14px 0}.tq .tw{clear:both;margin-top:0}
+.hm td:not(:first-child){filter:blur(7px);cursor:pointer;transition:filter .2s;user-select:none}.hm td.rev{filter:none;user-select:auto}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0;font-weight:700;font-size:.87rem}
+.flow span{background:var(--k);color:var(--onk);padding:6px 12px;border-radius:8px}.flow i{font-style:normal;color:var(--mut)}
+ol.steps{list-style:none;padding:0;counter-reset:s;display:grid;gap:10px;margin:14px 0}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;margin:0;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-size:.95rem}
+ol.steps li::before{content:counter(s);font:700 1.2rem Fraunces;color:var(--onk);background:var(--k);width:34px;height:34px;border-radius:50%;display:grid;place-items:center}
+details{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;background:var(--bg)}
+summary{cursor:pointer;font-weight:700;color:var(--k)}details p{margin:.6em 0 0;font-size:.95rem}details ul{font-size:.95rem}
+.ex{border:1px dashed var(--k);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:.95rem}.ex b.l{display:block;font:700 .72rem Figtree,system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--k);margin-bottom:3px}
+.ex q{display:block;margin:.3em 0;font-style:italic}
+/* erikson */
+.erik{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;background:var(--bg)}
+.erik .tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--line);background:var(--pane)}
+.erik .tabs button{all:unset;cursor:pointer;flex:none;padding:11px 15px;font-size:.84rem;font-weight:600;color:var(--mut);border-bottom:3px solid transparent;white-space:nowrap}
+.erik .tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--k);background:var(--soft)}
+.erik .pn{padding:20px 22px;display:grid;grid-template-columns:1.1fr 1fr;gap:18px}.erik .pn h4{margin:0;font:700 1.6rem/1.15 Fraunces;color:var(--k)}
+.erik .pn .ag{color:var(--mut);font-size:.88rem;font-weight:600}.erik .pn dl{grid-template-columns:1fr;gap:8px}.erik .pn dl div{background:var(--pane)}
+/* flashcards */
+.fx{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;align-items:center}.fx .sp{flex:1}
+.fx button,.fn button{all:unset;cursor:pointer;padding:6px 14px;border-radius:99px;border:1.5px solid var(--line);font-weight:600;font-size:.85rem}
+.fx button.on{background:var(--k);color:var(--onk);border-color:var(--k)}.fx button.ghost{border-style:dashed;color:var(--mut)}
+.lab{font:700 .72rem Figtree,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-right:2px}
+#cnt{color:var(--mut);font-size:.88rem;font-weight:600}
+.scene{perspective:1400px;margin-top:6px}
+#card{all:unset;display:block;width:100%;cursor:pointer;position:relative;min-height:300px;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,.8,.3,1)}
+#card.f{transform:rotateY(180deg)}
+#card .fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:28px 34px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:auto}
+#card .ft{background:var(--soft);border:2px solid var(--line);font:700 clamp(1.4rem,3.2vw,2.1rem)/1.25 Fraunces,Georgia,serif}
+#card .bk{background:var(--k);color:var(--onk);transform:rotateY(180deg);font:500 clamp(1.02rem,2vw,1.28rem)/1.6 Figtree,system-ui,sans-serif}
+#card small{font:700 .72rem Figtree,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;opacity:.65;margin-bottom:12px}
+#card .st{position:absolute;top:14px;right:16px;font-size:.74rem;font-weight:700;opacity:.9}
+.fn{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}.fn button{border-color:var(--ink);padding:9px 20px;border-radius:12px;font-weight:700}
+.fn .no{border-color:var(--c4);color:var(--c4)}.fn .yes{border-color:var(--c1);color:var(--c1)}.fn button:hover{background:var(--ink);color:var(--pane);border-color:var(--ink)}
+.bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:22px}.bars div{font-size:.8rem;color:var(--mut)}
+.bars div i{display:block;height:6px;border-radius:4px;background:var(--soft);margin-top:4px;overflow:hidden}.bars div i b{display:block;height:100%;background:var(--k)}
+.kb{color:var(--mut);font-size:.8rem;text-align:center;margin-top:10px}.kb kbd{border:1px solid var(--line);border-radius:5px;padding:0 6px;font:600 .72rem Figtree,system-ui,sans-serif;background:var(--pane)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:var(--pane);padding:9px 18px;border-radius:99px;font-weight:600;font-size:.88rem;opacity:0;pointer-events:none;transition:.25s;z-index:90}#toast.s{opacity:1;transform:translate(-50%,0)}
+button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible,#card:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 70px;font-size:.9rem;max-width:70ch;margin:auto}
+@media(max-width:1000px){.hero .in{grid-template-columns:1fr}.tiles{grid-template-columns:repeat(2,1fr)}.wrap{padding-top:96px}}
+@media(max-width:900px){.wrap{display:block}
+aside{position:fixed;inset:0 auto 0 0;height:100dvh;width:min(330px,88vw);max-height:none;border-radius:0 16px 16px 0;z-index:70;transform:translateX(-105%);transition:.25s;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.55)}
+#tg{display:block;all:unset;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--hl);color:#241a00;padding:12px 20px;border-radius:99px;font-weight:700;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.38)}
+h3 .bt{opacity:1}.vs{grid-template-columns:1fr}.erik .pn{grid-template-columns:1fr}.lh{gap:14px}}
+@media(max-width:560px){.tiles{grid-template-columns:1fr 1fr;gap:8px}.tile span{font-size:.95rem}#card{min-height:340px}#card .fc{padding:22px 20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 14px}.chips span{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:3px 12px;font-size:.84rem;line-height:1.4}
+.card .chips{margin:6px 0 0}
+.funnel{width:100%;height:auto;display:block}
+.dot{animation:fall 7s linear infinite;opacity:0}
+@keyframes fall{0%{transform:translateY(0);opacity:0}8%{opacity:1}100%{transform:translateY(300px);opacity:1}}
+/* quiz */
+.qb{border:1px solid var(--line);border-radius:16px;background:var(--bg);padding:clamp(16px,3vw,28px);margin-top:8px}
+.qb .meta{display:flex;justify-content:space-between;gap:10px;color:var(--mut);font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:12px;flex-wrap:wrap}
+.qb .sc{font:600 clamp(1.08rem,2.2vw,1.3rem)/1.55 Figtree,system-ui,sans-serif;margin:0 0 16px}
+.qb .sc i{display:block;font:700 .72rem Figtree,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--k);font-style:normal;margin-bottom:4px}
+.opts{display:grid;gap:9px}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:var(--pane);font-size:.98rem;line-height:1.45}
+.opt b{width:26px;height:26px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-size:.8rem}
+.opt:hover:not([disabled]){border-color:var(--k)}.opt[disabled]{cursor:default}
+.opt.ok{border-color:#1f9d63;background:rgba(31,157,99,.12)}.opt.ok b{background:#1f9d63;color:#fff}
+.opt.bad{border-color:#d1453b;background:rgba(209,69,59,.1)}.opt.bad b{background:#d1453b;color:#fff}
+.opt.dim{opacity:.6}
+.why{display:none;margin-top:14px;padding:12px 16px;border-radius:12px;background:var(--pane);border-left:5px solid var(--hl);font-size:.95rem}.why.s{display:block}.why b.v{display:block;margin-bottom:2px}
+.qn{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:14px;flex-wrap:wrap}
+.qn button{all:unset;cursor:pointer;padding:9px 20px;border-radius:12px;border:2px solid var(--ink);font-weight:700;font-size:.9rem}.qn button:hover{background:var(--ink);color:var(--pane)}
+.qn button.pri{background:var(--k);border-color:var(--k);color:var(--onk)}.qn button[disabled]{opacity:.35;cursor:default}
+.res{text-align:center;padding:10px 0}.res .big2{font:800 clamp(3rem,10vw,5rem)/1 Fraunces,Georgia,serif;color:var(--k)}
+.stat{display:flex;gap:16px;flex-wrap:wrap;color:var(--mut);font-size:.9rem;font-weight:600}.stat b{color:var(--ink)}
+
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:12px 0}
+.tiles{grid-template-columns:repeat(3,1fr)!important}
+@media(max-width:560px){.tiles{grid-template-columns:1fr 1fr!important}}
+.coinw{perspective:900px;display:grid;place-items:center;padding:14px 0 0;align-self:end}
+.coin{width:min(380px,86%);aspect-ratio:1;position:relative;transform-style:preserve-3d;animation:cflip 9s ease-in-out infinite;cursor:pointer;all:unset;display:block;position:relative;width:min(380px,86%);aspect-ratio:1;transform-style:preserve-3d;animation:cflip 9s ease-in-out infinite;cursor:pointer}
+.coinw:hover .coin{animation-play-state:paused}
+.coin.f{animation:none;transform:rotateY(180deg)}.coin.g{animation:none}
+@keyframes cflip{0%,38%{transform:rotateY(0)}50%,88%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}
+.face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:34px;border:8px solid #ffd166;box-shadow:inset 0 0 0 4px rgba(0,0,0,.18),0 18px 50px rgba(0,0,0,.45)}
+.face.a{background:radial-gradient(circle at 30% 25%,#1aa39b,#0b5d59)}.face.b{background:radial-gradient(circle at 30% 25%,#ff9b6b,#b2410f);transform:rotateY(180deg)}
+.face b{font:800 clamp(1.6rem,3.4vw,2.2rem)/1.1 Fraunces,Georgia,serif;color:#fff}.face em{font-style:normal;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;color:#ffe9b0;margin:8px 0}.face span{color:#f4fffd;font-size:.95rem;line-height:1.45}
+.coinhint{text-align:center;color:#8fb2b2;font-size:.78rem;margin-top:10px}
+</style></head><body>
+<div id="bar"></div>
+<div class="hero">
+<div class="in">
+<div style="padding-bottom:70px">
+<h1>Industrial &amp; Organizational Psychology</h1>
+<p class="lead">What I-O psychology is, where it came from, who does it, how its research works, and the ethics behind it. Choose any topic in the left menu, then test yourself with 54 workplace scenarios.</p>
+</div>
+<div><div class="coinw"><button class="coin" id="coin" aria-label="Flip the coin between industrial and organizational sides"><div class="face a"><em>Side 1 · top-down</em><b>Industrial</b><span>Efficiency, selection, training, job design</span></div><div class="face b"><em>Side 2 · bottom-up</em><b>Organizational</b><span>Satisfaction, well-being, attitudes, stress, supervision</span></div></button></div><div class="coinhint">Tap the coin to flip it</div></div>
+</div>
+<nav class="tiles" aria-label="Parts">
+<a class="tile" href="#p1" style="--k:var(--c1)"><b>Part 1</b><span>The field</span><small>Definition, fields, key areas</small></a>
+<a class="tile" href="#p2" style="--k:var(--c2)"><b>Part 2</b><span>History</span><small>Hawthorne, Taylor, wars</small></a>
+<a class="tile" href="#p3" style="--k:var(--c3)"><b>Part 3</b><span>Careers &amp; education</span><small>Settings, degrees</small></a>
+<a class="tile" href="#p4" style="--k:var(--c4)"><b>Part 4</b><span>Research</span><small>Six considerations</small></a>
+<a class="tile" href="#p5" style="--k:var(--c5)"><b>Part 5</b><span>Ethics</span><small>Type A vs. Type B</small></a>
+<a class="tile" href="#quiz" style="--k:var(--ink)"><b>Practice</b><span>54 scenarios</span><small>Situational quiz</small></a>
+</nav>
+</div>
+<div class="wrap">
+<aside id="side" aria-label="Topic navigation">
+<div class="srch"><input id="q" type="search" placeholder="Search topics…" aria-label="Search topics"><kbd>/</kbd></div>
+<div class="prog" id="prog">Studied <b id="pc">0</b> of <b id="pt">0</b> topics<div><i id="pb"></i></div></div>
+<div id="tree"></div><div class="none" id="none">No matching topic.</div>
+<div class="tools"><button id="tb">Dark / light</button><button id="rs">Reset progress</button></div>
+</aside>
+<main>
+<section class="lesson" id="p1" style="--k:var(--c1)" data-title="Part 1 · The field of I-O psychology">
+<div class="lh"><div class="num">1</div><div><h2>What is I-O psychology?</h2><p>Definition, the two-sided coin, the three fields, and the six key areas.</p></div></div>
+
+<div class="part">Definition &amp; purpose</div>
+<h3>Why the field exists</h3>
+<p>Apart from sleeping, the average person spends more hours per week <b>working</b> than doing any other activity. That much time deeply affects a person's life, positively and negatively, so studying how the working world affects behavior and psychological makeup is a major focus of psychology. This branch is <b>industrial and organizational (I-O) psychology</b>.</p>
+<h3>Definition</h3>
+<div class="big"><small>Definition (Spector, 2008; Jex, 2002)</small>I-O psychology is the <b>study of people working</b> and the <b>application of psychological principles</b> to the organizational and work environment. It is concerned with both the <b>science</b> (studying principles) and the <b>application</b> of those principles.</div>
+<p><b>Focus:</b> improving <b>productivity</b> in the workplace and creating the best possible working environment for employees.</p>
+
+<div class="part">The coin with two sides</div>
+<h3>Industrial vs. organizational</h3>
+<div class="vs">
+<div><h4>Industrial side</h4><ul><li>Understand behavior to improve <b>organizational efficiency</b>, <b>employee selection</b>, <b>employee training</b>, and <b>job design</b>.</li><li><b>Top-down</b> perspective: how can the organization benefit from psychological principles?</li></ul></div>
+<div><h4>Organizational side</h4><ul><li>Understand behavior to enhance <b>employee satisfaction and well-being</b>.</li><li>Topics: <b>employee attitudes, employee behavior, job stress, supervisory practices</b> (Spector, 2008).</li><li><b>Bottom-up</b> perspective: quality and satisfaction of the individuals rather than the organization as a whole.</li></ul></div></div>
+<div class="ex"><b class="l">The two sides together</b>They are not mutually exclusive. <b>Motivation</b> is relevant to the industrial concern of efficiency and performance, and also to the organizational concern with employees' happiness and well-being (Spector, 2008).</div>
+
+<div class="part">Fields &amp; key areas</div>
+<h3>Three broad fields</h3>
+<p>I-O psychology divides into <b>industrial, organizational, and human factors</b>; they overlap but each has distinctive features.</p>
+<dl>
+<div><dt>1. Industrial psychology</dt><dd>Describing <b>job requirements</b> and assessing individuals' ability to meet them; training, evaluating, and responding to evaluations after hire; must consider <b>legality of discrimination in hiring</b>.</dd></div>
+<div><dt>2. Organizational psychology</dt><dd>How relationships among employees affect them and business performance: satisfaction, motivation, commitment; management, leadership, <b>organizational culture</b>, structures, social norms, role expectations; also <b>harassment (including sexual harassment) and workplace violence</b>.</dd></div>
+<div><dt>3. Human factors psychology</dt><dd>How workers interact with the <b>tools of work</b> and how to design tools to optimize <b>productivity, safety, and health</b> (fit of desk, chair, computer; complex displays). In Europe: <b>ergonomics</b>.</dd></div></dl>
+<h3>Where I-O psychologists work</h3>
+<p>Four main work areas: <b>academia, government, consulting, and business</b> (see Part 3 for settings in detail).</p>
+
+<h3>Six key areas (Muchinsky, 2012)</h3>
+<p>Most I-O psychologists work in one of six major subject areas. Tap a card to focus on it.</p>
+<dl>
+<div><dt>Training and development</dt><dd>Determine skills needed for specific jobs; develop and evaluate employee training programs.</dd></div>
+<div><dt>Employee selection</dt><dd>Develop selection assessments such as screening tests to see if applicants are qualified.</dd></div>
+<div><dt>Ergonomics</dt><dd>Design procedures and equipment to <b>maximize performance and minimize injury</b>.</dd></div>
+<div><dt>Performance management</dt><dd>Develop assessments and techniques to determine whether employees are doing their jobs well.</dd></div>
+<div><dt>Work life</dt><dd>Improve employee satisfaction and maximize productivity: make jobs more rewarding; improve quality of life at work.</dd></div>
+<div><dt>Organizational development</dt><dd>Help improve organizations: increase profits, redesign products, improve organizational structure.</dd></div></dl>
+</section>
+<section class="lesson" id="p2" style="--k:var(--c2)" data-title="Part 2 · History of I-O psychology">
+<div class="lh"><div class="num">2</div><div><h2>Historical overview</h2><p>From Wundt's students to Hawthorne, scientific management, two world wars, and SIOP.</p></div></div>
+
+<div class="part">Interactive timeline</div>
+<h3>Pioneers and milestones</h3>
+<p>Pick a name or event to see who, when, and what they contributed.</p>
+<div class="erik" id="erik"><div class="tabs" role="tablist"></div><div class="pn"></div></div>
+
+<div class="part">Origins</div>
+<h3>Early 20th-century founders</h3>
+<p>I-O psychology began in the <b>early 20th century</b>. <b>Cattell, Münsterberg, and Scott</b> were students of <b>Wilhelm Wundt</b>, the father of experimental psychology. Some had worked in industrial psychology before World War I and also consulted for businesses.</p>
+<div class="tw"><table><tr><th>Psychologist</th><th>Years / place</th><th>Contribution</th></tr>
+<tr><td>James Cattell</td><td>1860–1944, Columbia</td><td>Founded the <b>Psychological Corporation</b> (consulting company still operating); his Columbia students advanced industrial psychology.</td></tr>
+<tr><td>Hugo Münsterberg</td><td>1863–1916, Harvard</td><td><i>Psychology and Industrial Efficiency</i> (1913): selection, training, effective advertising.</td></tr>
+<tr><td>Walter Dill Scott</td><td>1869–1955, Northwestern</td><td>Applied psychology to <b>advertising, management, personnel selection</b>; books in 1903 (<i>Theory of Advertising</i>, <i>Psychology of Advertising</i>) and 1911; hired in 1916 by Carnegie Institute of Technology for applied selection research.</td></tr>
+<tr><td>Robert Yerkes</td><td>1876–1956, Dartmouth</td><td>APA president in 1917; organized WWI screening and selecting of enlisted men.</td></tr>
+<tr><td>Walter Bingham</td><td>1880–1952, Dartmouth</td><td>With Scott, officer selection in WWI; chief psychologist for the War Department in WWII.</td></tr>
+<tr><td>Lillian Gilbreth</td><td>1878–1972, Purdue</td><td>Time and motion studies; “mother of modern management.”</td></tr></table></div>
+<div class="big"><small>Industrial first</small>This early research was what we now call <b>industrial</b> psychology. <b>Organizational</b> psychology developed as an experimental science later in the century (Katzell &amp; Austin, 1992).</div>
+
+<div class="part">World War I</div>
+<h3>World War I and personnel selection</h3>
+<ul class="b"><li>US entry in <b>April 1917</b> pulled industrial psychologists into the war effort. <b>Yerkes</b> was president of the 25-year-old <b>APA</b> and organized a group under the <b>Surgeon General's Office</b> to screen and select enlisted men.</li><li><b>Army Alpha</b> measured mental abilities; <b>Army Beta</b> was a <b>non-verbal</b> form for <b>illiterate and non-English-speaking</b> draftees.</li><li><b>Scott and Bingham</b> organized a group under the <b>Adjutant General's Office</b> to develop officer selection methods: a catalogue of occupational needs (a job-description system), performance ratings, and occupational skill tests.</li><li>The <b>APA</b> is the US professional association for clinical and research psychologists: conferences, accrediting degree programs, publishing journals.</li></ul>
+<h3>After the war: Millicent Pond</h3>
+<p>Pond (PhD, Yale) was director of employment test research at <b>Scoville Manufacturing Company</b>. She compared <b>pre-employment tests</b> with indicators of job performance for factory workers; the studies appeared in the <i>Journal of Personnel Research</i> in the late 1920s.</p>
+
+<div class="part">Hawthorne &amp; social psychology</div>
+<h3>The Hawthorne studies (1929–1932)</h3>
+<ul class="b"><li><b>Elton Mayo</b> (1880–1949) and colleagues studied Western Electric's <b>Hawthorne Works</b> near Chicago, taking industrial psychology beyond selection and placement to <b>interpersonal relations, motivation, and organizational dynamics</b>. These studies mark the <b>origin of organizational psychology</b>.</li><li>They began as research on the <b>physical environment</b> (e.g., lighting), but <b>psychological and social factors</b> proved more interesting, including how <b>supervisory style</b> raised or lowered productivity.</li></ul>
+<div class="big"><small>Hawthorne effect</small>The increase in performance of individuals who are <b>noticed, watched, and paid attention to</b> by researchers or supervisors. <b>Any change</b> in a variable (even a return to poor lighting) improved productivity; the effect <b>faded when attention faded</b> (Roethlisberger &amp; Dickson, 1939). It remains an important experimental consideration that must be <b>controlled for</b>.</div>
+<h3>Kurt Lewin and group dynamics</h3>
+<p>In the 1930s researchers began studying employees' <b>feelings about their jobs</b>. <b>Kurt Lewin</b>, the <b>founder of social psychology</b>, researched <b>leadership styles, team structure, and team dynamics</b>, including an early study using <b>children</b> to examine leadership style and aggression, group dynamics, and satisfaction. He coined the term <b>“group dynamics.”</b></p>
+
+<div class="part">Human factors: Taylor &amp; Gilbreth</div>
+<h3>Frederick Taylor: scientific management</h3>
+<ul class="b"><li>An <b>engineer</b> who believed redesigning the workplace would raise both output and wages. Book: <i>The Principles of Scientific Management</i> (<b>1911</b>); used <b>time and motion studies</b>; covered management styles, selection, training, and the work itself.</li><li><b>Iron ingots example:</b> work rests raised output from <b>12.5 to 47.0 tons per day</b> with less fatigue and higher wages (paid by the ton); company cost fell from <b>9.2 to 3.9 cents per ton</b>.</li><li><b>Criticism:</b> feared exploitation and fewer jobs; assumed only managers could find the most efficient method and that workers were <b>fundamentally lazy</b>; maximized productivity with little concern for well-being; criticized by unions.</li></ul>
+<h3>Lillian Gilbreth: mother of modern management</h3>
+<ul class="b"><li>With husband <b>Frank</b>, used time and motion studies to <b>reduce motions</b> per task; applied them to industry, home, office, and shops; studied fatigue and time-management stress; found many employees motivated by money and job satisfaction.</li><li>Book (1914): <i>The Psychology of Management</i>. Credited with <b>shelves inside refrigerator doors</b> and the <b>foot-pedal trash can</b>. First woman to join the <b>American Society of Mechanical Engineers</b> (1926); <b>Hoover Medal</b> (1966).</li></ul>
+<div class="big"><small>Ergonomics</small>Taylor's and Gilbreth's work improved productivity and the fit between technology and the person using it. The study of <b>machine–human fit</b> is <b>ergonomics or human factors psychology</b>.</div>
+
+<div class="part">World War II and today</div>
+<h3>World War II and the APA's response</h3>
+<ul class="b"><li>Bingham became <b>chief psychologist for the War Department</b>, developing systems for job selection, classification, training, performance review, team development, morale change, and attitude change. Canada and the UK also grew their I-O psychology.</li><li>After the war both industrial and organizational psychology became major research areas; concerns about the <b>fairness of employment tests</b> arose, and ethnic and gender bias in tests was evaluated; job satisfaction and motivation research grew.</li><li>Before WWII the APA was not concerned with experimental or applied fields. It created <b>Division 14, Industrial and Business Psychology</b>, which eventually became the <b>Society for Industrial and Organizational Psychology (SIOP)</b>.</li></ul>
+<h3>I-O psychology today</h3>
+<ul class="b"><li>SIOP, a division of the APA, listed <b>8,000 members</b> (2014).</li><li>The Bureau of Labor Statistics (2013) projected this profession would have the <b>greatest growth</b> of all job classifications in the 20 years after 2012.</li><li>Average pay: <b>over $80,000</b> with a master's and <b>over $110,000</b> with a doctorate (Khanna, Medsker, &amp; Ginter, 2012).</li></ul>
+</section>
+<section class="lesson" id="p3" style="--k:var(--c3)" data-title="Part 3 · Careers & education">
+<div class="lh"><div class="num">3</div><div><h2>Careers, employers &amp; education</h2><p>Where I-O psychologists work, what they do, and the degrees that get them there.</p></div></div>
+
+<div class="part">Employment</div>
+<h3>Four employment settings</h3>
+<div class="two">
+<div class="card"><h4>Colleges and universities</h4><p>Teach and conduct research; some become administrators (deans, provosts, vice presidents).</p></div>
+<div class="card"><h4>Consulting firms</h4><p>Help many organizations become more productive: select a high-quality, diverse workforce; design fair motivating systems; train employees; ensure <b>legal and ethical</b> treatment of applicants and employees. Sizes range from one-person firms to hundreds of consultants; some specialize (selection, diversity, attitude surveys), others offer a range.</p></div>
+<div class="card"><h4>Private sector</h4><p>Work for <b>a single company</b> such as IBM, Microsoft, or FedEx; consultants work with many companies.</p></div>
+<div class="card"><h4>Public sector</h4><p>Work for local, state, or federal government.</p></div></div>
+<p>Private sector often pays more, but many believe the <b>job stability</b> of the public sector offsets lower pay. <b>Ph.D.s</b> are far more likely to work in academia; <b>master's</b> graduates more often work as HR generalists, data analysts, trainers, and compensation analysts.</p>
+<h3>Table 1.2 · Employment settings (% by highest degree)</h3>
+<button class="qz" data-t="emp">Quiz me</button>
+<div class="tq"><div class="tw"><table id="emp"><tr><th>Setting</th><th>M.A.</th><th>Ph.D.</th></tr>
+<tr><td>Education</td><td>0.8</td><td>40.0</td></tr><tr><td>Private sector</td><td>44.0</td><td>23.3</td></tr><tr><td>Public sector</td><td>10.5</td><td>8.2</td></tr><tr><td>Consulting</td><td>37.3</td><td>25.0</td></tr><tr><td>Other</td><td>7.4</td><td>3.5</td></tr></table></div></div>
+<p>Source: Medsker, Katkowski, &amp; Furr (2005). Master's grads cluster in the <b>private sector (44.0%)</b> and <b>consulting (37.3%)</b>; Ph.D.s in <b>education (40.0%)</b>.</p>
+<h3>Table 1.3 · Job titles</h3>
+<p>Careers run from entry-level jobs to presidents and CEOs; there is work with data or with people, talking, writing, or analyzing.</p>
+<div class="chips"><span>Chairman and CEO</span><span>City manager</span><span>Compensation analyst</span><span>Compensation manager</span><span>Consultant</span><span>Director of organizational effectiveness</span><span>Director of training and development</span><span>Director of workforce planning</span><span>I-O psychologist</span><span>Manager of leadership and development</span><span>Personnel manager</span><span>President</span><span>Professor</span><span>Recruiter</span><span>Research analyst</span><span>Research scientist</span><span>Director of assessment and selection</span><span>EEO/diversity specialist</span><span>Employee relations manager</span><span>HR director</span><span>HR generalist</span><span>HR representative</span><span>HR specialist</span><span>HR supervisor</span><span>Research psychologist</span><span>Senior partner</span><span>Staffing manager</span><span>Trainer</span><span>Training coordinator</span><span>Training manager</span><span>VP for human resources</span><span>VP for organizational development</span></div>
+
+<div class="part">Education</div>
+<h3>Master's vs. doctoral programs</h3>
+<div class="vs">
+<div><h4>Master's</h4><ul><li>1 to 2 years after the bachelor's; typical prerequisites: <b>GPA 3.0, GRE 1,000</b>.</li><li>About <b>40 hours</b> of coursework; full graduate load is <b>9–12 hours</b> (vs. 15–18 undergraduate).</li><li><b>Thesis</b> (second year), <b>internship or practicum</b>, and a <b>comprehensive oral/written exam</b>.</li><li>Two kinds: part of a Ph.D. program, or <b>terminal</b> (no Ph.D. offered): best for applied HR positions; usually easier entry, more aid and individual attention.</li></ul></div>
+<div><h4>Doctoral (Ph.D.)</h4><ul><li>Typically <b>5 years</b>; common entrance: <b>GPA 3.5, GRE 1,200</b>.</li><li>First two years: broad psychology courses; I-O courses in years 3 and 4.</li><li><b>Thesis plus dissertation</b> and more extensive comprehensive exams.</li><li>Well-known faculty, better facilities and research funding; best for those who want to <b>teach, research, or consult</b>.</li></ul></div></div>
+<div class="ex"><b class="l">Thesis vs. dissertation</b>No formal definition, but a dissertation is <b>broader in scope, longer, and requires more original and independent effort</b> (Riddle &amp; Foster, 1997). Information on programs is available from SIOP (siop.org).</div>
+</section>
+<section class="lesson" id="p4" style="--k:var(--c4)" data-title="Part 4 · Research in I-O psychology">
+<div class="lh"><div class="num">4</div><div><h2>Research in I-O psychology</h2><p>Why research matters and the six considerations in conducting a study.</p></div></div>
+
+<div class="part">Why research?</div>
+<h3>Why conduct research</h3>
+<ul class="b"><li>I-O psychology relies heavily on research and statistics. Most important reason: research <b>ultimately saves organizations money</b> (through satisfaction, productivity, fewer accidents). I-O psychologists must save more than they cost.</li><li><b>Example:</b> organizations long relied on the employment interview, but research shows the <b>unstructured interview is not the best predictor</b> of future job behavior (Schmidt &amp; Hunter).</li><li>Research confronts us daily (polls, ads: “nine out of ten dentists”); understanding it helps you judge claims.</li></ul>
+<h3>Common sense is often wrong</h3>
+<p>Examples: the world was “flat”; women employees “could not perform as well as men.” <b>Answer-changing:</b> 33 studies show answers are more often changed from <b>wrong to right</b> (Kruger, Wirtz, &amp; Miller, 2005), contrary to “stick with your first answer.”</p>
+
+<div class="part">Six considerations in conducting research</div>
+<div class="flow"><span>1 Idea / hypothesis / theory</span><i>→</i><span>2 Literature review</span><i>→</i><span>3 Location</span><i>→</i><span>4 Method</span><i>→</i><span>5 Sample</span><i>→</i><span>6 Run &amp; analyze</span></div>
+
+<h3>1 · Ideas, hypotheses, and theories</h3>
+<ul class="b"><li>Many ideas start with <b>“I wonder…”</b>; everyone is a researcher at heart, and research beats guesswork.</li><li>A <b>hypothesis</b> is an educated prediction about the answer to a question, based on theory, previous research, or logic.</li></ul>
+<div class="three">
+<div class="card"><h4>Idea or question</h4><p>Does all this noise affect my employees' performance?</p></div>
+<div class="card"><h4>Hypothesis (what will happen)</h4><p>High noise will increase errors in assembling electronic components.</p></div>
+<div class="card"><h4>Theory (why)</h4><p>Noise is a distraction, making it hard to concentrate.</p></div></div>
+<h3>Competing theories: the referral example</h3>
+<p>An I-O psychologist predicts <b>employee referrals</b> yield <b>longer tenure</b>. Four possible explanations:</p>
+<dl>
+<div><dt>Realistic job preview theory</dt><dd>Referred applicants get an accurate picture of the job and company. Implication: give every applicant a realistic job preview.</dd></div>
+<div><dt>Differential recruitment-source theory</dt><dd>Personalities of applicants differ by the method they use to find jobs.</dd></div>
+<div><dt>Personality similarity theory</dt><dd>Friends have similar personalities, so a friend of a stayer will like the job too. Implication: encourage successful employees to recruit friends.</dd></div>
+<div><dt>Socialization theory</dt><dd>People who know someone inside are absorbed into the informal system faster, are coached, and have social needs met.</dd></div></dl>
+<p>Even when a study supports a hypothesis, it is important to find <b>why</b>; the best theory lets us design better methods.</p>
+<div class="two">
+<div class="card"><h4>No hypothesis possible</h4><p>Little prior research or theory (e.g., personality vs. handwriting neatness): an <b>exploratory study</b> without a hypothesis; common but generally frowned on.</p></div>
+<div class="card"><h4>Prediction could go either way</h4><p>E.g., would a reference letter from a senator be more or less influential than a professor's?</p></div>
+<div class="card"><h4>Hypothesis not supported</h4><p>Often a <b>poor research design</b> or a topic more complicated than thought; e.g., no single theory explains aggression; each is partly true.</p></div></div>
+
+<h3>2 · Literature reviews</h3>
+<ul class="b"><li>Search for similar research first; don't “reinvent the wheel.” Related research gives ideas for your study.</li><li><b>Common methods:</b> subject indexes (PsycINFO, Infotrac), browsing journals, searching reference sections, asking researchers.</li></ul>
+<div class="tw"><table><tr><th>Periodical</th><th>Who writes it</th><th>Reliability</th></tr>
+<tr><td>Journals</td><td>Researchers reporting results directly</td><td>Best source of unbiased, accurate information. Leading: <i>Journal of Applied Psychology, Personnel Psychology, Academy of Management Journal, Academy of Management Review, Organizational Behavior and Human Decision Processes</i></td></tr>
+<tr><td>Bridge publications</td><td>Not described in the slides</td><td>Named as the second of the four types of periodicals</td></tr>
+<tr><td>Trade magazines</td><td>Professional writers with field expertise; audience is practitioners</td><td>Easy to read but incomplete and somewhat biased (<i>HR Magazine, Training</i>)</td></tr>
+<tr><td>Magazines</td><td>Professional writers without topic training</td><td>Good for ideas, terrible for supporting a scientific hypothesis (<i>People, Time</i>)</td></tr></table></div>
+<p><b>Internet:</b> no review for accuracy; secondary sources may not accurately reflect the primary source.</p>
+
+<h3>3 · Location: laboratory vs. field</h3>
+<div class="vs">
+<div><h4>Laboratory</h4><ul><li>About <b>32%</b> of I-O research (Roch, 2008); mostly at universities, but also AT&amp;T, OPM, Microsoft.</li><li>Strength: control of extraneous variables (<b>internal validity</b>).</li><li>Weakness: <b>external validity</b> (generalizing to the real world).</li></ul></div>
+<div><h4>Field</h4><ul><li>Assembly lines, insurance offices, interview rooms.</li><li>Gains <b>external validity</b>.</li><li>Loses control of extraneous variables (<b>internal validity</b>).</li></ul></div></div>
+
+<h3>4 · Research methods</h3>
+<p>Choices: <b>experiments, quasi-experiments, archival research, observations, surveys, and meta-analyses</b>.</p>
+<dl>
+<div><dt>Experiment</dt><dd>The most powerful method; the <b>only one that can determine cause and effect</b>. Two defining characteristics: <b>(1) manipulation of one or more independent variables</b> and <b>(2) random assignment</b> to experimental and control conditions. Missing either makes it a quasi-experiment, study, survey, or investigation.</dd></div>
+<div><dt>Quasi-experiment</dt><dd>Used when an experiment is not possible (e.g., compare average productivity in 100 plants with lower vs. higher noise). Weaker: many other variables could explain differences.</dd></div>
+<div><dt>Archival research</dt><dd>Uses <b>previously collected data or records</b> (e.g., personnel files of good vs. poor workers).</dd></div>
+<div><dt>Survey</dt><dd>Asks people's opinions (attitudes, recruitment preferences). By mail, interview, phone, fax, email, internet. Choice depends on sample size, budget, time, need for a representative sample.</dd></div>
+<div><dt>Meta-analysis</dt><dd>Statistical method combining previous research: find the <b>effect size</b> in each article, then average to a <b>mean effect size</b>.</dd></div></dl>
+
+<h3>5 · Subject samples</h3>
+<ul class="b"><li>Decide the sample's size, composition, and selection method. A large sample is unnecessary if you can use a <b>random sample</b> and control extraneous variables. A properly conducted survey needs only about <b>1,000</b> participants to generalize to the entire US population (Deane, 1999).</li><li>A small organization may use <b>all</b> employees (small but highly representative); a large one picks certain employees for economic and practical reasons.</li></ul>
+<h3>6 · Running the study and statistical analysis</h3>
+<ul class="b"><li><b>Running:</b> give instructions in a <b>standardized</b>, understandable way to avoid bias; afterward <b>debrief</b> participants (explain the purpose, allow questions).</li><li><b>Statistics:</b> show how confident we are that results are real and did not occur <b>by chance alone</b>.</li></ul>
+</section>
+<section class="lesson" id="p5" style="--k:var(--c5)" data-title="Part 5 · Ethics in I-O psychology">
+<div class="lh"><div class="num">5</div><div><h2>Ethics in I-O psychology</h2><p>Ethical dilemmas, Type A vs. Type B, and why people rationalize.</p></div></div>
+
+<div class="part">Dilemmas</div>
+<h3>What is an ethical dilemma?</h3>
+<p>Organizations and employees face ethical dilemmas daily: <b>ambiguous situations</b> requiring a <b>personal judgment of right or wrong</b> because <b>no rules, policies, or laws</b> guide the decision. People rely on morals and personal values, so different people decide differently in similar situations.</p>
+<div class="ex"><b class="l">Example: selling a car</b>You know it has been in several accidents. No law or policy says you must tell the buyer; most would say not to bring it up unless asked. Is that morally wrong? It depends on one's value system.</div>
+
+<h3>Type A vs. Type B dilemmas</h3>
+<div class="vs">
+<div><h4>Type A</h4><ul><li><b>High uncertainty</b> about what is right or wrong.</li><li>No clearly best solution; both <b>positive and negative consequences</b>.</li><li>Example: <b>animal testing</b> of new drugs: hurting living creatures vs. possibly saving millions of lives.</li></ul></div>
+<div><h4>Type B (rationalizing)</h4><ul><li>The difference between right and wrong is <b>clear</b>.</li><li>People know what is right but choose what benefits <b>themselves</b>.</li><li>They <b>rationalize</b>: “everyone else does it.”</li><li>Examples: hiding the car's damage; <b>cheating on a test</b> “just this once.”</li></ul></div></div>
+
+<h3>Unethical behavior at work</h3>
+<ul class="b"><li>The ability to rationalize is why unethical behavior is at an all-time high in organizations.</li><li><b>CareerBuilder.com (2005):</b> of <b>2,050</b> workers, <b>19%</b> reported lying in the workplace at some point.</li><li><b>Ethics Resource Center (2007):</b> <b>56%</b> of workers witnessed unethical behavior: taking supplies home, using sick leave when not sick, abuse of employees by management, coming in late and leaving early.</li></ul>
+</section>
+<section class="lesson" id="quiz" style="--k:var(--c4)" data-title="Practice · Scenario quiz">
+<div class="lh" style="background:var(--ink);color:var(--pane)"><div class="num">?</div><div><h2>Scenario quiz</h2><p>54 workplace situations. Pick the best answer, then read why. Questions cover the whole deck.</p></div></div>
+<div class="fx" id="qf"><span class="lab">Cover</span><button class="on" data-p="0">All</button><button data-p="1">Field</button><button data-p="2">History</button><button data-p="3">Careers</button><button data-p="4">Research</button><button data-p="5">Ethics</button></div>
+<div class="fx"><button id="qm" class="ghost">Missed only</button><button id="qs" class="ghost">Shuffle order</button><span class="sp"></span></div>
+<div class="qb" id="qb"></div>
+<div class="stat" id="qst" style="margin-top:14px"></div>
+<div class="kb"><kbd>A</kbd>–<kbd>D</kbd> answer · <kbd>Enter</kbd> next</div>
+</section>
+</main></div>
+<button id="tg" aria-label="Open topics menu">☰ Topics</button>
+<div id="toast" role="status" aria-live="polite"></div>
+<footer>Based on the class slides “What is Industrial and Organizational Psychology?” Study aid only; verify details against your own slides and text.</footer>
+<script>
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const slug=t=>t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('s');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('s'),1700)};
+/* theme */
+const th=store.get('io-theme',null);if(th)document.documentElement.dataset.theme=th;
+$('#tb').onclick=()=>{const d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;d.dataset.theme=dark?'light':'dark';store.set('io-theme',d.dataset.theme)};
+/* timeline */
+const E=[["Wundt’s students","Early 1900s","Cattell, Münsterberg, Scott","Wilhelm Wundt, father of experimental psychology","Three Wundt students (James Cattell, Hugo Münsterberg, Walter Dill Scott) studied what we now call industrial psychology and consulted for business."],
+["Cattell","1860–1944","James Cattell, Columbia","Founder of the Psychological Corporation","Founded a psychological consulting company that still operates today; his Columbia students advanced industrial psychology."],
+["Münsterberg","1913","Hugo Münsterberg, Harvard","Psychology and Industrial Efficiency","Covered employee selection, employee training, and effective advertising."],
+["Scott","1903–1916","Walter Dill Scott, Northwestern","The Theory of Advertising; Psychology of Advertising (1903)","Applied psychology to advertising, management, and selection; hired in 1916 by Carnegie Institute of Technology for applied selection research."],
+["Taylor","1911","Frederick Taylor, engineer","The Principles of Scientific Management","Time and motion studies; work rests raised ingot handling from 12.5 to 47.0 tons per day. Criticized for treating workers as lazy."],
+["Gilbreth","1914","Lillian Gilbreth, Purdue","The Psychology of Management","Fewer motions per task; mother of modern management; foot-pedal trash can and refrigerator door shelves."],
+["World War I","1917","Yerkes, Scott, Bingham","Army Alpha and Army Beta","Yerkes (APA president) screened enlisted men; Scott and Bingham built officer selection, job descriptions, and performance ratings."],
+["Pond","Late 1920s","Millicent Pond (PhD, Yale)","Scoville Manufacturing Company","Compared pre-employment tests with job performance for factory workers; published in the Journal of Personnel Research."],
+["Hawthorne","1929–1932","Elton Mayo, Western Electric","Hawthorne Works near Chicago","Began with lighting; found social and psychological factors mattered more. Origin of organizational psychology; the Hawthorne effect."],
+["Lewin","1930s","Kurt Lewin","Founder of social psychology","Leadership styles, team structure, and team dynamics; coined group dynamics; studied children’s groups."],
+["World War II","1940s","Walter Bingham, War Department","Job selection, classification, training","Expanded the field; led to concern about test fairness; the APA created Division 14 (later SIOP)."]];
+(()=>{const w=$('#erik'),tabs=w.querySelector('.tabs'),pn=w.querySelector('.pn');w.style.setProperty('--k','var(--c2)');
+const sel=i=>{[...tabs.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i));const e=E[i];
+pn.innerHTML='<div><div class="ag">'+e[1]+'</div><h4>'+e[0]+'</h4><p><b>'+e[2]+'</b></p></div><dl><div><dt>Key work</dt><dd>'+e[3]+'</dd></div><div><dt>Contribution</dt><dd>'+e[4]+'</dd></div></dl>'};
+E.forEach((e,i)=>{const b=document.createElement('button');b.textContent=e[0];b.setAttribute('role','tab');b.onclick=()=>sel(i);tabs.appendChild(b)});sel(0)})();
+const cn=$('#coin');if(cn)cn.onclick=()=>{cn.classList.add('g');const f=cn.classList.contains('f');cn.classList.toggle('f',!f)};
+/* quiz toggles */
+$$('.qz').forEach(b=>b.onclick=()=>{const t=$('#'+b.dataset.t);const on=t.classList.toggle('hm');b.classList.toggle('on',on);b.textContent=on?'Show all':'Quiz me';
+if(!on)$$('#'+b.dataset.t+' td.rev').forEach(x=>x.classList.remove('rev'))});
+$$('table td').forEach(td=>td.addEventListener('click',()=>{if(td.closest('.hm'))td.classList.toggle('rev')}));
+/* nav build */
+const studied=store.get('io-studied',{});const tree=$('#tree'),groups=[];const links=[];
+$$('section.lesson').forEach(s=>{const g=document.createElement('div');g.className='g';g.style.setProperty('--k',getComputedStyle(s).getPropertyValue('--k')?'':'');g.setAttribute('style',s.getAttribute('style')||'');
+const isCards=s.id==='quiz';const title=s.dataset.title;const parts=title.split(' · ');
+const btn=document.createElement('button');btn.innerHTML='<i></i><span>'+parts[0]+'<small>'+(parts[1]||'')+'</small></span><em></em>';
+const ul=document.createElement('ul');g.append(btn,ul);tree.appendChild(g);
+const lh=document.createElement('li');lh.innerHTML='';
+const hs=[...s.children].filter(n=>n.matches('h3,.part'));
+if(isCards){const li=document.createElement('li');li.className='r';li.innerHTML='<a href="#quiz">Open the scenario quiz</a>';ul.appendChild(li);links.push({a:li.firstChild,el:s,g,s,li})}
+hs.forEach(n=>{if(n.matches('.part')){const li=document.createElement('li');li.className='lbl';li.textContent=n.textContent;ul.appendChild(li);return}
+const txt=n.textContent.trim();const id=s.id+'-'+slug(txt);n.id=id;
+n.innerHTML='<a class="t" href="#'+id+'">'+txt+'</a> <button class="bt mk" title="Mark as studied" aria-label="Mark as studied">Mark studied</button><button class="bt cp" title="Copy link to this topic" aria-label="Copy link to this topic">Copy link</button>';
+const li=document.createElement('li');li.className='r';li.innerHTML='<button class="ck" aria-label="Toggle studied" title="Mark studied">✓</button><a href="#'+id+'">'+txt+'</a>';ul.appendChild(li);
+let x=n.nextElementSibling,body='';while(x&&!x.matches('h3,.part')){body+=x.textContent+' ';x=x.nextElementSibling}li.dataset.t=body.toLowerCase();const L={a:li.querySelector('a'),el:n,g,s,li,id};links.push(L);
+const set=v=>{if(v)studied[id]=1;else delete studied[id];li.classList.toggle('done',!!v);n.querySelector('.mk').classList.toggle('on',!!v);n.querySelector('.mk').textContent=v?'Studied ✓':'Mark studied';store.set('io-studied',studied);prog()};
+L.set=set;li.querySelector('.ck').onclick=()=>set(!studied[id]);n.querySelector('.mk').onclick=()=>set(!studied[id]);
+n.querySelector('.cp').onclick=async()=>{const u=location.origin+location.pathname+'#'+id;try{await navigator.clipboard.writeText(u);toast('Link copied')}catch(e){location.hash=id;toast('Link is in the address bar')}};
+if(studied[id]){li.classList.add('done');n.querySelector('.mk').classList.add('on');n.querySelector('.mk').textContent='Studied ✓'}});
+btn.onclick=()=>g.classList.toggle('open');groups.push({g,s,em:btn.querySelector('em')})});
+function prog(){const T=links.filter(l=>l.id),d=T.filter(l=>studied[l.id]).length;$('#pc').textContent=d;$('#pt').textContent=T.length;$('#pb').style.width=(T.length?d/T.length*100:0)+'%';
+groups.forEach(o=>{const t=links.filter(l=>l.id&&l.s===o.s);if(t.length)o.em.textContent=t.filter(l=>studied[l.id]).length+'/'+t.length})}prog();
+/* scrollspy */
+let cur=null;function spy(){const h=document.documentElement;$('#bar').style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+'%';
+let on=null;for(const l of links){if(l.el.getBoundingClientRect().top<150)on=l;else break}
+if(on&&on!==cur){cur=on;links.forEach(l=>l.a.classList.toggle('on',l===on));if(!$('#q').value){groups.forEach(o=>o.g.classList.toggle('open',o.g===on.g))};
+if(innerWidth>900||$('#side').classList.contains('open'))on.a.scrollIntoView({block:'nearest'})}}
+addEventListener('scroll',spy,{passive:true});spy();
+/* search */
+$('#q').oninput=e=>{const v=e.target.value.trim().toLowerCase();let any=0;
+groups.forEach(o=>{let hit=0;o.g.querySelectorAll('li').forEach(li=>{if(li.classList.contains('lbl')){li.classList.toggle('hide',!!v);return}const m=!v||li.textContent.toLowerCase().includes(v)||(li.dataset.t||'').includes(v);li.classList.toggle('hide',!m);if(m)hit++});
+o.g.classList.toggle('hide',!hit);if(v&&hit){o.g.classList.add('open');any=1}});
+if(!v){any=1;groups.forEach(o=>o.g.classList.remove('hide'));cur=null;spy()}$('#none').style.display=any?'none':'block'};
+addEventListener('keydown',e=>{if(e.key==='/'&&e.target.tagName!=='INPUT'){e.preventDefault();$('#q').focus()}if(e.key==='Escape'){$('#side').classList.remove('open');$('#q').blur()}});
+/* drawer */
+$('#tg').onclick=()=>$('#side').classList.add('open');
+$('#side').addEventListener('click',e=>{if(e.target.closest('a'))$('#side').classList.remove('open')});
+document.addEventListener('click',e=>{const s=$('#side');if(s.classList.contains('open')&&!s.contains(e.target)&&e.target.id!=='tg')s.classList.remove('open')});
+$('#rs').onclick=()=>{if(!confirm('Reset all progress (studied topics and quiz)?'))return;try{localStorage.removeItem('io-studied');localStorage.removeItem('io-quiz')}catch(e){}location.reload()};
+/* deep link */
+function go(){const id=decodeURIComponent(location.hash.slice(1));if(!id)return;const el=document.getElementById(id);if(el){el.scrollIntoView();const L=links.find(l=>l.el===el);if(L){groups.forEach(o=>o.g.classList.toggle('open',o.g===L.g))}}}
+addEventListener('hashchange',go);setTimeout(go,60);
+/* scenario quiz */
+const Q=[
+[1,"Definition","A manager says: 'Psychology belongs in clinics, not workplaces.' How does I-O psychology answer?","It studies people working and applies psychological principles to the work environment.",["It treats mental disorders of employees only.","It studies only machines and tools.","It concerns itself only with company profits."],"I-O psychology is the study of people working and the application of psychological principles to the organizational and work environment."],
+[1,"Two sides","A company asks a psychologist to redesign its hiring and training to boost efficiency. Which side of the coin?","Industrial, a top-down view.",["Organizational, a bottom-up view.","Human factors only.","Neither; it is clinical work."],"Industrial psychology focuses on efficiency, selection, training, and job design from a top-down perspective."],
+[1,"Two sides","Employees report burnout, poor supervision, and low morale. A psychologist studies their attitudes and job stress. Which side?","Organizational, a bottom-up view.",["Industrial, a top-down view.","Ergonomics only.","Archival research."],"The organizational side targets employee satisfaction and well-being: attitudes, behavior, job stress, supervisory practices."],
+[1,"Two sides","A study of motivation shows it raises both output and happiness. What does this illustrate?","The two sides are not mutually exclusive; the same topic serves both.",["Industrial psychology is separate from organizational psychology.","Motivation is only an industrial topic.","Motivation is only a human-factors topic."],"Spector (2008) uses motivation to show the dual nature of I-O topics."],
+[1,"Fields","A firm is sued for discrimination in hiring. Which field's concerns does this touch most directly?","Industrial psychology (legality of hiring).",["Human factors psychology.","Ergonomics.","Meta-analysis."],"Industrial psychology must consider legality of discrimination in hiring."],
+[1,"Fields","An office reports harassment complaints and a toxic culture. Which field?","Organizational psychology.",["Industrial psychology.","Human factors psychology.","Psychometrics only."],"Organizational psychology covers culture, relationships, harassment, and workplace violence."],
+[1,"Fields","Workers who sit all day complain of back pain; the chair and screen do not fit them. Which field helps?","Human factors psychology (ergonomics).",["Organizational psychology.","Employee selection.","Organizational development."],"Human factors studies how workers interact with tools and how to design them for productivity, safety, and health."],
+[1,"Key areas","A firm wants screening tests for job applicants. Which of Muchinsky's six areas?","Employee selection.",["Performance management.","Work life.","Organizational development."],"Employee selection develops assessments such as screening tests."],
+[1,"Key areas","A company wants to figure out which skills a job needs and build a program to teach them. Which area?","Training and development.",["Ergonomics.","Employee selection.","Work life."],"Training and development determines skills needed and develops and evaluates training programs."],
+[1,"Key areas","A firm wants a system to tell whether employees are doing their jobs well. Which area?","Performance management.",["Work life.","Training and development.","Organizational development."],"Performance management develops assessments and techniques for evaluating job performance."],
+[2,"Origins","Which three early pioneers were students of Wilhelm Wundt?","Cattell, Münsterberg, and Scott.",["Taylor, Gilbreth, and Mayo.","Yerkes, Bingham, and Pond.","Lewin, Mayo, and Taylor."],"Cattell, Münsterberg, and Scott studied under Wundt, the father of experimental psychology."],
+[2,"Origins","Which pioneer founded the Psychological Corporation?","James Cattell.",["Hugo Münsterberg.","Walter Dill Scott.","Robert Yerkes."],"Cattell founded the consulting company that still operates today."],
+[2,"Origins","A historian wants the 1913 book on employee selection, training, and advertising. Whose?","Hugo Münsterberg's Psychology and Industrial Efficiency.",["Taylor's Principles of Scientific Management.","Gilbreth's Psychology of Management.","Scott's Theory of Advertising."],"Münsterberg's 1913 book covered selection, training, and effective advertising."],
+[2,"Origins","Who first applied psychology to advertising, management, and selection, with 1903 books?","Walter Dill Scott.",["Elton Mayo.","Kurt Lewin.","Frederick Taylor."],"Scott's The Theory of Advertising and Psychology of Advertising (1903) were the first books on psychology in business."],
+[2,"WWI","An army needs to screen draftees who are illiterate or do not speak English. Which test was designed for them?","Army Beta, the non-verbal form.",["Army Alpha.","Hawthorne test.","Time-and-motion test."],"Army Alpha measured mental abilities; Army Beta was non-verbal for illiterate and non-English-speaking draftees."],
+[2,"WWI","Who led the WWI effort to screen enlisted men, and who developed officer selection?","Yerkes (enlisted men); Scott and Bingham (officers).",["Taylor (enlisted men); Gilbreth (officers).","Mayo (enlisted men); Lewin (officers).","Cattell (both)."],"Yerkes organized a group under the Surgeon General's Office; Scott and Bingham worked under the Adjutant General's Office."],
+[2,"Hawthorne","Researchers raise factory lighting and output rises; they lower it and output still rises. What explains this?","The Hawthorne effect: performance increases when people are noticed and watched.",["Lighting has no meaning in any setting.","Workers were paid more.","The experiment lacked a hypothesis."],"Any change improved productivity because of attention; the effect faded when attention faded."],
+[2,"Hawthorne","What did the Hawthorne researchers conclude was more interesting than the physical environment?","Psychological and social factors, such as supervisory style.",["Wages only.","Machine design only.","Test scores only."],"Hawthorne shifted attention to interpersonal relations, motivation, and organizational dynamics, marking the origin of organizational psychology."],
+[2,"Hawthorne","A new drug seems to work, but the doctors fear patients improve just because researchers are paying attention. What should they control for?","The Hawthorne effect.",["Meta-analysis.","Ergonomics.","Archival research."],"The Hawthorne effect is a factor that must be controlled for in experiments."],
+[2,"Lewin","A researcher studies how leadership style affects aggression and satisfaction in children's groups. Which pioneer?","Kurt Lewin.",["Frederick Taylor.","Elton Mayo.","Lillian Gilbreth."],"Lewin studied leadership styles and group dynamics, a term he coined."],
+[2,"Taylor","A factory introduces timed work rests and tons moved per day rise from 12.5 to 47.0. Whose approach?","Frederick Taylor's scientific management.",["Elton Mayo's Hawthorne studies.","Kurt Lewin's group dynamics.","Millicent Pond's test validation."],"Taylor's iron ingot example raised output from 12.5 to 47.0 tons per day."],
+[2,"Taylor","Unions call a method exploitative because it assumes workers are lazy and only managers know best. Which method?","Taylor's scientific management.",["Gilbreth's refrigerator shelves.","Hawthorne observation.","Army Alpha."],"Taylor's approach assumed workers were fundamentally lazy and was criticized by unions."],
+[2,"Gilbreth","A kitchen designer wants fewer motions and a foot-pedal trash lid. Whose ideas?","Lillian Gilbreth.",["Elton Mayo.","Robert Yerkes.","Hugo Münsterberg."],"Gilbreth used time and motion studies and is credited with foot-pedal trash cans and refrigerator door shelves."],
+[2,"WWII","Who became chief psychologist of the War Department in WWII and developed new selection and classification systems?","Walter Bingham.",["Robert Yerkes.","Hugo Münsterberg.","Elton Mayo."],"Bingham developed systems for job selection, classification, training, and performance review."],
+[2,"WWII","Which APA division became the Society for Industrial and Organizational Psychology (SIOP)?","Division 14, Industrial and Business Psychology.",["Division 1.","Division 40.","The Surgeon General's Office."],"Division 14 evolved into SIOP."],
+[3,"Settings","A psychologist works for one company, such as FedEx, on selection and training. Which setting?","Private sector.",["Consulting firm.","Public sector.","Academia."],"Private-sector I-O psychologists work for a single company."],
+[3,"Settings","A psychologist works with many different clients, specializing in attitude surveys. Which setting?","Consulting firm.",["Private sector.","Public sector.","Academia."],"Consultants help a wide variety of organizations; some firms specialize."],
+[3,"Settings","Someone values job stability even with lower pay. Which setting?","Public sector (government).",["Private sector.","Consulting.","Doctoral program."],"Many believe public-sector stability offsets lower pay."],
+[3,"Settings","A student wants to teach and do research. Which degree and setting fit best?","A Ph.D., in academia.",["A terminal master's, as an HR generalist.","A bachelor's, as a recruiter.","A master's, as a compensation analyst."],"Ph.D.s are much more likely to be employed in an academic setting."],
+[3,"Education","A student wants an applied HR job after 1–2 years of study. Which program?","A terminal master's program.",["A Ph.D. program.","A dissertation-only program.","A one-week workshop."],"Terminal master's programs suit applied HR positions."],
+[3,"Education","A student asks how a dissertation differs from a thesis. Best answer?","It is broader, longer, and needs more original, independent effort.",["It is shorter and easier.","There is no difference of any kind.","It is only for master's students."],"The dissertation is broader in scope, longer, and more original (Riddle and Foster, 1997)."],
+[3,"Education","Typical entrance criteria for a Ph.D. program in the slides?","About a 3.5 GPA and 1,200 on the GRE.",["A 3.0 GPA and 1,000 on the GRE.","A 2.0 GPA and no exam.","A bachelor's in any subject, no GPA."],"Common doctoral entrance requirements are a 3.5 GPA and GRE 1,200; master's often 3.0 and 1,000."],
+[3,"Education","Which employment setting do M.A. holders enter most often, per Table 1.2?","Private sector (44.0%).",["Education (0.8%).","Public sector (10.5%).","Other (7.4%)."],"Table 1.2: M.A. holders: private sector 44.0%, consulting 37.3%."],
+[4,"Why research","An executive says: 'Why pay for research? Interviews have always worked.' What does research show?","Unstructured interviews are not the best predictor of job performance, so relying on them can cost money.",["Interviews are the best predictor of performance.","Research is only for universities.","Common sense is always right."],"Research showed the unstructured interview is not the best predictor of future job behavior (Schmidt and Hunter)."],
+[4,"Why research","A student keeps his first answer on a test because 'it's what everyone says.' What do 33 studies show?","Answers are more often changed from wrong to right.",["First answers are always right.","Changing answers lowers scores.","There is no evidence either way."],"Kruger, Wirtz, and Miller (2005): research beats common sense."],
+[4,"Hypothesis","A manager says: 'I wonder why my staff arrive late.' Which research step is this?","Generating an idea or question.",["Running the study.","Statistical analysis.","Debriefing."],"Many research ideas start with 'I wonder...'."],
+[4,"Hypothesis","A researcher predicts noise will increase assembly errors because it distracts. Which part is the theory?","Noise distracts and makes it hard to concentrate (the 'why').",["High noise will increase errors (the 'what').","Does noise affect performance? (the question).","The sample of 1,000 employees."],"The hypothesis is what will happen; the theory is why it will happen."],
+[4,"Hypothesis","Employee referrals lead to longer tenure because referrals receive an accurate picture of the job. Which theory?","Realistic job preview theory.",["Socialization theory.","Personality similarity theory.","Differential recruitment-source theory."],"Realistic job preview: referred applicants get an accurate picture from the person who told them."],
+[4,"Hypothesis","Referred hires stay because friends tend to have similar personalities. Which theory?","Personality similarity theory.",["Socialization theory.","Realistic job preview theory.","Differential recruitment-source theory."],"Personality similarity theory: friends share personalities, so a friend of a stayer will like the job too."],
+[4,"Hypothesis","A student wants to study personality and handwriting neatness but finds no prior research or theory. What kind of study results?","An exploratory study without a hypothesis.",["A meta-analysis.","An experiment with random assignment.","A quasi-experiment on noise."],"Exploratory studies without hypotheses are common but generally frowned on."],
+[4,"Literature","A student cites a People magazine article as scientific evidence. Why is this a problem?","Magazine writers lack topic training, so the information is often wrong.",["Magazines are the best unbiased source.","Magazines only publish journals.","Magazines are peer-reviewed."],"Magazines are good for ideas but terrible for supporting a scientific hypothesis."],
+[4,"Literature","Which source is best for unbiased, accurate information on a topic?","Journals, such as the Journal of Applied Psychology.",["Trade magazines such as HR Magazine.","Popular magazines such as Time.","Internet pages without review."],"Journals report results directly from researchers; leading ones include the Journal of Applied Psychology."],
+[4,"Location","A researcher wants tight control of extraneous variables and does the study at a university. What is the trade-off?","Weaker external validity (generalizing to the real world).",["Weaker internal validity.","No use of independent variables.","No need for a hypothesis."],"Laboratory research gains control but has an external validity problem."],
+[4,"Location","A study on an automotive assembly line gains realism but what is lost?","Control over extraneous variables (internal validity).",["External validity.","Any real-world relevance.","The need for a sample."],"Field research gains external validity but loses control of extraneous variables."],
+[4,"Method","A researcher wants to know whether one variable causes another to change. Which method?","An experiment.",["A survey.","Archival research.","A magazine review."],"The experiment is the only method that can determine cause and effect."],
+[4,"Method","A study compares noise in 100 plants but cannot manipulate noise or assign plants at random. What is it?","A quasi-experiment.",["A true experiment.","A meta-analysis.","A debriefing."],"An experiment requires manipulating independent variables and random assignment; without them it is a quasi-experiment."],
+[4,"Method","HR wants to compare the backgrounds of good and poor workers using personnel files. Which method?","Archival research.",["Experiment.","Survey.","Meta-analysis."],"Archival research uses previously collected data or records."],
+[4,"Method","A researcher averages effect sizes across many published studies and reports a single number. What is this?","A meta-analysis (mean effect size).",["A survey.","A quasi-experiment.","A field experiment."],"Meta-analysis finds each study's effect size and averages them into the mean effect size."],
+[5,"Ethics","A situation has no law or policy to guide it and requires personal judgment of right and wrong. What is it?","An ethical dilemma.",["A hypothesis.","A quasi-experiment.","A job analysis."],"Ethical dilemmas are ambiguous situations without rules, policies, or laws to guide them."],
+[5,"Ethics","Whether to test new drugs on animals, where both choices have costs and benefits, is which dilemma?","Type A.",["Type B.","A rationalizing dilemma.","Not a dilemma."],"Type A dilemmas have high uncertainty and both positive and negative consequences."],
+[5,"Ethics","An employee knows it is wrong to take supplies home but says 'everyone does it.' Which dilemma?","Type B (rationalizing).",["Type A.","A quasi-experiment.","A Hawthorne effect."],"In Type B dilemmas people know what is right but choose what benefits them and rationalize."],
+[5,"Ethics","A student cheats 'just this once,' convinced it hurts no one. What explains this?","Rationalization (a Type B dilemma).",["Type A uncertainty.","A true experiment.","A literature review."],"Students rationalize cheating even while agreeing it is wrong."],
+[5,"Ethics","A seller hides a car's accident history because no law forces him to tell. What type of dilemma is this?","Type B: he knows what is right but chooses what benefits himself.",["Type A: right and wrong are unclear.","A field experiment.","An archival study."],"The slides use this as a rationalizing example: hiding damage is most advantageous to the seller."],
+[5,"Ethics","Which statistic from the Ethics Resource Center (2007) shows how common unethical behavior is?","56% of workers witnessed unethical behavior.",["19% of workers witnessed it.","2,050% of workers lied.","8,000 workers were fired."],"56% witnessed unethical behavior; 19% (CareerBuilder, 2005) reported lying."]
+];
+const QS=store.get('io-quiz',{});let pool=[],qi=0,sc=0,ans=0,qf=0,miss=0,order=[],done=0;
+const L='ABCD';
+function qk(q){return q[1].slice(0,40)+'|'+q[2].slice(0,20)}
+function qstart(){pool=Q.filter(q=>(!qf||q[0]===qf)&&(!miss||QS[qk(q)]==='w'));qi=0;sc=0;done=0;qshow()}
+function qshow(){const b=$('#qb');ans=0;
+if(!pool.length){b.innerHTML='<div class="res"><p>No questions in this selection yet. Answer some, then use “Missed only”.</p></div>';return}
+if(qi>=pool.length){const p=Math.round(sc/pool.length*100);b.innerHTML='<div class="res"><div class="big2">'+sc+' / '+pool.length+'</div><p><b>'+p+'%</b> correct. '+(p>=85?'Excellent. You are exam-ready on this set.':p>=65?'Good. Retry the missed ones to lock them in.':'Keep going. Re-read the matching topics, then try again.')+'</p></div><div class="qn"><button id="rt">Retry set</button><button class="pri" id="rm">Review missed only</button></div>';
+$('#rt').onclick=qstart;$('#rm').onclick=()=>{miss=1;$('#qm').classList.add('on');qstart()};return}
+const q=pool[qi];const opts=[q[3]].concat(q[4]).map((t,i)=>({t,c:i===0}));for(let n=opts.length-1;n>0;n--){const j=Math.floor(Math.random()*(n+1));[opts[n],opts[j]]=[opts[j],opts[n]]}
+b.style.setProperty('--k','var(--c'+q[0]+')');
+b.innerHTML='<div class="meta"><span>Question '+(qi+1)+' of '+pool.length+'</span><span>'+q[1]+'</span><span>Score '+sc+'</span></div><p class="sc"><i>Scenario</i>'+q[2]+'</p><div class="opts">'+opts.map((o,i)=>'<button class="opt" data-c="'+(o.c?1:0)+'"><b>'+L[i]+'</b><span>'+o.t+'</span></button>').join('')+'</div><div class="why" id="why"></div><div class="qn"><button id="qp"'+(qi?'':' disabled')+'>← Back</button><button class="pri" id="qx" disabled>Next →</button></div>';
+b.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{if(ans)return;ans=1;const ok=o.dataset.c==='1';if(ok)sc++;QS[qk(q)]=ok?'r':'w';store.set('io-quiz',QS);
+b.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(x.dataset.c==='1')x.classList.add('ok');else if(x===o)x.classList.add('bad');else x.classList.add('dim')});
+const w=$('#why');w.innerHTML='<b class="v">'+(ok?'Correct.':'Not quite.')+'</b>'+q[5];w.classList.add('s');$('#qx').disabled=false;$('#qx').textContent=qi===pool.length-1?'See score':'Next →';b.querySelector('.meta span:last-child').textContent='Score '+sc;qstats()});
+$('#qx').onclick=()=>{qi++;qshow()};$('#qp').onclick=()=>{if(qi){qi--;qshow()}};qstats()}
+function qstats(){const r=Q.filter(q=>QS[qk(q)]==='r').length,w=Q.filter(q=>QS[qk(q)]==='w').length;$('#qst').innerHTML='<span>Answered right: <b>'+r+'</b></span><span>Missed: <b>'+w+'</b></span><span>Unanswered: <b>'+(Q.length-r-w)+'</b></span>'}
+$$('#qf [data-p]').forEach(b=>b.onclick=()=>{$$('#qf [data-p]').forEach(x=>x.classList.remove('on'));b.classList.add('on');qf=+b.dataset.p;qstart()});
+$('#qm').onclick=()=>{miss=miss?0:1;$('#qm').classList.toggle('on',!!miss);qstart()};
+$('#qs').onclick=()=>{for(let n=Q.length-1;n>0;n--){const j=Math.floor(Math.random()*(n+1));[Q[n],Q[j]]=[Q[j],Q[n]]}qstart()};
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;const r=$('#quiz').getBoundingClientRect();if(r.top>innerHeight*.7||r.bottom<100)return;
+const k=e.key.toLowerCase();if('abcd'.includes(k)&&k.length===1){const o=$$('#qb .opt')[L.toLowerCase().indexOf(k)];if(o)o.click()}else if(e.key==='Enter'||e.key==='ArrowRight'){const x=$('#qx');if(x&&!x.disabled)x.click()}});
+qstart();
+</script></body></html>
