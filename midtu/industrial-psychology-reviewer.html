@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Industrial Psychology Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Bricolage+Grotesque:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e8;--pane:#fffdf8;--ink:#1b2433;--mut:#5e6675;--line:#e2d9c8;--soft:#f0e8d8;--hl:#ff9f1c;--onk:#fff;
+--c1:#1f5fa8;--c2:#b8420c;--c3:#23785a;--c4:#7a3b9a;--sea:#12203a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1626;--pane:#172036;--ink:#eef2fa;--mut:#9aa6bd;--line:#2a3552;--soft:#1e2942;--onk:#0f1626;--c1:#7fb2f0;--c2:#ff9b6b;--c3:#6fd1a2;--c4:#cf9be8}}
+:root[data-theme="dark"]{--bg:#0f1626;--pane:#172036;--ink:#eef2fa;--mut:#9aa6bd;--line:#2a3552;--soft:#1e2942;--onk:#0f1626;--c1:#7fb2f0;--c2:#ff9b6b;--c3:#6fd1a2;--c4:#cf9be8}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:22px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.68 Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.ys{font-family:"Bricolage Grotesque",Georgia,sans-serif;font-weight:700}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:80}
+/* hero */
+.hero{background:var(--sea);color:#e9f6f8;position:relative}
+.hero .in{max-width:1280px;margin:auto;padding:54px 6vw 0;display:grid;grid-template-columns:1.05fr 1fr;gap:20px;align-items:end}
+.hero h1{font-size:clamp(2.5rem,6.4vw,5.3rem);line-height:1;margin:0 0 16px;letter-spacing:-.01em}
+.hero p.lead{max-width:50ch;margin:0 0 26px;color:#a9cbd2;font-size:1.06rem}
+.hero svg{border-radius:14px 14px 0 0;width:100%;height:auto;display:block;align-self:end}
+.wave1{animation:drift 16s linear infinite}.wave2{animation:drift 24s linear infinite reverse}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-300px)}}
+.tiles{max-width:1280px;margin:auto;padding:0 6vw;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;transform:translateY(34px);position:relative;z-index:2}
+.tile{display:block;text-decoration:none;color:var(--ink);background:var(--pane);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:12px;padding:14px 16px 12px}
+.tile:hover{border-color:var(--k)}.tile b{display:block;font:400 .78rem Figtree,system-ui,sans-serif;color:var(--k);font-weight:700;letter-spacing:.02em}
+.tile span{display:block;font:700 1.08rem/1.25 "Bricolage Grotesque",sans-serif;margin:2px 0 6px}.tile small{color:var(--mut);font-size:.82rem}
+.wrap{display:grid;grid-template-columns:304px 1fr;gap:34px;max-width:1280px;margin:0 auto;padding:78px 6vw 80px}
+/* sidebar */
+aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:14px;scrollbar-width:thin}
+.srch{position:relative}.srch input{width:100%;padding:10px 38px 10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.92rem}
+.srch kbd{position:absolute;right:10px;top:50%;transform:translateY(-50%);font:600 .72rem Figtree,system-ui,sans-serif;color:var(--mut);border:1px solid var(--line);border-radius:5px;padding:0 6px;background:var(--pane)}
+.prog{margin:12px 2px 10px;font-size:.8rem;color:var(--mut)}.prog div{height:6px;border-radius:4px;background:var(--soft);margin-top:5px;overflow:hidden}.prog i{display:block;height:100%;width:0;background:var(--hl);transition:width .3s}
+.g>button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;font-weight:700;font-size:.94rem;line-height:1.25}
+.g>button:hover{background:var(--soft)}.g>button i{width:12px;height:12px;border-radius:4px;background:var(--k);flex:none}
+.g>button small{display:block;font-weight:500;color:var(--mut);font-size:.78rem}.g>button em{margin-left:auto;font:600 .75rem Figtree,system-ui,sans-serif;color:var(--mut);font-style:normal}
+.g>button::after{content:"›";color:var(--mut);transition:.2s;margin-left:6px}.g.open>button::after{transform:rotate(90deg)}
+.g ul{list-style:none;margin:0 0 8px 15px;padding:0 0 0 10px;border-left:2px solid var(--line);display:none}.g.open ul{display:block}
+.g li.lbl{font:700 .7rem Figtree,system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--k);padding:10px 8px 3px}
+.g li.r{display:flex;align-items:flex-start;gap:2px}
+.g li.r .ck{all:unset;cursor:pointer;flex:none;width:20px;height:20px;margin:5px 0 0 0;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.7rem;color:transparent}
+.g li.r .ck:hover{border-color:var(--k)}.g li.r.done .ck{background:var(--k);border-color:var(--k);color:var(--onk)}
+.g li a{display:block;flex:1;padding:5px 8px;border-radius:7px;color:var(--mut);text-decoration:none;font-size:.88rem;line-height:1.35}
+.g li a:hover{color:var(--ink);background:var(--soft)}.g li a.on{color:var(--ink);font-weight:700;background:var(--soft);box-shadow:inset 3px 0 var(--k)}
+.g li.hide,.g.hide{display:none}.none{display:none;color:var(--mut);font-size:.88rem;padding:6px 10px}
+.tools{display:flex;gap:8px;margin-top:10px}.tools button{all:unset;cursor:pointer;font-size:.78rem;color:var(--mut);padding:5px 10px;border:1px solid var(--line);border-radius:8px}.tools button:hover{color:var(--ink)}
+#tg{display:none}main{min-width:0}
+/* lesson */
+section.lesson{background:var(--pane);border:1px solid var(--line);border-radius:18px;padding:0 clamp(18px,4vw,46px) 34px;margin-bottom:34px;overflow:hidden}
+.lh{margin:0 calc(-1 * clamp(18px,4vw,46px)) 22px;padding:30px clamp(18px,4vw,46px) 24px;background:var(--k);color:var(--onk);display:flex;gap:20px;align-items:center}
+.lh .num{font:800 clamp(3.6rem,9vw,6rem)/.8 "Bricolage Grotesque",sans-serif;opacity:.9}
+.lh h2{margin:0;font-size:clamp(1.6rem,3.8vw,2.5rem);line-height:1.08}.lh p{margin:6px 0 0;opacity:.88;font-size:.98rem}
+.part{font:700 .76rem Figtree,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--k);margin:34px 0 -14px;display:flex;align-items:center;gap:12px}
+.part::after{content:"";flex:1;height:1px;background:var(--line)}
+h3{font-size:1.5rem;margin:38px 0 10px;line-height:1.15;position:relative}
+h3 a.t{color:inherit;text-decoration:none}
+h3 .bt{all:unset;cursor:pointer;margin-left:8px;font:600 .74rem Figtree,system-ui,sans-serif;color:var(--mut);opacity:0;transition:.15s;border:1px solid var(--line);border-radius:6px;padding:1px 8px;vertical-align:middle;white-space:nowrap}
+h3:hover .bt,h3 .bt:focus-visible,h3 .bt.on{opacity:1}h3 .bt:hover{color:var(--k);border-color:var(--k)}h3 .mk.on{background:var(--k);color:var(--onk);border-color:var(--k)}
+h3:target{animation:flash 1.8s ease-out}@keyframes flash{from{background:rgba(255,201,77,.45)}to{background:transparent}}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:14px 18px;border-radius:0 12px 12px 0;margin:18px 0;font-weight:600}
+.big small{display:block;font:700 .72rem Figtree,system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin:0}
+dl div,.card{border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:var(--bg)}
+dt,.card h4{font-weight:700;color:var(--k);margin:0}dd{margin:2px 0 0;font-size:.95rem;line-height:1.5}
+.card h4{margin-bottom:5px}.card p{margin:.3em 0;font-size:.95rem}.card ul{margin:.3em 0;padding-left:1.1em;font-size:.95rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0}
+.vs>div{padding:16px 20px}.vs>div:first-child{background:var(--soft)}.vs h4{margin:0 0 8px;font:700 1.2rem "Bricolage Grotesque";color:var(--k)}.vs ul{margin:0;padding-left:1.1em}.vs li{margin:.35em 0;font-size:.96rem}
+ul.b,ol{padding-left:1.2em;margin:.4em 0}li{margin:.25em 0}
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:12px;position:relative}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:.93rem;line-height:1.45}
+th{background:var(--k);color:var(--onk);text-align:left;font:700 .82rem Figtree,system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:700}tr:last-child td{border-bottom:0}
+.qz{all:unset;cursor:pointer;float:right;margin:0 0 8px 8px;font-size:.78rem;font-weight:600;color:var(--k);border:1.5px solid var(--k);padding:3px 11px;border-radius:99px}.qz.on{background:var(--k);color:var(--onk)}
+.tq{margin:14px 0}.tq .tw{clear:both;margin-top:0}
+.hm td:not(:first-child){filter:blur(7px);cursor:pointer;transition:filter .2s;user-select:none}.hm td.rev{filter:none;user-select:auto}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0;font-weight:700;font-size:.87rem}
+.flow span{background:var(--k);color:var(--onk);padding:6px 12px;border-radius:8px}.flow i{font-style:normal;color:var(--mut)}
+ol.steps{list-style:none;padding:0;counter-reset:s;display:grid;gap:10px;margin:14px 0}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;margin:0;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-size:.95rem}
+ol.steps li::before{content:counter(s);font:700 1.2rem "Bricolage Grotesque";color:var(--onk);background:var(--k);width:34px;height:34px;border-radius:50%;display:grid;place-items:center}
+details{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0;background:var(--bg)}
+summary{cursor:pointer;font-weight:700;color:var(--k)}details p{margin:.6em 0 0;font-size:.95rem}details ul{font-size:.95rem}
+.ex{border:1px dashed var(--k);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:.95rem}.ex b.l{display:block;font:700 .72rem Figtree,system-ui,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--k);margin-bottom:3px}
+.ex q{display:block;margin:.3em 0;font-style:italic}
+/* erikson */
+.erik{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;background:var(--bg)}
+.erik .tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--line);background:var(--pane)}
+.erik .tabs button{all:unset;cursor:pointer;flex:none;padding:11px 15px;font-size:.84rem;font-weight:600;color:var(--mut);border-bottom:3px solid transparent;white-space:nowrap}
+.erik .tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--k);background:var(--soft)}
+.erik .pn{padding:20px 22px;display:grid;grid-template-columns:1.1fr 1fr;gap:18px}.erik .pn h4{margin:0;font:700 1.6rem/1.15 "Bricolage Grotesque";color:var(--k)}
+.erik .pn .ag{color:var(--mut);font-size:.88rem;font-weight:600}.erik .pn dl{grid-template-columns:1fr;gap:8px}.erik .pn dl div{background:var(--pane)}
+/* flashcards */
+.fx{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;align-items:center}.fx .sp{flex:1}
+.fx button,.fn button{all:unset;cursor:pointer;padding:6px 14px;border-radius:99px;border:1.5px solid var(--line);font-weight:600;font-size:.85rem}
+.fx button.on{background:var(--k);color:var(--onk);border-color:var(--k)}.fx button.ghost{border-style:dashed;color:var(--mut)}
+.lab{font:700 .72rem Figtree,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-right:2px}
+#cnt{color:var(--mut);font-size:.88rem;font-weight:600}
+.scene{perspective:1400px;margin-top:6px}
+#card{all:unset;display:block;width:100%;cursor:pointer;position:relative;min-height:300px;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,.8,.3,1)}
+#card.f{transform:rotateY(180deg)}
+#card .fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:28px 34px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:auto}
+#card .ft{background:var(--soft);border:2px solid var(--line);font:700 clamp(1.4rem,3.2vw,2.1rem)/1.25 "Bricolage Grotesque",sans-serif}
+#card .bk{background:var(--k);color:var(--onk);transform:rotateY(180deg);font:500 clamp(1.02rem,2vw,1.28rem)/1.6 Figtree,system-ui,sans-serif}
+#card small{font:700 .72rem Figtree,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;opacity:.65;margin-bottom:12px}
+#card .st{position:absolute;top:14px;right:16px;font-size:.74rem;font-weight:700;opacity:.9}
+.fn{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}.fn button{border-color:var(--ink);padding:9px 20px;border-radius:12px;font-weight:700}
+.fn .no{border-color:var(--c4);color:var(--c4)}.fn .yes{border-color:var(--c1);color:var(--c1)}.fn button:hover{background:var(--ink);color:var(--pane);border-color:var(--ink)}
+.bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:22px}.bars div{font-size:.8rem;color:var(--mut)}
+.bars div i{display:block;height:6px;border-radius:4px;background:var(--soft);margin-top:4px;overflow:hidden}.bars div i b{display:block;height:100%;background:var(--k)}
+.kb{color:var(--mut);font-size:.8rem;text-align:center;margin-top:10px}.kb kbd{border:1px solid var(--line);border-radius:5px;padding:0 6px;font:600 .72rem Figtree,system-ui,sans-serif;background:var(--pane)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:var(--pane);padding:9px 18px;border-radius:99px;font-weight:600;font-size:.88rem;opacity:0;pointer-events:none;transition:.25s;z-index:90}#toast.s{opacity:1;transform:translate(-50%,0)}
+button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible,#card:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 70px;font-size:.9rem;max-width:70ch;margin:auto}
+@media(max-width:1000px){.hero .in{grid-template-columns:1fr}.tiles{grid-template-columns:repeat(2,1fr)}.wrap{padding-top:96px}}
+@media(max-width:900px){.wrap{display:block}
+aside{position:fixed;inset:0 auto 0 0;height:100dvh;width:min(330px,88vw);max-height:none;border-radius:0 16px 16px 0;z-index:70;transform:translateX(-105%);transition:.25s;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.55)}
+#tg{display:block;all:unset;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--hl);color:#241a00;padding:12px 20px;border-radius:99px;font-weight:700;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.38)}
+h3 .bt{opacity:1}.vs{grid-template-columns:1fr}.erik .pn{grid-template-columns:1fr}.lh{gap:14px}}
+@media(max-width:560px){.tiles{grid-template-columns:1fr 1fr;gap:8px}.tile span{font-size:.95rem}#card{min-height:340px}#card .fc{padding:22px 20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 14px}.chips span{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:3px 12px;font-size:.84rem;line-height:1.4}
+.card .chips{margin:6px 0 0}
+.funnel{width:100%;height:auto;display:block}
+.dot{animation:fall 7s linear infinite;opacity:0}
+@keyframes fall{0%{transform:translateY(0);opacity:0}8%{opacity:1}100%{transform:translateY(300px);opacity:1}}
+/* quiz */
+.qb{border:1px solid var(--line);border-radius:16px;background:var(--bg);padding:clamp(16px,3vw,28px);margin-top:8px}
+.qb .meta{display:flex;justify-content:space-between;gap:10px;color:var(--mut);font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:12px;flex-wrap:wrap}
+.qb .sc{font:600 clamp(1.08rem,2.2vw,1.3rem)/1.55 Figtree,system-ui,sans-serif;margin:0 0 16px}
+.qb .sc i{display:block;font:700 .72rem Figtree,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--k);font-style:normal;margin-bottom:4px}
+.opts{display:grid;gap:9px}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:var(--pane);font-size:.98rem;line-height:1.45}
+.opt b{width:26px;height:26px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-size:.8rem}
+.opt:hover:not([disabled]){border-color:var(--k)}.opt[disabled]{cursor:default}
+.opt.ok{border-color:#1f9d63;background:rgba(31,157,99,.12)}.opt.ok b{background:#1f9d63;color:#fff}
+.opt.bad{border-color:#d1453b;background:rgba(209,69,59,.1)}.opt.bad b{background:#d1453b;color:#fff}
+.opt.dim{opacity:.6}
+.why{display:none;margin-top:14px;padding:12px 16px;border-radius:12px;background:var(--pane);border-left:5px solid var(--hl);font-size:.95rem}.why.s{display:block}.why b.v{display:block;margin-bottom:2px}
+.qn{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:14px;flex-wrap:wrap}
+.qn button{all:unset;cursor:pointer;padding:9px 20px;border-radius:12px;border:2px solid var(--ink);font-weight:700;font-size:.9rem}.qn button:hover{background:var(--ink);color:var(--pane)}
+.qn button.pri{background:var(--k);border-color:var(--k);color:var(--onk)}.qn button[disabled]{opacity:.35;cursor:default}
+.res{text-align:center;padding:10px 0}.res .big2{font:800 clamp(3rem,10vw,5rem)/1 "Bricolage Grotesque",sans-serif;color:var(--k)}
+.stat{display:flex;gap:16px;flex-wrap:wrap;color:var(--mut);font-size:.9rem;font-weight:600}.stat b{color:var(--ink)}
+</style></head><body>
+<div id="bar"></div>
+<div class="hero">
+<div class="in">
+<div style="padding-bottom:70px">
+<h1>Industrial Psychology</h1>
+<p class="lead">Practicum I, Lesson 1 (pages 1–15): hiring and recruiting, selection and testing principles, and every major test type. Jump to any topic from the left menu, then pressure-test yourself with 51 workplace scenarios.</p>
+</div>
+<svg class="funnel" viewBox="0 0 640 400" role="img" aria-label="Funnel showing many candidates narrowing through recruiting, testing, and selection to a placed employee">
+<defs><linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9f1c"/><stop offset="1" stop-color="#ffcf70"/></linearGradient></defs>
+<rect width="640" height="400" rx="14" fill="#1a2c4d"/>
+<polygon points="110,60 530,60 380,230 380,340 260,340 260,230" fill="#243a63" stroke="#4a6aa5" stroke-width="2"/>
+<line x1="150" y1="110" x2="490" y2="110" stroke="#4a6aa5" stroke-dasharray="4 6"/><line x1="210" y1="170" x2="430" y2="170" stroke="#4a6aa5" stroke-dasharray="4 6"/><line x1="262" y1="230" x2="378" y2="230" stroke="#4a6aa5" stroke-dasharray="4 6"/>
+<text x="548" y="92" fill="#ffd28a" font-family="Figtree,system-ui,sans-serif" font-weight="700" font-size="14">Recruit</text><text x="548" y="152" fill="#ffd28a" font-family="Figtree,system-ui,sans-serif" font-weight="700" font-size="14">Test</text><text x="548" y="212" fill="#ffd28a" font-family="Figtree,system-ui,sans-serif" font-weight="700" font-size="14">Select</text><text x="548" y="300" fill="#ffd28a" font-family="Figtree,system-ui,sans-serif" font-weight="700" font-size="14">Place</text>
+<g fill="url(#fg)">
+<circle class="dot" cx="170" cy="40" r="7" style="animation-delay:0s"/><circle class="dot" cx="230" cy="40" r="7" style="animation-delay:.9s"/><circle class="dot" cx="290" cy="40" r="7" style="animation-delay:1.8s"/><circle class="dot" cx="350" cy="40" r="7" style="animation-delay:2.7s"/><circle class="dot" cx="410" cy="40" r="7" style="animation-delay:3.6s"/><circle class="dot" cx="470" cy="40" r="7" style="animation-delay:4.5s"/><circle class="dot" cx="320" cy="40" r="7" style="animation-delay:5.4s"/><circle class="dot" cx="260" cy="40" r="7" style="animation-delay:6.3s"/>
+</g>
+<circle cx="320" cy="370" r="12" fill="#6fd1a2"/><text x="320" y="375" text-anchor="middle" font-size="14" fill="#0f1626" font-weight="800" font-family="Figtree,system-ui,sans-serif">✓</text>
+</svg>
+</div>
+<nav class="tiles" aria-label="Parts">
+<a class="tile" href="#p1" style="--k:var(--c1)"><b>Part 1</b><span>Hiring &amp; recruiting</span><small>Lesson 1.3</small></a>
+<a class="tile" href="#p2" style="--k:var(--c2)"><b>Part 2</b><span>Selection &amp; testing</span><small>Lessons 1.4–1.5</small></a>
+<a class="tile" href="#p3" style="--k:var(--c3)"><b>Part 3</b><span>Types of tests</span><small>Mental to clinical</small></a>
+<a class="tile" href="#quiz" style="--k:var(--c4)"><b>Practice</b><span>51 scenarios</span><small>Situational quiz</small></a>
+</nav>
+</div>
+<div class="wrap">
+<aside id="side" aria-label="Topic navigation">
+<div class="srch"><input id="q" type="search" placeholder="Search topics…" aria-label="Search topics"><kbd>/</kbd></div>
+<div class="prog" id="prog">Studied <b id="pc">0</b> of <b id="pt">0</b> topics<div><i id="pb"></i></div></div>
+<div id="tree"></div><div class="none" id="none">No matching topic.</div>
+<div class="tools"><button id="tb">Dark / light</button><button id="rs">Reset progress</button></div>
+</aside>
+<main>
+<section class="lesson" id="p1" style="--k:var(--c1)" data-title="Part 1 · Hiring & recruiting">
+<div class="lh"><div class="num">1</div><div><h2>Hiring &amp; recruiting</h2><p>How organizations build a pool of qualified applicants and match people to jobs.</p></div></div>
+
+<div class="part">Lesson 1 coverage map</div>
+<h3>What Lesson 1 covers (pages 1–15)</h3>
+<ol class="steps">
+<li><div><b>1.1 Orientation by the Practicum Coordinator</b> and <b>1.2 Coordination with the company personnel</b> (outline items).</div></li>
+<li><div><b>1.3 Hiring, selection, and placement of activities</b>: recruiting and strategic HR planning.</div></li>
+<li><div><b>1.4 Preparing the testing program</b>: why systematic selection and psychological testing matter.</div></li>
+<li><div><b>1.5 Behavior to be measured</b>: abilities, aptitudes, psychomotor and visual skills, achievement, personality, interests, and clinical tests.</div></li></ol>
+
+<div class="part">1.3 · Hiring</div>
+<h3>Staffing: matching people with jobs</h3>
+<p>The <b>staffing process</b> matches people with jobs through <b>recruiting</b> and <b>selection</b>. <b>Recruiting</b> is the process of generating a <b>pool of qualified applicants</b> for organizational jobs.</p>
+<div class="big"><small>Key point</small>If the number of available candidates only equals the number of people to be hired, <b>no real selection is required</b>: the choice has already been made. The organization must leave some openings unfilled or take every candidate.</div>
+
+<h3>What good recruiting requires</h3>
+<p>Recruiting is more than running a newspaper ad. To replace normal attrition and provide for growth, an employer needs to:</p>
+<ul class="b"><li><b>Know the business and industry</b> to recruit qualified employees.</li><li><b>Identify keys to success in the labor market</b>, including how to deal with competitors' recruiting.</li><li><b>Cultivate networks and relationships</b> with sources of prospective employees.</li><li><b>Promote the company brand</b> so it becomes known as a good place to work.</li><li><b>Create recruiting metrics</b> to measure the effectiveness of recruiting efforts.</li></ul>
+
+<h3>Administrative vs. strategic recruiting</h3>
+<div class="vs">
+<div><h4>Merely administrative</h4><ul><li>Coordinating internal openings</li><li>Handling the flow of candidate data</li><li>Regulatory reporting</li><li>Moving candidates through the system</li><li>Important, but not enough.</li></ul></div>
+<div><h4>Strategic</h4><ul><li>Ties the employer's <b>business strategy</b> to its <b>recruiting strategy</b>.</li><li>Grows more important as labor markets shift and become competitive.</li><li><b>Strategic HR planning</b> aligns HR strategies with organizational goals and plans.</li></ul></div></div>
+
+<h3>HR planning: four questions</h3>
+<dl>
+<div><dt>How many?</dt><dd>How many employees will be needed?</dd></div>
+<div><dt>When?</dt><dd>When will employees be needed?</dd></div>
+<div><dt>What KSAs?</dt><dd>What specific knowledge, skills, and abilities will be needed?</dd></div>
+<div><dt>Diversity</dt><dd>What diversity goals need to be met?</dd></div></dl>
+<h3>Organizational responsibilities</h3>
+<p>Recruiting is shared by <b>HR staff and operating managers</b>.</p>
+
+<h3>Strategic recruiting decisions</h3>
+<div class="two">
+<div class="card"><h4>Decide on</h4><ul><li><b>Organization-based vs. outsourced</b> recruiting</li><li>Recruiting <b>presence and image</b></li><li><b>Recruiter training</b></li></ul></div>
+<div class="card"><h4>And on</h4><ul><li><b>Regular vs. flexible</b> staffing</li><li><b>EEO / diversity</b> considerations</li><li><b>Recruiting source</b> choices</li></ul></div></div>
+
+<h3>Recruiting methods</h3>
+<div class="flow"><span>Internal</span><i>·</i><span>External</span><i>·</i><span>Internet / web-based</span></div>
+<p>Internal methods fill openings from within the organization, external methods reach outside candidates, and web-based methods use the internet to reach applicants.</p>
+</section>
+<section class="lesson" id="p2" style="--k:var(--c2)" data-title="Part 2 · Selection & testing principles">
+<div class="lh"><div class="num">2</div><div><h2>Selection &amp; testing principles</h2><p>Why selection must be systematic, what behavior is measured, and what makes a good test.</p></div></div>
+
+<div class="part">1.4 · Preparing the testing program</div>
+<h3>Selection is everywhere</h3>
+<p>Selection is a process we are constantly involved in: in industry, clinic, school, and daily life. Sometimes we are selected (as friends, teammates, partners); sometimes we do the selecting. Usually selection rests on <b>subjective factors</b> such as how a person acts or looks, without systematic evaluation of qualifications and abilities.</p>
+<div class="big"><small>Why it matters</small>It is best to know the advantage of a selection process that is <b>systematic and thorough</b>.</div>
+
+<h3>Who uses psychometricians and testing</h3>
+<p>Psychometricians are looked upon as experts in selecting students entering school, job seekers recruited by firms, military personnel, those handling public office, and people providing all kinds of services. In the clinic they classify and categorize maladjustments before a <b>psychotherapist</b> is selected to handle patients.</p>
+
+<h3>Psychological testing as a selection technique</h3>
+<ul class="b"><li>Tests determine specific <b>abilities, attitudes, and characteristics</b>, from ability to personality.</li><li>Testing may be complex and costly, but it is <b>less complex and costly than selecting the wrong</b> teacher, student, job holder, public official, or patient.</li></ul>
+
+<h3>Which behavior do we test?</h3>
+<div class="two">
+<div class="card"><h4>Physical and ability characteristics</h4><ul><li>General health and physical strength</li><li>Manual dexterity</li><li>Eye-hand coordination</li><li>Visual facility</li><li>Mechanical ability</li><li>Oral and written expression</li><li>Decision-making ability</li><li>Planning ability</li></ul></div>
+<div class="card"><h4>Personality characteristics</h4><ul><li>Initiative</li><li>Emotional stability</li><li>Behavior under stress</li></ul></div></div>
+
+<h3>Biographical inventories</h3>
+<p>Procedures that supplement tests by giving information on individual differences. They reflect habits and attitudes and cover:</p>
+<div class="chips"><span>Present home, spouse, children</span><span>Recreation and hobbies</span><span>Interests</span><span>School and education</span><span>Self-impression</span><span>Values, opinions, preferences</span><span>Work experience</span></div>
+
+<h3>Advantages of well-developed tests</h3>
+<p>Tests that are well-developed and soundly researched have advantages over other methods:</p>
+<div class="flow"><span>Standardization</span><i>·</i><span>Objectivity</span><i>·</i><span>Validity</span><i>·</i><span>Reliability</span><i>·</i><span>Norms</span></div>
+
+<h3>Group vs. individual vs. computer-assisted tests</h3>
+<div class="vs">
+<div><h4>Group tests</h4><ul><li>Administered to many people at the same time.</li><li>Useful when many must be tested at once.</li><li>Preferred for <b>vocational guidance and counseling</b>.</li></ul></div>
+<div><h4>Individual tests</h4><ul><li>Preferred for <b>children</b> and for <b>diagnostic work with emotionally disturbed persons</b>.</li><li>Easier to <b>establish rapport</b>.</li><li>Possible to <b>delve more deeply</b> into the behavior measured.</li></ul></div></div>
+<div class="card"><h4>Computer-assisted tests</h4><ul><li>Testing can occur <b>any time a candidate applies</b>, not only when a qualified administrator is available.</li><li>A wide range of abilities can be measured quickly.</li><li><b>Immediate feedback</b>; scores in seconds.</li><li>Drawback: <b>very expensive</b>.</li></ul></div>
+
+<h3>Four basic types of psychological tests</h3>
+<p>The most useful distinction is by the characteristic, trait, or behavior measured:</p>
+<ol class="steps">
+<li><div><b>Mental, psychomotor, and visual abilities</b></div></li>
+<li><div><b>Achievement</b></div></li>
+<li><div><b>Interests</b></div></li>
+<li><div><b>Personality</b></div></li></ol>
+
+<div class="part">1.5 · Behavior to be measured</div>
+<h3>Basic human abilities</h3>
+<p>Individuals differ in their capacity to acquire specific skills and knowledge needed in certain jobs. These capacities are called <b>aptitudes</b>, which are really <b>basic abilities</b>. The term “human abilities” is elusive: lifting heavy loads, adding numbers, and remembering phone numbers are different abilities.</p>
+<div class="tw"><table><tr><th>Who</th><th>Contribution</th></tr>
+<tr><td>Fleishman (1967)</td><td>A basic human ability is “a more general trait of the individual which has been inferred from certain response consistencies on certain kinds of tasks.”</td></tr>
+<tr><td>Farina (1969)</td><td>Basic abilities are fairly <b>enduring traits</b> with both <b>learning and genetic</b> components.</td></tr>
+<tr><td>Fleishman &amp; co-workers (Theologus et al., 1970)</td><td>Identified <b>37 abilities</b>, both cognitive and physical.</td></tr>
+<tr><td>Harman (1975)</td><td>Identified <b>23 cognitive abilities</b>.</td></tr>
+<tr><td>Spearman (1927)</td><td><b>“g”</b> (general factor, mental energy) plus many <b>“s”</b> (specific) factors.</td></tr>
+<tr><td>Thurstone (1948)</td><td><b>Seven primary mental abilities</b> (below).</td></tr></table></div>
+<h3>Thurstone's seven primary mental abilities</h3>
+<dl>
+<div><dt>S · Spatial visualization</dt><dd>Visualizing shapes and space.</dd></div>
+<div><dt>P · Perceptual abilities</dt><dd>Perceiving details quickly.</dd></div>
+<div><dt>N · Number facility</dt><dd>Working with numbers.</dd></div>
+<div><dt>V · Verbal comprehension</dt><dd>Understanding words and language.</dd></div>
+<div><dt>W · Word fluency</dt><dd>Producing words readily.</dd></div>
+<div><dt>M · Memory</dt><dd>Retaining and recalling information.</dd></div>
+<div><dt>I · Inductive reasoning</dt><dd>Reasoning from specifics to general rules.</dd></div></dl>
+<div class="ex"><b class="l">Memory aid</b>S-P-N-V-W-M-I: <q>Some People Never Value Wasted Mental Input.</q></div>
+</section>
+<section class="lesson" id="p3" style="--k:var(--c3)" data-title="Part 3 · Types of tests">
+<div class="lh"><div class="num">3</div><div><h2>Types of tests and what they measure</h2><p>Mental ability, aptitude, psychomotor, visual, achievement, personality, interest, and clinical tests.</p></div></div>
+
+<div class="part">I · Mental ability (cognitive) tests</div>
+<h3>Intelligence tests</h3>
+<ul class="b"><li>Literally thousands of tests purport to measure mental ability. Many are described in Oscar Buros's <b>The Seventh Mental Measurements Yearbook (1972)</b>, which gives the source, research references, evaluation, and validity and reliability data.</li><li>Tests of mental ability are better known as <b>intelligence tests</b>. Group tests are usually short and quickly scored by a clerk or machine.</li></ul>
+<h3>Group intelligence tests</h3>
+<dl>
+<div><dt>Otis Self-Administering Tests of Mental Ability</dt><dd>Used in school and industry; useful for screening applicants for many jobs <b>not requiring a very high level of intelligence</b>.</dd></div>
+<div><dt>Wonderlic Personnel Test</dt><dd>A shortened version of the Otis series; takes <b>12 minutes</b>.</dd></div>
+<div><dt>Adaptability Test</dt><dd>Used for <b>clerical jobs</b>.</dd></div></dl>
+<p><b>Other usable group tests:</b></p>
+<div class="chips"><span>Alpha Examination, Modified Form 9</span><span>Army General Classification Test (AGCT)</span><span>California Test of Mental Maturity</span><span>DAT Abstract Reasoning</span><span>DAT Numerical Ability</span><span>DAT Verbal Reasoning</span><span>Primary Mental Abilities</span><span>PTI Oral Directions Test</span><span>Purdue Non-Language Test</span><span>Revised Beta Examination (non-verbal)</span><span>SRA Non-Verbal Form</span><span>SRA Verbal Form</span><span>Thurstone Test of Mental Alertness (TTMA)</span><span>SRA Short Test of Educational Ability</span><span>Test of General Ability</span><span>Raven Progressive Matrices</span></div>
+<h3>Individual intelligence tests</h3>
+<div class="chips"><span>Wechsler Adult Intelligence Scale-Revised (WAIS-R)</span><span>WISC-R (children)</span><span>WPPSI (pre-school and primary)</span><span>Stanford-Binet Intelligence Scale</span><span>Cattell Infant Intelligence Scale</span><span>Columbia Mental Maturity Scale (CMMS)</span></div>
+<h3>Intelligence tests at the Philippine Psychological Corporation</h3>
+<div class="chips"><span>Academic Promise Test (APT)</span><span>College Qualification Test (CQT)</span><span>Culture Fair Intelligence Test (CFIT)</span><span>Culture Mastery Test (CMT)</span><span>Goodenough-Harris Drawing Test (GHDT)</span><span>Otis-Lennon Mental Ability Test Form J (OLMAT)</span><span>Otis-Lennon School Ability Test Form R (OLSAT)</span><span>Purdue Non-Language Test (PNLT)</span><span>Raven Progressive Matrices (RPM)</span><span>SRA Primary Mental Ability Test</span><span>SRA Test of General Ability</span><span>SRA Verbal Test</span><span>Thurstone Test of Mental Alertness</span><span>Watson-Glaser Critical Thinking Appraisal (WGCTA)</span><span>Arthur Point Scale of Performance Tests</span><span>Bayley Scales of Infant Development</span><span>Cattell Infant Intelligence Scale</span><span>Stanford-Binet</span><span>WAIS-R</span><span>WISC / WISC-R</span><span>WPPSI</span></div>
+
+<div class="part">II · Aptitude tests</div>
+<h3>Aptitude tests</h3>
+<p>Created to measure the <b>skills and knowledge required by a job</b>. <b>Clerical</b> aptitude tests help predict success of clerical workers. <b>Mechanical</b> aptitude tests focus on <b>mechanical comprehension and spatial visualization</b>.</p>
+<div class="two">
+<div class="card"><h4>Clerical and stenographic</h4><div class="chips"><span>Minnesota Clerical Test</span><span>General Clerical Test</span><span>DAT Clerical Speed and Accuracy</span><span>Purdue Clerical Adaptability Test</span><span>SRA Clerical Aptitudes</span><span>Bennett Stenographic Aptitude Test</span><span>Seashore-Bennett Stenographic Proficiency</span><span>SRA Typing Skill Test</span><span>Thurstone Typing Test</span></div></div>
+<div class="card"><h4>Mechanical and spatial</h4><div class="chips"><span>Revised Minnesota Paper Form Board Test</span><span>Bennett Mechanical Comprehension Test</span><span>DAT Mechanical Reasoning</span><span>Minnesota Spatial Relations Test</span><span>O'Connor Wiggly Block Test</span><span>Purdue Mechanical Performance Test</span><span>Purdue Mechanical Adaptability Test</span><span>SRA Mechanical Aptitude</span></div></div>
+<div class="card"><h4>Multi-aptitude batteries</h4><div class="chips"><span>Differential Aptitude Test (DAT)</span><span>Academic Promise Test (APT)</span><span>Flanagan Aptitude Classification Test</span><span>General Aptitude Test Battery</span><span>Flanagan Industrial Tests</span><span>Guilford-Zimmerman Aptitude Survey</span><span>Non-Reading Aptitude Test Battery (1969)</span><span>Southern California Tests of Intellectual Abilities</span></div></div></div>
+
+<div class="part">III · Psychomotor abilities</div>
+<h3>Psychomotor abilities (Fleishman, 1970)</h3>
+<p>The range of abilities commonly called dexterity, manipulative ability, motor ability, precise eye-hand coordination, and muscular coordination: skilled muscular performance, often with visual control.</p>
+<button class="qz" data-t="psy">Quiz me</button>
+<div class="tq"><div class="tw"><table id="psy"><tr><th>Ability</th><th>Meaning</th></tr>
+<tr><td>Choice reaction time</td><td>Ability to select and initiate a response when it must be chosen from two or more alternatives relative to two or more stimuli.</td></tr>
+<tr><td>Reaction time</td><td>Speed with which a single motor response can be initiated relative to a single stimulus.</td></tr>
+<tr><td>Speed of limb movement</td><td>Speed with which discrete movements of the arm or leg can be made.</td></tr>
+<tr><td>Control precision</td><td>Making controlled muscular movements needed to adjust or position a machine, tool, or control mechanism.</td></tr>
+<tr><td>Manual dexterity</td><td>Skillful, coordinated movement of the hand, or of hands together with the arm.</td></tr>
+<tr><td>Finger dexterity</td><td>Skillful, coordinated movements of the fingers, with or without manipulating objects.</td></tr>
+<tr><td>Rate control</td><td>Timed, anticipatory motor adjustments relative to changes in the speed or direction of continuously moving objects.</td></tr>
+<tr><td>Wrist-finger speed</td><td>Speed of discrete movements of the fingers, hands, and wrists.</td></tr></table></div></div>
+<p><b>Representative tests:</b></p>
+<div class="chips"><span>Macquarrie Test of Mechanical Ability</span><span>Purdue Pegboard (finger dexterity)</span><span>O'Connor Tweezer Dexterity Test</span><span>Minnesota Rate of Manipulation Test</span><span>Crawford Small Parts Dexterity Test</span><span>Stromberg Dexterity Test</span></div>
+
+<div class="part">IV · Visual skills</div>
+<h3>Visual skills to be tested</h3>
+<dl>
+<div><dt>Visual acuity</dt><dd>Ability to discriminate black and white detail (minimum separable areas); includes <b>far acuity and near acuity</b>.</dd></div>
+<div><dt>Depth perception (stereopsis)</dt><dd>Correctly perceiving spatial relationships and relative distance of objects.</dd></div>
+<div><dt>Color discrimination</dt><dd>Discriminating reds from greens, blues from yellows; among hues, shades, and tints.</dd></div>
+<div><dt>Postural characteristics of the eyes (phorias)</dt><dd>Ability of both eyes to move in relation to each other and converge symmetrically for a single clear image in binocular viewing.</dd></div></dl>
+<div class="ex"><b class="l">Snellen Letter Chart</b>Acuity is written as a fraction: the <b>numerator is constant</b> and the <b>smaller the fraction, the poorer the vision</b>. <b>20/20</b> is standard.</div>
+<div class="chips"><span>Ortho-Rater</span><span>AO Sight Screener</span><span>Telebinocular (Keystone)</span><span>Vision Tester (School)</span><span>Evorine Color Vision Test (as spelled in the handout)</span></div>
+
+<div class="part">V · Achievement tests</div>
+<h3>Achievement tests</h3>
+<ul class="b"><li>Part of the scope of <b>educational tests</b>; a good testing program <b>continuously assesses</b> individual achievement in acquiring information and mastering skills.</li><li><b>Uses of results:</b> decisions by school authorities (and indirectly parents); planning instructional strategies, including software and hardware; curricular and instructional planning and development.</li></ul>
+<div class="two">
+<div class="card"><h4>General</h4><div class="chips"><span>Adult Basic Learning Examination (ABLE)</span><span>Basic Occupational Literacy Test (BOLT)</span><span>California Achievement Test</span><span>Iowa Tests of Basic Skills</span><span>Iowa Tests of Educational Development</span><span>Fundamental Achievement Series</span><span>Metropolitan Achievement Tests</span><span>Peabody Individual Achievement Test</span><span>STEP Series</span><span>SRA Achievement Series</span></div></div>
+<div class="card"><h4>Specific subjects</h4><div class="chips"><span>Contemporary Mathematics Test</span><span>Content Evaluation Series (language arts, math, science)</span><span>MLA Cooperative Foreign Language Test</span><span>Nelson Biology Test</span><span>Stanford Modern Mathematics Concepts Tests</span></div></div>
+<div class="card"><h4>Available at the Philippine Psychological Corporation</h4><div class="chips"><span>California Achievement Test (CAT)</span><span>Iowa Test of Basic Skills</span><span>Metropolitan Achievement Test (1970; JSS 1978)</span><span>Metropolitan Readiness Test (1965, 1976)</span><span>Short Form of Academic Aptitude</span><span>Stanford Achievement Test (1973)</span></div></div></div>
+
+<div class="part">VI · Personality, interest &amp; attitude</div>
+<h3>Why personality and interests matter at work</h3>
+<p>Personality and interests have a marked influence on work performance and on adjustment to family, health, society, emotion, and jobs. Personality factors bear directly on jobs with <b>substantial personal contact</b>: sales, public relations, supervision and management, interviewing.</p>
+<div class="two">
+<div class="card"><h4>1. Projective techniques</h4><ul><li>Not very common in business and industry; used for <b>delicate, high positions such as executives</b>; widely used in <b>clinical practice</b>.</li><li>An <b>intentionally ambiguous stimulus</b> (inkblot, picture); the examinee says what he sees.</li><li>Administrator must be <b>skilled and well trained</b> because he interprets the responses and patterns.</li><li>Examples: <b>Rorschach Ink Blot, Thematic Apperception Test, Draw-a-Person (Goodenough or Machover), Sacks Sentence Completion, Bender-Gestalt</b>.</li></ul></div>
+<div class="card"><h4>2. Questionnaire inventories</h4><ul><li>Paper-and-pencil; <b>no right or wrong answers</b>, so “inventory” is more accurate than “test.”</li><li>Statements about feelings, fears, attitudes, values, beliefs. Example: <i>“I feel at ease with strangers: yes / don't know / no.”</i></li><li>Scored on <b>dimensions</b> such as sociability, emotionality, impulsiveness, dominance.</li></ul></div></div>
+<div class="big"><small>Faking and the forced-choice technique</small>Because examinees may <b>fake</b> (give dishonest responses), constructors use <b>forced-choice</b>: sets of two or more statements where the examinee picks the one <b>“most”</b> or <b>“least”</b> like himself. These are also called <b>self-report personality inventories</b>.</div>
+<h3>Personality inventories</h3>
+<div class="chips"><span>California Psychological Inventory</span><span>Edwards Personal Preference Schedule</span><span>Eysenck Personality Inventory</span><span>Gordon Personality Inventory</span><span>Guilford-Zimmerman Temperament Survey</span><span>Minnesota Multiphasic Personality Inventory (MMPI)</span><span>Mooney Problem Checklist</span><span>Sixteen Personality Factors (16PF)</span><span>State-Trait Anxiety Inventory</span><span>STS Youth Inventory</span></div>
+<h3>Interest, attitude, and values inventories</h3>
+<div class="two">
+<div class="card"><h4>Interests</h4><div class="chips"><span>California Occupational Preference Survey</span><span>Career Maturity Inventory</span><span>Gordon Occupational Checklist</span><span>Guilford-Zimmerman Interest Inventory</span><span>Kuder General Interest Survey</span><span>Kuder Personal Preference Record</span><span>Minnesota Vocational Interest Blank</span><span>Ohio Vocational Interest Survey</span><span>Strong Vocational Interest Blank</span><span>Work Environment Preference Schedule</span><span>Thurstone Interest Schedule</span></div></div>
+<div class="card"><h4>Attitudes</h4><div class="chips"><span>Survey of School Attitudes</span><span>Minnesota Teacher Attitude Inventory</span><span>Survey of Study Habits and Attitudes</span></div></div>
+<div class="card"><h4>Values</h4><div class="chips"><span>Pictorial Study of Values</span><span>Study of Values</span><span>Survey of Interpersonal Values</span><span>Survey of Personal Values</span><span>Work Values Inventory</span></div></div></div>
+
+<div class="part">VII · Clinical &amp; environment measures</div>
+<h3>Clinical tests for cognitive dysfunction and learning disabilities</h3>
+<div class="two">
+<div class="card"><h4>Neuropsychological assessment</h4><div class="chips"><span>Wisconsin Card Sorting Test</span><span>Booklet Category Test</span><span>Neuropsychological Status Examination</span><span>Adult Neuropsychological Questionnaire</span><span>Child Neuropsychological Questionnaire</span><span>Neuropsychological Dysfunctions of Children</span><span>Western Aphasia Battery</span></div></div>
+<div class="card"><h4>Learning disability and sensory-perceptual</h4><div class="chips"><span>Florida Kindergarten Screening Battery</span><span>Developmental Test of Visual Motor Integration</span><span>Quick Neurological Screening Test Revised</span><span>Spadafore Diagnostic Reading Test</span><span>Motor-Free Visual Perception Test</span></div></div>
+<div class="card"><h4>Intellectual, cognitive, developmental (nature and degree of disorders; differential diagnosis)</h4><div class="chips"><span>Cognitive Diagnostic Test Battery</span><span>Developmental Profile II (Alpern-Boll)</span><span>Slosson Intelligence Test and Slosson Oral Reading Test</span><span>Expressive One-Word Picture Vocabulary</span><span>Embedded Figure Test</span></div></div>
+<div class="card"><h4>Measuring the environment</h4><div class="chips"><span>American Home Scale</span><span>College and University Environment Scales (2nd ed.)</span><span>Social Climate Scales</span><span>Stern Activities Index</span><span>Stern Environment Indexes</span></div></div></div>
+</section>
+<section class="lesson" id="quiz" style="--k:var(--c4)" data-title="Practice · Scenario quiz">
+<div class="lh" style="background:var(--ink);color:var(--pane)"><div class="num">?</div><div><h2>Scenario quiz</h2><p>51 workplace situations. Pick the best answer, then read why. Questions cover pages 1–15 only.</p></div></div>
+<div class="fx" id="qf"><span class="lab">Cover</span><button class="on" data-p="0">All</button><button data-p="1">Part 1 · Recruiting</button><button data-p="2">Part 2 · Selection</button><button data-p="3">Part 3 · Test types</button></div>
+<div class="fx"><button id="qm" class="ghost">Missed only</button><button id="qs" class="ghost">Shuffle order</button><span class="sp"></span></div>
+<div class="qb" id="qb"></div>
+<div class="stat" id="qst" style="margin-top:14px"></div>
+<div class="kb"><kbd>A</kbd>–<kbd>D</kbd> answer · <kbd>Enter</kbd> next</div>
+</section>
+</main></div>
+<button id="tg" aria-label="Open topics menu">☰ Topics</button>
+<div id="toast" role="status" aria-live="polite"></div>
+<footer>Based on Practicum I – Industrial Psychology, Lesson 1 (pages 1–15). Study aid only; verify details against your own handout.</footer>
+<script>
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const slug=t=>t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('s');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('s'),1700)};
+/* theme */
+const th=store.get('ip-theme',null);if(th)document.documentElement.dataset.theme=th;
+$('#tb').onclick=()=>{const d=document.documentElement,dark=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;d.dataset.theme=dark?'light':'dark';store.set('ip-theme',d.dataset.theme)};
+/* quiz toggles */
+$$('.qz').forEach(b=>b.onclick=()=>{const t=$('#'+b.dataset.t);const on=t.classList.toggle('hm');b.classList.toggle('on',on);b.textContent=on?'Show all':'Quiz me';
+if(!on)$$('#'+b.dataset.t+' td.rev').forEach(x=>x.classList.remove('rev'))});
+$$('table td').forEach(td=>td.addEventListener('click',()=>{if(td.closest('.hm'))td.classList.toggle('rev')}));
+/* nav build */
+const studied=store.get('ip-studied',{});const tree=$('#tree'),groups=[];const links=[];
+$$('section.lesson').forEach(s=>{const g=document.createElement('div');g.className='g';g.style.setProperty('--k',getComputedStyle(s).getPropertyValue('--k')?'':'');g.setAttribute('style',s.getAttribute('style')||'');
+const isCards=s.id==='quiz';const title=s.dataset.title;const parts=title.split(' · ');
+const btn=document.createElement('button');btn.innerHTML='<i></i><span>'+parts[0]+'<small>'+(parts[1]||'')+'</small></span><em></em>';
+const ul=document.createElement('ul');g.append(btn,ul);tree.appendChild(g);
+const lh=document.createElement('li');lh.innerHTML='';
+const hs=[...s.children].filter(n=>n.matches('h3,.part'));
+if(isCards){const li=document.createElement('li');li.className='r';li.innerHTML='<a href="#quiz">Open the scenario quiz</a>';ul.appendChild(li);links.push({a:li.firstChild,el:s,g,s,li})}
+hs.forEach(n=>{if(n.matches('.part')){const li=document.createElement('li');li.className='lbl';li.textContent=n.textContent;ul.appendChild(li);return}
+const txt=n.textContent.trim();const id=s.id+'-'+slug(txt);n.id=id;
+n.innerHTML='<a class="t" href="#'+id+'">'+txt+'</a> <button class="bt mk" title="Mark as studied" aria-label="Mark as studied">Mark studied</button><button class="bt cp" title="Copy link to this topic" aria-label="Copy link to this topic">Copy link</button>';
+const li=document.createElement('li');li.className='r';li.innerHTML='<button class="ck" aria-label="Toggle studied" title="Mark studied">✓</button><a href="#'+id+'">'+txt+'</a>';ul.appendChild(li);
+let x=n.nextElementSibling,body='';while(x&&!x.matches('h3,.part')){body+=x.textContent+' ';x=x.nextElementSibling}li.dataset.t=body.toLowerCase();const L={a:li.querySelector('a'),el:n,g,s,li,id};links.push(L);
+const set=v=>{if(v)studied[id]=1;else delete studied[id];li.classList.toggle('done',!!v);n.querySelector('.mk').classList.toggle('on',!!v);n.querySelector('.mk').textContent=v?'Studied ✓':'Mark studied';store.set('ip-studied',studied);prog()};
+L.set=set;li.querySelector('.ck').onclick=()=>set(!studied[id]);n.querySelector('.mk').onclick=()=>set(!studied[id]);
+n.querySelector('.cp').onclick=async()=>{const u=location.origin+location.pathname+'#'+id;try{await navigator.clipboard.writeText(u);toast('Link copied')}catch(e){location.hash=id;toast('Link is in the address bar')}};
+if(studied[id]){li.classList.add('done');n.querySelector('.mk').classList.add('on');n.querySelector('.mk').textContent='Studied ✓'}});
+btn.onclick=()=>g.classList.toggle('open');groups.push({g,s,em:btn.querySelector('em')})});
+function prog(){const T=links.filter(l=>l.id),d=T.filter(l=>studied[l.id]).length;$('#pc').textContent=d;$('#pt').textContent=T.length;$('#pb').style.width=(T.length?d/T.length*100:0)+'%';
+groups.forEach(o=>{const t=links.filter(l=>l.id&&l.s===o.s);if(t.length)o.em.textContent=t.filter(l=>studied[l.id]).length+'/'+t.length})}prog();
+/* scrollspy */
+let cur=null;function spy(){const h=document.documentElement;$('#bar').style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+'%';
+let on=null;for(const l of links){if(l.el.getBoundingClientRect().top<150)on=l;else break}
+if(on&&on!==cur){cur=on;links.forEach(l=>l.a.classList.toggle('on',l===on));if(!$('#q').value){groups.forEach(o=>o.g.classList.toggle('open',o.g===on.g))};
+if(innerWidth>900||$('#side').classList.contains('open'))on.a.scrollIntoView({block:'nearest'})}}
+addEventListener('scroll',spy,{passive:true});spy();
+/* search */
+$('#q').oninput=e=>{const v=e.target.value.trim().toLowerCase();let any=0;
+groups.forEach(o=>{let hit=0;o.g.querySelectorAll('li').forEach(li=>{if(li.classList.contains('lbl')){li.classList.toggle('hide',!!v);return}const m=!v||li.textContent.toLowerCase().includes(v)||(li.dataset.t||'').includes(v);li.classList.toggle('hide',!m);if(m)hit++});
+o.g.classList.toggle('hide',!hit);if(v&&hit){o.g.classList.add('open');any=1}});
+if(!v){any=1;groups.forEach(o=>o.g.classList.remove('hide'));cur=null;spy()}$('#none').style.display=any?'none':'block'};
+addEventListener('keydown',e=>{if(e.key==='/'&&e.target.tagName!=='INPUT'){e.preventDefault();$('#q').focus()}if(e.key==='Escape'){$('#side').classList.remove('open');$('#q').blur()}});
+/* drawer */
+$('#tg').onclick=()=>$('#side').classList.add('open');
+$('#side').addEventListener('click',e=>{if(e.target.closest('a'))$('#side').classList.remove('open')});
+document.addEventListener('click',e=>{const s=$('#side');if(s.classList.contains('open')&&!s.contains(e.target)&&e.target.id!=='tg')s.classList.remove('open')});
+$('#rs').onclick=()=>{if(!confirm('Reset all progress (studied topics and quiz)?'))return;try{localStorage.removeItem('ip-studied');localStorage.removeItem('ip-quiz')}catch(e){}location.reload()};
+/* deep link */
+function go(){const id=decodeURIComponent(location.hash.slice(1));if(!id)return;const el=document.getElementById(id);if(el){el.scrollIntoView();const L=links.find(l=>l.el===el);if(L){groups.forEach(o=>o.g.classList.toggle('open',o.g===L.g))}}}
+addEventListener('hashchange',go);setTimeout(go,60);
+/* scenario quiz */
+const Q=[
+[1,"Recruiting","A company has exactly 5 openings and exactly 5 applicants. The HR manager asks what test to use to pick the best. What is the real issue?","No real selection is possible: the choice is already made, so the problem is recruiting too small a pool.",["The test should be a personality inventory.","Selection is only valid if done by operating managers.","The company must use computer-assisted tests."],"If candidates only equal the number to be hired, no real selection is required. Recruiting must generate a larger pool of qualified applicants."],
+[1,"Recruiting","A firm only places a newspaper ad, then sorts incoming resumes and files regulatory reports. A consultant says this is incomplete. Why?","It is only administrative; recruiting should tie business strategy to recruiting strategy.",["Newspaper ads are illegal for recruiting.","Administrative tasks should be removed entirely.","Recruiting should be handled only by outside agencies."],"Administrative steps are important, but more important is linking the employer's business strategy to its recruiting strategy."],
+[1,"Recruiting","A growing retailer wants people to see it as 'a good place to work' so applicants come to it first. Which recruiting need is this?","Promoting the company brand.",["Creating recruiting metrics.","Identifying competitors' pay levels.","Outsourcing recruiter training."],"Promoting the company brand makes the organization known as a good place to work."],
+[1,"Recruiting","The HR head wants to know whether last year's job fairs actually produced good hires. What should she build?","Recruiting metrics.",["A projective test battery.","A biographical inventory.","A group intelligence test."],"Creating recruiting metrics measures the effectiveness of recruiting efforts."],
+[1,"Recruiting","A manager asks: 'How many people do we need, by when, with what skills, and do we meet our diversity goals?' Which process is this?","HR planning.",["Test construction.","Job evaluation.","Performance rating."],"HR planning asks how many, when, what KSAs, and what diversity goals."],
+[1,"Recruiting","A plant is deciding between building its own recruiting team or hiring an agency. Which strategic recruiting decision is this?","Organization-based vs. outsourced recruiting.",["Regular vs. flexible staffing.","Recruiter training.","Recruiting source choices."],"Organization-based vs. outsourced recruiting is one of the strategic recruiting decisions."],
+[1,"Recruiting","A hospital fills a vacancy by posting it only to its current employees. Which recruiting method is this?","Internal recruiting.",["External recruiting.","Internet/web-based recruiting.","Outsourced selection."],"Internal methods fill openings from within the organization."],
+[1,"Recruiting","A new business posts openings on an online job portal to reach applicants nationwide. Which method?","Internet / web-based recruiting.",["Internal recruiting.","Projective recruiting.","Organization-based staffing."],"Internet/web-based is one of the three recruiting methods (internal, external, internet)."],
+[1,"Recruiting","Who shares responsibility for recruiting in an organization?","HR staff and operating managers.",["Only the HR staff.","Only the CEO.","Only outside psychometricians."],"The organizational responsibility is shared by HR staff and operating managers."],
+[1,"Recruiting","A company keeps losing applicants to competitors. Which recruiting task addresses this?","Identifying keys to success in the labor market, including dealing with competitors' recruiting.",["Using only projective techniques.","Eliminating biographical data.","Moving to computer-assisted testing."],"Good recruiting identifies labor-market keys to success, including how to deal with competitors' recruiting efforts."],
+[2,"Selection","A manager picks a new assistant just because she 'looks confident and speaks well.' What is the problem?","The selection rests on subjective factors without systematic, thorough evaluation of qualifications.",["Appearance is the most valid selection tool.","Selection should never involve people.","Only group tests may be used."],"Selection is often subjective (how a person acts or looks). A systematic, thorough process is better."],
+[2,"Selection","The owner says testing is too costly and complex. What is the best reply from the course?","It is less costly and complex than selecting the wrong person for the job.",["Testing is always cheap.","Testing is optional for every post.","Cost never matters in selection."],"Testing may be costly, but it is less costly than selecting the wrong teacher, student, job holder, official, or patient."],
+[2,"Selection","A school guidance office is asked who is expert in selecting students, job seekers, and military personnel. Whom do they name?","Psychometricians.",["Operating managers.","Personnel clerks.","Recruiters only."],"Psychometricians are looked upon as experts in selection across schools, firms, the military, and clinics."],
+[2,"Selection","A firm wants to assess initiative, emotional stability, and behavior under stress. Which category are these?","Personality characteristics.",["Psychomotor abilities.","Visual skills.","Achievement."],"Initiative, emotional stability, and behavior under stress are listed as personality characteristics."],
+[2,"Selection","A job needs good hand-eye work with small parts. Which behavior should the testing program include?","Manual dexterity and eye-hand coordination.",["Oral expression only.","Behavior under stress only.","Planning ability only."],"Manual dexterity and eye-hand coordination are among the abilities measured for selection."],
+[2,"Selection","A test publisher boasts its test has standardization, objectivity, validity, reliability, and norms. What does this show?","It is well-developed and soundly researched.",["It is a projective technique.","It is only suitable for clinics.","It is a biographical inventory."],"Those five are the advantages of well-developed, soundly researched tests."],
+[2,"Selection","A counselor must test a large class of students for vocational guidance in one hour. Which format?","A group test.",["An individual test.","A projective test.","A clinical interview only."],"Group tests can be given to many people at once and are preferred for vocational guidance and counseling."],
+[2,"Selection","A psychologist must assess an emotionally disturbed child and build rapport. Which format?","An individual test.",["A group test.","A mailed inventory.","A computer-only test."],"Individual tests are preferred for children and emotionally disturbed persons; rapport is easier and behavior can be explored deeply."],
+[2,"Selection","A firm wants applicants tested any time they walk in, with scores in seconds. Which type fits, and what is the drawback?","Computer-assisted testing; it is very expensive.",["Individual projective testing; it is very slow.","Group testing; it needs a clerk.","Biographical inventory; it is unreliable."],"Computer-assisted tests allow testing at any time with immediate feedback, but are very expensive."],
+[2,"Selection","An HR officer reviews a candidate's hobbies, family, school record, and work history on a form. What is this?","A biographical inventory.",["A projective technique.","An achievement test.","A psychomotor test."],"Biographical inventories reflect habits and attitudes: home, family, recreation, education, values, and work experience."],
+[2,"Abilities","Lifting heavy loads vs. adding numbers vs. remembering phone numbers: what does this show about human abilities?","The term 'human abilities' is elusive; these are different abilities.",["They are the same ability.","Only one ability exists.","Abilities cannot be measured."],"The course notes human ability is elusive because different tasks call for different abilities."],
+[2,"Abilities","A researcher says basic abilities are enduring traits with learning and genetic components. Whose view?","Farina (1969).",["Spearman (1927).","Harman (1975).","Thurstone (1948)."],"Farina showed basic abilities are fairly enduring traits with learning and genetic components."],
+[2,"Abilities","Which theorist proposed a general factor 'g' plus specific 's' factors?","Spearman (1927).",["Fleishman (1967).","Thurstone (1948).","Harman (1975)."],"Spearman's concept of g (general factor, mental energy) and many s (specific) factors."],
+[2,"Abilities","A test measures word fluency, memory, and inductive reasoning. Which framework lists these?","Thurstone's seven primary mental abilities.",["Fleishman's psychomotor taxonomy.","Spearman's g factor.","Buros's yearbook."],"Thurstone's primary mental abilities: S, P, N, V, W, M, I."],
+[2,"Abilities","A researcher lists 37 cognitive and physical abilities. Whose work?","Fleishman and co-workers (Theologus et al., 1970).",["Harman (1975).","Spearman (1927).","Farina (1969)."],"Fleishman's group identified 37 abilities; Harman identified 23 cognitive abilities."],
+[3,"Mental tests","A firm needs a 12-minute screening test for clerks from a shortened version of the Otis series. Which test?","Wonderlic Personnel Test.",["Stanford-Binet.","WAIS-R.","Rorschach."],"The Wonderlic is a shortened version of Otis tests and takes 12 minutes."],
+[3,"Mental tests","Which test suits screening applicants for many jobs that do not require a very high level of intelligence?","Otis Self-Administering Tests of Mental Ability.",["Stanford-Binet Intelligence Scale (individual).","Rorschach.","MMPI."],"The Otis has proven useful for screening applicants for jobs not requiring extremely high intelligence."],
+[3,"Mental tests","A psychologist must individually test an adult's intelligence. Which test?","Wechsler Adult Intelligence Scale-Revised (WAIS-R).",["Wonderlic Personnel Test.","Otis Self-Administering Test.","SRA Verbal Form."],"WAIS-R is an individual adult intelligence test."],
+[3,"Mental tests","Which individual test is for pre-school and primary children?","WPPSI.",["WAIS-R.","TTMA.","DAT Verbal Reasoning."],"WPPSI is the Wechsler Pre-School and Primary Scale of Intelligence."],
+[3,"Mental tests","Where does a psychologist find a test's source, research references, evaluation, and validity and reliability data?","Buros's Mental Measurements Yearbook.",["The Snellen chart.","A biographical inventory.","The Rorschach manual."],"Buros's Seventh Mental Measurements Yearbook lists and describes many tests."],
+[3,"Mental tests","Why are group intelligence tests handy for large applicant pools?","They are short and quickly scored by a clerk or machine.",["They need a skilled interpreter for each response.","They are scored subjectively.","They have no norms."],"Group tests are usually short, take little time, and are easily scored."],
+[3,"Aptitude","A bank wants to predict success of new clerical workers. Which kind of test?","A clerical aptitude test such as the Minnesota Clerical Test.",["A projective test.","A color-vision test.","A values inventory."],"Clerical aptitude tests help predict success for clerical workers."],
+[3,"Aptitude","A factory hires machine operators and wants mechanical comprehension and spatial visualization. Which tests?","Bennett Mechanical Comprehension or Minnesota Spatial Relations Test.",["Thurstone Typing Test.","Strong Vocational Interest Blank.","Rorschach."],"Mechanical aptitude tests focus on mechanical comprehension and spatial visualization."],
+[3,"Aptitude","An office needs a stenographer. Which test fits?","Bennett Stenographic Aptitude Test.",["Purdue Pegboard.","Snellen chart.","TAT."],"Bennett Stenographic Aptitude and Seashore-Bennett Stenographic Proficiency are stenographic tests."],
+[3,"Psychomotor","A pilot trainee must choose between two buttons depending on which of two lights comes on. Which ability?","Choice reaction time.",["Reaction time.","Wrist-finger speed.","Rate control."],"Choice reaction time is selecting a response from two or more alternatives relative to two or more stimuli."],
+[3,"Psychomotor","A driver must press the brake as soon as one light turns red. Which ability?","Reaction time.",["Choice reaction time.","Control precision.","Finger dexterity."],"Reaction time is the speed of a single motor response to a single stimulus."],
+[3,"Psychomotor","A machine operator must smoothly adjust a control to position a tool. Which ability?","Control precision.",["Rate control.","Speed of limb movement.","Manual dexterity."],"Control precision is controlled muscular movement to adjust or position a machine, tool, or control."],
+[3,"Psychomotor","A crane operator must track and adjust to a moving load whose speed keeps changing. Which ability?","Rate control.",["Control precision.","Reaction time.","Finger dexterity."],"Rate control is timed, anticipatory adjustment to changes in speed or direction of moving objects."],
+[3,"Psychomotor","An electronics assembler must quickly place tiny parts with the fingers. Which test fits?","Purdue Pegboard (finger dexterity).",["Snellen Letter Chart.","MMPI.","WAIS-R."],"Purdue Pegboard measures finger dexterity; Crawford Small Parts Dexterity Test is also a dexterity test."],
+[3,"Visual","A driver applicant cannot tell reds from greens. Which visual skill is affected?","Color discrimination.",["Depth perception.","Visual acuity.","Phorias."],"Color discrimination is telling reds from greens and blues from yellows."],
+[3,"Visual","A crane operator misjudges distance to objects. Which skill?","Depth perception (stereopsis).",["Color discrimination.","Visual acuity.","Reaction time."],"Depth perception is correctly perceiving spatial relationships and the relative distance of objects."],
+[3,"Visual","An applicant's vision scores 20/40 on the Snellen chart. What does that mean compared with 20/20?","Poorer vision than the standard 20/20.",["Better than standard.","Exactly standard.","It measures color vision."],"In Snellen notation the numerator is constant and a smaller fraction means poorer vision; 20/20 is standard."],
+[3,"Visual","Which visual skill covers both eyes converging symmetrically on an object?","Postural characteristics of the eyes (phorias).",["Color discrimination.","Visual acuity.","Depth perception."],"Phorias involve the two eyes moving and converging symmetrically for a single clear image."],
+[3,"Achievement","A school wants to plan its curriculum based on what students have mastered. Which tests?","Achievement tests.",["Projective tests.","Psychomotor tests.","Interest inventories."],"Achievement test results guide curricular and instructional planning and development."],
+[3,"Personality","A firm tests an executive candidate with inkblots and ambiguous pictures. Which technique?","Projective technique.",["Personality inventory.","Clerical aptitude test.","Achievement battery."],"Projective techniques use intentionally ambiguous stimuli and suit delicate, high positions."],
+[3,"Personality","Why must a Rorschach administrator be skilled and well-trained?","Because he interprets the responses and patterns of responses.",["Because the test is scored by machine.","Because there are right and wrong answers.","Because it is a group test."],"In projective tests the administrator interprets the examinee's responses to assess personality."],
+[3,"Personality","Applicants are choosing which of two statements is 'most' like them. Why?","The forced-choice technique reduces faking.",["It measures psychomotor speed.","It scores achievement.","It tests depth perception."],"Constructors use forced-choice to counter the possibility of faking."],
+[3,"Personality","Why is 'inventory' a better term than 'test' for personality questionnaires?","There are no right or wrong answers.",["They are scored by clerks only.","They measure aptitude.","They need a skilled interpreter."],"Personality inventories have no right or wrong answers, so 'inventory' is more apt and accurate."],
+[3,"Personality","A student wants to know which careers match his likes. Which test?","An interest inventory such as the Strong Vocational Interest Blank or Kuder.",["Wonderlic Personnel Test.","Snellen chart.","Wisconsin Card Sorting Test."],"Interest inventories include Strong, Kuder, Ohio Vocational Interest Survey, and others."],
+[3,"Clinical","A neuropsychologist screens an adult for cognitive dysfunction. Which test fits?","Wisconsin Card Sorting Test.",["Strong Vocational Interest Blank.","Wonderlic.","Thurstone Typing Test."],"The Wisconsin Card Sorting Test is a neuropsychological assessment instrument."],
+[3,"Clinical","A researcher wants to measure the social climate of a college or home. Which tests?","Environment measures such as Social Climate Scales or Stern Environment Indexes.",["Wechsler scales.","Purdue Pegboard.","Rorschach."],"Environment measures include American Home Scale, Social Climate Scales, and Stern Environment Indexes."]
+];
+const QS=store.get('ip-quiz',{});let pool=[],qi=0,sc=0,ans=0,qf=0,miss=0,order=[],done=0;
+const L='ABCD';
+function qk(q){return q[1].slice(0,40)+'|'+q[2].slice(0,20)}
+function qstart(){pool=Q.filter(q=>(!qf||q[0]===qf)&&(!miss||QS[qk(q)]==='w'));qi=0;sc=0;done=0;qshow()}
+function qshow(){const b=$('#qb');ans=0;
+if(!pool.length){b.innerHTML='<div class="res"><p>No questions in this selection yet. Answer some, then use “Missed only”.</p></div>';return}
+if(qi>=pool.length){const p=Math.round(sc/pool.length*100);b.innerHTML='<div class="res"><div class="big2">'+sc+' / '+pool.length+'</div><p><b>'+p+'%</b> correct. '+(p>=85?'Excellent. You are exam-ready on this set.':p>=65?'Good. Retry the missed ones to lock them in.':'Keep going. Re-read the matching topics, then try again.')+'</p></div><div class="qn"><button id="rt">Retry set</button><button class="pri" id="rm">Review missed only</button></div>';
+$('#rt').onclick=qstart;$('#rm').onclick=()=>{miss=1;$('#qm').classList.add('on');qstart()};return}
+const q=pool[qi];const opts=[q[3]].concat(q[4]).map((t,i)=>({t,c:i===0}));for(let n=opts.length-1;n>0;n--){const j=Math.floor(Math.random()*(n+1));[opts[n],opts[j]]=[opts[j],opts[n]]}
+b.style.setProperty('--k','var(--c'+(q[0]<=2?2:q[0]===3?3:4)+')');
+b.innerHTML='<div class="meta"><span>Question '+(qi+1)+' of '+pool.length+'</span><span>'+q[1]+'</span><span>Score '+sc+'</span></div><p class="sc"><i>Scenario</i>'+q[2]+'</p><div class="opts">'+opts.map((o,i)=>'<button class="opt" data-c="'+(o.c?1:0)+'"><b>'+L[i]+'</b><span>'+o.t+'</span></button>').join('')+'</div><div class="why" id="why"></div><div class="qn"><button id="qp"'+(qi?'':' disabled')+'>← Back</button><button class="pri" id="qx" disabled>Next →</button></div>';
+b.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{if(ans)return;ans=1;const ok=o.dataset.c==='1';if(ok)sc++;QS[qk(q)]=ok?'r':'w';store.set('ip-quiz',QS);
+b.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(x.dataset.c==='1')x.classList.add('ok');else if(x===o)x.classList.add('bad');else x.classList.add('dim')});
+const w=$('#why');w.innerHTML='<b class="v">'+(ok?'Correct.':'Not quite.')+'</b>'+q[5];w.classList.add('s');$('#qx').disabled=false;$('#qx').textContent=qi===pool.length-1?'See score':'Next →';b.querySelector('.meta span:last-child').textContent='Score '+sc;qstats()});
+$('#qx').onclick=()=>{qi++;qshow()};$('#qp').onclick=()=>{if(qi){qi--;qshow()}};qstats()}
+function qstats(){const r=Q.filter(q=>QS[qk(q)]==='r').length,w=Q.filter(q=>QS[qk(q)]==='w').length;$('#qst').innerHTML='<span>Answered right: <b>'+r+'</b></span><span>Missed: <b>'+w+'</b></span><span>Unanswered: <b>'+(Q.length-r-w)+'</b></span>'}
+$$('#qf [data-p]').forEach(b=>b.onclick=()=>{$$('#qf [data-p]').forEach(x=>x.classList.remove('on'));b.classList.add('on');qf=+b.dataset.p;qstart()});
+$('#qm').onclick=()=>{miss=miss?0:1;$('#qm').classList.toggle('on',!!miss);qstart()};
+$('#qs').onclick=()=>{for(let n=Q.length-1;n>0;n--){const j=Math.floor(Math.random()*(n+1));[Q[n],Q[j]]=[Q[j],Q[n]]}qstart()};
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;const r=$('#quiz').getBoundingClientRect();if(r.top>innerHeight*.7||r.bottom<100)return;
+const k=e.key.toLowerCase();if('abcd'.includes(k)&&k.length===1){const o=$$('#qb .opt')[L.toLowerCase().indexOf(k)];if(o)o.click()}else if(e.key==='Enter'||e.key==='ArrowRight'){const x=$('#qx');if(x&&!x.disabled)x.click()}});
+qstart();
+</script></body></html>
