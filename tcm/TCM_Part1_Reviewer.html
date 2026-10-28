@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TCM Part 1 — Board Exam Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Bricolage+Grotesque:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f1ec;--pane:#fffdf9;--ink:#181c28;--mut:#5c6374;--line:#e0d8ca;--soft:#ede7da;--hl:#c0392b;--onk:#fff;
+--c1:#c0392b;--c2:#1a5276;--c3:#1a7a4a;--c4:#7d3c98;--c5:#b7770d;--sea:#141b2e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1220;--pane:#151d30;--ink:#eef2fa;--mut:#8a97b2;--line:#252f4a;--soft:#1b2540;--onk:#0e1220;--c1:#e06c75;--c2:#61afef;--c3:#56d09e;--c4:#c678dd;--c5:#e5c07b;--sea:#08101c}}
+:root[data-theme="dark"]{--bg:#0e1220;--pane:#151d30;--ink:#eef2fa;--mut:#8a97b2;--line:#252f4a;--soft:#1b2540;--onk:#0e1220;--c1:#e06c75;--c2:#61afef;--c3:#56d09e;--c4:#c678dd;--c5:#e5c07b;--sea:#08101c}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:22px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.68 Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.ys{font-family:"Bricolage Grotesque",Georgia,sans-serif;font-weight:700}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:80}
+/* HERO */
+.hero{background:var(--sea);color:#e9f0f8;position:relative;overflow:hidden}
+.hero .in{max-width:1280px;margin:auto;padding:50px 6vw 44px}
+.hero .badge{display:inline-block;background:rgba(192,57,43,.25);border:1px solid rgba(192,57,43,.5);color:#f4a09a;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:99px;margin-bottom:14px}
+.hero h1{font-size:clamp(2.2rem,5.8vw,4.6rem);line-height:1.05;margin:0 0 14px;letter-spacing:-.01em}
+.hero h1 span{color:#e06c75}
+.hero p.lead{max-width:54ch;margin:0 0 24px;color:#a9b8cc;font-size:1.02rem;line-height:1.6}
+.tiles{max-width:1280px;margin:auto;padding:0 6vw;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;transform:translateY(28px);position:relative;z-index:2}
+.tile{display:block;text-decoration:none;color:var(--ink);background:var(--pane);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:12px;padding:13px 15px 11px;transition:border-color .15s}
+.tile:hover{border-color:var(--k);box-shadow:0 4px 18px rgba(0,0,0,.08)}.tile b{display:block;font:.78rem/1 Figtree,sans-serif;color:var(--k);font-weight:700;letter-spacing:.02em;margin-bottom:4px}
+.tile span{display:block;font:700 1rem/1.22 "Bricolage Grotesque",sans-serif;margin-bottom:5px}.tile small{color:var(--mut);font-size:.8rem}
+/* LAYOUT */
+.wrap{display:grid;grid-template-columns:300px 1fr;gap:32px;max-width:1280px;margin:0 auto;padding:70px 6vw 80px}
+aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:14px;scrollbar-width:thin}
+.srch{margin-bottom:10px}.srch input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.91rem;outline:none}
+.srch input:focus{border-color:var(--hl)}
+.g>button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:10px;font-weight:700;font-size:.91rem;line-height:1.25}
+.g>button:hover{background:var(--soft)}.g>button i{width:11px;height:11px;border-radius:3px;background:var(--k);flex:none}
+.g>button::after{content:"›";color:var(--mut);transition:.2s;margin-left:auto}.g.open>button::after{transform:rotate(90deg)}
+.g ul{list-style:none;margin:0 0 6px 14px;padding:0 0 0 10px;border-left:2px solid var(--line);display:none}.g.open ul{display:block}
+.g li a{display:block;padding:5px 9px;border-radius:7px;color:var(--mut);text-decoration:none;font-size:.87rem;line-height:1.35}
+.g li a:hover{color:var(--ink);background:var(--soft)}.g li a.on{color:var(--ink);font-weight:700;background:var(--soft);box-shadow:inset 3px 0 var(--k)}
+.g li.hide,.g.hide{display:none}
+.tools{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}.tools button{all:unset;cursor:pointer;font-size:.78rem;color:var(--mut);padding:5px 10px;border:1px solid var(--line);border-radius:8px;transition:color .15s}
+.tools button:hover{color:var(--ink)}
+#tg{display:none}
+main{min-width:0}
+/* SECTION */
+section.lesson{background:var(--pane);border:1px solid var(--line);border-radius:18px;padding:0 clamp(18px,4vw,44px) 32px;margin-bottom:32px;overflow:hidden}
+.lh{margin:0 calc(-1 * clamp(18px,4vw,44px)) 22px;padding:28px clamp(18px,4vw,44px) 22px;background:var(--k);color:var(--onk);display:flex;gap:18px;align-items:center}
+.lh .num{font:800 clamp(3rem,8vw,5rem)/.85 "Bricolage Grotesque",sans-serif;opacity:.85;flex:none}
+.lh h2{margin:0;font-size:clamp(1.4rem,3.2vw,2.2rem);line-height:1.1}.lh p{margin:5px 0 0;opacity:.85;font-size:.95rem}
+.part{font:700 .74rem Figtree,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--k);margin:30px 0 -12px;display:flex;align-items:center;gap:12px}
+.part::after{content:"";flex:1;height:1px;background:var(--line)}
+h3{font-size:1.38rem;margin:34px 0 10px;line-height:1.18;position:relative}
+h3 a.t{color:inherit;text-decoration:none}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:13px 17px;border-radius:0 12px 12px 0;margin:16px 0;font-weight:600}
+.big small{display:block;font:700 .7rem Figtree,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:11px;margin:0}
+dl div,.card{border:1px solid var(--line);border-radius:11px;padding:11px 15px;background:var(--bg)}
+dt,.card h4{font-weight:700;color:var(--k);margin:0}dd{margin:2px 0 0;font-size:.93rem;line-height:1.5}
+.card h4{margin-bottom:5px}.card p,.card li{font-size:.93rem}.card ul{padding-left:1.1em;margin:.3em 0}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:13px}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+ul.b,ol{padding-left:1.2em;margin:.4em 0}li{margin:.25em 0}
+.tw{overflow-x:auto;margin:13px 0;border:1px solid var(--line);border-radius:11px}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:.92rem;line-height:1.45}
+th{background:var(--k);color:var(--onk);text-align:left;font:700 .8rem Figtree,sans-serif;letter-spacing:.05em;text-transform:uppercase}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:700}tr:last-child td{border-bottom:0}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:13px 0;font-weight:700;font-size:.86rem}
+.flow span{background:var(--k);color:var(--onk);padding:5px 11px;border-radius:8px}.flow i{font-style:normal;color:var(--mut)}
+ol.steps{list-style:none;padding:0;counter-reset:s;display:grid;gap:9px;margin:13px 0}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:36px 1fr;gap:11px;align-items:start;margin:0;padding:10px 13px;border:1px solid var(--line);border-radius:11px;background:var(--bg);font-size:.93rem}
+ol.steps li::before{content:counter(s);font:800 1.1rem/1 "Bricolage Grotesque",sans-serif;color:var(--k);padding-top:2px}
+details{border:1px solid var(--line);border-radius:11px;padding:11px 15px;margin:9px 0;background:var(--bg)}
+summary{cursor:pointer;font-weight:700;color:var(--k);font-size:.97rem}details p,details ul{margin:.55em 0 0;font-size:.93rem}
+.alert{background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.25);border-radius:11px;padding:12px 16px;font-size:.93rem;margin:13px 0}
+.alert strong{color:var(--c1)}
+.pill{display:inline-block;font:700 .7rem Figtree,sans-serif;letter-spacing:.05em;text-transform:uppercase;background:var(--soft);color:var(--k);border:1px solid var(--line);border-radius:99px;padding:2px 9px;margin:2px}
+/* FLASHCARD SECTION */
+#fc-wrap{margin-top:0}
+.fc-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.fc-btn{all:unset;cursor:pointer;padding:8px 20px;border-radius:99px;font-weight:700;font-size:.88rem;background:var(--k);color:var(--onk);transition:opacity .15s}
+.fc-btn:hover{opacity:.85}.fc-btn.ghost{background:transparent;color:var(--k);border:2px solid var(--k)}
+#fc-counter{font:700 .85rem Figtree,sans-serif;color:var(--mut);margin-left:auto}
+#fc-progress{height:5px;background:var(--soft);border-radius:3px;margin-bottom:20px;overflow:hidden}
+#fc-bar{height:100%;background:var(--hl);border-radius:3px;transition:width .3s}
+.card-stage{perspective:1000px;min-height:260px;cursor:pointer;margin-bottom:14px}
+.card-inner{position:relative;width:100%;min-height:260px;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.card-stage.flipped .card-inner{transform:rotateY(180deg)}
+.card-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:32px 28px}
+.card-front{background:var(--k);color:var(--onk)}
+.card-front .hint{font-size:.75rem;opacity:.65;margin-bottom:12px;text-transform:uppercase;letter-spacing:.07em}
+.card-front .q{font:700 1.18rem/1.4 "Bricolage Grotesque",sans-serif}
+.card-back{background:var(--pane);border:2px solid var(--k);transform:rotateY(180deg)}
+.card-back .label{font:700 .7rem Figtree,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.card-back .ans{font-size:1rem;line-height:1.55;color:var(--ink)}
+.card-back .ans strong{color:var(--k)}
+.fc-nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+@media(max-width:960px){.wrap{display:block;padding-top:18px}
+aside{position:fixed;inset:0 auto 0 0;width:min(310px,88vw);max-height:none;border-radius:0 14px 14px 0;z-index:50;transform:translateX(-108%);transition:.25s;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.5)}
+#tg{display:block;all:unset;position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:40;background:var(--hl);color:#fff;padding:12px 20px;border-radius:99px;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.35);font-family:Figtree,sans-serif;font-size:.9rem}
+.tiles{grid-template-columns:repeat(2,1fr)}.hero .in{padding:38px 5vw 32px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+footer{text-align:center;color:var(--mut);padding:0 6vw 60px;font-size:.88rem}
+</style></head><body>
+<div id="bar"></div>
+<!-- HERO -->
+<div class="hero">
+  <div class="in">
+    <div class="badge">Criminology Board Exam · Correction Major Area</div>
+    <h1>Therapeutic Community<br><span>Modality</span> Reviewer</h1>
+    <p class="lead">Comprehensive reviewer based on the lecture of Sir Becueno covering TCM definition, BJMP programs, BuCor processes, phases of TC, and the Inmates Welfare &amp; Development Program.</p>
+  </div>
+</div>
+<div class="tiles">
+  <a class="tile" href="#s1" style="--k:var(--c1)"><b>Module 1</b><span>What is TCM?</span><small>Definition &amp; Concepts</small></a>
+  <a class="tile" href="#s2" style="--k:var(--c2)"><b>Module 2</b><span>Punishment</span><small>Justifications &amp; Theories</small></a>
+  <a class="tile" href="#s3" style="--k:var(--c3)"><b>Module 3</b><span>Correction Agencies</span><small>BJMP, BuCor, DSWD</small></a>
+  <a class="tile" href="#s4" style="--k:var(--c4)"><b>Module 4</b><span>BJMP Programs</span><small>Core &amp; Support Services</small></a>
+  <a class="tile" href="#s5" style="--k:var(--c5)"><b>Module 5</b><span>BuCor Programs</span><small>Reformation Directorates</small></a>
+  <a class="tile" href="#s6" style="--k:var(--c1)"><b>Module 6</b><span>Phases of TC</span><small>4 Phases in Detail</small></a>
+  <a class="tile" href="#s7" style="--k:var(--c2)"><b>Module 7</b><span>BuCor Process</span><small>Reception &amp; Diagnostics</small></a>
+  <a class="tile" href="#fc" style="--k:var(--c3)"><b>⚡ Flash</b><span>100 Flashcards</span><small>Tap to flip</small></a>
+</div>
+
+<div class="wrap">
+<!-- SIDEBAR -->
+<aside id="side">
+  <div class="srch"><input id="q" type="search" placeholder="Search topics…" autocomplete="off"></div>
+  <div id="tree"></div>
+  <div class="tools">
+    <button onclick="openAll()">Expand all</button>
+    <button onclick="closeAll()">Collapse all</button>
+    <button id="tb">🌙 Theme</button>
+  </div>
+</aside>
+
+<main>
+<!-- ══════ MODULE 1 ══════ -->
+<section class="lesson" id="s1" style="--k:var(--c1)">
+  <div class="lh"><span class="num">01</span><div><h2>What is TCM?</h2><p>Therapeutic Community Modality — definition, components, and purpose</p></div></div>
+
+  <div class="part">Word-by-word breakdown</div>
+  <h3 id="d-words"><a href="#d-words" class="t">Breaking Down the Term</a></h3>
+  <div class="three">
+    <div class="card">
+      <h4>Therapeutic</h4>
+      <p>Related to <strong>healing or treatment</strong>. A person suffering from a disorder or mental illness undergoes a therapeutic process to be healed or treated.</p>
+    </div>
+    <div class="card">
+      <h4>Community</h4>
+      <p>TCM is a <strong>group-based approach</strong> — healing and treatment procedures are done <em>within a group</em>. Other people are included in the treatment process.</p>
+    </div>
+    <div class="card">
+      <h4>Modality</h4>
+      <p>From the root word <strong>"mode"</strong> — refers to a <em>mode of procedures</em>. The specific method or procedure used in the treatment process.</p>
+    </div>
+  </div>
+
+  <div class="part">Official Definition</div>
+  <h3 id="d-def"><a href="#d-def" class="t">Full Definition of TCM</a></h3>
+  <div class="big"><small>Definition (Lecture)</small>A <strong>self-help, social learning treatment model</strong> used for clients with problems of drug abuse and other behavioral problems such as alcoholism, stealing, and other antisocial tendencies. An environment that helps people get help while helping others.</div>
+  <p>It is a treatment environment where the interaction of its members are designed to be therapeutic within the context of norms that require each member to play the <strong>dual role of client and therapist</strong>.</p>
+  <div class="alert"><strong>⚠️ Key Exam Point:</strong> TCM is also called <strong>"TC"</strong> in jail institutions. It is classified as a <strong>treatment</strong> approach that is <strong>group-based</strong>, aimed at <strong>behavioral and psychological intervention</strong> for <em>rehabilitation</em>.</div>
+
+  <div class="part">Core Characteristics</div>
+  <h3 id="d-char"><a href="#d-char" class="t">Three Core Characteristics</a></h3>
+  <ol class="steps">
+    <li><span>TCM is a <strong>treatment</strong> approach</span></li>
+    <li><span>It is <strong>group-based</strong> in nature</span></li>
+    <li><span>Its purpose is <strong>behavioral and psychological intervention</strong> — to help inmates change from law violators into law-abiding citizens of the community</span></li>
+  </ol>
+
+  <div class="part">Why "Self-Help"?</div>
+  <h3 id="d-self"><a href="#d-self" class="t">The Self-Help Principle</a></h3>
+  <p>Although TC is a group-based approach, it is still called <strong>self-help</strong> because treatment depends on the <strong>individual participation, voluntariness, and interest</strong> of the person. Even if a person joins a group, if they have no genuine interest in being healed or changing, the treatment becomes <em>ineffective</em>.</p>
+
+  <div class="part">TCM in Jail Programs</div>
+  <h3 id="d-iwdp"><a href="#d-iwdp" class="t">TCM as Part of the IWDP</a></h3>
+  <p>The Therapeutic Community Modality is one of the activities under the <strong>Inmates Welfare and Development Program (IWDP)</strong>. It falls specifically under the <strong>Behavioral Management/Modification Program</strong>.</p>
+  <div class="alert"><strong>Board Exam Note:</strong> The purpose of TCM is <strong>rehabilitation only</strong> — not retribution, not deterrence. Remember: TCM = Rehabilitation.</div>
+</section>
+
+<!-- ══════ MODULE 2 ══════ -->
+<section class="lesson" id="s2" style="--k:var(--c2)">
+  <div class="lh"><span class="num">02</span><div><h2>Punishment</h2><p>Justifications of punishment and their relevance to TCM</p></div></div>
+
+  <div class="part">Definition</div>
+  <h3 id="p-def"><a href="#p-def" class="t">What is Punishment?</a></h3>
+  <div class="big"><small>Definition</small>Punishment is the <strong>redress that the state takes against an offending member of society</strong> that usually involves pain and suffering. It is the instrument used by the state against a person who violated the law.</div>
+
+  <div class="part">Five Justifications of Punishment</div>
+  <h3 id="p-just"><a href="#p-just" class="t">Justifications of Punishment</a></h3>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Justification</th><th>Key Word</th><th>Explanation</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Retribution</strong></td><td>Vengeance / Individual Revenge</td><td>The person deserves to be punished. It is a form of individual revenge — he committed a crime, therefore he deserves punishment.</td></tr>
+      <tr><td>2</td><td><strong>Expiation / Atonement</strong></td><td>Group Vengeance</td><td>Purpose is to appease the offended public or group. Crime offends not just the personal victim but the community in general. Also called group vengeance.</td></tr>
+      <tr><td>3</td><td><strong>Deterrence</strong></td><td>Specific &amp; General</td><td><strong>Specific deterrence</strong> — the criminal himself is deterred from committing again after being punished. <strong>General deterrence</strong> — the public is deterred upon seeing someone punished.</td></tr>
+      <tr><td>4</td><td><strong>Incapacitation &amp; Protection</strong></td><td>Paralyze / Protect</td><td>The public is protected if the offender is held in conditions where he cannot harm others. Prevents future victimization by removing the offender from the community.</td></tr>
+      <tr><td>5</td><td><strong>Reformation / Rehabilitation</strong></td><td>Change / Reform</td><td>The <em>latest</em> justification. Changing the offender from a bad guy into a good one; from irresponsible to responsible; from unproductive to productive. <strong>This is the purpose of TCM.</strong></td></tr>
+    </tbody>
+  </table></div>
+  <div class="alert"><strong>Board Exam Note:</strong> Reformation/Rehabilitation is the <strong>latest justification</strong> of punishment. TCM's purpose falls <em>only</em> under this justification.</div>
+</section>
+
+<!-- ══════ MODULE 3 ══════ -->
+<section class="lesson" id="s3" style="--k:var(--c3)">
+  <div class="lh"><span class="num">03</span><div><h2>Correction Agencies</h2><p>Fragmented structure of the Philippine correction pillar</p></div></div>
+
+  <div class="part">The Fragmentation Problem</div>
+  <h3 id="ca-frag"><a href="#ca-frag" class="t">Why the System is Fragmented</a></h3>
+  <p>The correction agencies in the Philippines are under <strong>different supervisory agencies</strong>, though they perform similar work. This causes <strong>limited collaboration</strong> between agencies and <strong>ununified programs</strong>. Ideally, one supervisory agency should oversee all correction agencies.</p>
+
+  <div class="part">Agency Overview</div>
+  <h3 id="ca-table"><a href="#ca-table" class="t">Correction Agencies at a Glance</a></h3>
+  <div class="tw"><table>
+    <thead><tr><th>Agency</th><th>Supervising Dept.</th><th>Handles</th><th>Sentence Range</th></tr></thead>
+    <tbody>
+      <tr><td><strong>BJMP</strong> (Bureau of Jail Management &amp; Penology)</td><td>DILG</td><td>District Jail, City Jail, Municipal Jail. Detainees awaiting judicial disposition.</td><td>1 day to 3 years</td></tr>
+      <tr><td><strong>Provincial Jail</strong></td><td>Provincial Government (Governor)</td><td>Detainees &amp; prisoners with 6 months + 1 day to 3 years sentence</td><td>6 months + 1 day to 3 years</td></tr>
+      <tr><td><strong>BuCor / ViCore</strong> (Bureau of Corrections)</td><td>DOJ</td><td>National Penal institutions — all convicted individuals with 3 years + 1 day sentence and above</td><td>3 years + 1 day and above</td></tr>
+      <tr><td><strong>DSWD</strong></td><td>DSWD</td><td>Youth Rehabilitation Centers, Drug Rehabilitation, Bahay Pag-asa</td><td>—</td></tr>
+      <tr><td><strong>PPA</strong> &amp; <strong>BPP</strong></td><td>DOJ</td><td>Parole and Pardon administration</td><td>—</td></tr>
+    </tbody>
+  </table></div>
+  <div class="alert"><strong>Key Distinction — Board Exam:</strong> If penalty is <strong>3 years</strong> → BJMP (jail). If penalty is <strong>3 years + 1 day</strong> → BuCor/Prison. This is a frequently tested distinction!</div>
+
+  <div class="part">Board Exam Distribution</div>
+  <h3 id="ca-dist"><a href="#ca-dist" class="t">Board Exam Question Distribution — Correction Area</a></h3>
+  <div class="three">
+    <div class="card"><h4>Institutional Correction</h4><p><strong>40 questions</strong></p></div>
+    <div class="card"><h4>Non-Institutional Correction</h4><p><strong>40 questions</strong></p></div>
+    <div class="card"><h4>Therapeutic Community Modality</h4><p><strong>20 questions</strong></p></div>
+  </div>
+</section>
+
+<!-- ══════ MODULE 4 ══════ -->
+<section class="lesson" id="s4" style="--k:var(--c4)">
+  <div class="lh"><span class="num">04</span><div><h2>BJMP Programs</h2><p>Inmates Welfare &amp; Development Program — Core &amp; Support Services</p></div></div>
+
+  <div class="part">Core Programs of the BJMP</div>
+  <h3 id="bj-core"><a href="#bj-core" class="t">Core Programs (IWDP)</a></h3>
+  <p>The <strong>Inmates Welfare and Development Program (IWDP)</strong> consists of the following core programs:</p>
+
+  <details open><summary>1. Provisions of Basic Needs</summary>
+    <p>All PDLs (Persons Deprived of Liberty) under custody are provided with:</p>
+    <ul><li>Three meals a day (breakfast, lunch, supper)</li><li>Adequate supply of potable water</li><li>Uniform and basic clothing</li><li>Shelter/housing within the facility</li></ul>
+  </details>
+
+  <details><summary>2. Health Services</summary>
+    <p>Physical and mental health care during confinement:</p>
+    <ul><li>Health education for maintaining good health</li><li>Free counseling services</li><li>Free medical consultation (especially for diabetes, hypertension)</li><li>Regular health monitoring</li><li>Medicine provided — <em>subject to availability</em></li></ul>
+  </details>
+
+  <details><summary>3. Educational Program</summary>
+    <p>Led by the <strong>Department of Education (DepEd)</strong> through the <strong>Alternative Learning System (ALS)</strong>. ALS teachers go into jail institutions. PDLs who were not elementary or high school graduates can earn their diploma while incarcerated.</p>
+  </details>
+
+  <details><summary>4. Skills Training &amp; Enhancement Program</summary>
+    <p>Partner agency: <strong>TESDA</strong> (Technical Education and Skills Development Authority). PDLs can earn <strong>National Certificate 1 (NC1) or NC2</strong> — a certification proving they are skilled in a specific area (e.g., welding, food &amp; beverage, agriculture). Purpose: increase <strong>employability upon release</strong>.</p>
+  </details>
+
+  <details><summary>5. Livelihood Program</summary>
+    <p>Income-generating activities for PDLs (e.g., making handicrafts, lanterns, rags). Capital comes from BJMP-funded projects or the common fund of a group of PDLs. The <strong>Unit Welfare and Development Officer (UWDO)</strong> facilitates the sale of products — they are the market facilitator.</p>
+  </details>
+
+  <details><summary>6. Behavioral Management / Modification Program</summary>
+    <p>This is where <strong>Therapeutic Community Modality (TC)</strong> is classified. Purpose: to manage and modify behaviors of PDLs with the goal of positively changing their thinking and behavior through <strong>structured group process</strong>. The TC activity is conducted in small groups (5–10 PDLs) in the early morning on specific days. PDLs share past experiences, frustrations, and violations, and counsel each other.</p>
+  </details>
+
+  <details><summary>7. Interfaith / Religious Activity Program</summary>
+    <p>PDLs are provided with the opportunity to practice their faith without discrimination — whether Adventist, Catholic, Born Again, Iglesia ni Cristo, Muslim, etc. Based on testimonies and research, this is considered the <strong>most effective program</strong> in changing behavior from a law violator to a law-abiding citizen.</p>
+    <p><em>Religious Volunteer Organizations (RVOs)</em> participate and are regulated and managed accordingly.</p>
+  </details>
+
+  <details><summary>8. Cultural and Sports Activity Program</summary>
+    <p>Includes chess, basketball, singing, theater, drama, and art workshops. Purpose: to <strong>reduce boredom</strong> inside jail facilities. Subject to rules and regulations. (In practice, many facilities lack space for these activities due to overcrowding.)</p>
+  </details>
+
+  <details><summary>9. Paralegal Program</summary>
+    <p>The paralegal officer assists PDLs to ensure <strong>speedy investigation and trial</strong>. Purpose: to <strong>reduce overcrowding</strong> — faster resolution of cases may result in acquittal or dismissal.</p>
+  </details>
+
+  <details><summary>10. E-Dalaw (Electronic Visit)</summary>
+    <p>An alternative to traditional face-to-face visitation. Enables PDLs to connect with family through <strong>supervised video call and chat</strong> (e.g., Messenger, Zoom). Not face-to-face — done through a device and camera.</p>
+  </details>
+
+  <div class="part">Support Services of the BJMP</div>
+  <h3 id="bj-sup"><a href="#bj-sup" class="t">Support Services</a></h3>
+  <div class="tw"><table>
+    <thead><tr><th>Support Service</th><th>Function</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Human Rights Desk</strong></td><td>Receives complaints relative to human rights violations from PDLs and visitors. Reports to concerned BJMP offices and the Commission on Human Rights for investigation.</td></tr>
+      <tr><td><strong>Help Desk</strong></td><td>A referral unit where PDLs and visitors can place requests for assistance concerning <em>personal or family needs</em> (e.g., financial support, immediate medical needs).</td></tr>
+      <tr><td><strong>Referrals for After Care</strong></td><td>Addressed to LGUs, other organizations, and business sectors. Provides assistance on financial aspects, repatriation, employment, livelihood, and education for PDLs upon release. Must be processed <em>while PDL is still in custody</em> — not after release.</td></tr>
+      <tr><td><strong>Special Programs for Vulnerable Groups</strong></td><td>Services for senior citizens (linked to OSCA), PWDs (linked to PDAO), pregnant PDLs (prenatal/postnatal care), LGBTQ+ PDLs (may be segregated from general population for protection), mental health services, drug counseling.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="part">Drug Counseling — KiKDK Program</div>
+  <h3 id="bj-kik"><a href="#bj-kik" class="t">KiKDK Drug Counseling Program</a></h3>
+  <div class="big"><small>Full Name</small><strong>Katatagan Kontra Droga sa Komunidad (KiKDK)</strong> — a psychoeducational drug counseling program.</div>
+  <div class="three">
+    <div class="card"><h4>Total Modules</h4><p><strong>24 modules</strong> total — this is frequently tested in the board exam!</p></div>
+    <div class="card"><h4>PDL Sessions</h4><p><strong>18 modules</strong> completed by PDLs in a <em>small group setting</em></p></div>
+    <div class="card"><h4>Family Sessions</h4><p><strong>6 modules</strong> participated by the PDL <em>with his/her family</em></p></div>
+  </div>
+  <div class="alert"><strong>Board Exam — Memorize:</strong> KiKDK = 24 total modules (18 for PDL group + 6 with family). Duration: <strong>maximum of 4 months</strong>.</div>
+</section>
+
+<!-- ══════ MODULE 5 ══════ -->
+<section class="lesson" id="s5" style="--k:var(--c5)">
+  <div class="lh"><span class="num">05</span><div><h2>BuCor / ViCore Programs</h2><p>Reformation programs of the Bureau of Corrections</p></div></div>
+
+  <div class="part">Overview</div>
+  <h3 id="vc-ov"><a href="#vc-ov" class="t">BuCor is Under the DOJ</a></h3>
+  <p>The Bureau of Corrections (BuCor / ViCore) is under the <strong>Department of Justice (DOJ)</strong>. It handles all convicted individuals with sentences of <strong>3 years and 1 day and above</strong>. Its programs are similar to the BJMP's but are managed by different <em>directorates</em>.</p>
+
+  <div class="part">The Six Reformation Programs</div>
+  <h3 id="vc-six"><a href="#vc-six" class="t">BuCor Reformation Programs &amp; Their Directorates</a></h3>
+  <div class="tw"><table>
+    <thead><tr><th>Program</th><th>Managed By</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Moral and Spiritual Program</strong></td><td>Directorate for Moral and Spiritual Welfare</td><td>Moral and spiritual values formation. No discrimination in religious practice. Participating RVOs (Religious Volunteer Organizations) are regulated here.</td></tr>
+      <tr><td><strong>Education and Training Program</strong></td><td>Directorate for Education and Training (DE)</td><td>Formal and non-formal education and skills development. Volunteer teachers, professors, and trainers regulated by the DE. DepEd through ALS can participate.</td></tr>
+      <tr><td><strong>Work and Livelihood Program</strong></td><td>Directorate for Work and Livelihood (DWL)</td><td>Skills development programs related to work and livelihood. NGOs can participate and are regulated by DWL.</td></tr>
+      <tr><td><strong>Sports and Recreation Program</strong></td><td>Directorate for Sports and Recreation (DSR)</td><td>Purpose: mental alertness, reduce boredom, physical agility, and sportsmanship. NGOs can participate.</td></tr>
+      <tr><td><strong>Health and Welfare Program</strong></td><td>Directorate for Health and Welfare Services (DHW)</td><td>Physical and mental health of inmates.</td></tr>
+      <tr><td><strong>Behavior Modification Program</strong></td><td>Directorate for Behavior Modification (DBM)</td><td>Character formation for all prisoners to improve interpersonal relationships in the prison community. <strong>TCM is under this program.</strong></td></tr>
+    </tbody>
+  </table></div>
+  <div class="alert"><strong>Board Exam:</strong> TCM in BuCor is under the <strong>Behavior Modification Program</strong>, managed by the <strong>Directorate for Behavior Modification (DBM)</strong>.</div>
+</section>
+
+<!-- ══════ MODULE 6 ══════ -->
+<section class="lesson" id="s6" style="--k:var(--c1)">
+  <div class="lh"><span class="num">06</span><div><h2>Phases of TC in BJMP</h2><p>The four phases of Therapeutic Community Modality</p></div></div>
+
+  <div class="part">Overview</div>
+  <h3 id="ph-ov"><a href="#ph-ov" class="t">The Four Phases</a></h3>
+  <div class="flow">
+    <span>Phase 1: Entry &amp; Orientation</span><i>→</i>
+    <span>Phase 2: Primary Treatment</span><i>→</i>
+    <span>Phase 3: Pre-Reentry</span><i>→</i>
+    <span>Phase 4: Reentry</span>
+  </div>
+
+  <div class="part">Phase Details</div>
+  <h3 id="ph-1"><a href="#ph-1" class="t">Phase 1 — Entry &amp; Orientation</a></h3>
+  <div class="big"><small>Phase 1</small>Upon commitment, a resident is placed at the <strong>Reception and Diagnostic Room</strong> for orientation. A series of examinations are conducted to identify physical, social, and psychological status.</div>
+  <p>During Phase 1, the PDL is acquainted with:</p>
+  <ul class="b">
+    <li>The TC program itself</li>
+    <li>The rules and norms of the community (written and unwritten)</li>
+    <li>The philosophy of the TC</li>
+    <li>The staff and members of the community</li>
+    <li>The tools of the house and job functions</li>
+    <li>The TC hierarchy</li>
+  </ul>
+
+  <h3 id="ph-2"><a href="#ph-2" class="t">Phase 2 — Primary Treatment</a></h3>
+  <p>After Phase 1, the PDL moves to primary treatment where they must learn:</p>
+  <ul class="b">
+    <li>Proper use of different tools to address personal issues and shape behavior</li>
+    <li>Managing own feelings and learning how to express self appropriately</li>
+    <li>Learning to follow the rules and norms of the community</li>
+    <li>Maximizing participation in activities</li>
+    <li>Learning to trust the environment by disclosing self to the community</li>
+    <li>Developing positive coping skills for difficult life situations</li>
+    <li>Enhancing educational and vocational skills to become productive</li>
+  </ul>
+
+  <h3 id="ph-3"><a href="#ph-3" class="t">Phase 3 — Pre-Reentry</a></h3>
+  <p>"Pre" means before reentry — the PDL is about to be released. Focus areas in this phase:</p>
+  <ul class="b">
+    <li><strong>Rebuilding social and family ties</strong> — because the commission of a crime may have broken family relationships</li>
+    <li>Going up the ladder of hierarchy by showing <strong>leadership skills</strong></li>
+    <li>Realization of full potential to be a productive member of society</li>
+    <li><strong>Mapping out of plans</strong> — strategizing for life after release</li>
+  </ul>
+
+  <h3 id="ph-4"><a href="#ph-4" class="t">Phase 4 — Reentry</a></h3>
+  <p>The PDL is now ready to be released back to society having demonstrated adequate self-control and discipline.</p>
+  <ul class="b">
+    <li>Preparing for life outside jail</li>
+    <li>Focus on becoming a productive citizen</li>
+    <li>Job hunting plans</li>
+    <li>Rebuilding family ties and relationships</li>
+  </ul>
+  <div class="big"><small>After Care (Part of Phase 4)</small>After care is an <strong>out-patient program</strong> requiring clients to report <strong>twice a week</strong> to an outreach center. They attend group sessions to ensure adjustment to life outside jail and to <strong>reduce recidivism</strong>.</div>
+
+  <div class="part">Pre-Integration Referral System</div>
+  <h3 id="ph-ref"><a href="#ph-ref" class="t">Inmates Pre-Integration Referral System</a></h3>
+  <p>Establishes linkages to ensure re-integration opportunities for released detainees. The referral system links released PDLs to:</p>
+  <ul class="b">
+    <li>Employment opportunities</li>
+    <li>Vocational training</li>
+    <li>Financial assistance</li>
+    <li>Local government units and business institutions</li>
+  </ul>
+</section>
+
+<!-- ══════ MODULE 7 ══════ -->
+<section class="lesson" id="s7" style="--k:var(--c2)">
+  <div class="lh"><span class="num">07</span><div><h2>BuCor Reception &amp; Diagnostics</h2><p>General process of committing a prisoner and the DRD procedures</p></div></div>
+
+  <div class="part">General Process in BuCor</div>
+  <h3 id="buc-gen"><a href="#buc-gen" class="t">General Commitment Process</a></h3>
+  <div class="big"><small>Former vs. New Name</small>The former name <strong>RDC (Reception and Diagnostic Center)</strong> is now <strong>DRD (Directorate for Reception and Diagnostics)</strong>. Update your review materials accordingly!</div>
+  <ol class="steps">
+    <li><strong>Reception</strong> — BuCor shall undertake reception of inmates through the <strong>Directorate for Reception and Diagnostics (DRD)</strong></li>
+    <li><strong>Security Classification</strong> — Provide basic needs and security through the Security and Operations Directorate (minimum / medium / maximum security)</li>
+    <li><strong>Reformation</strong> — Administer reformation programs through its Reformation Directorates</li>
+    <li><strong>Pre-Release / Reintegration</strong> — Prepare inmates for integration to mainstream society through the <strong>Directorate for External Relations (DER)</strong> — formerly the External Relations Division</li>
+  </ol>
+
+  <div class="part">Reception Procedures</div>
+  <h3 id="buc-rec"><a href="#buc-rec" class="t">Reception — Required Documents</a></h3>
+  <p>BuCor through its penal establishments shall receive prisoners from competent authority upon presentation of:</p>
+  <ul class="b">
+    <li><strong>Mittimus / Commitment Order</strong> — signed by the judge, ordering the jail/prison officer to commit the person identified in the document</li>
+    <li>Information and Court Decision</li>
+    <li>Certification of Detention</li>
+    <li>Certification of No Pending Case</li>
+    <li>Certification of Non-Appeal</li>
+    <li><strong>Provincial Form 35</strong> — the Inmate Data Sheet</li>
+  </ul>
+  <div class="alert"><strong>Note:</strong> A female offender shall be received <em>only</em> at the <strong>Correctional Institution for Women (CIW)</strong>. She cannot be placed in the DRD for male offenders.</div>
+
+  <div class="part">Diagnostics Objectives</div>
+  <h3 id="buc-diag"><a href="#buc-diag" class="t">Diagnostics — What is Assessed?</a></h3>
+  <p>The DRD is responsible for conducting <strong>classification</strong> of inmates. The core diagnostic objective is to determine the inmate's <strong>reform ability</strong>. This includes:</p>
+  <ul class="b">
+    <li>Interest, skills, and talents</li>
+    <li>Physical, social, demographic, and other behavioral trait assessments</li>
+    <li>Spiritual assessment</li>
+    <li>Security classification</li>
+    <li>Type of suitable program for each inmate</li>
+  </ul>
+  <p>Results serve as reference for the DRD in preparing <strong>individual inmate reformation treatment programs</strong>. Programs must be <em>tailored</em> — one size does not fit all.</p>
+
+  <div class="part">Classification Categories</div>
+  <h3 id="buc-class"><a href="#buc-class" class="t">Classification of Inmates</a></h3>
+  <div class="tw"><table>
+    <thead><tr><th>Classification Type</th><th>When Conducted</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Pre-Admission Classification</strong></td><td>At the DRD upon admission</td></tr>
+      <tr><td><strong>Reclassification for Reformation Programs</strong></td><td>While serving sentence</td></tr>
+      <tr><td><strong>Pre-Release Classification</strong></td><td>At the DER before release</td></tr>
+      <tr><td><strong>Security Classification</strong></td><td>While serving sentence</td></tr>
+      <tr><td><strong>Safe Capping Classification</strong></td><td>While serving sentence</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="part">Segregation</div>
+  <h3 id="buc-seg"><a href="#buc-seg" class="t">Segregation Scheme</a></h3>
+  <p>After diagnostics, PDLs are segregated according to:</p>
+  <ul class="b">
+    <li>Security classification (minimum / medium / maximum)</li>
+    <li>Nature of crimes committed (crimes against persons, against property, against national security, against public order, etc.)</li>
+  </ul>
+</section>
+
+<!-- ══════ FLASHCARDS ══════ -->
+<section class="lesson" id="fc" style="--k:var(--c3)">
+  <div class="lh"><span class="num">⚡</span><div><h2>100-Item Flashcards</h2><p>Tap or click a card to reveal the answer. Use arrow buttons to navigate.</p></div></div>
+  <div id="fc-wrap">
+    <div class="fc-controls">
+      <button class="fc-btn" onclick="fcFlip()">Flip Card</button>
+      <button class="fc-btn ghost" onclick="fcShuffle()">🔀 Shuffle</button>
+      <span id="fc-counter">Card 1 of 100</span>
+    </div>
+    <div id="fc-progress"><div id="fc-bar" style="width:1%"></div></div>
+    <div class="card-stage" id="fc-stage" onclick="fcFlip()">
+      <div class="card-inner" id="fc-inner">
+        <div class="card-face card-front">
+          <div class="hint">Tap to reveal answer</div>
+          <div class="q" id="fc-q">Loading…</div>
+        </div>
+        <div class="card-face card-back">
+          <div class="label">Answer</div>
+          <div class="ans" id="fc-a">—</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-nav">
+      <button class="fc-btn ghost" onclick="fcGo(-1)">← Previous</button>
+      <button class="fc-btn ghost" onclick="fcGo(1)">Next →</button>
+    </div>
+  </div>
+</section>
+
+</main></div>
+<footer><p>TCM Reviewer · Based on the lecture of Sir Becueno (Criminology Board Exam Review Series) · Part 1 Transcript</p></footer>
+<button id="tg">☰ Menu</button>
+
+<script>
+// ── FLASHCARD DATA (100 items) ──
+const cards=[
+  {q:"What does TCM stand for?",a:"<strong>Therapeutic Community Modality</strong> — also called 'TC' in jail institutions."},
+  {q:"Define the word 'therapeutic'.",a:"Related to <strong>healing or treatment</strong> of a person suffering from a disorder or mental illness."},
+  {q:"Define the word 'modality'.",a:"From the root word 'mode' — refers to a <strong>mode of procedures</strong>."},
+  {q:"Why is the word 'community' included in TCM?",a:"Because TCM is a <strong>group-based approach</strong> — healing and treatment are done <em>within a group</em>, so other people are included in the treatment process."},
+  {q:"What is the official definition of TCM?",a:"A <strong>self-help, social learning treatment model</strong> used for clients with problems of drug abuse and other behavioral problems such as alcoholism, stealing, and other antisocial tendencies."},
+  {q:"What does the 'self-help' principle mean in TCM?",a:"Treatment depends on the <strong>individual participation, voluntariness, and interest</strong> of the person — even in a group, if the person has no interest in being healed, the TC becomes ineffective."},
+  {q:"What dual role does each member play in a TC?",a:"Each member plays the dual role of <strong>client and therapist</strong> — they both receive help and help others."},
+  {q:"Under which BJMP core program is TCM classified?",a:"Under the <strong>Behavioral Management / Modification Program</strong> of the IWDP."},
+  {q:"What is the purpose of TCM?",a:"To manage and modify behaviors of PDLs with the goal of positively changing thinking and behavior through <strong>structured group process</strong> — ultimately for <strong>rehabilitation</strong>."},
+  {q:"Which justification of punishment is TCM's purpose aligned with?",a:"<strong>Reformation / Rehabilitation</strong> — the latest justification of punishment."},
+  {q:"What is 'punishment' as defined in the lecture?",a:"The <strong>redress that the state takes against an offending member of society</strong> that usually involves pain and suffering."},
+  {q:"What is retribution as a justification of punishment?",a:"The person is punished because <strong>he deserves it</strong> — a form of individual vengeance/revenge."},
+  {q:"What is expiation or atonement?",a:"Also called <strong>group vengeance</strong> — punishment is used to <strong>appease the offended public or group</strong>, not just the personal victim."},
+  {q:"Differentiate specific deterrence from general deterrence.",a:"<strong>Specific deterrence</strong> — the criminal himself is deterred from committing again after experiencing punishment. <strong>General deterrence</strong> — the public is deterred from committing crimes upon seeing someone punished."},
+  {q:"What does incapacitation mean as a justification?",a:"The public is protected by <strong>holding the offender in conditions where he cannot harm others</strong> — effectively paralyzing him from victimizing again."},
+  {q:"What is reformation/rehabilitation as a justification of punishment?",a:"The <strong>latest</strong> justification — changing the offender from irresponsible to responsible, from unproductive to productive, from a law violator to a law-abiding citizen."},
+  {q:"Under what department is the BJMP?",a:"<strong>Department of the Interior and Local Government (DILG)</strong>."},
+  {q:"What types of jails does the BJMP handle?",a:"<strong>District Jail, City Jail, and Municipal Jail</strong>."},
+  {q:"Under what department is the Bureau of Corrections (BuCor)?",a:"<strong>Department of Justice (DOJ)</strong>."},
+  {q:"What sentence range does BuCor handle?",a:"<strong>3 years and 1 day</strong> and above — convicted individuals in National Penal Institutions."},
+  {q:"What sentence range does the BJMP handle?",a:"<strong>1 day to 3 years</strong> for sentenced offenders; also detainees awaiting judicial disposition."},
+  {q:"Who governs provincial jails in the Philippines?",a:"The <strong>Provincial Government</strong> under the Provincial Governor."},
+  {q:"If a person's sentence is exactly 3 years, where should they be confined?",a:"In a <strong>jail</strong> under the BJMP — not in a national prison. The threshold for prison is 3 years and 1 day."},
+  {q:"What is the main problem with the fragmentation of correction agencies?",a:"<strong>Limited collaboration</strong> between agencies because they have different supervisory agencies — programs are not unified despite similar work."},
+  {q:"What does IWDP stand for?",a:"<strong>Inmates Welfare and Development Program</strong>."},
+  {q:"Name the 10 core programs of the BJMP's IWDP.",a:"(1) Basic Needs, (2) Health Services, (3) Educational Program, (4) Skills Training &amp; Enhancement, (5) Livelihood Program, (6) Behavioral Management/Modification, (7) Interfaith/Religious Program, (8) Cultural and Sports Activities, (9) Paralegal Program, (10) E-Dalaw."},
+  {q:"What does PDL stand for?",a:"<strong>Persons Deprived of Liberty</strong> — the proper term for inmates/detainees in Philippine jails."},
+  {q:"How many meals per day are PDLs provided under the basic needs program?",a:"<strong>Three meals</strong> — breakfast, lunch, and supper."},
+  {q:"What is the partner agency for the BJMP's educational program?",a:"<strong>Department of Education (DepEd)</strong> through the <strong>Alternative Learning System (ALS)</strong>."},
+  {q:"What is the partner agency for skills training in BJMP?",a:"<strong>TESDA</strong> — Technical Education and Skills Development Authority."},
+  {q:"What does NC1 and NC2 mean?",a:"<strong>National Certificate 1 and 2</strong> — certifications from TESDA proving a PDL is skilled in a specific area (e.g., welding, food and beverage)."},
+  {q:"What is the purpose of the skills training program for PDLs?",a:"To increase the <strong>employability of PDLs upon release</strong>."},
+  {q:"What is the livelihood program?",a:"<strong>Income-generating activities</strong> for PDLs — for example, making handicrafts, lanterns, or rags to be sold in the market."},
+  {q:"Who facilitates the sale of products made by PDLs in the livelihood program?",a:"The <strong>Unit Welfare and Development Officer (UWDO)</strong>."},
+  {q:"Describe how a TC session is conducted based on the lecture.",a:"PDLs group themselves in <strong>5–10 members</strong> in a small area. They share past experiences, frustrations, sadness, and violations, and <strong>counsel each other</strong> on what should be done. Everyone is allowed to speak openly. The Officer of the Day supervises."},
+  {q:"What is the interfaith/religious program in the BJMP?",a:"PDLs are provided the opportunity to practice their faith <strong>without discrimination</strong> — any religion is allowed. Religious Volunteer Organizations (RVOs) participate."},
+  {q:"According to research cited in the lecture, which program is considered the MOST effective in changing behavior?",a:"The <strong>interfaith/religious activity program</strong> — based on testimonies of PDLs themselves."},
+  {q:"What is the purpose of the cultural and sports activity program?",a:"To <strong>reduce boredom</strong> inside jail institutions."},
+  {q:"What is the paralegal program?",a:"A program where the jail's paralegal officer assists PDLs to ensure <strong>speedy investigation and trial</strong>, in order to help reduce overcrowding."},
+  {q:"What is E-Dalaw?",a:"An <strong>electronic visitation</strong> — an alternative to face-to-face visits where PDLs connect with family through <strong>supervised video call and chat</strong> (e.g., Messenger, Zoom)."},
+  {q:"What is the function of the Human Rights Desk?",a:"To receive complaints relative to <strong>human rights violations</strong> from PDLs and visitors, and report them to concerned BJMP offices or the Commission on Human Rights."},
+  {q:"What is the Help Desk in BJMP?",a:"A <strong>referral unit</strong> where PDLs and visitors can place requests for assistance concerning personal or family needs (e.g., financial support, immediate medical needs)."},
+  {q:"What are referrals for after care?",a:"Services addressed to LGUs, organizations, and business sectors to assist PDLs upon release with <strong>financial assistance, employment, livelihood, education, and repatriation</strong>."},
+  {q:"When should referrals for after care be processed?",a:"While the PDL is <strong>still in custody</strong> — not after release, because it will be too late."},
+  {q:"What are the services for pregnant PDLs?",a:"Special attention to ensure compliance with <strong>prenatal and postnatal care</strong>; timely provisions of pregnancy-related needs; care of the newborn until endorsed to the immediate family or a child-caring agency."},
+  {q:"What happens to LGBTQ+ PDLs under the special program for vulnerable groups?",a:"Members of the LGBTQ+ community may be <strong>segregated from the general population</strong> in terms of housing to prevent potential mistreatment due to their gender expression and other vulnerabilities."},
+  {q:"What is the KiKDK program?",a:"<strong>Katatagan Kontra Droga sa Komunidad</strong> — a psychoeducational drug counseling program for PDLs with substance use disorder."},
+  {q:"How many total modules does the KiKDK program have?",a:"<strong>24 modules</strong> total."},
+  {q:"How are the 24 KiKDK modules divided?",a:"<strong>18 modules</strong> are completed by the PDL in a small group setting. <strong>6 modules</strong> are participated by the PDL <em>with his/her family</em>."},
+  {q:"What is the maximum duration of the KiKDK drug counseling program?",a:"<strong>4 months</strong>."},
+  {q:"Name the four phases of TCM in BJMP.",a:"(1) Entry &amp; Orientation Phase, (2) Primary Treatment Phase, (3) Pre-Reentry Phase, (4) Reentry Phase."},
+  {q:"What happens during Phase 1 (Entry &amp; Orientation)?",a:"A series of examinations are conducted to identify the PDL's physical, social, and psychological status. The PDL is placed at the <strong>Reception and Diagnostic Room</strong> and introduced to the TC program, rules, norms, philosophy, staff, tools, and hierarchy."},
+  {q:"What is the focus of Phase 2 (Primary Treatment)?",a:"Learning to manage feelings, express oneself appropriately, follow rules, trust the environment, develop positive coping skills, and enhance educational and vocational skills."},
+  {q:"What is the focus of Phase 3 (Pre-Reentry)?",a:"<strong>Rebuilding social and family ties</strong>, developing leadership skills, realizing full potential, and <strong>mapping out plans</strong> for life after release."},
+  {q:"What does Phase 4 (Reentry) focus on?",a:"The PDL is now ready to be released. Focus: job hunting, rebuilding family relationships, and becoming a productive citizen."},
+  {q:"What is After Care as part of Phase 4?",a:"An <strong>out-patient program</strong> requiring clients to report <strong>twice a week</strong> to an outreach center to attend group sessions, ensuring adjustment to life outside jail and reducing recidivism."},
+  {q:"What is recidivism?",a:"Committing <strong>another crime</strong> coming from the same title of the Revised Penal Code after having been previously convicted. This is what the after care program aims to reduce."},
+  {q:"What is the BuCor's Moral and Spiritual Program?",a:"The moral and spiritual values formation of inmates, institutionalized by the <strong>Directorate for Moral and Spiritual Welfare</strong>. No discrimination in religious practice."},
+  {q:"What is the BuCor's Education and Training Program managed by?",a:"The <strong>Directorate for Education and Training (DE)</strong>."},
+  {q:"What is the BuCor's Work and Livelihood Program managed by?",a:"The <strong>Directorate for Work and Livelihood (DWL)</strong>."},
+  {q:"What is the BuCor's Sports and Recreation Program managed by?",a:"The <strong>Directorate for Sports and Recreation (DSR)</strong>."},
+  {q:"What is the purpose of BuCor's Sports and Recreation Program?",a:"To achieve <strong>mental alertness, physical agility, reduce boredom</strong>, and develop the spirit of sportsmanship."},
+  {q:"What is the BuCor's Behavior Modification Program managed by?",a:"The <strong>Directorate for Behavior Modification (DBM)</strong>. TCM is under this program."},
+  {q:"What is the purpose of BuCor's Behavior Modification Program?",a:"<strong>Character formation</strong> of all prisoners to improve interpersonal relationships in the prison community."},
+  {q:"What does DRD stand for in BuCor?",a:"<strong>Directorate for Reception and Diagnostics</strong> — the new name. The old name was RDC (Reception and Diagnostic Center)."},
+  {q:"What is the core diagnostic objective of the DRD?",a:"To determine an inmate's <strong>reform ability</strong> — what modes are suitable for rehabilitation."},
+  {q:"What document authorizes the commitment of a prisoner?",a:"The <strong>Mittimus or Commitment Order</strong> — a document signed by the judge ordering a jail or prison officer to incarcerate the person identified in the document."},
+  {q:"What is Provincial Form 35?",a:"The <strong>Inmate Data Sheet</strong> — one of the required documents for receiving a prisoner in BuCor."},
+  {q:"Where must female offenders be received in BuCor?",a:"Only at the <strong>Correctional Institution for Women (CIW)</strong>."},
+  {q:"What is the Directorate for External Relations (DER)?",a:"Formerly the External Relations Division. It is responsible for <strong>pre-release and post-release</strong> programs and reintegration of inmates into mainstream society."},
+  {q:"What are the circumferential objectives of the DER pre-release program?",a:"(1) Secure support from family, (2) Secure support from the community prior to release, (3) Secure acceptance from family and community upon release."},
+  {q:"What is the segregation scheme in BuCor based on?",a:"Based on <strong>security classification</strong> and the <strong>nature of crimes committed</strong> (e.g., crimes against persons, property, national security, justice, etc.)."},
+  {q:"What is the minimum security classification in BuCor called?",a:"<strong>Minimum security</strong> — handled by the Security and Operations Directorate along with medium and maximum security."},
+  {q:"What does RVO stand for?",a:"<strong>Religious Volunteer Organizations</strong> — organizations like SDA, Born Again, Iglesia ni Cristo, Catholics who visit jail and prison institutions to conduct religious activities."},
+  {q:"What is the 'Hawthorne' reference point in this lecture about?",a:"The lecture references that <strong>faith without work is dead</strong> — meaning prayer (faith) must be combined with effort (work) to pass the board exam."},
+  {q:"What is the board exam distribution for Therapeutic Community Modality?",a:"<strong>20 questions</strong> out of the correction area. (Institutional: 40, Non-Institutional: 40, TCM: 20)"},
+  {q:"Why is TCM described as a 'dynamic' model?",a:"Because it is what has been termed an RtI (Response to Intervention) — it uses a <strong>test → intervention → retest</strong> type model, meaning the treatment adjusts based on the PDL's response."},
+  {q:"What does BJMP stand for?",a:"<strong>Bureau of Jail Management and Penology</strong>."},
+  {q:"What does BuCor stand for?",a:"<strong>Bureau of Corrections</strong> (also referred to as ViCore in the lecture)."},
+  {q:"What does DOJ stand for?",a:"<strong>Department of Justice</strong>."},
+  {q:"What does DILG stand for?",a:"<strong>Department of the Interior and Local Government</strong>."},
+  {q:"What does DSWD handle in the correction pillar?",a:"Youth Rehabilitation Centers, Drug Rehabilitation centers, and <strong>Bahay Pag-asa</strong>."},
+  {q:"What does PPA stand for?",a:"<strong>Parole and Probation Administration</strong> — under the DOJ."},
+  {q:"What does BPP stand for?",a:"<strong>Board of Pardons and Parole</strong> — under the DOJ."},
+  {q:"What is the UWDO and what is their role?",a:"The <strong>Unit Welfare and Development Officer</strong> — responsible for facilitating the sale of products made by PDLs in the livelihood program (marketing facilitator)."},
+  {q:"What is the three-meal-a-day provision for PDLs?",a:"PDLs receive <strong>breakfast, lunch, and supper</strong> for free while under custody."},
+  {q:"Is medicine always available for PDLs in BJMP?",a:"Not always — medicine is provided <strong>subject to availability</strong>. This is a limitation noted in the lecture."},
+  {q:"What is the ideal solution to the fragmentation of correction agencies?",a:"Having <strong>one supervisory agency</strong> overseeing all correction agencies. Currently, no law mandates this unification."},
+  {q:"What is the purpose of the paralegal program?",a:"To assist PDLs for <strong>speedy investigation and trial</strong> to help reduce jail overcrowding."},
+  {q:"What is the difference between skills training and the livelihood program?",a:"<strong>Skills Training</strong> — develops or enhances skills. <strong>Livelihood Program</strong> — develops skills <em>and</em> ties them to <strong>income-generating activities</strong>."},
+  {q:"What does 'pre-admission classification' mean?",a:"Classification conducted <strong>at the DRD upon admission</strong> — identifying the inmate's characteristics before determining which program and security level is appropriate."},
+  {q:"What challenge do ex-convicts face upon release regarding employment?",a:"Many employers are hesitant to hire ex-convicts because <strong>NBI clearance or court clearance</strong> is required, and having a criminal conviction is often a disqualifying factor."},
+  {q:"What is the main goal of the after care referral system?",a:"To ensure that released PDLs have <strong>financial assistance, employment, educational or vocational support</strong>, and someone ready to help them reintegrate — so they don't recidivate due to lack of support."},
+  {q:"How many modules of KiKDK are meant for family participation?",a:"<strong>6 modules</strong> — participated by the PDL together with his/her family."},
+  {q:"What is the significance of Phase 3 'mapping out of plans'?",a:"It represents the <strong>strategic planning</strong> the PDL does before release — figuring out what steps to take once free. This includes employment plans, rebuilding family relations, etc."},
+  {q:"What is the 'Correctional Institution for Women'?",a:"The designated BuCor institution where <strong>female offenders</strong> are received — separate from male penal establishments."},
+  {q:"What does 'reclassification for reformation programs' mean?",a:"A classification review done <strong>while the inmate is already serving sentence</strong> to update and adjust their reformation program based on their progress."},
+  {q:"What are Religious Volunteer Organizations (RVOs) in BuCor regulated by?",a:"By the <strong>Directorate for Moral and Spiritual Welfare</strong>."},
+  {q:"What can NGOs participate in within BuCor programs?",a:"NGOs can participate in the <strong>Work and Livelihood Program</strong> and the <strong>Sports and Recreation Program</strong> — both managed and regulated by their respective directorates."},
+  {q:"In the lecture, what does 'ViCore' refer to?",a:"It is another name for the <strong>Bureau of Corrections (BuCor)</strong> — used interchangeably in the lecture."},
+  {q:"What is the significance of 'safe capping classification'?",a:"It is a type of security classification conducted <strong>while the inmate is serving sentence</strong>, used as one of the classifications in BuCor."},
+  {q:"What is the role of custodial force and reformation personnel in BuCor?",a:"They are in charge of <strong>security and the implementation of recommended individual inmate reformation and treatment programs</strong> within their respective institutions or camps."},
+  {q:"Why are individual reformation treatment programs important to tailor per inmate?",a:"Because every inmate has <strong>different psychological needs</strong> — giving a drug addict's program to someone who is not a drug user would be impractical and ineffective."},
+  {q:"What does ALS stand for and who implements it in jails?",a:"<strong>Alternative Learning System</strong> — implemented by <strong>DepEd teachers</strong> who go into jail institutions to teach PDLs who are not elementary or high school graduates."}
+];
+
+let order=[...Array(cards.length).keys()];
+let cur=0;
+
+function fcRender(){
+  const st=document.getElementById("fc-stage");
+  const c=cards[order[cur]];
+  st.classList.remove("flipped");
+  document.getElementById("fc-q").innerHTML=c.q;
+  document.getElementById("fc-a").innerHTML=c.a;
+  document.getElementById("fc-counter").textContent=`Card ${cur+1} of ${cards.length}`;
+  document.getElementById("fc-bar").style.width=((cur+1)/cards.length*100)+"%";
+}
+function fcFlip(){document.getElementById("fc-stage").classList.toggle("flipped");}
+function fcGo(d){
+  cur=(cur+d+cards.length)%cards.length;
+  fcRender();
+}
+function fcShuffle(){
+  for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
+  cur=0;fcRender();
+}
+fcRender();
+
+// Keyboard nav
+document.addEventListener("keydown",e=>{
+  if(e.key==="ArrowRight"||e.key==="ArrowDown")fcGo(1);
+  if(e.key==="ArrowLeft"||e.key==="ArrowUp")fcGo(-1);
+  if(e.key===" "){e.preventDefault();fcFlip();}
+});
+
+// ── NAV TREE ──
+const navData=[
+  {id:"s1",k:"var(--c1)",label:"What is TCM?",subs:[
+    {id:"d-words",l:"Breaking down the term"},
+    {id:"d-def",l:"Official definition"},
+    {id:"d-char",l:"Core characteristics"},
+    {id:"d-self",l:"The self-help principle"},
+    {id:"d-iwdp",l:"TCM in IWDP"}
+  ]},
+  {id:"s2",k:"var(--c2)",label:"Punishment",subs:[
+    {id:"p-def",l:"Definition of punishment"},
+    {id:"p-just",l:"Five justifications"}
+  ]},
+  {id:"s3",k:"var(--c3)",label:"Correction Agencies",subs:[
+    {id:"ca-frag",l:"Fragmentation problem"},
+    {id:"ca-table",l:"Agency overview"},
+    {id:"ca-dist",l:"Board exam distribution"}
+  ]},
+  {id:"s4",k:"var(--c4)",label:"BJMP Programs",subs:[
+    {id:"bj-core",l:"Core programs (IWDP)"},
+    {id:"bj-sup",l:"Support services"},
+    {id:"bj-kik",l:"KiKDK drug counseling"}
+  ]},
+  {id:"s5",k:"var(--c5)",label:"BuCor Programs",subs:[
+    {id:"vc-ov",l:"BuCor overview"},
+    {id:"vc-six",l:"Six reformation programs"}
+  ]},
+  {id:"s6",k:"var(--c1)",label:"Phases of TC",subs:[
+    {id:"ph-ov",l:"Four phases overview"},
+    {id:"ph-1",l:"Phase 1 — Entry & Orientation"},
+    {id:"ph-2",l:"Phase 2 — Primary Treatment"},
+    {id:"ph-3",l:"Phase 3 — Pre-Reentry"},
+    {id:"ph-4",l:"Phase 4 — Reentry"},
+    {id:"ph-ref",l:"Pre-integration referral"}
+  ]},
+  {id:"s7",k:"var(--c2)",label:"BuCor Reception & Diagnostics",subs:[
+    {id:"buc-gen",l:"General commitment process"},
+    {id:"buc-rec",l:"Required documents"},
+    {id:"buc-diag",l:"Diagnostics objectives"},
+    {id:"buc-class",l:"Classification categories"},
+    {id:"buc-seg",l:"Segregation scheme"}
+  ]},
+  {id:"fc",k:"var(--c3)",label:"100 Flashcards",subs:[]}
+];
+
+const tree=document.getElementById("tree");
+navData.forEach(s=>{
+  const g=document.createElement("div");g.className="g";g.dataset.sid=s.id;
+  g.style.setProperty("--k",s.k);
+  const btn=document.createElement("button");
+  btn.innerHTML=`<i></i>${s.label}`;
+  btn.onclick=()=>g.classList.toggle("open");
+  const ul=document.createElement("ul");
+  s.subs.forEach(sub=>{
+    const li=document.createElement("li");
+    li.innerHTML=`<a href="#${sub.id}" data-id="${sub.id}">${sub.l}</a>`;
+    ul.appendChild(li);
+  });
+  g.appendChild(btn);g.appendChild(ul);
+  tree.appendChild(g);
+});
+tree.querySelector(".g").classList.add("open");
+
+// Search
+document.getElementById("q").addEventListener("input",function(){
+  const v=this.value.toLowerCase().trim();
+  document.querySelectorAll(".g").forEach(g=>{
+    let any=false;
+    g.querySelectorAll("li").forEach(li=>{
+      const m=!v||li.textContent.toLowerCase().includes(v);
+      li.classList.toggle("hide",!m);
+      if(m)any=true;
+    });
+    g.classList.toggle("hide",!any&&!!v);
+    if(v&&any)g.classList.add("open");
+  });
+});
+
+function openAll(){document.querySelectorAll(".g").forEach(g=>g.classList.add("open"));}
+function closeAll(){document.querySelectorAll(".g").forEach(g=>g.classList.remove("open"));}
+
+// Theme
+document.getElementById("tb").onclick=()=>{
+  const c=document.documentElement.dataset.theme;
+  document.documentElement.dataset.theme=c==="dark"?"light":"dark";
+};
+
+// Mobile
+const tg=document.getElementById("tg"),side=document.getElementById("side");
+tg.onclick=()=>side.classList.toggle("open");
+side.addEventListener("click",e=>{if(e.target.tagName==="A")side.classList.remove("open");});
+
+// Progress bar
+const bar=document.getElementById("bar");
+window.addEventListener("scroll",()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.width=(h>0?window.scrollY/h*100:0)+"%";
+});
+
+// Active nav
+const navMap={};
+document.querySelectorAll("aside a[data-id]").forEach(a=>navMap[a.dataset.id]=a);
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    document.querySelectorAll("aside a.on").forEach(a=>a.classList.remove("on"));
+    const a=navMap[e.target.id];
+    if(a){
+      a.classList.add("on");
+      const pg=a.closest(".g");
+      if(pg){
+        document.querySelectorAll(".g.open").forEach(g=>{if(g!==pg)g.classList.remove("open");});
+        pg.classList.add("open");
+      }
+    }
+  });
+},{rootMargin:"-18% 0px -72% 0px"});
+document.querySelectorAll("h3[id]").forEach(h=>io.observe(h));
+</script>
+</body></html>
