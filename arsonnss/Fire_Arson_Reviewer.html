@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fire Technology &amp; Arson Investigation Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1ec;--pane:#fffdfa;--ink:#2a1a14;--mut:#6b5a52;--line:#e3d8cf;--soft:#f0e5dc;--hl:#f2a21e;--onk:#fff;--c1:#b8321f;--c2:#c2610f;--c3:#8a6d0b;--c4:#5b4a3f;--c5:#2f6f8b;--sea:#2a0f08}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#140d0a;--pane:#1d1410;--ink:#f6ece6;--mut:#b9a79c;--line:#33241d;--soft:#271a14;--onk:#140d0a;--c1:#ff8a73;--c2:#ffad5c;--c3:#e8c75a;--c4:#d4b8a6;--c5:#7ec3df;--sea:#0c0604}}
+:root[data-theme=dark]{--bg:#140d0a;--pane:#1d1410;--ink:#f6ece6;--mut:#b9a79c;--line:#33241d;--soft:#271a14;--onk:#140d0a;--c1:#ff8a73;--c2:#ffad5c;--c3:#e8c75a;--c4:#d4b8a6;--c5:#7ec3df;--sea:#0c0604}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,sans-serif}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:80}
+.hero{background:var(--sea);color:#e6ecf8;padding:48px 6vw 70px}.hero div{max-width:1240px;margin:auto}
+.hero h1{font-size:clamp(2.2rem,6vw,4.4rem);line-height:1;margin:0 0 14px}.hero p{max-width:62ch;margin:0;color:#aab8d6}
+.tiles{max-width:1240px;margin:-34px auto 0;padding:0 6vw;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;position:relative}
+.tile{text-decoration:none;color:var(--ink);background:var(--pane);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:12px;padding:11px 14px}
+.tile b{display:block;font-size:.76rem;color:var(--k)}.tile span{font:700 1rem/1.2 "Bricolage Grotesque"}
+.wrap{display:grid;grid-template-columns:290px 1fr;gap:30px;max-width:1240px;margin:auto;padding:36px 6vw 70px}
+aside{position:sticky;top:14px;align-self:start;max-height:calc(100vh - 28px);overflow:auto;background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:13px}
+aside input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;margin-bottom:8px}
+.g>button{all:unset;width:100%;box-sizing:border-box;cursor:pointer;display:flex;gap:9px;align-items:center;padding:8px 9px;border-radius:9px;font-weight:700;font-size:.92rem}
+.g>button:hover{background:var(--soft)}.g>button i{width:11px;height:11px;border-radius:3px;background:var(--k)}
+.g ul{list-style:none;margin:0 0 6px 14px;padding:0 0 0 9px;border-left:2px solid var(--line);display:none}.g.open ul{display:block}
+.g li a{display:block;padding:4px 8px;border-radius:7px;color:var(--mut);text-decoration:none;font-size:.86rem;line-height:1.35}
+.g li a:hover,.g li a.on{color:var(--ink);background:var(--soft)}.g li a.on{font-weight:700;box-shadow:inset 3px 0 var(--k)}.hide{display:none!important}
+#tb{all:unset;cursor:pointer;margin-top:8px;font-size:.78rem;color:var(--mut);padding:5px 10px;border:1px solid var(--line);border-radius:8px}#tg{display:none}
+main{min-width:0}section.lesson{background:var(--pane);border:1px solid var(--line);border-radius:18px;padding:0 clamp(16px,4vw,42px) 28px;margin-bottom:30px;overflow:hidden}
+.lh{margin:0 calc(-1*clamp(16px,4vw,42px)) 18px;padding:26px clamp(16px,4vw,42px) 20px;background:var(--k);color:var(--onk);display:flex;gap:16px;align-items:center}
+.lh .num{font:800 clamp(3rem,8vw,5rem)/.8 "Bricolage Grotesque";opacity:.9}.lh h2{margin:0;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.08}.lh p{margin:4px 0 0;opacity:.9;font-size:.95rem}
+h3{font-size:1.4rem;margin:30px 0 9px;line-height:1.15}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:12px 17px;border-radius:0 12px 12px 0;margin:14px 0;font-weight:600}
+.big small{display:block;font:700 .7rem Figtree;letter-spacing:.09em;text-transform:uppercase;color:var(--mut)}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:11px;margin:0}
+dl div{border:1px solid var(--line);border-radius:12px;padding:11px 15px;background:var(--bg)}dt{font-weight:700;color:var(--k)}dd{margin:2px 0 0;font-size:.94rem;line-height:1.5}
+ul.b,ol.b{padding-left:1.2em;margin:.4em 0}li{margin:.2em 0}
+.tw{overflow-x:auto;margin:13px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:500px;font-size:.92rem;line-height:1.45}
+th{background:var(--k);color:var(--onk);text-align:left;font:700 .8rem Figtree;letter-spacing:.05em;text-transform:uppercase}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:700}tr:last-child td{border-bottom:0}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0;font-weight:700;font-size:.86rem}.flow span{background:var(--k);color:var(--onk);padding:5px 12px;border-radius:8px}
+.note{font-size:.88rem;color:var(--ink);border:1px dashed var(--c5);border-radius:10px;padding:9px 14px;margin:14px 0;background:var(--bg)}
+.fx{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;font-weight:600;font-size:.88rem;color:var(--mut)}.fx button,.fn button{all:unset;cursor:pointer;padding:7px 16px;border-radius:99px;border:1.5px solid var(--ink);font-weight:700;font-size:.86rem}
+.fx button.on{background:var(--k);border-color:var(--k);color:var(--onk)}
+.scene{perspective:1400px}#card{all:unset;display:block;width:100%;cursor:pointer;position:relative;min-height:290px;transform-style:preserve-3d;transition:transform .5s}#card.f{transform:rotateY(180deg)}
+#card .fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:26px 30px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:auto}
+#card .ft{background:var(--soft);border:2px solid var(--line);font:700 clamp(1.3rem,3vw,2rem)/1.25 "Bricolage Grotesque"}
+#card .bk{background:var(--k);color:var(--onk);transform:rotateY(180deg);font:500 clamp(1rem,2vw,1.25rem)/1.6 Figtree}
+#card small{font:700 .72rem Figtree;letter-spacing:.1em;text-transform:uppercase;opacity:.65;margin-bottom:10px}
+.fn{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}.fn .no{border-color:var(--c5);color:var(--c5)}.fn .yes{border-color:var(--c3);color:var(--c3)}
+button:focus-visible,a:focus-visible,input:focus-visible,#card:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 60px;font-size:.88rem}
+@media(max-width:900px){.wrap{display:block}aside{position:fixed;inset:0 auto 0 0;width:min(320px,88vw);max-height:none;border-radius:0 14px 14px 0;z-index:70;transform:translateX(-105%);transition:.25s}aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.5)}
+#tg{display:block;position:fixed;right:16px;bottom:16px;z-index:60;background:var(--hl);color:#241a00;padding:12px 20px;border-radius:99px;font-weight:700;cursor:pointer}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style></head><body>
+<div id="bar"></div>
+<div class="hero"><div><h1>Fire Technology &amp; Arson Investigation</h1><p>Fire behavior and stages, causes, firefighting operations, detection systems, ladders, stages of arson, fire language and telltale signs. Then drill 100 flashcards.</p></div></div>
+<nav class="tiles">
+<a class="tile" href="#s1" style="--k:var(--c1)"><b>1</b><span>Fire behavior</span></a>
+<a class="tile" href="#s2" style="--k:var(--c2)"><b>2</b><span>Causes</span></a>
+<a class="tile" href="#s3" style="--k:var(--c3)"><b>3</b><span>Firefighting ops</span></a>
+<a class="tile" href="#s4" style="--k:var(--c4)"><b>4</b><span>Detection &amp; ladders</span></a>
+<a class="tile" href="#s5" style="--k:var(--c5)"><b>5</b><span>Arson investigation</span></a>
+<a class="tile" href="#fcs" style="--k:var(--c1)"><b>⚡</b><span>100 flashcards</span></a></nav>
+<div class="wrap">
+<aside id="side"><input id="q" type="search" placeholder="Search topics…"><div id="tree"></div><button id="tb">Dark / light</button></aside>
+<main>
+
+<section class="lesson" id="s1" style="--k:var(--c1)" data-t="1 · Fire behavior"><div class="lh"><div class="num">1</div><div><h2>Fire behavior</h2><p>Thermal balance, dangerous behaviors, stages</p></div></div>
+<h3>Thermal balance and imbalance</h3>
+<dl><div><dt>Thermal balance</dt><dd>The rising movement or pattern of fire; normal behavior when the pattern is undisturbed.</dd></div><div><dt>Thermal imbalance</dt><dd>Abnormal movement of fire due to interference of foreign matter; it often confuses the investigator about the point of origin.</dd></div></dl>
+<h3>Dangerous behavior of fire</h3>
+<div class="tw"><table><thead><tr><th>Condition</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Backdraft</td><td>Sudden, violent burning of heated gases in a confined area, as an explosion, from improper ventilation. Opening a door or window of an unventilated room sucks in oxygen and causes a combustion explosion.</td></tr>
+<tr><td>Flashover</td><td>Sudden ignition of accumulated radical gases from incomplete combustion, started by a spark or flash when temperature reaches flash point. Creates a fireball that can travel a hundred yards in seconds.</td></tr>
+<tr><td>Biteback</td><td>Fire resists extinguishment and becomes stronger and bigger.</td></tr>
+<tr><td>Flash fire</td><td>Dust explosion, e.g., a dust-covered metal post hit by lightning: the dust burns at once with a bright flash, then an explosion.</td></tr></tbody></table></div>
+<h3>Three stages of fire</h3>
+<div class="tw"><table><thead><tr><th>Stage</th><th>Key points</th></tr></thead><tbody>
+<tr><td>Incipient (initial)</td><td>Normal room temperature; base 400–800/1000°F; ceiling about 200°F; pyrolysis products mostly water vapor and CO₂, with small amounts of CO and sulfides.</td></tr>
+<tr><td>Free burning</td><td>Adequate oxygen; accelerated pyrolysis; convection currents (thermal columns); base 800–1000/1330°F, ceiling 1200–1600°F; flame “crawls” up walls leaving burnt patterns (fire fingerprints); flashover occurs.</td></tr>
+<tr><td>Smoldering</td><td>Flame ceases, dense smoke and heat fill the room; oxygen 13% or below; more carbon monoxide (ignition temperature about 1125°F); ceiling 1000–1300°F; superheated fuel under pressure with little oxygen. Adding oxygen causes backdraft.</td></tr></tbody></table></div>
+<div class="flow"><span>Suppression: slow the burning</span><span>Control: keep it from spreading</span><span>Extinguishment: put it fully out</span></div>
+<h3>Five stages of fire</h3>
+<ol class="b"><li><b>Ignition:</b> the four elements of the fire tetrahedron come together.</li><li><b>Growth:</b> a fire plume forms and entrains air.</li><li><b>Flashover:</b> transition from growth to fully developed; all exposed combustible surfaces ignite. Not a specific event like ignition.</li><li><b>Fully developed:</b> all combustibles in the compartment are involved.</li><li><b>Decay:</b> fuel is consumed and heat release declines.</li></ol></section>
+
+<section class="lesson" id="s2" style="--k:var(--c2)" data-t="2 · Causes"><div class="lh"><div class="num">2</div><div><h2>Causes of fire</h2><p>Natural, accidental, intentional, undetermined</p></div></div>
+<h3>Classification based on cause</h3>
+<div class="flow"><span>Natural/providential</span><span>Accidental</span><span>Intentional/incendiary</span><span>Undetermined</span></div>
+<dl><div><dt>Spontaneous heating</dt><dd>Chemical reaction causing auto-ignition of organic materials as heat rises gradually in a confined space; sun rays focused through glass acting as a convex lens.</dd></div><div><dt>Lightning</dt><dd>Static electricity of great magnitude. <b>Hot bolt:</b> longer, only ignites combustibles. <b>Cold bolt:</b> shorter, can splinter property or blow a structure apart; tremendous amperage and very high temperature.</dd></div></dl>
+<h3>Accidental causes</h3>
+<div class="tw"><table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Short circuit</td><td>Accidental connection between two points at different potentials in a low-resistance circuit.</td></tr>
+<tr><td>Arcing</td><td>Sustained luminous discharge between separated electrodes; current crosses a gap between two conductors.</td></tr>
+<tr><td>Sparking</td><td>Incandescent particles when two different potentials touch; during short circuits or welding.</td></tr>
+<tr><td>Induced current</td><td>Line surge: sudden current increase burning insulation, exploding the fuse box or burning appliances.</td></tr>
+<tr><td>Overheating of appliances</td><td>Rising amperage damages insulation; gradual or rapid, internal or external.</td></tr></tbody></table></div>
+<p>Purely accidental causes also include negligence and other human error.</p>
+<h3>Intentional (incendiary) and undetermined</h3>
+<div class="big"><small>Intentional</small>Deliberately set where the person knows the fire should not be set. Preparations or traces of <b>accelerant, plants and trailers</b> point to intentional cause.</div>
+<dl><div><dt>Accelerant</dt><dd>Highly flammable chemicals that facilitate flame propagation.</dd></div><div><dt>Plant</dt><dd>Preparing or gathering combustibles needed to start a fire.</dd></div><div><dt>Trailer</dt><dd>Preparing flammable substances to spread the fire.</dd></div><div><dt>Undetermined</dt><dd>The proper class whenever the cause cannot be proven.</dd></div></dl></section>
+
+<section class="lesson" id="s3" style="--k:var(--c3)" data-t="3 · Firefighting ops"><div class="lh"><div class="num">3</div><div><h2>Firefighting operations</h2><p>Procedures, extinguishment methods, PASS, BFP rules</p></div></div>
+<h3>Procedures</h3>
+<div class="tw"><table><thead><tr><th>Step</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>1 Pre-fire planning</td><td>Developing systematic courses of action to meet fire protection objectives; establishing the SOP.</td></tr>
+<tr><td>2 Evaluation / size-up</td><td>On-the-spot mental evaluation by the officer-in-charge: learn the facts (5Ws–1H), understand fatal fire behavior, know own manpower and equipment, choose the course (entry or rescue).</td></tr>
+<tr><td>3 Evacuation</td><td>Moving people, livestock and property away from the burning area.</td></tr>
+<tr><td>4 Entry</td><td>Accessing the structure, possibly by force: for firefighters and equipment, rescue, and ventilation.</td></tr>
+<tr><td>5 Rescue</td><td>Extricating people and livestock to a secure place.</td></tr>
+<tr><td>6 Exposure</td><td>“Cover exposure”: securing nearby buildings so fire does not extend.</td></tr>
+<tr><td>7 Confinement</td><td>Restricting fire to its place of origin and preventing spread between sections.</td></tr>
+<tr><td>8 Ventilation</td><td>Displacing toxic gases and heated atmosphere with outside air. Vertical: top to bottom. Cross/horizontal: opening windows if gases have not reached higher levels. Mechanical: smoke ejector.</td></tr>
+<tr><td>9 Salvage</td><td>Protecting property from preventable damage: remove materials outside and cover with tarpaulins (waterproofed cotton canvas).</td></tr>
+<tr><td>10 Extinguishment</td><td>Putting out the main body of fire by the four methods.</td></tr>
+<tr><td>11 Overhaul</td><td>Detailed check to prevent re-flash; extinguish embers to prevent rekindling.</td></tr>
+<tr><td>12 Fire scene investigation</td><td>Inquiry into origin and cause.</td></tr></tbody></table></div>
+<h3>Four methods of extinguishment</h3>
+<dl><div><dt>Temperature reduction</dt><dd>Cool the fire, usually with water, until fuel gives off too little vapor to burn.</dd></div><div><dt>Fuel removal</dt><dd>Stop liquid flow, prevent flammable gas production, remove solid fuel, or let the fuel burn out.</dd></div><div><dt>Oxygen dilution</dt><dd>Reduce oxygen with inert gases or separate oxygen from the fuel.</dd></div><div><dt>Chemical inhibition</dt><dd>Dry chemical and halon interrupt flame production; effective only on burning gas and liquid fuels, which cannot burn in smoldering mode.</dd></div></dl>
+<h3>PASS and BFP rules</h3>
+<div class="flow"><span>Pull</span><span>Aim</span><span>Squeeze</span><span>Sweep</span></div>
+<p>Pull the pin (press the inspection band); aim at the <b>base</b> of the fire; squeeze the handle above the carrying handle (release to stop); sweep sideways at the base, then probe for smoldering hot spots and reflash.</p>
+<div class="note"><b>BFP:</b> the Chief, BFP investigates fires with property damage exceeding ₱60 million. The Regional Director for Fire Protection appoints uniformed personnel from Fire Officer I to Senior Fire Officer IV in the regional office under RA 9263.</div></section>
+
+<section class="lesson" id="s4" style="--k:var(--c4)" data-t="4 · Detection & ladders"><div class="lh"><div class="num">4</div><div><h2>Detection systems &amp; ladders</h2><p>Detectors, sprinklers, ground and aerial ladders</p></div></div>
+<h3>Fire detection</h3>
+<p>A detection system discovers fire in its earliest phase and activates an alarm.</p>
+<div class="tw"><table><thead><tr><th>Detector</th><th>How it works</th></tr></thead><tbody>
+<tr><td>Ionization (smoke)</td><td>A radioactive source makes the air inside conductive; visible or invisible combustion products interrupt the current and trigger the alarm.</td></tr>
+<tr><td>Photoelectric (smoke)</td><td>Projected light beam for large areas; reflected beam or spot type for small areas.</td></tr>
+<tr><td>Rate-of-rise (heat)</td><td>Reacts to a rapid temperature increase; allows a range, activates when the permitted maximum is surpassed.</td></tr>
+<tr><td>Fixed-temperature (heat)</td><td>Preset to activate at a given temperature; a calibration screw lets an installer reset it to avoid false alarms.</td></tr>
+<tr><td>Sprinkler system</td><td>Pipes carry water to ceiling nozzles; heat opens the nozzles directly above the fire.</td></tr></tbody></table></div>
+<h3>Ladders</h3>
+<p>Two categories: <b>ground ladders</b> (10–55 ft) and <b>aerial ladders</b>. Uses: rescue, stretching a line into a fire building, and ventilation access.</p>
+<div class="tw"><table><thead><tr><th>Type</th><th>Details</th></tr></thead><tbody>
+<tr><td>Straight/hook</td><td>One section, 12–16 ft (common 14 ft).</td></tr>
+<tr><td>Extension</td><td>Bed plus one or more fly ladders; up to 35 ft. With a stay pole: tormentors. Over 35 ft: Bangor ladder.</td></tr>
+<tr><td>Attic</td><td>Reaches hard-to-reach openings; folds or collapses.</td></tr>
+<tr><td>Wall</td><td>For rescue when a placed ladder falls short; climb one storey at a time.</td></tr>
+<tr><td>Aerial</td><td>On a turntable, extends to 100 ft; 3 or 4 metal fly sections raised by hydraulic cables.</td></tr></tbody></table></div>
+<dl><div><dt>Bed / fly</dt><dd>Bed: lowest section of an extension ladder. Fly: top section.</dd></div><div><dt>Butt / heel</dt><dd>Butt: bottom end. Heel: the part touching the ground.</dd></div><div><dt>Halyard / pawl (dog)</dt><dd>Halyard: rope or cable raising the fly. Pawl: locks the fly to the bed.</dd></div><div><dt>Rung / top / hooks</dt><dd>Rung: climbing cross member. Hooks: hold over roof peaks, sills or walls (roof ladders).</dd></div><div><dt>Stops / guides</dt><dd>Stops: blocks that keep the fly from extending too far. Guides: metal strips that guide the fly.</dd></div></dl></section>
+
+<section class="lesson" id="s5" style="--k:var(--c5)" data-t="5 · Arson investigation"><div class="lh"><div class="num">5</div><div><h2>Arson investigation</h2><p>Stages of arson, fire language, telltales, smoke and flame colors</p></div></div>
+<h3>Stages in the commission of arson</h3>
+<div class="tw"><table><thead><tr><th>Stage</th><th>Handout example</th></tr></thead><tbody>
+<tr><td>Attempted</td><td>Rags soaked in gasoline placed by a wooden wall; offender about to light a match is chased away. Overt acts began, but not all acts of execution were done.</td></tr>
+<tr><td>Frustrated</td><td>Rags soaked in kerosene set alight near the partition of an inhabited house but extinguished before any part burned. The handout also cites tools or furniture not attached to the building burning (U.S. v. Valdez).</td></tr>
+<tr><td>Consummated</td><td>Part of the building burned before the fire was put out; setting fire to a building’s contents is consummated even if no part burned.</td></tr></tbody></table></div>
+<h3>Fire language</h3>
+<dl><div><dt>Alligatoring</dt><dd>Large scales indicate rapid, intense heat.</dd></div><div><dt>Calcination</dt><dd>Changes in plaster or gypsum walls: water driven from gypsum, paper surface charred off.</dd></div><div><dt>Clean burn</dt><dd>Surface pattern where soot has burned away.</dd></div><div><dt>Crazing</dt><dd>Glass cracking into small irregular segments.</dd></div><div><dt>Charring</dt><dd>Decomposition by heat driving off gases and vapors; char shrinks, cracks and blisters.</dd></div><div><dt>Spalling</dt><dd>Loss of tensile strength of concrete or brick, usually with color change; may chip.</dd></div><div><dt>Depth of char</dt><dd>Distance from original wood surface to unburned wood; estimates how long it was exposed.</dd></div><div><dt>Fusion</dt><dd>Change in form of metal, glass or plastic from high heat; melting.</dd></div></dl>
+<h3>Telltale signs of arson</h3>
+<ul class="b"><li><b>Burned building:</b> a large fire in a modern concrete or semi-concrete building on arrival.</li><li><b>Separate fires:</b> two or more in one building are certainly suspicious.</li><li><b>Color of smoke and smoke marks:</b> observe at the start; volume and residue help.</li><li><b>Size of fire:</b> compare with alarm type, time received and arrival of the first apparatus.</li><li><b>Odor:</b> gasoline, alcohol, kerosene and other flammable liquids.</li><li><b>Condition of contents:</b> valuables removed, or merchandise replaced with out-of-style articles.</li></ul>
+<h3>Color of smoke and flame</h3>
+<div class="tw"><table><thead><tr><th>Sign</th><th>Indicates</th></tr></thead><tbody>
+<tr><td>White smoke before hose water hits; white smoke with yellow flame</td><td>Humid materials (hay, vegetable matter)</td></tr>
+<tr><td>Black smoke with large flame</td><td>Petroleum products, rubber, plastics</td></tr>
+<tr><td>Reddish-brown smoke</td><td>Nitrocellulose, sulfur, sulfuric/nitric/hydrochloric acids</td></tr>
+<tr><td>Biting smoke (nose, throat, coughing)</td><td>Chlorine</td></tr>
+<tr><td>Garlic-odor smoke</td><td>Phosphorus</td></tr>
+<tr><td>Heavy brown smoke, bright red flame</td><td>Nitrogen products</td></tr>
+<tr><td>White smoke, bright white flame</td><td>Magnesium</td></tr>
+<tr><td>Black smoke, red and blue flame</td><td>Asphalt</td></tr>
+<tr><td>Red / blue flame</td><td>Petroleum / alcohol, aldehyde or ketone</td></tr>
+<tr><td>Purple or lavender / greenish-yellow / bright reddish-yellow flame</td><td>Potassium / chlorine or manganese / calcium</td></tr></tbody></table></div></section>
+
+<section class="lesson" id="fcs" style="--k:var(--c1)" data-t="⚡ · Flashcards"><div class="lh"><div class="num">⚡</div><div><h2>100 flashcards</h2><p>Click the card or press Space to flip; ← → to move</p></div></div>
+<h3>Flashcard deck</h3>
+<div class="fx"><span id="cnt"></span><button id="sh">Shuffle</button><button id="ag">Review “again” only</button></div>
+<div class="scene"><button id="card" aria-label="Flip card"><div class="fc ft"><small id="st"></small><span id="qq"></span></div><div class="fc bk"><small>Answer</small><span id="aa"></span></div></button></div>
+<div class="fn"><button id="pv">← Prev</button><button class="no" id="no">Again</button><button class="yes" id="ye">Got it</button><button id="nx">Next →</button></div>
+<p id="sc" style="text-align:center;color:var(--mut);font-size:.88rem"></p></section>
+</main></div>
+<button id="tg">☰ Topics</button>
+<footer>Study aid built from the Fire Technology and Arson Investigation reviewer. Verify details against your own handout.</footer>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const D=`Thermal balance?|The rising movement or pattern of fire; normal behavior when the pattern is undisturbed.
+Thermal imbalance?|Abnormal movement of fire due to foreign matter; confuses investigators about the point of origin.
+Backdraft?|Sudden, violent burning of heated gases in a confined area, as an explosion, from improper ventilation.
+What triggers a backdraft?|Suddenly opening a door or window of an unventilated room; incoming oxygen causes a combustion explosion.
+Flashover (behavior)?|Sudden ignition of accumulated radical gases from incomplete combustion.
+What starts a flashover?|A spark or flash when temperature rises to flash point.
+Biteback?|Fire resists extinguishment and becomes stronger and bigger.
+Flash fire?|Better known as dust explosion.
+Flash fire example?|A dust-covered metal post hit by lightning: dust burns at once with a bright flash, then an explosion.
+Three stages of fire?|Incipient, free burning, smoldering.
+Incipient phase temperatures?|Base 400–800/1000°F; ceiling about 200°F.
+Free burning phase?|Burning with adequate oxygen; accelerated pyrolysis; convection currents form.
+Free burning temperatures?|Base 800–1000/1330°F; ceiling 1200–1600°F.
+Fire fingerprints?|Burnt patterns left as pyrolytic decomposition “crawls” up the walls.
+What occurs in the free burning phase?|Flashover.
+Smoldering phase?|Flame ceases; dense smoke and heat fill the room.
+Oxygen level in smoldering?|13% or below.
+Smoldering plus new oxygen?|Backdraft.
+Fire suppression?|Slowing down the rate of burning.
+Fire control?|Keeping the fire from spreading; holding it to one area.
+Fire extinguishment?|Putting the fire completely out.
+Five stages of fire?|Ignition, growth, flashover, fully developed, decay.
+Ignition stage?|The four elements of the fire tetrahedron come together and combustion begins.
+Growth stage?|A fire plume forms above the fuel and entrains air.
+Flashover as a stage?|Transition from growth to fully developed; all exposed combustible surfaces ignite; not a specific event.
+Fully developed stage?|All combustible materials in the compartment are involved.
+Decay stage?|Fuel is consumed and the rate of heat release declines.
+Classification of fire by cause?|Natural/providential, accidental, intentional/incendiary, undetermined.
+Natural/providential causes?|Fires without direct human intervention.
+Spontaneous heating?|Auto-ignition of organic materials as heat gradually rises in a confined space to ignition temperature.
+Lightning?|Static electricity; natural current of great magnitude with tremendous amperage and voltage.
+Hot bolt?|Longer duration; can only ignite combustible materials.
+Cold bolt?|Shorter duration; can splinter property or blow apart a structure; tremendous amperage and very high temperature.
+Short circuit?|Accidental connection between two points at different potentials in a low-resistance circuit.
+Arcing?|Sustained luminous discharge between separated electrodes; current crosses a gap between two conductors.
+Sparking?|Incandescent particles when two different potentials touch; occurs in short circuits or welding.
+Induced current?|Line surge: sudden current increase burning insulation, exploding the fuse box, burning appliances.
+Overheating of electrical appliances?|Rising amperage damages insulation; may be gradual or rapid, internal or external.
+Intentional (incendiary) fire?|Deliberately set where the person knows the fire should not be set.
+Indicators of intentional fire?|Preparations or traces of accelerant, plants and trailers.
+Accelerant?|Highly flammable chemicals used to facilitate flame propagation.
+Plant?|Preparing or gathering combustibles needed to start a fire.
+Trailer?|Preparing flammable substances to spread the fire.
+Undetermined fire cause?|The proper classification whenever the cause cannot be proven.
+Fire fighting operations?|Fire suppression activities.
+Pre-fire planning?|Developing systematic courses of action to meet fire protection objectives; establishing the SOP.
+Size-up?|On-the-spot mental evaluation by the officer-in-charge for the course with the highest chance of success.
+Size-up steps?|Learn the facts (5Ws–1H); understand fatal fire behavior; know own capabilities; choose entry or rescue.
+Evacuation?|Transferring people, livestock and property away from the burning area.
+Entry?|Accessing the burning structure, possibly by force.
+Purposes of forcible entry?|Access for firefighters and equipment; rescue; aid ventilation.
+Rescue?|Extricating people and livestock from the burning building to a secure place.
+Exposure?|“Cover exposure”: securing nearby buildings to prevent fire extension.
+Confinement?|Restricting the fire to where it started and preventing spread between sections.
+Ventilation?|Displacing toxic gases and heated atmosphere with normal outside air.
+Types of ventilation?|Vertical (top to bottom), cross/horizontal (opening windows), mechanical (smoke ejector).
+Salvage?|Protecting property from preventable damage other than the fire.
+Salvage steps?|Remove materials outside the burning area and cover them with tarpaulins.
+Extinguishment?|Putting out the main body of fire using four general methods.
+Four methods of extinguishment?|Temperature reduction, fuel removal, oxygen dilution, chemical inhibition.
+Temperature reduction?|Cooling the fire, usually with water, until fuel gives off too little vapor to burn.
+Fuel removal?|Stop liquid flow, prevent gas production, remove solid fuel, or let the fuel burn out.
+Oxygen dilution?|Reduce oxygen using inert gases or by separating oxygen from the fuel.
+Chemical inhibition?|Agents like dry chemical and halon interrupt flame production.
+Limit of chemical inhibition?|Effective only on burning gas and liquid fuels, which cannot burn in smoldering mode.
+Overhaul?|Complete, detailed check to prevent re-flash; extinguishing embers to prevent rekindling.
+BFP Chief’s investigation threshold?|Fire incidents with property damage exceeding ₱60 million.
+Who appoints Fire Officer I to Senior Fire Officer IV at the regional office?|The Regional Director for Fire Protection, under RA 9263.
+PASS?|Pull, Aim, Squeeze, Sweep.
+Where do you aim an extinguisher?|At the base of the fire.
+After the fire is out?|Probe for smoldering hot spots or reflash of flammable liquids before leaving.
+Ground ladders length?|10 to 55 ft.
+Straight or hook ladder?|One section, 12–16 ft, common size 14 ft.
+Extension ladder?|Bed plus one or more fly ladders, up to 35 ft; with a stay pole: tormentors; over 35 ft: Bangor ladder.
+Wall ladder?|For rescue when a placed ladder falls short; climb one storey at a time.
+Aerial ladder?|On a turntable, up to 100 ft, 3 or 4 fly sections raised by hydraulic cables.
+Bed ladder vs. fly ladder?|Bed: lowest section of an extension ladder. Fly: top section.
+Halyard and pawl (dog)?|Halyard: rope or cable raising the fly. Pawl: locks the fly to the bed.
+Purpose of a fire detection system?|Discover fire in its earliest phase and activate an alarm.
+Ionization detector?|Radioactive source makes air conductive; combustion products interrupt current and trigger the alarm.
+Photoelectric smoke detector?|Projected beam for large areas; reflected beam or spot type for small areas.
+Rate-of-rise detector?|Reacts to a rapid temperature increase beyond the permitted maximum.
+Fixed-temperature detector?|Preset to a given temperature; a calibration screw can reset it to avoid false alarms.
+Sprinkler system?|Pipes carrying water to ceiling nozzles; heat opens the nozzles directly above the fire.
+Attempted arson?|Overt acts begun (gasoline-soaked rags by a wall, about to light) but not all acts of execution done, due to timely intervention.
+Frustrated arson?|Kerosene-soaked rags set alight near an inhabited house’s partition but put out before any part burned.
+Consummated arson?|Part of the building was burned; or fire set to the contents even if no part burned.
+Alligatoring?|Large scales indicate rapid, intense heat.
+Calcination?|Changes in plaster or gypsum walls: water driven out, paper surface charred off.
+Crazing?|Glass cracking into small irregular segments.
+Spalling?|Loss of tensile strength of concrete or brick, usually with color change; may chip.
+Depth of char?|Distance from original wood surface to unburned matter; estimates duration of exposure.
+Fusion?|Change in form of metal, glass or plastic from high heat; melting.
+Telltale signs of arson?|Burned building, separate fires, smoke color, smoke marks, size of fire, odor, condition of contents.
+Meaning of black smoke with a large flame?|Petroleum products, rubber or plastics.
+Meaning of white smoke before hose water touches the fire?|Humid material burning (hay, vegetable matter).
+Meaning of flame colors?|Red: petroleum. Blue: alcohol, aldehyde, ketone. Purple: potassium. Greenish-yellow: chlorine or manganese. Bright reddish-yellow: calcium.
+Other smoke clues?|Biting smoke: chlorine. Garlic odor: phosphorus. Reddish-brown: nitrocellulose, sulfur, acids. Heavy brown with bright red flame: nitrogen. White with bright white flame: magnesium. Black with red and blue flame: asphalt.
+Odor and condition of contents as arson telltales?|Odor of gasoline, alcohol, kerosene or other flammable liquids; valuables removed or merchandise replaced with out-of-style articles.
+Two or more separate fires in one building?|Certainly suspicious (arson telltale).`.split('\n').map(l=>l.split('|'));
+let ord=D.map((_,i)=>i),i=0,known={};
+const draw=()=>{const c=D[ord[i]];$('#card').classList.remove('f');$('#qq').textContent=c[0];$('#aa').textContent=c[1];$('#cnt').textContent='Card '+(i+1)+' of '+ord.length;$('#st').textContent=known[ord[i]]==1?'Got it':known[ord[i]]==2?'Again':'';
+$('#sc').textContent='Got it: '+Object.values(known).filter(v=>v==1).length+' · Again: '+Object.values(known).filter(v=>v==2).length+' · Total: '+D.length};
+const mv=d=>{i=(i+d+ord.length)%ord.length;draw()},mark=v=>{known[ord[i]]=v;mv(1)};
+$('#card').onclick=()=>$('#card').classList.toggle('f');$('#nx').onclick=()=>mv(1);$('#pv').onclick=()=>mv(-1);$('#ye').onclick=()=>mark(1);$('#no').onclick=()=>mark(2);
+$('#sh').onclick=()=>{ord=D.map((_,k)=>k);for(let n=ord.length-1;n>0;n--){const j=Math.random()*(n+1)|0;[ord[n],ord[j]]=[ord[j],ord[n]]}i=0;$('#ag').classList.remove('on');draw()};
+$('#ag').onclick=()=>{const on=$('#ag').classList.toggle('on');ord=on?D.map((_,k)=>k).filter(k=>known[k]==2):D.map((_,k)=>k);if(!ord.length){$('#ag').classList.remove('on');ord=D.map((_,k)=>k)}i=0;draw()};
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')mv(1);if(e.key==='ArrowLeft')mv(-1);if(e.key===' '&&e.target.id!=='card'){e.preventDefault();$('#card').classList.toggle('f')}});
+draw();
+const tree=$('#tree'),gs=[];
+$$('section.lesson').forEach(s=>{const g=document.createElement('div');g.className='g';g.setAttribute('style',s.getAttribute('style'));const b=document.createElement('button');b.innerHTML='<i></i>'+s.dataset.t.split(' · ')[1];const ul=document.createElement('ul');g.append(b,ul);tree.append(g);b.onclick=()=>g.classList.toggle('open');
+$$('#'+s.id+' h3').forEach((h,n)=>{h.id=s.id+'-'+n;const li=document.createElement('li');li.innerHTML='<a href="#'+h.id+'">'+h.textContent+'</a>';ul.append(li);gs.push({a:li.firstChild,h,g})})});
+gs[0].g.classList.add('open');
+const spy=()=>{$('#bar').style.width=scrollY/(document.documentElement.scrollHeight-innerHeight)*100+'%';let on=null;for(const x of gs){if(x.h.getBoundingClientRect().top<160)on=x;else break}
+if(on){gs.forEach(x=>x.a.classList.toggle('on',x===on));if(!$('#q').value)$$('.g').forEach(g=>g.classList.toggle('open',g===on.g))}};addEventListener('scroll',spy,{passive:true});spy();
+$('#q').oninput=e=>{const v=e.target.value.toLowerCase().trim();$$('.g').forEach(g=>{let hit=0;g.querySelectorAll('li').forEach(li=>{const x=gs.find(o=>o.a===li.firstChild);const m=!v||li.textContent.toLowerCase().includes(v)||x.h.parentElement.textContent.toLowerCase().includes(v);li.classList.toggle('hide',!m);if(m)hit=1});g.classList.toggle('hide',!hit);if(v&&hit)g.classList.add('open')})};
+$('#tb').onclick=()=>{const d=document.documentElement,dk=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;d.dataset.theme=dk?'light':'dark'};
+$('#tg').onclick=()=>$('#side').classList.add('open');
+$('#side').onclick=e=>{if(e.target.closest('a'))$('#side').classList.remove('open')};
+document.addEventListener('click',e=>{const s=$('#side');if(s.classList.contains('open')&&!s.contains(e.target)&&e.target.id!=='tg')s.classList.remove('open')});
+</script></body></html>
