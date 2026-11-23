@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Therapeutic Modality 2 Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f1ea;--pane:#fffdf8;--ink:#17213a;--mut:#5d6578;--line:#ddd8c8;--soft:#ece8da;--hl:#d9a62e;--onk:#fff;--c1:#1f3f77;--c2:#8a5a12;--c3:#2f7d6b;--c4:#7a3b5a;--c5:#a33b2f;--sea:#122246}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0c1220;--pane:#131b2e;--ink:#eaeef8;--mut:#9aa6c0;--line:#25304a;--soft:#1a2440;--onk:#0c1220;--c1:#7fa6ee;--c2:#e8bf5c;--c3:#6fd1b8;--c4:#e39bc0;--c5:#ff9b8c;--sea:#070c18}}
+:root[data-theme=dark]{--bg:#0c1220;--pane:#131b2e;--ink:#eaeef8;--mut:#9aa6c0;--line:#25304a;--soft:#1a2440;--onk:#0c1220;--c1:#7fa6ee;--c2:#e8bf5c;--c3:#6fd1b8;--c4:#e39bc0;--c5:#ff9b8c;--sea:#070c18}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,sans-serif}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:80}
+.hero{background:var(--sea);color:#e6ecf8;padding:48px 6vw 70px}.hero div{max-width:1240px;margin:auto}
+.hero h1{font-size:clamp(2.2rem,6vw,4.4rem);line-height:1;margin:0 0 14px}.hero p{max-width:62ch;margin:0;color:#aab8d6}
+.tiles{max-width:1240px;margin:-34px auto 0;padding:0 6vw;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;position:relative}
+.tile{text-decoration:none;color:var(--ink);background:var(--pane);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:12px;padding:11px 14px}
+.tile b{display:block;font-size:.76rem;color:var(--k)}.tile span{font:700 1rem/1.2 "Bricolage Grotesque"}
+.wrap{display:grid;grid-template-columns:290px 1fr;gap:30px;max-width:1240px;margin:auto;padding:36px 6vw 70px}
+aside{position:sticky;top:14px;align-self:start;max-height:calc(100vh - 28px);overflow:auto;background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:13px}
+aside input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;margin-bottom:8px}
+.g>button{all:unset;width:100%;box-sizing:border-box;cursor:pointer;display:flex;gap:9px;align-items:center;padding:8px 9px;border-radius:9px;font-weight:700;font-size:.92rem}
+.g>button:hover{background:var(--soft)}.g>button i{width:11px;height:11px;border-radius:3px;background:var(--k)}
+.g ul{list-style:none;margin:0 0 6px 14px;padding:0 0 0 9px;border-left:2px solid var(--line);display:none}.g.open ul{display:block}
+.g li a{display:block;padding:4px 8px;border-radius:7px;color:var(--mut);text-decoration:none;font-size:.86rem;line-height:1.35}
+.g li a:hover,.g li a.on{color:var(--ink);background:var(--soft)}.g li a.on{font-weight:700;box-shadow:inset 3px 0 var(--k)}.hide{display:none!important}
+#tb{all:unset;cursor:pointer;margin-top:8px;font-size:.78rem;color:var(--mut);padding:5px 10px;border:1px solid var(--line);border-radius:8px}#tg{display:none}
+main{min-width:0}section.lesson{background:var(--pane);border:1px solid var(--line);border-radius:18px;padding:0 clamp(16px,4vw,42px) 28px;margin-bottom:30px;overflow:hidden}
+.lh{margin:0 calc(-1*clamp(16px,4vw,42px)) 18px;padding:26px clamp(16px,4vw,42px) 20px;background:var(--k);color:var(--onk);display:flex;gap:16px;align-items:center}
+.lh .num{font:800 clamp(3rem,8vw,5rem)/.8 "Bricolage Grotesque";opacity:.9}.lh h2{margin:0;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.08}.lh p{margin:4px 0 0;opacity:.9;font-size:.95rem}
+h3{font-size:1.4rem;margin:30px 0 9px;line-height:1.15}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:12px 17px;border-radius:0 12px 12px 0;margin:14px 0;font-weight:600}
+.big small{display:block;font:700 .7rem Figtree;letter-spacing:.09em;text-transform:uppercase;color:var(--mut)}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:11px;margin:0}
+dl div{border:1px solid var(--line);border-radius:12px;padding:11px 15px;background:var(--bg)}dt{font-weight:700;color:var(--k)}dd{margin:2px 0 0;font-size:.94rem;line-height:1.5}
+ul.b,ol.b{padding-left:1.2em;margin:.4em 0}li{margin:.2em 0}
+.tw{overflow-x:auto;margin:13px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:500px;font-size:.92rem;line-height:1.45}
+th{background:var(--k);color:var(--onk);text-align:left;font:700 .8rem Figtree;letter-spacing:.05em;text-transform:uppercase}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:700}tr:last-child td{border-bottom:0}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0;font-weight:700;font-size:.86rem}.flow span{background:var(--k);color:var(--onk);padding:5px 12px;border-radius:8px}
+.note{font-size:.88rem;color:var(--ink);border:1px dashed var(--c5);border-radius:10px;padding:9px 14px;margin:14px 0;background:var(--bg)}
+.fx{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;font-weight:600;font-size:.88rem;color:var(--mut)}.fx button,.fn button{all:unset;cursor:pointer;padding:7px 16px;border-radius:99px;border:1.5px solid var(--ink);font-weight:700;font-size:.86rem}
+.fx button.on{background:var(--k);border-color:var(--k);color:var(--onk)}
+.scene{perspective:1400px}#card{all:unset;display:block;width:100%;cursor:pointer;position:relative;min-height:290px;transform-style:preserve-3d;transition:transform .5s}#card.f{transform:rotateY(180deg)}
+#card .fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:26px 30px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:auto}
+#card .ft{background:var(--soft);border:2px solid var(--line);font:700 clamp(1.3rem,3vw,2rem)/1.25 "Bricolage Grotesque"}
+#card .bk{background:var(--k);color:var(--onk);transform:rotateY(180deg);font:500 clamp(1rem,2vw,1.25rem)/1.6 Figtree}
+#card small{font:700 .72rem Figtree;letter-spacing:.1em;text-transform:uppercase;opacity:.65;margin-bottom:10px}
+.fn{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}.fn .no{border-color:var(--c5);color:var(--c5)}.fn .yes{border-color:var(--c3);color:var(--c3)}
+button:focus-visible,a:focus-visible,input:focus-visible,#card:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 60px;font-size:.88rem}
+@media(max-width:900px){.wrap{display:block}aside{position:fixed;inset:0 auto 0 0;width:min(320px,88vw);max-height:none;border-radius:0 14px 14px 0;z-index:70;transform:translateX(-105%);transition:.25s}aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.5)}
+#tg{display:block;position:fixed;right:16px;bottom:16px;z-index:60;background:var(--hl);color:#241a00;padding:12px 20px;border-radius:99px;font-weight:700;cursor:pointer}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style></head><body>
+<div id="bar"></div>
+<div class="hero"><div><h1>Therapeutic Modality 2</h1><p>Origins of the therapeutic community, democratic vs. concept-based models, AA and Synanon, RSAT, TC in the Philippines, correctional terms, and the quiz-sheet answer keys. Then drill 100 flashcards.</p></div></div>
+<nav class="tiles">
+<a class="tile" href="#s1" style="--k:var(--c1)"><b>1</b><span>Dual origins</span></a>
+<a class="tile" href="#s2" style="--k:var(--c2)"><b>2</b><span>Democratic TC</span></a>
+<a class="tile" href="#s3" style="--k:var(--c3)"><b>3</b><span>Concept-based TC</span></a>
+<a class="tile" href="#s4" style="--k:var(--c4)"><b>4</b><span>Law &amp; research</span></a>
+<a class="tile" href="#s5" style="--k:var(--c5)"><b>5</b><span>TC in the Philippines</span></a>
+<a class="tile" href="#s6" style="--k:var(--c1)"><b>6</b><span>Terms &amp; quiz keys</span></a>
+<a class="tile" href="#fcs" style="--k:var(--c2)"><b>⚡</b><span>100 flashcards</span></a></nav>
+<div class="wrap">
+<aside id="side"><input id="q" type="search" placeholder="Search topics…"><div id="tree"></div><button id="tb">Dark / light</button></aside>
+<main>
+
+<section class="lesson" id="s1" style="--k:var(--c1)" data-t="1 · Dual origins"><div class="lh"><div class="num">1</div><div><h2>Dual origins of the TC</h2><p>Two independent post-WWII traditions</p></div></div>
+<h3>Overview</h3>
+<p>The correction-based <b>Therapeutic Community (TC)</b> is a widely recognized treatment modality for drug-abusing offenders. It traces to two traditions.</p>
+<div class="tw"><table><thead><tr><th>Feature</th><th>British Democratic TC</th><th>American Concept-Based TC</th></tr></thead><tbody>
+<tr><td>Founder</td><td>Maxwell Jones (1946/1954), “Father of Democratic TC”</td><td>Charles “Chuck” Dederich (1958), Synanon</td></tr>
+<tr><td>Target</td><td>Post-WWII British veterans with combat neurosis/PTSD; psychiatric patients</td><td>Alcoholics and substance abusers seeking a drug-free self-help movement</td></tr>
+<tr><td>Philosophy</td><td>Democratic group work, social learning, Socratic dialogue, “therapeutic use of groups”</td><td>Hierarchy, behavior modification, self-help, forced personal change via confrontation</td></tr>
+<tr><td>Structure</td><td>Flatter hierarchy; staff and residents participate equally</td><td>Strict hierarchy; “older” residents are role models and supervisors</td></tr></tbody></table></div>
+<div class="big"><small>High-yield</small>Two traditions: (1) British Democratic TC, Maxwell Jones, social learning; (2) American Concept-Based TC, Dederich/Synanon, behavior modification and structured self-help.</div></section>
+
+<section class="lesson" id="s2" style="--k:var(--c2)" data-t="2 · Democratic TC"><div class="lh"><div class="num">2</div><div><h2>British Democratic TC</h2><p>The Maxwell Jones model</p></div></div>
+<h3>Origin and five axioms</h3>
+<p>The term was coined by <b>Thomas Main</b> in 1946 (community therapy combined with psychoanalytic psychotherapy) and expanded by <b>Maxwell Jones</b>. It treats severe, long-standing disorders (“chronic failures”, “troublemakers”) through healthy group life.</p>
+<ol class="b"><li>Two-way communication on all levels.</li><li>Decision-making on all levels.</li><li>Shared (multiple) leadership.</li><li>Consensus in decision-making.</li><li>Social learning by interaction in the “here and now”.</li></ol>
+<div class="big"><small>Socratic learning</small>The facilitator helps participants uncover knowledge from within the group instead of teaching new knowledge formally.</div>
+<h3>Four central principles</h3>
+<dl><div><dt>Permissiveness</dt><dd>Residents freely express thoughts and emotions without punishment or censure.</dd></div><div><dt>Democracy</dt><dd>Residents and staff have equal chances to participate in the organization.</dd></div><div><dt>Communalism</dt><dd>Face-to-face communication and free interaction create sharing and belonging.</dd></div><div><dt>Reality testing</dt><dd>Residents are continuously confronted with their own image and its impact as seen by peers and staff.</dd></div></dl>
+<div class="note"><b>Key facility:</b> Grendon Prison (UK, built 1959) has wings running TCs experimentally for psychologically disturbed offenders.</div></section>
+
+<section class="lesson" id="s3" style="--k:var(--c3)" data-t="3 · Concept-based TC"><div class="lh"><div class="num">3</div><div><h2>American Concept-Based TC</h2><p>AA, Synanon and the four pillars</p></div></div>
+<h3>Concept-based TC</h3>
+<p>A drug-free, structured living setting for recovery and reintegration. Four pillars:</p>
+<div class="flow"><span>Community</span><span>Hierarchy</span><span>Confrontation</span><span>Self-help</span></div>
+<h3>Alcoholics Anonymous (1935) and Synanon (1958)</h3>
+<div class="tw"><table><thead><tr><th>Item</th><th>AA</th><th>Synanon</th></tr></thead><tbody>
+<tr><td>Founders</td><td>Bill Wilson (New York stockbroker) and Dr. Bob Smith (physician), Akron, Ohio</td><td>Charles “Chuck” Dederich, Santa Monica, California</td></tr>
+<tr><td>Premise</td><td>People with alcoholism help each other stay sober through mutual sharing</td><td>Alternative to AA for illicit drug users (Narcotics Anonymous struggled until the mid-1960s)</td></tr>
+<tr><td>Mechanism</td><td>12 Steps, 12 Traditions, <b>sponsorship</b> (experienced member role-models for a newer one)</td><td>Provoke <b>“dissonance”</b> (discord in self-image); <b>encounter groups</b> where members are confronted; “older” residents as role models</td></tr>
+<tr><td>Features</td><td>Self-help, mutual self-help, role modeling, small groups</td><td>Structured residential community</td></tr></tbody></table></div>
+<p>On the quiz sheet, Synanon is also called the “grand daddy of all drug rehabilitation”. Self-help means residents are protagonists of their own treatment while peers act as facilitators.</p></section>
+
+<section class="lesson" id="s4" style="--k:var(--c4)" data-t="4 · Law & research"><div class="lh"><div class="num">4</div><div><h2>Legislation &amp; research</h2><p>Why prisons adopted TCs</p></div></div>
+<h3>The problem and the 1994 Crime Bill</h3>
+<dl><div><dt>Drug use among offenders</dt><dd>7 of 10 men (70%) and 8 of 10 women (80%) in the criminal justice system use drugs.</dd></div><div><dt>Revolving door</dt><dd>Without structured intervention, drug-involved offenders resume crime and drug use after release and return to custody.</dd></div><div><dt>RSAT</dt><dd>Residential Substance Abuse Treatment for State Prisoners Formula Grant Program, from the 1994 Crime Bill: $270 million over its first 5 years (from 1996).</dd></div><div><dt>Why</dt><dd>Research showed prison-based TCs significantly reduce recidivism and drug relapse. RSAT also encourages cognitive skills training, behavioral programming, vocational methods and 12-step programming.</dd></div></dl></section>
+
+<section class="lesson" id="s5" style="--k:var(--c5)" data-t="5 · TC in the Philippines"><div class="lh"><div class="num">5</div><div><h2>TC in the Philippines</h2><p>Timeline, agencies, key milestones</p></div></div>
+<h3>Timeline</h3>
+<div class="tw"><table><thead><tr><th>When</th><th>Event</th></tr></thead><tbody>
+<tr><td>1970s</td><td>Introduced by the Drug Abuse Research Foundation, Inc. (DARE). First Asian TC: <b>Bahay Pag-asa</b>, Trece Martires, Cavite, for heroin addicts.</td></tr>
+<tr><td>After 1971</td><td>DARE expanded residential centers across Manila and Baguio City and helped export the TC model to Malaysia, Thailand and other Asian nations.</td></tr>
+<tr><td>1997</td><td>PPA secured funding from the U.S. State Department’s Bureau of International Narcotics and Law Enforcement Affairs (INL) for training by Daytop International.</td></tr></tbody></table></div>
+<h3>Government integration</h3>
+<dl><div><dt>BJMP</dt><dd>Bureau of Jail Management and Penology: jails.</dd></div><div><dt>BuCor</dt><dd>Bureau of Corrections: prisons.</dd></div><div><dt>PPA</dt><dd>Parole and Probation Administration: community/outpatient supervision.</dd></div><div><dt>Treatment centers</dt><dd>NBI Treatment Center (Tagaytay) and the old Bicutan Treatment Center (formerly PNP, now under the DOH).</dd></div></dl>
+<p><b>Participating agencies:</b> DDB, DSWD, PNP, NBI, BuCor, BJMP, PPA, and local Anti-Drug Abuse Councils (Quezon City, Parañaque).</p></section>
+
+<section class="lesson" id="s6" style="--k:var(--c1)" data-t="6 · Terms & quiz keys"><div class="lh"><div class="num">6</div><div><h2>Terms &amp; quiz-sheet keys</h2><p>Correctional concepts, matching, multiple choice, unwritten philosophy</p></div></div>
+<h3>Correctional concepts</h3>
+<div class="tw"><table><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody>
+<tr><td>Correctional administration</td><td>Management of correctional facilities and supervision of sentenced or community-supervised persons. Goals: public safety, rehabilitation, order.</td></tr>
+<tr><td>Incarceration purpose</td><td>Punish and rehabilitate, prevent reoffending, provide educational, vocational and counseling programs.</td></tr>
+<tr><td>PDLs</td><td>Persons Deprived of Liberty: incarcerated or under probation/parole supervision.</td></tr>
+<tr><td>Probation/parole supervision</td><td>Community supervision with monitoring, drug testing, counseling and support for reintegration.</td></tr>
+<tr><td>Primary treatment modality</td><td>Counseling and therapy, alongside structured TC programming.</td></tr>
+<tr><td>TC member role</td><td>Dual role: client and therapist.</td></tr></tbody></table></div>
+<h3>Quiz sheet: matching key</h3>
+<div class="tw"><table><thead><tr><th>Term</th><th>Match</th></tr></thead><tbody>
+<tr><td>TC belief</td><td>“Man can change and unfold”</td></tr><tr><td>Psychomotor/vocational survival skills</td><td>A TC treatment category</td></tr><tr><td>Restorative justice</td><td>Restores broken relationships, heals wounds</td></tr><tr><td>TC cardinal rule</td><td>No drugs, no alcohol</td></tr><tr><td>Morning Meeting</td><td>A basic behavioral management tool</td></tr><tr><td>Theme of the Day</td><td>A vital component of the Morning Meeting</td></tr><tr><td>Hats Off ritual</td><td>Temporarily setting aside one’s vested position or status</td></tr><tr><td>Pride in quality</td><td>A TC unwritten philosophy</td></tr><tr><td>Immersion</td><td>A TCLP phase</td></tr><tr><td>Volunteerism</td><td>A lead community resource</td></tr><tr><td>TC philosophy</td><td>“I am here because there is no refuge”</td></tr><tr><td>Therapeutic Community Modality</td><td>Self-help social learning model moving clients from “wrong living” to “right living”</td></tr><tr><td>Communalism</td><td>A core principle of a TC</td></tr><tr><td>Maxwell Jones / Dederich</td><td>Democratic, social learning / hierarchical, behavioral modification (Synanon)</td></tr><tr><td>PPA / Bureau of Fire Protection</td><td>DOJ agency running the TC Ladderized Program / DILG agency</td></tr><tr><td>RA 10368</td><td>Human Rights Reparation and Recognition Act of 2013</td></tr></tbody></table></div>
+<h3>Quiz sheet: multiple choice and unwritten philosophy</h3>
+<div class="tw"><table><thead><tr><th>Question</th><th>Answer</th></tr></thead><tbody>
+<tr><td>Addresses jail overcrowding through early modes of release</td><td>Paralegal program</td></tr>
+<tr><td>Outpatient program; report twice a week to an Outreach Center</td><td>Aftercare</td></tr>
+<tr><td>BuCor prepares PDLs for reintegration through…</td><td>Reformation Directorates (per the key)</td></tr>
+<tr><td>Character formation for prison interpersonal relationships</td><td>Behavior Modification Program</td></tr>
+<tr><td>BJMP vulnerable group program, EXCEPT…</td><td>PDLs who are poor and not visited by family</td></tr>
+<tr><td>Seminars on stress management, psychoeducational counseling</td><td>Mental Health Services</td></tr>
+<tr><td>Reviews records of PDLs eligible for parole and clemency</td><td>Board of Pardons and Parole</td></tr>
+<tr><td>Prison-based TC significantly reduces…</td><td>Both recidivism and drug relapse</td></tr>
+<tr><td>Law creating the Board of Claims under DOJ</td><td>RA 7309</td></tr></tbody></table></div>
+<ol class="b"><li>You can’t keep it unless <b>you give it away</b>.</li><li>You alone can do it but <b>you can’t do it alone</b>.</li><li>What goes around <b>comes around</b>.</li><li>To be aware <b>is to be alive</b>.</li><li>Be careful what you ask for <b>you might get it</b>.</li><li>Nurture nature <b>for our children</b>.</li><li>To understand rather than <b>to be understood</b>.</li><li>Personal growth before vested <b>interest</b>.</li><li>Trust in your <b>self</b>.</li><li>Responsible love and <b>care</b>.</li></ol>
+<div class="note"><b>Check with your professor:</b> the matching key pairs “RA 7309” with “Board of Pardons and Parole”, but the multiple-choice key says RA 7309 is the law creating the Board of Claims. Also, the key credits the “Reformation Directorates” for BuCor reintegration, while the Becueno lecture assigned reintegration to the Directorate for External Relations.</div></section>
+
+<section class="lesson" id="fcs" style="--k:var(--c2)" data-t="⚡ · Flashcards"><div class="lh"><div class="num">⚡</div><div><h2>100 flashcards</h2><p>Click the card or press Space to flip; ← → to move</p></div></div>
+<h3>Flashcard deck</h3>
+<div class="fx"><span id="cnt"></span><button id="sh">Shuffle</button><button id="ag">Review “again” only</button></div>
+<div class="scene"><button id="card" aria-label="Flip card"><div class="fc ft"><small id="st"></small><span id="qq"></span></div><div class="fc bk"><small>Answer</small><span id="aa"></span></div></button></div>
+<div class="fn"><button id="pv">← Prev</button><button class="no" id="no">Again</button><button class="yes" id="ye">Got it</button><button id="nx">Next →</button></div>
+<p id="sc" style="text-align:center;color:var(--mut);font-size:.88rem"></p></section>
+</main></div>
+<button id="tg">☰ Topics</button>
+<footer>Study aid built from the Therapeutic Modality 2 reviewer and quiz sheets. Verify details against your own handout.</footer>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const D=`Two major TC traditions?|British Democratic (Maxwell Jones) and American Concept-Based (Dederich/Synanon).
+Father of the Democratic TC?|Maxwell Jones.
+Founder of Synanon?|Charles “Chuck” Dederich, 1958, Santa Monica, California.
+Who coined “therapeutic community” in 1946?|Thomas Main, combining community therapy with psychoanalytic psychotherapy.
+Original target of the democratic TC?|Post-WWII British veterans with combat neurosis/PTSD and psychiatric patients.
+Target of the American concept-based TC?|Alcoholics and substance abusers seeking a drug-free self-help movement.
+Democratic TC philosophy?|Democratic group work, social learning, Socratic dialogue, “therapeutic use of groups”.
+Concept-based TC philosophy?|Hierarchy, behavior modification, self-help, forced personal change via confrontation.
+Democratic TC structure?|Flatter hierarchy; staff and residents participate equally.
+Concept-based TC structure?|Strict hierarchy; “older” residents are role models and supervisors.
+Who did the democratic TC treat?|Severe, long-standing disorders (“chronic failures”, “troublemakers”) through healthy group life.
+Five axioms of Maxwell Jones?|Two-way communication; decision-making on all levels; shared leadership; consensus; social learning in the “here and now”.
+Axiom 1?|Two-way communication on all levels.
+Axiom 3?|Shared (multiple) leadership.
+Axiom 5?|Social learning by interaction in the “here and now”.
+Socratic learning?|The facilitator helps participants uncover knowledge from within the group instead of formal teaching.
+Four central principles of democratic TC?|Permissiveness, democracy, communalism, reality testing.
+Permissiveness?|Residents freely express thoughts and emotions without punishment or censure.
+Democracy (principle)?|Residents and staff have equal chances to participate in the organization.
+Communalism?|Face-to-face communication and free interaction create sharing and belonging.
+Reality testing?|Residents are continuously confronted with their own image and its impact as seen by peers and staff.
+Grendon Prison?|UK prison built in 1959 with wings running TCs experimentally for psychologically disturbed offenders.
+Concept-based TC?|A drug-free, structured living setting for recovery and reintegration.
+Four pillars of the concept-based TC?|Community, hierarchy, confrontation, self-help.
+When and where was AA founded?|1935, Akron, Ohio.
+AA founders?|Bill Wilson (New York stockbroker) and Dr. Bob Smith (physician).
+AA core premise?|People with alcoholism help each other stay sober through mutual sharing.
+AA framework?|12 Steps and 12 Traditions.
+Sponsorship?|An experienced AA member guides, supports and role-models for a newer member.
+Common features of AA?|Self-help, mutual self-help, role modeling, small-group format.
+Why was Synanon created?|As an alternative to AA for illicit drug users.
+Narcotics Anonymous when Synanon began?|Struggling to establish itself until the mid-1960s.
+Dissonance in Synanon?|Discord in self-image so people become uncomfortable with negative behaviors.
+Encounter groups?|Synanon groups where members are confronted to examine themselves.
+Role models in Synanon?|“Older” residents in a structured residential community.
+Synanon’s nickname on the quiz sheet?|“Grand daddy of all drug rehabilitation”.
+Drug use among offenders?|7 of 10 men (70%) and 8 of 10 women (80%).
+The “revolving door”?|Without structured intervention, drug-involved offenders resume crime and drug use and return to custody.
+RSAT stands for?|Residential Substance Abuse Treatment (for State Prisoners Formula Grant Program).
+RSAT came from which law?|The 1994 Crime Bill.
+RSAT funding?|$270 million over its first 5 years (starting 1996).
+Why was RSAT established?|Research showed prison-based TCs significantly reduce recidivism and drug relapse.
+What does RSAT encourage alongside TC?|Cognitive skills training, behavioral programming, vocational methods, 12-step programming.
+Who introduced TC to the Philippines?|Drug Abuse Research Foundation, Inc. (DARE), in the 1970s.
+First Asian TC?|Bahay Pag-asa, Trece Martires, Cavite, for heroin addicts.
+What did DARE do after 1971?|Expanded centers across Manila and Baguio City and helped export TC to Malaysia, Thailand and other Asian nations.
+BJMP?|Bureau of Jail Management and Penology: jails.
+BuCor?|Bureau of Corrections: prisons.
+PPA?|Parole and Probation Administration: community/outpatient supervision.
+Where is the NBI Treatment Center?|Tagaytay.
+Old Bicutan Treatment Center?|Formerly PNP; now managed under the Department of Health.
+1997 breakthrough?|PPA secured U.S. State Department INL funding for training by Daytop International.
+INL stands for?|Bureau of International Narcotics and Law Enforcement Affairs.
+Participating agencies in the Philippine TC?|DDB, DSWD, PNP, NBI, BuCor, BJMP, PPA, local Anti-Drug Abuse Councils (Quezon City, Parañaque).
+Correctional administration?|Management of facilities and supervision of sentenced or community-supervised persons; goals: public safety, rehabilitation, order.
+Purpose of incarceration?|Punish and rehabilitate, prevent reoffending, provide educational, vocational and counseling programs.
+PDLs?|Persons Deprived of Liberty: incarcerated or under probation/parole supervision.
+Probation and parole supervision?|Community supervision with monitoring, drug testing, counseling and support for reintegration.
+Primary treatment modality?|Counseling and therapy, alongside structured TC programming.
+Dual role of a TC member?|Client and therapist.
+TC modality (quiz sheet definition)?|Self-help social learning model using the TC community as the main vehicle to move clients from “wrong living” to “right living”.
+TC cardinal rule?|No drugs, no alcohol.
+“I am here because there is no refuge”?|A line of the TC philosophy.
+A TC belief?|“Man can change and unfold.”
+Restorative justice?|Restores broken relationships and heals wounds.
+Morning Meeting?|A basic behavioral management tool.
+Theme of the Day?|A vital component of the Morning Meeting.
+Hats Off ritual?|Temporarily setting aside one’s vested position or status.
+Volunteerism?|A lead community resource.
+Immersion?|A TCLP (Therapeutic Community Ladderized Program) phase.
+Pride in quality?|One of the TC unwritten philosophy.
+Psychomotor/vocational survival skills?|One of the TC treatment categories.
+Communalism on the quiz sheet?|A core principle of a therapeutic community.
+Which DOJ agency runs the TC Ladderized Program?|Parole and Probation Administration (PPA).
+Bureau of Fire Protection falls under?|The Department of the Interior and Local Government.
+RA 10368?|Human Rights Reparation and Recognition Act of 2013.
+RA 7309 (multiple-choice key)?|Creates the Board of Claims under DOJ for victims of unjust imprisonment/detention and violent crimes.
+Board of Pardons and Parole duty?|Reviews the physical, mental and moral record of PDLs eligible for parole and executive clemency.
+Paralegal program objective?|Reduce jail overcrowding by helping PDLs avail early modes of release.
+Aftercare?|Outpatient program: the client reports twice a week to an Outreach Center.
+BuCor reintegration (quiz key)?|Reformation Directorates per the key; the Becueno lecture credited the Directorate for External Relations, so confirm.
+Behavior Modification Program?|Character formation programs for effective interpersonal relationships in prison.
+Not a BJMP vulnerable-group program?|PDLs who are poor and not visited by family.
+Mental Health Services?|Reduce mental health disorders and build coping through seminars like stress management and psychoeducational counseling.
+Prison-based TCs significantly reduce…?|Both recidivism and drug relapse.
+Unwritten philosophy: you can’t keep it unless…?|you give it away.
+You alone can do it but…?|you can’t do it alone.
+What goes around…?|comes around.
+To be aware is…?|to be alive.
+Be careful what you ask for…?|you might get it.
+Nurture nature…?|for our children.
+To understand rather than…?|to be understood.
+Personal growth before vested…?|interest.
+Trust in your…?|self. And: Responsible love and care.
+Thomas Main vs. Maxwell Jones?|Main coined the term (1946); Jones expanded the model.
+AA vs. Synanon in one line?|AA: mutual sharing, 12 Steps, sponsorship. Synanon: confrontation, encounter groups, strict hierarchy.
+Self-help in the concept-based TC?|Residents are the protagonists of their own treatment while peers act as facilitators.
+Dates given for Maxwell Jones in the reviewer?|1946/1954.
+Dederich’s approach (quiz sheet)?|Hierarchical approach modeled on Synanon, mainly using behavioral modification techniques.
+Maxwell Jones’s approach (quiz sheet)?|Democratic approach, mainly using social learning principles.`.split('\n').map(l=>l.split('|'));
+let ord=D.map((_,i)=>i),i=0,known={};
+const draw=()=>{const c=D[ord[i]];$('#card').classList.remove('f');$('#qq').textContent=c[0];$('#aa').textContent=c[1];$('#cnt').textContent='Card '+(i+1)+' of '+ord.length;$('#st').textContent=known[ord[i]]==1?'Got it':known[ord[i]]==2?'Again':'';
+$('#sc').textContent='Got it: '+Object.values(known).filter(v=>v==1).length+' · Again: '+Object.values(known).filter(v=>v==2).length+' · Total: '+D.length};
+const mv=d=>{i=(i+d+ord.length)%ord.length;draw()},mark=v=>{known[ord[i]]=v;mv(1)};
+$('#card').onclick=()=>$('#card').classList.toggle('f');$('#nx').onclick=()=>mv(1);$('#pv').onclick=()=>mv(-1);$('#ye').onclick=()=>mark(1);$('#no').onclick=()=>mark(2);
+$('#sh').onclick=()=>{ord=D.map((_,k)=>k);for(let n=ord.length-1;n>0;n--){const j=Math.random()*(n+1)|0;[ord[n],ord[j]]=[ord[j],ord[n]]}i=0;$('#ag').classList.remove('on');draw()};
+$('#ag').onclick=()=>{const on=$('#ag').classList.toggle('on');ord=on?D.map((_,k)=>k).filter(k=>known[k]==2):D.map((_,k)=>k);if(!ord.length){$('#ag').classList.remove('on');ord=D.map((_,k)=>k)}i=0;draw()};
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')mv(1);if(e.key==='ArrowLeft')mv(-1);if(e.key===' '&&e.target.id!=='card'){e.preventDefault();$('#card').classList.toggle('f')}});
+draw();
+const tree=$('#tree'),gs=[];
+$$('section.lesson').forEach(s=>{const g=document.createElement('div');g.className='g';g.setAttribute('style',s.getAttribute('style'));const b=document.createElement('button');b.innerHTML='<i></i>'+s.dataset.t.split(' · ')[1];const ul=document.createElement('ul');g.append(b,ul);tree.append(g);b.onclick=()=>g.classList.toggle('open');
+$$('#'+s.id+' h3').forEach((h,n)=>{h.id=s.id+'-'+n;const li=document.createElement('li');li.innerHTML='<a href="#'+h.id+'">'+h.textContent+'</a>';ul.append(li);gs.push({a:li.firstChild,h,g})})});
+gs[0].g.classList.add('open');
+const spy=()=>{$('#bar').style.width=scrollY/(document.documentElement.scrollHeight-innerHeight)*100+'%';let on=null;for(const x of gs){if(x.h.getBoundingClientRect().top<160)on=x;else break}
+if(on){gs.forEach(x=>x.a.classList.toggle('on',x===on));if(!$('#q').value)$$('.g').forEach(g=>g.classList.toggle('open',g===on.g))}};addEventListener('scroll',spy,{passive:true});spy();
+$('#q').oninput=e=>{const v=e.target.value.toLowerCase().trim();$$('.g').forEach(g=>{let hit=0;g.querySelectorAll('li').forEach(li=>{const x=gs.find(o=>o.a===li.firstChild);const m=!v||li.textContent.toLowerCase().includes(v)||x.h.parentElement.textContent.toLowerCase().includes(v);li.classList.toggle('hide',!m);if(m)hit=1});g.classList.toggle('hide',!hit);if(v&&hit)g.classList.add('open')})};
+$('#tb').onclick=()=>{const d=document.documentElement,dk=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;d.dataset.theme=dk?'light':'dark'};
+$('#tg').onclick=()=>$('#side').classList.add('open');
+$('#side').onclick=e=>{if(e.target.closest('a'))$('#side').classList.remove('open')};
+document.addEventListener('click',e=>{const s=$('#side');if(s.classList.contains('open')&&!s.contains(e.target)&&e.target.id!=='tg')s.classList.remove('open')});
+</script></body></html>
