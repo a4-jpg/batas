@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Man &amp; Environment Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f4ee;--pane:#fcfdf9;--ink:#17261e;--mut:#5b6b60;--line:#d9e0d2;--soft:#e6ede0;--hl:#f2b01e;--onk:#fff;--c1:#2f7d4f;--c2:#1f6f8b;--c3:#b4531a;--c4:#6b4aa0;--c5:#8a6d0b;--sea:#12301f}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0d1711;--pane:#14221a;--ink:#eaf3ea;--mut:#9db2a2;--line:#27392d;--soft:#1b2d22;--onk:#0d1711;--c1:#6fd196;--c2:#6cc3e0;--c3:#ff9b6b;--c4:#c3a3f0;--c5:#e8c75a;--sea:#08120c}}
+:root[data-theme=dark]{--bg:#0d1711;--pane:#14221a;--ink:#eaf3ea;--mut:#9db2a2;--line:#27392d;--soft:#1b2d22;--onk:#0d1711;--c1:#6fd196;--c2:#6cc3e0;--c3:#ff9b6b;--c4:#c3a3f0;--c5:#e8c75a;--sea:#08120c}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 Figtree,system-ui,sans-serif}
+h1,h2,h3,.ys{font-family:"Bricolage Grotesque",Georgia,sans-serif}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:80}
+.hero{background:var(--sea);color:#e6f4ea;padding:48px 6vw 70px}.hero div{max-width:1240px;margin:auto}
+.hero h1{font-size:clamp(2.3rem,6vw,4.6rem);line-height:1;margin:0 0 14px}.hero p{max-width:60ch;margin:0;color:#a9cdb5}
+.tiles{max-width:1240px;margin:-34px auto 0;padding:0 6vw;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;position:relative}
+.tile{text-decoration:none;color:var(--ink);background:var(--pane);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:12px;padding:11px 14px}
+.tile b{display:block;font-size:.76rem;color:var(--k)}.tile span{font:700 1rem/1.2 "Bricolage Grotesque"}
+.wrap{display:grid;grid-template-columns:290px 1fr;gap:30px;max-width:1240px;margin:auto;padding:36px 6vw 70px}
+aside{position:sticky;top:14px;align-self:start;max-height:calc(100vh - 28px);overflow:auto;background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:13px}
+aside input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;margin-bottom:8px}
+.g>button{all:unset;width:100%;box-sizing:border-box;cursor:pointer;display:flex;gap:9px;align-items:center;padding:8px 9px;border-radius:9px;font-weight:700;font-size:.92rem}
+.g>button:hover{background:var(--soft)}.g>button i{width:11px;height:11px;border-radius:3px;background:var(--k)}
+.g ul{list-style:none;margin:0 0 6px 14px;padding:0 0 0 9px;border-left:2px solid var(--line);display:none}.g.open ul{display:block}
+.g li a{display:block;padding:4px 8px;border-radius:7px;color:var(--mut);text-decoration:none;font-size:.86rem;line-height:1.35}
+.g li a:hover,.g li a.on{color:var(--ink);background:var(--soft)}.g li a.on{font-weight:700;box-shadow:inset 3px 0 var(--k)}.hide{display:none!important}
+#tb{all:unset;cursor:pointer;margin-top:8px;font-size:.78rem;color:var(--mut);padding:5px 10px;border:1px solid var(--line);border-radius:8px}#tg{display:none}
+main{min-width:0}section.lesson{background:var(--pane);border:1px solid var(--line);border-radius:18px;padding:0 clamp(16px,4vw,42px) 28px;margin-bottom:30px;overflow:hidden}
+.lh{margin:0 calc(-1*clamp(16px,4vw,42px)) 18px;padding:26px clamp(16px,4vw,42px) 20px;background:var(--k);color:var(--onk);display:flex;gap:16px;align-items:center}
+.lh .num{font:800 clamp(3rem,8vw,5rem)/.8 "Bricolage Grotesque";opacity:.9}.lh h2{margin:0;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.08}.lh p{margin:4px 0 0;opacity:.9;font-size:.95rem}
+h3{font-size:1.4rem;margin:30px 0 9px;line-height:1.15}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:12px 17px;border-radius:0 12px 12px 0;margin:14px 0;font-weight:600}
+.big small{display:block;font:700 .7rem Figtree;letter-spacing:.09em;text-transform:uppercase;color:var(--mut)}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:11px;margin:0}
+dl div{border:1px solid var(--line);border-radius:12px;padding:11px 15px;background:var(--bg)}dt{font-weight:700;color:var(--k)}dd{margin:2px 0 0;font-size:.94rem;line-height:1.5}
+ul.b{padding-left:1.2em;margin:.4em 0}li{margin:.2em 0}
+.tw{overflow-x:auto;margin:13px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:500px;font-size:.92rem;line-height:1.45}
+th{background:var(--k);color:var(--onk);text-align:left;font:700 .8rem Figtree;letter-spacing:.05em;text-transform:uppercase}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:700}tr:last-child td{border-bottom:0}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0;font-weight:700;font-size:.86rem}.flow span{background:var(--k);color:var(--onk);padding:5px 12px;border-radius:8px}.flow i{font-style:normal;color:var(--mut)}
+.note{font-size:.85rem;color:var(--mut);border:1px dashed var(--k);border-radius:10px;padding:8px 13px;margin:12px 0}
+.fx{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;font-weight:600;font-size:.88rem;color:var(--mut)}.fx button,.fn button{all:unset;cursor:pointer;padding:7px 16px;border-radius:99px;border:1.5px solid var(--ink);font-weight:700;font-size:.86rem}
+.fx button.on{background:var(--k);border-color:var(--k);color:var(--onk)}
+.scene{perspective:1400px}#card{all:unset;display:block;width:100%;cursor:pointer;position:relative;min-height:290px;transform-style:preserve-3d;transition:transform .5s}#card.f{transform:rotateY(180deg)}
+#card .fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:26px 30px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:auto}
+#card .ft{background:var(--soft);border:2px solid var(--line);font:700 clamp(1.3rem,3vw,2rem)/1.25 "Bricolage Grotesque"}
+#card .bk{background:var(--k);color:var(--onk);transform:rotateY(180deg);font:500 clamp(1rem,2vw,1.25rem)/1.6 Figtree}
+#card small{font:700 .72rem Figtree;letter-spacing:.1em;text-transform:uppercase;opacity:.65;margin-bottom:10px}
+.fn{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}.fn .no{border-color:var(--c3);color:var(--c3)}.fn .yes{border-color:var(--c1);color:var(--c1)}
+button:focus-visible,a:focus-visible,input:focus-visible,#card:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 60px;font-size:.88rem}
+@media(max-width:900px){.wrap{display:block}aside{position:fixed;inset:0 auto 0 0;width:min(320px,88vw);max-height:none;border-radius:0 14px 14px 0;z-index:70;transform:translateX(-105%);transition:.25s}aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.5)}
+#tg{display:block;position:fixed;right:16px;bottom:16px;z-index:60;background:var(--hl);color:#241a00;padding:12px 20px;border-radius:99px;font-weight:700;cursor:pointer}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style></head><body>
+<div id="bar"></div>
+<div class="hero"><div><h1>Man &amp; Environment</h1><p>Environment basics, adaptation, human–environment interaction, global issues, international and Philippine environmental laws, and pollution treatment. Use the left menu, then drill the 100 flashcards.</p></div></div>
+<nav class="tiles">
+<a class="tile" href="#s1" style="--k:var(--c1)"><b>1</b><span>The environment</span></a>
+<a class="tile" href="#s2" style="--k:var(--c2)"><b>2</b><span>Adaptation &amp; interaction</span></a>
+<a class="tile" href="#s3" style="--k:var(--c3)"><b>3</b><span>Issues &amp; solutions</span></a>
+<a class="tile" href="#s4" style="--k:var(--c4)"><b>4</b><span>International law</span></a>
+<a class="tile" href="#s5" style="--k:var(--c5)"><b>5</b><span>Philippine laws</span></a>
+<a class="tile" href="#s6" style="--k:var(--c1)"><b>6</b><span>Pollution treatment</span></a>
+<a class="tile" href="#fcs" style="--k:var(--c2)"><b>⚡</b><span>100 flashcards</span></a></nav>
+<div class="wrap">
+<aside id="side"><input id="q" type="search" placeholder="Search topics…"><div id="tree"></div><button id="tb">Dark / light</button></aside>
+<main>
+
+<section class="lesson" id="s1" style="--k:var(--c1)" data-t="1 · The environment"><div class="lh"><div class="num">1</div><div><h2>The environment</h2><p>Definition, three categories, four spheres</p></div></div>
+<h3>What is environment?</h3>
+<div class="big"><small>Definition</small>The surrounding conditions that affect the lifestyle of living things. It includes natural and manmade things and covers both <b>abiotic</b> (physical, non-living) and <b>biotic</b> (living) parts.</div>
+<ul class="b"><li>The slides trace the word to the French “Environia”, meaning <b>to surround</b>.</li><li>Environment and organisms are two dynamic, complex components of nature; humans interact with it more vigorously than other beings.</li><li>Human life is affected by environment, so human life differs between regions.</li></ul>
+<h3>Three categories of environment</h3>
+<dl><div><dt>Natural</dt><dd>Everything that exists naturally: landforms, climate, soils, minerals, sunlight.</dd></div><div><dt>Built</dt><dd>Human-made surroundings for human activity: buildings, parks, neighborhoods, cities, plus infrastructure such as water supply and energy networks.</dd></div><div><dt>Social</dt><dd>Social networks and relationships between individuals in a context (neighborhood, school) that may influence behavior (McNeill et al., 2006).</dd></div></dl>
+<h3>Four components (spheres)</h3>
+<div class="tw"><table><thead><tr><th>Sphere</th><th>Represents</th><th>Key facts</th></tr></thead><tbody>
+<tr><td>Lithosphere</td><td>Rocks</td><td>Outermost layer (crust), made of minerals, up to 100 km deep; terrestrial and oceanic crust; main component is the tectonic plates.</td></tr>
+<tr><td>Hydrosphere</td><td>Water</td><td>All water bodies; covers 70% of Earth’s surface. 97.5% is ocean salt water, 2.5% freshwater: 30.8% groundwater, 68.9% frozen (glaciers), 0.3% in rivers, reservoirs and lakes (easily accessible).</td></tr>
+<tr><td>Atmosphere</td><td>Air</td><td>78.08% nitrogen, 20.95% oxygen, 0.93% argon, 0.038% CO₂, traces of hydrogen, helium, noble gases; water vapour varies.</td></tr>
+<tr><td>Biosphere</td><td>Life</td><td>All regions where life exists, the sum of living matter (biomass/biota). Term coined by geologist Edward Suess.</td></tr></tbody></table></div></section>
+
+<section class="lesson" id="s2" style="--k:var(--c2)" data-t="2 · Adaptation & interaction"><div class="lh"><div class="num">2</div><div><h2>Adaptation &amp; interaction</h2><p>How organisms and human societies adjust to environment</p></div></div>
+<h3>Three types of adaptation</h3>
+<p>Heraclitus: “the only constant is change.” Organisms that cannot adapt die. <b>Genetic change is the basis of all adaptations</b>; types are classified by how the change is expressed.</p>
+<div class="tw"><table><thead><tr><th>Type</th><th>Meaning</th><th>Examples</th></tr></thead><tbody>
+<tr><td>Structural</td><td>Appearance shaped by environment</td><td>Desert fox large ears (shed heat), Arctic fox small ears (retain heat); seal flippers; raccoon flexible digits; polar bear white, jaguar spotted; corky bark vs. wildfire.</td></tr>
+<tr><td>Physiological</td><td>Body chemistry and metabolism; usually invisible; found by lab tests</td><td>Kangaroo rat efficient kidneys; mosquito saliva anticoagulant; toxins in plant leaves.</td></tr>
+<tr><td>Behavioral</td><td>How an organism acts</td><td>Hibernation, migration, night activity in deserts, killdeer feigning injury, bowerbird mating. Humans: <b>cultural adaptation</b>, a subset of behavioral.</td></tr></tbody></table></div>
+<h3>Human–environment interactions</h3>
+<div class="big"><small>Definition</small>Interactions between the human social system and the rest of the ecosystem. Both are <b>complex adaptive systems</b> (Marten, 2001): complex (many parts and connections), adaptive (feedback structures that promote survival).</div>
+<dl><div><dt>Ecosystem</dt><dd>Area where plants, animals, other organisms, weather and landscape work together as a “bubble of life”.</dd></div><div><dt>Human social system</dt><dd>Shaped by population size, social organization, values, technology, wealth, education, knowledge; society type affects attitudes toward nature.</dd></div><div><dt>Ecosystem services</dt><dd>Benefits people obtain: water, timber, food, energy, information, farmland. Essential to well-being.</dd></div><div><dt>Millennium Ecosystem Assessment</dt><dd>UN-supported programme launched 2001 on links between ecosystem services and human well-being.</dd></div></dl>
+<div class="tw"><table><thead><tr><th>MEA ecosystem services</th><th>Examples</th></tr></thead><tbody><tr><td>Provisioning</td><td>Food, fresh water, wood and fiber, fuel</td></tr><tr><td>Regulating</td><td>Climate, flood and disease regulation; water purification</td></tr><tr><td>Cultural</td><td>Aesthetic, spiritual, educational, recreational</td></tr><tr><td>Supporting</td><td>Nutrient cycling, soil formation, primary production</td></tr></tbody></table></div>
+<p><b>Constituents of well-being:</b> security; basic material for a good life; health; good social relations; freedom of choice and action.</p>
+<h3>Coevolution and coadaptation</h3>
+<dl><div><dt>Coevolution</dt><dd>Two or more species exert selective pressure on each other and evolve in response, so the selective environment keeps changing.</dd></div><div><dt>Coadaptation</dt><dd>Reciprocal adaptation of two species (also individuals, genotypes).</dd></div><div><dt>For humans</dt><dd>Never-ending mutual adjustment: people change the environment and storms, earthquakes force people to react.</dd></div><div><dt>Biotic–abiotic link</dt><dd>All biotic components depend on each other; plants make food from solar energy (abiotic + biotic interaction).</dd></div></dl></section>
+
+<section class="lesson" id="s3" style="--k:var(--c3)" data-t="3 · Issues & solutions"><div class="lh"><div class="num">3</div><div><h2>Issues &amp; solutions</h2><p>Population, acid rain, disasters, global warming</p></div></div>
+<h3>Impacts of population growth</h3>
+<p>Industrialization, burning fossil fuels, use of non-renewable resources, pollution, increased CO₂.</p>
+<div class="big"><small>Acid rain</small>Burning fossil fuels releases sulphates and nitrates that mix with water vapour to form <b>sulphuric and nitric acid</b>. Lakes and ponds can become so acidified that no life survives.</div>
+<p><b>Disasters:</b> more than 1.4 million died in natural disasters over 50 years (earthquakes the biggest killers); 1998 losses exceeded US$93 billion.</p>
+<h3>Six changes in the man–environment relationship</h3>
+<div class="tw"><table><thead><tr><th>Challenge</th><th>Point</th></tr></thead><tbody>
+<tr><td>1 Population explosion</td><td>Pressure on resources; growth leads to poverty and lower environmental standards.</td></tr>
+<tr><td>2 Water</td><td>Restore water quality and use non-polluted water rationally.</td></tr>
+<tr><td>3 Agriculture</td><td>Grow without damage; over-cultivation causes nutrient deficiency, lost organic matter, salinity, damaged soil structure.</td></tr>
+<tr><td>4 Soil erosion</td><td>Restore land; manage land, water and forest together.</td></tr>
+<tr><td>5 Forests</td><td>Depleting fast for timber and farmland; restore via social forestry and afforestation.</td></tr>
+<tr><td>6 Pollution</td><td>Overexploitation, disturbed biogeochemical cycles, GHG emissions, hazardous chemicals, nuclear arsenals, radioactive waste, biotech misuse.</td></tr></tbody></table></div>
+<h3>Ways of tackling the problems</h3>
+<ul class="b"><li>Population control; optimum use of natural resources; conserve biodiversity.</li><li>Public awareness; top priority for environmental protection; eco-friendly technology.</li><li>Sustainable agriculture, bio-fertilisers, minimal pesticides and insecticides.</li><li>Afforestation of wasteland; biotechnology to clean up hazardous wastes.</li></ul>
+<h3>Global warming and environmental issues</h3>
+<p><b>Global warming</b> is the rise in average near-surface air temperature over the past one to two centuries. Slide issue lists include:</p>
+<dl><div><dt>Overpopulation</dt><dd>Biocapacity, carrying capacity, overshoot, urbanization, waste. <b>I = P × A × T</b>: impact = population × affluence (per capita) × technology (resource-depleting, polluting).</dd></div><div><dt>Hydrology</dt><dd>Science of occurrence, distribution, movement and properties of Earth’s waters and their relation to environment; flooding, landslide.</dd></div><div><dt>Intensive farming</dt><dd>Monoculture, overgrazing, slash and burn, irrigation, nutrient pollution, pesticide drift.</dd></div><div><dt>Land use</dt><dd>Desertification, habitat destruction, urban sprawl, urban heat island.</dd></div><div><dt>Natural disasters</dt><dd>Floods, hurricanes, tornadoes, eruptions, earthquakes, tsunamis.</dd></div><div><dt>Climate change effects</dt><dd>Global warming and dimming, sea level rise, greenhouse gas, ocean acidification, thermohaline shutdown.</dd></div></dl>
+<div class="note"><b>Areas of concern (slide):</b> air and water quality; global climate change; agriculture; biodiversity and species protection; pesticides and hazardous chemicals; waste management and remediation of contaminated land; management of public lands and natural resources.</div></section>
+
+<section class="lesson" id="s4" style="--k:var(--c4)" data-t="4 · International law"><div class="lh"><div class="num">4</div><div><h2>International environmental law</h2><p>Chapter 7: principles, treaties, conventions</p></div></div>
+<h3>Environmental law and its principles</h3>
+<div class="big"><small>Definition</small>A network of treaties, statutes, regulations, common and customary laws addressing the effects of human activity on the natural environment, to reduce impacts on nature itself and on humanity.</div>
+<div class="flow"><span>Environmentalism</span><span>Ecology</span><span>Conservation</span><span>Stewardship</span><span>Responsibility &amp; sustainability</span></div>
+<h3>Treaties, conventions, protocols</h3>
+<div class="tw"><table><thead><tr><th>Instrument</th><th>Key points</th></tr></thead><tbody>
+<tr><td>Basel Convention (1992)</td><td>Control of Transboundary Movements of Hazardous Wastes and their Disposal. Most comprehensive global agreement on hazardous wastes: generation and management, transboundary movements, disposal.</td></tr>
+<tr><td>Convention on Biological Diversity</td><td>Biodiversity damage is handled comprehensively, not species by species. Objectives: (1) conservation, (2) sustainable use of components, (3) fair and equitable sharing of benefits from genetic resources.</td></tr>
+<tr><td>CITES</td><td>Ensures international trade in wild animals and plants does not threaten their survival (e.g., tigers, elephants).</td></tr>
+<tr><td>Bonn Convention (Migratory Species)</td><td>Conserves terrestrial, marine and avian migratory species throughout their range: bats, cetaceans, seals, waterbirds, albatrosses and petrels, gorillas.</td></tr>
+<tr><td>Kyoto Protocol</td><td>Defined three innovative “flexibility” mechanisms letting Parties cut emissions or remove carbon cost-effectively in other countries.</td></tr></tbody></table></div>
+<div class="note">Outside the slides: Basel was adopted in 1989 and took effect in 1992; Kyoto’s three mechanisms are emissions trading, the Clean Development Mechanism and Joint Implementation.</div></section>
+
+<section class="lesson" id="s5" style="--k:var(--c5)" data-t="5 · Philippine laws"><div class="lh"><div class="num">5</div><div><h2>Philippine environmental laws</h2><p>Chapter 8: statutes, decrees and protection guidelines</p></div></div>
+<h3>Ecology and the Three Rs</h3>
+<p>“Economy” and “ecology” both come from the Greek <b>oikos</b>, “home”. <b>Ecology</b> studies interactions between organisms and their environment.</p>
+<div class="flow"><span>Reduce</span><i>›</i><span>Reuse</span><i>›</i><span>Recycle</span></div>
+<p>The waste hierarchy is the order of priority for cutting waste. <b>Reduce</b>: less produced and consumed means less to handle. <b>Reuse</b>: repurpose (e.g., buildings made from shipping containers). <b>Recycle</b>: turn waste back into raw material; needs a facility to process it.</p>
+<h3>Laws at a glance</h3>
+<div class="tw"><table><thead><tr><th>Law</th><th>What it does</th></tr></thead><tbody>
+<tr><td>RA 9003</td><td>Ecological Solid Waste Management Act of 2000. Segregation and collection at the <b>barangay level</b> for biodegradable, compostable and reusable wastes.</td></tr>
+<tr><td>RA 9275</td><td>Philippine Clean Water Act of 2004; comprehensive water quality management.</td></tr>
+<tr><td>RA 8749</td><td>Philippine Clean Air Act of 1999. Right to a balanced, healthful ecology; LGUs hold primary responsibility; cleanup is area-based; <b>polluters must pay</b>; environment is everyone’s concern.</td></tr>
+<tr><td>RA 6969</td><td>Toxic Substances and Hazardous and Nuclear Wastes Control Act; regulates chemicals; bars entry, even in transit, of hazardous and nuclear wastes.</td></tr>
+<tr><td>RA 8550</td><td>Fisheries Code; protection, conservation and management of fisheries; allowable fishing methods in coastal waters.</td></tr>
+<tr><td>RA 9729</td><td>Climate Change Act of 2009; mainstreams climate change in policy; creates the Climate Change Commission.</td></tr>
+<tr><td>PD 984</td><td>Pollution Control Law (revises RA 3931); policy to prevent, abate and control water, air and land pollution.</td></tr>
+<tr><td>PD 1181</td><td>Vehicular pollution; maximum emissions of air pollutants from vehicles; supplements PD 984.</td></tr>
+<tr><td>PD 600 (amended by PD 979)</td><td>Prohibits discharge of oil, noxious liquids and other harmful substances into inland and territorial waters.</td></tr>
+<tr><td>PD 825</td><td>Penalty for improper disposal of garbage and other uncleanliness.</td></tr>
+<tr><td>PD 953</td><td>Tree planting and penalties for unauthorized cutting or damage of trees. Plant: (1) riverbank landowners, ≥5 m from the bank; (2) subdivision owners, open spaces and along roads; (3) holders of government forest or grazing permits with a river or creek, ≥20 m from each bank.</td></tr>
+<tr><td>PD 1219</td><td>Coral Resources Development and Conservation Decree.</td></tr></tbody></table></div>
+<h3>Environmental protection</h3>
+<p>Slides define it as action to remedy or prevent damage to surroundings or natural resources, reduce risk, or use resources more efficiently (energy saving, renewables); as protection from physical, chemical, biological and other adverse effects of plans, programs and economic activity; and describe land unsuitable for buildings (flood plain, erosion, steep slopes, organic soils, high water table, natural heritage features).</p>
+<ol class="b"><li>Sustainable development through protection.</li><li>Effective resource use, energy saving, fewer exhaust emissions.</li><li>Clean production, pollution prevention, law compliance.</li><li>Raise awareness through training.</li><li>Promote harmony through information training.</li><li>Seek perfection through continued improvement.</li></ol></section>
+
+<section class="lesson" id="s6" style="--k:var(--c1)" data-t="6 · Pollution treatment"><div class="lh"><div class="num">6</div><div><h2>Prevention &amp; treatment of pollutants</h2><p>Wastewater, exhaust gases, solid waste</p></div></div>
+<h3>Treatment of wastewater</h3>
+<div class="big"><small>Definition</small>Also called sewage treatment: removing impurities from wastewater before it reaches aquifers or bodies of water. Clean vs. polluted depends on the impurities and the intended use.</div>
+<div class="tw"><table><thead><tr><th>Step</th><th>Infographic summary</th></tr></thead><tbody>
+<tr><td>1</td><td>Sewage pumped to the lifting station, chemically treated, sent for separation.</td></tr>
+<tr><td>2</td><td>Separation removes solids larger than 13 mm; sent to a refuse facility and buried.</td></tr>
+<tr><td>3</td><td>Primary settling: heavier material sinks and is scraped away; fermented 30 days, used as fertiliser.</td></tr>
+<tr><td>4</td><td>Effluent to bio-reactors for 9 hours; bacteria break down harmful matter.</td></tr>
+<tr><td>5</td><td>Secondary clarifiers; bacteria keep cleaning to a drinkable level.</td></tr>
+<tr><td>6</td><td>Chlorine treatment, then over a weir into the water supply.</td></tr></tbody></table></div>
+<p>Plant diagrams also show a bar screen, equalization tank, primary and secondary settling, aeration tank, chlorine contact tank, and sludge drying beds.</p>
+<h3>Treatment of exhaust gases and solid waste</h3>
+<dl><div><dt>Exhaust gases</dt><dd>The captive power plant uses a state-of-the-art <b>CFB (circulating fluidized-bed) boiler</b> and adds limestone during combustion; desulphurization rate over 85–87%.</dd></div><div><dt>Solid waste</dt><dd>Comprehensive utilization: burning in the captive boiler, drying fume, and supplying cement manufacturers as raw material.</dd></div></dl></section>
+
+<section class="lesson" id="fcs" style="--k:var(--c2)" data-t="⚡ · Flashcards"><div class="lh"><div class="num">⚡</div><div><h2>100 flashcards</h2><p>Click the card or press Space to flip; ← → to move</p></div></div>
+<h3>Flashcard deck</h3>
+<div class="fx"><span id="cnt"></span><button id="sh">Shuffle</button><button id="ag">Review “again” only</button></div>
+<div class="scene"><button id="card" aria-label="Flip card"><div class="fc ft"><small id="st"></small><span id="qq"></span></div><div class="fc bk"><small>Answer</small><span id="aa"></span></div></button></div>
+<div class="fn"><button id="pv">← Prev</button><button class="no" id="no">Again</button><button class="yes" id="ye">Got it</button><button id="nx">Next →</button></div>
+<p id="sc" style="text-align:center;color:var(--mut);font-size:.88rem"></p></section>
+</main></div>
+<button id="tg">☰ Topics</button>
+<footer>Study aid based on the Man &amp; Environment slides (119 pages). Verify details against your own handout.</footer>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const D=`What does “environment” mean?|The surrounding conditions that affect the lifestyle of living things.
+Word origin of “environment” (per slides)?|French “Environia”, meaning to surround.
+Abiotic vs. biotic environment?|Abiotic: physical, non-living. Biotic: living.
+Three categories of environment?|Natural, built, social.
+Natural environment?|Components that exist naturally: landforms, climate, soils, minerals, sunlight.
+Built environment?|Human-made surroundings for human activity (buildings, parks, cities) plus infrastructure like water and energy networks.
+Social environment?|Social networks and relationships between individuals in a context that may influence behavior (McNeill et al., 2006).
+Four components of environment?|Lithosphere, hydrosphere, atmosphere, biosphere (rocks, water, air, life).
+Lithosphere?|Outermost layer (crust) made of minerals, up to 100 km deep; main component is tectonic plates.
+Share of Earth’s surface covered by hydrosphere?|70%.
+Share of Earth’s water that is ocean salt water?|97.5%.
+Share of Earth’s water that is freshwater?|2.5%.
+Freshwater breakdown?|30.8% groundwater, 68.9% frozen (glaciers), 0.3% in rivers, reservoirs and lakes (easily accessible).
+Atmosphere composition?|78.08% nitrogen, 20.95% oxygen, 0.93% argon, 0.038% CO₂; traces of others; variable water vapour.
+Who coined “biosphere”?|Geologist Edward Suess.
+Biosphere?|All regions where life exists; the sum total of living matter (biomass/biota).
+Who said the only constant is change?|Heraclitus, ancient Greek philosopher.
+What is the basis of all adaptations?|Genetic change.
+Three types of adaptation?|Structural, physiological, behavioral.
+Structural adaptation?|Environment shapes appearance: desert fox large ears, Arctic fox small ears, seal flippers, white polar bear.
+Physiological adaptation?|Body chemistry and metabolism, usually invisible: kangaroo rat kidneys, mosquito anticoagulant saliva, plant toxins.
+How are physiological adaptations detected?|Lab studies of blood, urine, body fluids, metabolic pathways and tissues.
+Behavioral adaptation?|How an organism acts: hibernation, migration, night activity, killdeer feigning injury, bowerbird mating.
+Cultural adaptation?|A subset of behavioral adaptation: people learn to raise food and cope with their climate.
+Human–environmental interactions?|Interactions between the human social system and the rest of the ecosystem.
+Human social systems and ecosystems are what (Marten, 2001)?|Complex adaptive systems.
+Why “complex” and why “adaptive”?|Complex: many parts and connections. Adaptive: feedback structures promote survival in changing conditions.
+Ecosystem?|Geographic area where plants, animals, other organisms, weather and landscape work together as a “bubble of life”.
+Traits of human social systems?|Population size, social organization, values, technology, wealth, education, knowledge.
+Ecosystem services?|Benefits people get from the environment: water, timber, food, energy, information, farmland.
+Millennium Ecosystem Assessment?|UN-supported programme launched 2001 on how ecosystem services and human well-being are linked.
+Four MEA service categories?|Provisioning, regulating, cultural, supporting.
+Provisioning services?|Food, fresh water, wood and fiber, fuel.
+Regulating services?|Climate, flood and disease regulation; water purification.
+Cultural services?|Aesthetic, spiritual, educational, recreational.
+Supporting services?|Nutrient cycling, soil formation, primary production.
+MEA constituents of well-being?|Security, basic material for a good life, health, good social relations, freedom of choice and action.
+Coevolution?|Two or more species exert selective pressure on each other and evolve in response; the selective environment keeps changing.
+Coadaptation?|Reciprocal adaptation of two species (also individuals or genotypes).
+Coevolution/coadaptation in humans?|Never-ending mutual adjustment between human social systems and environment.
+Plants making food from sunlight shows what?|Interaction between abiotic and biotic components.
+Impacts of population growth?|Industrialization, burning fossil fuels, non-renewable resource use, pollution, increased CO₂.
+Cause of acid rain?|Burning fossil fuels releases sulphates and nitrates that mix with water vapour.
+Acids in acid rain?|Sulphuric acid and nitric acid.
+Effect of acid rain on lakes?|Acidification so severe that no life can live in them.
+Deaths from natural disasters over 50 years (slide)?|More than 1.4 million; earthquakes were the biggest killers.
+Financial losses from natural disasters in 1998?|More than US$93 billion.
+Six man–environment challenges?|Population explosion, non-polluted water use, sustainable agriculture, soil erosion, forest restoration, pollution.
+Effects of over-cultivation?|Nutrient deficiency, lost organic matter, soil salinity, damaged soil structure.
+How to restore forests?|Social forestry and afforestation programmes.
+Pollution threats named in slides?|Overexploitation, disrupted biogeochemical cycles, GHG emissions, hazardous chemicals, nuclear arsenals, radioactive waste, biotech misuse.
+Ways to tackle environmental problems?|Population control, optimum resource use, conserve biodiversity, awareness, eco-friendly technology, sustainable farming, bio-fertiliser, less pesticide, afforestation.
+Global warming?|Rise in average near-surface air temperature over the past one to two centuries.
+I = PAT?|Impact = Population × Affluence × Technology.
+In I = PAT, what are A and T?|A: per capita affluence/economic growth. T: resource-depleting, polluting technology.
+Hydrology?|Science of occurrence, distribution, movement and properties of Earth’s waters and their relation to the environment.
+Natural disaster?|Major adverse event from natural processes: floods, hurricanes, tornadoes, eruptions, earthquakes, tsunamis.
+“Areas of concern” slide?|Air and water quality, climate change, agriculture, biodiversity, pesticides, waste and contaminated land, public lands.
+Climate change effects listed?|Global warming, global dimming, sea level rise, greenhouse gas, ocean acidification, thermohaline shutdown.
+Intensive farming issues?|Monoculture, overgrazing, slash and burn, irrigation, nutrient pollution, pesticide drift.
+Environmental law?|Network of treaties, statutes, regulations, common and customary laws on human effects on the natural environment.
+Purpose of environmental law?|Regulate humanity–environment interaction to reduce impacts on nature and on humanity.
+Five principles influencing environmental laws?|Environmentalism, ecology, conservation, stewardship, responsibility and sustainability.
+Basel Convention?|Control of Transboundary Movements of Hazardous Wastes and their Disposal (1992 in slides).
+What does Basel cover?|Generation and management, transboundary movements, disposal of hazardous wastes.
+Why the Convention on Biological Diversity?|Biodiversity damage needs a comprehensive approach, not species-by-species.
+Three CBD objectives?|Conservation; sustainable use of components; fair and equitable sharing of benefits from genetic resources.
+CITES?|Ensures international trade in wild animals and plants does not threaten their survival.
+Bonn Convention?|Convention on Migratory Species of Wild Animals; conserves migratory species across their range.
+Kyoto Protocol?|Defined three innovative “flexibility” mechanisms to cut or remove emissions cost-effectively in other countries.
+Greek “oikos”?|“Home”; root of both economy and ecology.
+Ecology?|Study of interactions between organisms and their environment.
+RA 9003?|Ecological Solid Waste Management Act of 2000.
+Where does RA 9003 segregation happen?|Barangay level: biodegradable, compostable, reusable wastes.
+Waste hierarchy?|Reduce, Reuse, Recycle (the three Rs).
+Reduce?|Produce and consume less, so there is less to reuse or recycle.
+Reuse?|Repurpose items, e.g., buildings from discarded shipping containers.
+Recycle?|Transform waste into raw material for new items; needs a processing facility.
+RA 9275?|Philippine Clean Water Act of 2004.
+PD 984?|Pollution Control Law (revises RA 3931): prevent, abate, control water, air and land pollution.
+PD 953?|Requires tree planting; penalizes unauthorized cutting or damage of trees.
+PD 953: riverbank landowners?|Plant trees at least 5 meters along the bank on their land.
+PD 953: permit holders on forest or grazing land with a river?|Plant trees at least 20 meters from each bank edge.
+RA 6969?|Toxic Substances and Hazardous and Nuclear Wastes Control Act; bars entry, even in transit, of hazardous and nuclear wastes.
+RA 8550?|Fisheries Code of the Philippines.
+RA 9729?|Climate Change Act of 2009; creates the Climate Change Commission.
+RA 8749?|Philippine Clean Air Act of 1999.
+Principles in RA 8749 Sec. 2?|Balanced healthful ecology; LGUs primarily responsible; area-based cleanup; polluters must pay; everyone’s concern.
+PD 825?|Penalty for improper disposal of garbage and other uncleanliness.
+PD 600 (amended by PD 979)?|Prohibits discharge of oil and noxious liquids into inland and territorial waters.
+PD 1181?|Vehicular pollution control; emission limits for vehicles; supplements PD 984.
+PD 1219?|Coral Resources Development and Conservation Decree.
+Wastewater (sewage) treatment?|Removing impurities from sewage before it reaches aquifers or water bodies.
+Six-step wastewater process (infographic)?|Lifting station; separation (solids over 13 mm buried); primary settling (30-day fermentation); 9-hour bio-reactors; secondary clarifiers; chlorine and weir.
+Exhaust gas treatment in the slides?|CFB boiler with limestone added during combustion; desulphurization over 85–87%.
+Solid waste treatment in the slides?|Comprehensive utilization: captive boiler burning, drying fume, raw material for cement makers.
+Manmade things shown in the slides?|Skyscrapers, a bridge, a dam, and a farm with a silo.
+Structural adaptation examples for seals and raccoons?|Seals: flippers to navigate water. Raccoons: separate, flexible digits to handle food.
+Land use issues listed in the slides?|Desertification, habitat fragmentation and destruction, land degradation, urban heat island, urban sprawl.
+Nuclear issues listed in the slides?|Fallout, meltdown, power, weapons, accidents, safety, high-level radioactive waste management.`.split('\n').map(l=>l.split('|'));
+let ord=D.map((_,i)=>i),i=0,known={};
+const draw=()=>{const c=D[ord[i]];$('#card').classList.remove('f');$('#qq').textContent=c[0];$('#aa').textContent=c[1];$('#cnt').textContent='Card '+(i+1)+' of '+ord.length;$('#st').textContent=known[ord[i]]==1?'Got it':known[ord[i]]==2?'Again':'';
+$('#sc').textContent='Got it: '+Object.values(known).filter(v=>v==1).length+' · Again: '+Object.values(known).filter(v=>v==2).length+' · Total: '+D.length};
+const mv=d=>{i=(i+d+ord.length)%ord.length;draw()},mark=v=>{known[ord[i]]=v;mv(1)};
+$('#card').onclick=()=>$('#card').classList.toggle('f');$('#nx').onclick=()=>mv(1);$('#pv').onclick=()=>mv(-1);$('#ye').onclick=()=>mark(1);$('#no').onclick=()=>mark(2);
+$('#sh').onclick=()=>{ord=D.map((_,k)=>k);for(let n=ord.length-1;n>0;n--){const j=Math.random()*(n+1)|0;[ord[n],ord[j]]=[ord[j],ord[n]]}i=0;$('#ag').classList.remove('on');draw()};
+$('#ag').onclick=()=>{const on=$('#ag').classList.toggle('on');ord=on?D.map((_,k)=>k).filter(k=>known[k]==2):D.map((_,k)=>k);if(!ord.length){$('#ag').classList.remove('on');ord=D.map((_,k)=>k)}i=0;draw()};
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')mv(1);if(e.key==='ArrowLeft')mv(-1);if(e.key===' '&&e.target.id!=='card'){e.preventDefault();$('#card').classList.toggle('f')}});
+draw();
+/* nav */
+const tree=$('#tree'),gs=[];
+$$('section.lesson').forEach(s=>{const g=document.createElement('div');g.className='g';g.setAttribute('style',s.getAttribute('style'));const b=document.createElement('button');b.innerHTML='<i></i>'+s.dataset.t.split(' · ')[1];const ul=document.createElement('ul');g.append(b,ul);tree.append(g);b.onclick=()=>g.classList.toggle('open');
+$$('#'+s.id+' h3').forEach((h,n)=>{h.id=s.id+'-'+n;const li=document.createElement('li');li.innerHTML='<a href="#'+h.id+'">'+h.textContent+'</a>';ul.append(li);gs.push({a:li.firstChild,h,g})})});
+gs[0].g.classList.add('open');
+const spy=()=>{$('#bar').style.width=scrollY/(document.documentElement.scrollHeight-innerHeight)*100+'%';let on=null;for(const x of gs){if(x.h.getBoundingClientRect().top<160)on=x;else break}
+if(on){gs.forEach(x=>x.a.classList.toggle('on',x===on));if(!$('#q').value)$$('.g').forEach(g=>g.classList.toggle('open',g===on.g))}};addEventListener('scroll',spy,{passive:true});spy();
+$('#q').oninput=e=>{const v=e.target.value.toLowerCase().trim();$$('.g').forEach(g=>{let hit=0;g.querySelectorAll('li').forEach(li=>{const x=gs.find(o=>o.a===li.firstChild);const m=!v||li.textContent.toLowerCase().includes(v)||x.h.parentElement.textContent.toLowerCase().includes(v);li.classList.toggle('hide',!m);if(m)hit=1});g.classList.toggle('hide',!hit);if(v&&hit)g.classList.add('open')})};
+$('#tb').onclick=()=>{const d=document.documentElement,dk=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;d.dataset.theme=dk?'light':'dark'};
+$('#tg').onclick=()=>$('#side').classList.add('open');
+$('#side').onclick=e=>{if(e.target.closest('a'))$('#side').classList.remove('open')};
+document.addEventListener('click',e=>{const s=$('#side');if(s.classList.contains('open')&&!s.contains(e.target)&&e.target.id!=='tg')s.classList.remove('open')});
+</script></body></html>
