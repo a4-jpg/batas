@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ethics &amp; Professional Conduct Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f3ee;--pane:#fdfef9;--ink:#15261f;--mut:#58675f;--line:#d8dfd3;--soft:#e5ece0;--hl:#d9a62e;--onk:#fff;--c1:#1f5f46;--c2:#8a5a12;--c3:#1f3f77;--c4:#7a3b5a;--c5:#a33b2f;--sea:#0f2a22}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b1511;--pane:#12201a;--ink:#e9f3ec;--mut:#9bb0a4;--line:#233a2f;--soft:#192d24;--onk:#0b1511;--c1:#6fd1a0;--c2:#e8bf5c;--c3:#7fa6ee;--c4:#e39bc0;--c5:#ff9b8c;--sea:#06100c}}
+:root[data-theme=dark]{--bg:#0b1511;--pane:#12201a;--ink:#e9f3ec;--mut:#9bb0a4;--line:#233a2f;--soft:#192d24;--onk:#0b1511;--c1:#6fd1a0;--c2:#e8bf5c;--c3:#7fa6ee;--c4:#e39bc0;--c5:#ff9b8c;--sea:#06100c}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,sans-serif}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:80}
+.hero{background:var(--sea);color:#e6ecf8;padding:48px 6vw 70px}.hero div{max-width:1240px;margin:auto}
+.hero h1{font-size:clamp(2.2rem,6vw,4.4rem);line-height:1;margin:0 0 14px}.hero p{max-width:62ch;margin:0;color:#aab8d6}
+.tiles{max-width:1240px;margin:-34px auto 0;padding:0 6vw;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;position:relative}
+.tile{text-decoration:none;color:var(--ink);background:var(--pane);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:12px;padding:11px 14px}
+.tile b{display:block;font-size:.76rem;color:var(--k)}.tile span{font:700 1rem/1.2 "Bricolage Grotesque"}
+.wrap{display:grid;grid-template-columns:290px 1fr;gap:30px;max-width:1240px;margin:auto;padding:36px 6vw 70px}
+aside{position:sticky;top:14px;align-self:start;max-height:calc(100vh - 28px);overflow:auto;background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:13px}
+aside input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;margin-bottom:8px}
+.g>button{all:unset;width:100%;box-sizing:border-box;cursor:pointer;display:flex;gap:9px;align-items:center;padding:8px 9px;border-radius:9px;font-weight:700;font-size:.92rem}
+.g>button:hover{background:var(--soft)}.g>button i{width:11px;height:11px;border-radius:3px;background:var(--k)}
+.g ul{list-style:none;margin:0 0 6px 14px;padding:0 0 0 9px;border-left:2px solid var(--line);display:none}.g.open ul{display:block}
+.g li a{display:block;padding:4px 8px;border-radius:7px;color:var(--mut);text-decoration:none;font-size:.86rem;line-height:1.35}
+.g li a:hover,.g li a.on{color:var(--ink);background:var(--soft)}.g li a.on{font-weight:700;box-shadow:inset 3px 0 var(--k)}.hide{display:none!important}
+#tb{all:unset;cursor:pointer;margin-top:8px;font-size:.78rem;color:var(--mut);padding:5px 10px;border:1px solid var(--line);border-radius:8px}#tg{display:none}
+main{min-width:0}section.lesson{background:var(--pane);border:1px solid var(--line);border-radius:18px;padding:0 clamp(16px,4vw,42px) 28px;margin-bottom:30px;overflow:hidden}
+.lh{margin:0 calc(-1*clamp(16px,4vw,42px)) 18px;padding:26px clamp(16px,4vw,42px) 20px;background:var(--k);color:var(--onk);display:flex;gap:16px;align-items:center}
+.lh .num{font:800 clamp(3rem,8vw,5rem)/.8 "Bricolage Grotesque";opacity:.9}.lh h2{margin:0;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.08}.lh p{margin:4px 0 0;opacity:.9;font-size:.95rem}
+h3{font-size:1.4rem;margin:30px 0 9px;line-height:1.15}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:12px 17px;border-radius:0 12px 12px 0;margin:14px 0;font-weight:600}
+.big small{display:block;font:700 .7rem Figtree;letter-spacing:.09em;text-transform:uppercase;color:var(--mut)}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:11px;margin:0}
+dl div{border:1px solid var(--line);border-radius:12px;padding:11px 15px;background:var(--bg)}dt{font-weight:700;color:var(--k)}dd{margin:2px 0 0;font-size:.94rem;line-height:1.5}
+ul.b,ol.b{padding-left:1.2em;margin:.4em 0}li{margin:.2em 0}
+.tw{overflow-x:auto;margin:13px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:500px;font-size:.92rem;line-height:1.45}
+th{background:var(--k);color:var(--onk);text-align:left;font:700 .8rem Figtree;letter-spacing:.05em;text-transform:uppercase}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:700}tr:last-child td{border-bottom:0}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0;font-weight:700;font-size:.86rem}.flow span{background:var(--k);color:var(--onk);padding:5px 12px;border-radius:8px}
+.note{font-size:.88rem;color:var(--ink);border:1px dashed var(--c5);border-radius:10px;padding:9px 14px;margin:14px 0;background:var(--bg)}
+.fx{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;font-weight:600;font-size:.88rem;color:var(--mut)}.fx button,.fn button{all:unset;cursor:pointer;padding:7px 16px;border-radius:99px;border:1.5px solid var(--ink);font-weight:700;font-size:.86rem}
+.fx button.on{background:var(--k);border-color:var(--k);color:var(--onk)}
+.scene{perspective:1400px}#card{all:unset;display:block;width:100%;cursor:pointer;position:relative;min-height:290px;transform-style:preserve-3d;transition:transform .5s}#card.f{transform:rotateY(180deg)}
+#card .fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:26px 30px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:auto}
+#card .ft{background:var(--soft);border:2px solid var(--line);font:700 clamp(1.3rem,3vw,2rem)/1.25 "Bricolage Grotesque"}
+#card .bk{background:var(--k);color:var(--onk);transform:rotateY(180deg);font:500 clamp(1rem,2vw,1.25rem)/1.6 Figtree}
+#card small{font:700 .72rem Figtree;letter-spacing:.1em;text-transform:uppercase;opacity:.65;margin-bottom:10px}
+.fn{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}.fn .no{border-color:var(--c5);color:var(--c5)}.fn .yes{border-color:var(--c3);color:var(--c3)}
+button:focus-visible,a:focus-visible,input:focus-visible,#card:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 60px;font-size:.88rem}
+@media(max-width:900px){.wrap{display:block}aside{position:fixed;inset:0 auto 0 0;width:min(320px,88vw);max-height:none;border-radius:0 14px 14px 0;z-index:70;transform:translateX(-105%);transition:.25s}aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.5)}
+#tg{display:block;position:fixed;right:16px;bottom:16px;z-index:60;background:var(--hl);color:#241a00;padding:12px 20px;border-radius:99px;font-weight:700;cursor:pointer}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style></head><body>
+<div id="bar"></div>
+<div class="hero"><div><h1>Ethics &amp; Professional Conduct</h1><p>Values, morals and ethics; human acts; ethical philosophers; Civil Code; police conduct and criminal procedure; RA 6713, RA 3019 and administrative offenses; PNP ranks and powers. Then drill 100 flashcards.</p></div></div>
+<nav class="tiles">
+<a class="tile" href="#s1" style="--k:var(--c1)"><b>1</b><span>Foundations</span></a>
+<a class="tile" href="#s2" style="--k:var(--c2)"><b>2</b><span>Philosophy</span></a>
+<a class="tile" href="#s3" style="--k:var(--c3)"><b>3</b><span>Civil Code</span></a>
+<a class="tile" href="#s4" style="--k:var(--c4)"><b>4</b><span>Police procedure</span></a>
+<a class="tile" href="#s5" style="--k:var(--c5)"><b>5</b><span>Public officer laws</span></a>
+<a class="tile" href="#s6" style="--k:var(--c1)"><b>6</b><span>PNP &amp; glossary</span></a>
+<a class="tile" href="#fcs" style="--k:var(--c2)"><b>⚡</b><span>100 flashcards</span></a></nav>
+<div class="wrap">
+<aside id="side"><input id="q" type="search" placeholder="Search topics…"><div id="tree"></div><button id="tb">Dark / light</button></aside>
+<main>
+
+<section class="lesson" id="s1" style="--k:var(--c1)" data-t="1 · Foundations"><div class="lh"><div class="num">1</div><div><h2>Foundations</h2><p>Values, morals, ethics, human acts, everyday scenarios</p></div></div>
+<h3>Values, morals, ethics</h3>
+<div class="tw"><table><thead><tr><th>Term</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+<tr><td>Values</td><td>Beliefs and ideals about what is important, desirable and worth pursuing; guide choices. Personal and cultural.</td><td>Honesty, fairness, respect</td></tr>
+<tr><td>Morals</td><td>Standards of right and wrong behavior from conscience, religion, culture (Latin <i>mores</i>); internal and personal.</td><td>Not lying or stealing even when unseen</td></tr>
+<tr><td>Ethics</td><td>Systematic study of right and wrong and the rules that follow (Greek <i>ethos</i>); moral philosophy; external, shared, professional codes.</td><td>Code of conduct for public officers</td></tr></tbody></table></div>
+<div class="note"><b>Quick map:</b> do not lie when alone = morals; honesty/fairness = values; what one cares about = values; duty to community and society = ethics. The reviewer says to check this against your module.</div>
+<h3>Acts of man vs. human acts</h3>
+<div class="tw"><table><thead><tr><th></th><th>Acts of man</th><th>Human acts</th></tr></thead><tbody>
+<tr><td>Control</td><td>Not controlled by the will</td><td>Knowing, deliberate, free</td></tr>
+<tr><td>Elements</td><td>Lack knowledge and/or free will</td><td>Knowledge + freedom + voluntariness</td></tr>
+<tr><td>Examples</td><td>Breathing, heartbeat, reflexes, sleepwalking</td><td>Studying, helping, stealing, arresting a suspect</td></tr>
+<tr><td>Moral value</td><td>Amoral; cannot be judged</td><td>Good or bad; the person is accountable</td></tr></tbody></table></div>
+<p>Only human acts can be praised or blamed. Ignorance, fear, violence, passion and habit lower or remove responsibility.</p>
+<h3>Applied ethics</h3>
+<p>Applies ethical theories to specific real-world problems and professions (medical, business, environmental, media, legal, police, public service). Other branches: <b>metaethics</b> (meaning of moral terms), <b>normative</b> (Kant, utilitarianism, virtue ethics), <b>descriptive</b> (what people actually believe).</p>
+<h3>Everyday scenarios</h3>
+<dl><div><dt>Lost cellphone</dt><dd>Do not keep, use or browse it. Turn it in to the teacher, school office or guard and ask for acknowledgement. Art. 308 RPC treats failure to deliver found property as theft.</dd></div><div><dt>Not a credit grabber</dt><dd>Name teammates and sources, never present others’ work as yours, do your fair share, share praise, own failures, correct wrong credit. Values: honesty, humility, fairness, integrity.</dd></div></dl></section>
+
+<section class="lesson" id="s2" style="--k:var(--c2)" data-t="2 · Philosophy"><div class="lh"><div class="num">2</div><div><h2>History &amp; philosophy of ethics</h2><p>Civilizations, Golden Rule, Socrates, karma, Kant, utilitarianism, virtue</p></div></div>
+<h3>Civilizations and the Golden Rule</h3>
+<dl><div><dt>Mesopotamia</dt><dd>Cradle of civilization (Tigris–Euphrates): cities, cuneiform, laws, the wheel. Code of Hammurabi (Babylon, about 1754 BC): retribution, “an eye for an eye”.</dd></div><div><dt>Ancient Greece</dt><dd>Cradle of Western civilization: philosophy, democracy, systematic ethics (Socrates, Plato, Aristotle).</dd></div><div><dt>Golden Rule</dt><dd>“Do unto others as you would have them do unto you”: ethic of reciprocity (Matthew 7:12, Confucius, many faiths). Negative form: the Silver Rule.</dd></div></dl>
+<h3>Thinkers and theories</h3>
+<div class="tw"><table><thead><tr><th>Who</th><th>Key points</th></tr></thead><tbody>
+<tr><td>Socrates (470–399 BC)</td><td>Wrote nothing; known via Plato. Socratic method of questioning. “The unexamined life is not worth living”; virtue is knowledge; wrongdoing comes from ignorance. Executed in 399 BC, drank hemlock.</td></tr>
+<tr><td>Karma (India)</td><td>Sanskrit “action”; cause and effect in Hinduism, Buddhism, Jainism; samsara (rebirth); related: dharma, moksha. People are responsible for intentions and actions.</td></tr>
+<tr><td>Immanuel Kant (1724–1804)</td><td>Deontological: rightness depends on duty and moral law, not consequences. Categorical Imperative: act on a rule you could will as universal law; treat humanity as an end, never merely a means. Lying is always wrong.</td></tr>
+<tr><td>Bentham and Mill</td><td>Utilitarianism, consequentialist: greatest good for the greatest number. Bentham: quantity of pleasure; Mill: quality. Act vs. rule utilitarianism. Criticism: may sacrifice minorities and rights.</td></tr>
+<tr><td>Aristotle</td><td>Virtue ethics (<i>Nicomachean Ethics</i>): good life (eudaimonia) from virtuous character; virtue is habit; Golden Mean (courage between cowardice and recklessness).</td></tr>
+<tr><td>Plato</td><td>Cardinal virtues: wisdom, courage, temperance, justice.</td></tr></tbody></table></div>
+<div class="note"><b>Exam tip:</b> Kant = duty; Bentham and Mill = greatest good; Aristotle = virtue and the good life; Socrates = questioning; karma = India.</div></section>
+
+<section class="lesson" id="s3" style="--k:var(--c3)" data-t="3 · Civil Code"><div class="lh"><div class="num">3</div><div><h2>Civil Code &amp; public duty</h2><p>Human relations articles; misfeasance, nonfeasance, malfeasance</p></div></div>
+<h3>Articles 19, 20, 21 and 32</h3>
+<div class="tw"><table><thead><tr><th>Article</th><th>Rule</th><th>Memory aid</th></tr></thead><tbody>
+<tr><td>Art. 19</td><td>Act with justice, give everyone his due, observe honesty and good faith (abuse of rights)</td><td>Good faith and justice</td></tr>
+<tr><td>Art. 20</td><td>One who contrary to law willfully or negligently damages another must indemnify</td><td>Law violated, damage caused</td></tr>
+<tr><td>Art. 21</td><td>Willful loss or injury contrary to morals, good customs or public policy must be compensated</td><td>Morals, customs, policy</td></tr>
+<tr><td>Art. 32</td><td>Officers or individuals violating constitutional rights (liberty, privacy, search and seizure, rights of the accused) are liable for damages</td><td>Rights violations</td></tr></tbody></table></div>
+<h3>Misfeasance, nonfeasance, malfeasance</h3>
+<div class="tw"><table><thead><tr><th>Term</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+<tr><td>Misfeasance</td><td>Improper performance of a lawful act</td><td>Lawful arrest with excessive force</td></tr>
+<tr><td>Nonfeasance</td><td>Failure to perform a required duty; omission</td><td>Ignoring a crime in progress</td></tr>
+<tr><td>Malfeasance</td><td>Performing an unlawful act one has no right to do</td><td>Bribe, planting evidence, torture</td></tr></tbody></table></div></section>
+
+<section class="lesson" id="s4" style="--k:var(--c4)" data-t="4 · Police procedure"><div class="lh"><div class="num">4</div><div><h2>Police conduct &amp; procedure</h2><p>Norms of conduct, search, confession, bail, arrest, custodial investigation</p></div></div>
+<h3>Norms of conduct (RA 6713 Sec. 4)</h3>
+<div class="tw"><table><thead><tr><th>Norm</th><th>In police work</th></tr></thead><tbody>
+<tr><td>Commitment to public interest</td><td>Public service is a public trust; public good before personal gain</td></tr>
+<tr><td>Professionalism</td><td>Competence, courtesy, lawful and efficient performance</td></tr>
+<tr><td>Justness and sincerity</td><td>Fair, honest, no discrimination or bias; keep promises</td></tr>
+<tr><td>Political neutrality</td><td>Serve everyone; no partisan politics</td></tr>
+<tr><td>Responsiveness to the public</td><td>Act promptly and courteously on requests and complaints</td></tr>
+<tr><td>Nationalism and patriotism</td><td>Loyalty to the Republic and the Filipino people</td></tr>
+<tr><td>Commitment to democracy</td><td>Uphold the Constitution, civilian supremacy, human rights</td></tr>
+<tr><td>Simple living</td><td>Modest life; no ostentatious display of wealth</td></tr></tbody></table></div>
+<p>PNP core values often listed: integrity, respect for human rights, professionalism, discipline, accountability. (Item 20 of the source is cut off, so it is not covered.)</p>
+<h3>Search warrant</h3>
+<ul class="b"><li><b>Art. III, Sec. 2:</b> issued only on probable cause determined personally by the judge after examining the complainant and witnesses under oath; must particularly describe the place and things.</li><li><b>Rule 126:</b> one specific offense; valid 10 days; served in daytime unless the affidavit justifies otherwise.</li><li><b>Witness rule (Sec. 8):</b> lawful occupant or a family member present; if absent, two witnesses of sufficient age and discretion from the same locality.</li><li><b>No witnesses:</b> search is irregular and illegal; evidence may be inadmissible (exclusionary rule); liability under Art. 130 RPC.</li><li><b>Probable cause:</b> facts that lead a reasonably prudent person to believe an offense was committed and the items are in the place.</li></ul>
+<h3>Custodial rights and confession</h3>
+<ul class="b"><li><b>Art. III, Sec. 12:</b> right to remain silent and to competent, independent counsel (provided if unaffordable). Waiver only in writing with counsel. No torture, force or secret or incommunicado detention. Violating confessions are inadmissible.</li><li><b>Extrajudicial confession:</b> voluntary, with counsel, express, in writing; corroboration by corpus delicti needed (Rule 133).</li><li><b>Miranda</b> comes from <i>Miranda v. Arizona</i> (US, 1966); implemented by Art. III Sec. 12 and RA 7438. Warning: silence; anything said can be used against you; right to a lawyer; one appointed if you cannot afford.</li><li><b>Custodial investigation (RA 7438):</b> questioning by law enforcers after a person is in custody or significantly deprived of freedom; includes an “invitation”; begins when inquiry focuses on a particular suspect. Not covered: general on-scene questioning, spontaneous statements, statements to private persons, routine booking (check your module).</li></ul>
+<h3>Bail and warrantless arrest</h3>
+<dl><div><dt>Bail (Art. III Sec. 13)</dt><dd>Denied for offenses punishable by reclusion perpetua or life imprisonment when evidence of guilt is strong; otherwise a right before conviction. Decided at a summary hearing; prosecution has the burden. Death penalty abolished by RA 9346 (2006).</dd></div><div><dt>Warrantless arrest (Rule 113 Sec. 5)</dt><dd>(a) In flagrante delicto; (b) hot pursuit with probable cause from personal knowledge; (c) escaped prisoner. Also a bailed accused who jumps bail. Deliver to the judicial authority within 12, 18 or 36 hours (Art. 125 RPC).</dd></div></dl></section>
+
+<section class="lesson" id="s5" style="--k:var(--c5)" data-t="5 · Public officer laws"><div class="lh"><div class="num">5</div><div><h2>Public officers: laws &amp; offenses</h2><p>RA 6713, RA 3019, RPC offenses, administrative offenses</p></div></div>
+<h3>RA 6713 and RA 3019</h3>
+<div class="tw"><table><thead><tr><th>Law</th><th>Key points</th></tr></thead><tbody>
+<tr><td>RA 6713 (1989)</td><td>Code of Conduct and Ethical Standards for Public Officials and Employees; covers all in government, including GOCCs, paid or not. <b>SALN</b> (Sec. 8): within 30 days of assuming office, by April 30 yearly, within 30 days after leaving. Violating Secs. 7, 8, 9: up to 5 years or up to ₱5,000, or both, plus possible disqualification. Prohibited acts (Sec. 7): financial interest in office transactions, conflicting outside work, misusing confidential information, soliciting or accepting gifts.</td></tr>
+<tr><td>RA 3019 (1960)</td><td>Anti-Graft and Corrupt Practices Act (Sec. 3): persuading another officer to violate rules; gifts or percentages from contracts; undue injury or unwarranted benefits through manifest partiality, evident bad faith or gross inexcusable negligence (e); neglecting to act to get a benefit (f); manifestly disadvantageous contracts (g); financial interest in a contract one intervenes in (h); approving permits for the unqualified (j); divulging secrets (k). Penalty: 6 years 1 month to 15 years, perpetual disqualification, confiscation of unexplained wealth.</td></tr></tbody></table></div>
+<dl><div><dt>Conflict of interest</dt><dd>Private interest conflicts or appears to conflict with public duty. Remedy: disclose, inhibit or recuse, divest.</dd></div><div><dt>Gifts</dt><dd>Manifestly excessive gifts are barred even at Christmas. Exception: unsolicited gifts of small or nominal value. Test: solicited? from someone dealing with the office? more than nominal? influences the act?</dd></div></dl>
+<h3>Revised Penal Code offenses</h3>
+<div class="tw"><table><thead><tr><th>Offense</th><th>Key test</th></tr></thead><tbody>
+<tr><td>Public officer (Art. 203)</td><td>Takes part in public functions by law, election or appointment, any rank; includes police</td></tr>
+<tr><td>Qualified bribery (Art. 211-A)</td><td>Law enforcer does not arrest or prosecute an offender (reclusion perpetua offense) in exchange for a gift; related: Art. 210 direct, 211 indirect, 212 corruption of officials (the giver)</td></tr>
+<tr><td>Infidelity in custody of prisoners</td><td>Art. 223: consents to or connives in escape. Art. 224: escape through negligence. Art. 225: custody by a non-public officer</td></tr>
+<tr><td>Abuses against chastity (Art. 245)</td><td>Indecent advances to a woman with a pending matter or in custody; arresto mayor and suspension</td></tr>
+<tr><td>Abandonment (Art. 238)</td><td>Leaving office before resignation is accepted, to the detriment of public service</td></tr></tbody></table></div>
+<h3>Administrative offenses</h3>
+<dl><div><dt>Dishonesty</dt><dd>Concealing or distorting the truth about one’s office; lack of integrity (falsified PDS, cheating in civil service exam, false SALN). Grave offense: dismissal even on first offense.</dd></div><div><dt>Sexual harassment</dt><dd>RA 7877 (1995): authority, influence or moral ascendancy demanding a sexual favor. RA 11313 Safe Spaces Act (2019): streets, public spaces, online, workplaces. Forms: verbal, physical, visual, online, quid pro quo. CSC grades: grave, less grave, light.</dd></div><div><dt>Insubordination</dt><dd>Willful disregard of lawful, reasonable orders of a superior (order, knowledge, willful disobedience). Unlawful orders need not be obeyed.</dd></div><div><dt>Abandonment of duty</dt><dd>Leaving post without valid reason and with intent to relinquish; resignation takes effect only on acceptance. Absence without leave for 30 days or more: dropped from the rolls.</dd></div><div><dt>Loafing</dt><dd>Being away from post or wasting time in office hours without permission (e.g., returning at 2:30 p.m.). Check classification in your module.</dd></div><div><dt>Unanswered letter</dt><dd>Violation: respond within 15 working days (RA 6713 Sec. 5(a)). RA 11032: 3 working days simple, 7 complex, 20 highly technical.</dd></div></dl>
+<div class="note"><b>Note from the source:</b> the Philippine laws are summarized from memory, and items marked CHECK differ among textbooks. Follow your instructor’s module for wording and penalties.</div></section>
+
+<section class="lesson" id="s6" style="--k:var(--c1)" data-t="6 · PNP & glossary"><div class="lh"><div class="num">6</div><div><h2>PNP ranks, powers &amp; glossary</h2><p>RA 11200, RA 6975 Sec. 24, hymn, assignment terms</p></div></div>
+<h3>Ranks (RA 11200)</h3>
+<div class="tw"><table><thead><tr><th>Group</th><th>Ranks, highest to lowest</th></tr></thead><tbody>
+<tr><td>Police Commissioned Officers</td><td>Police General (4-star), Lieutenant General (3), Major General (2), Brigadier General (1), Colonel, Lieutenant Colonel, Major, Captain, Lieutenant</td></tr>
+<tr><td>Police Non-Commissioned Officers</td><td>Executive Master Sergeant, Chief Master Sergeant, Senior Master Sergeant, Master Sergeant, Staff Sergeant, Corporal, Patrolman/Patrolwoman</td></tr></tbody></table></div>
+<h3>Powers and functions (RA 6975 Sec. 24)</h3>
+<ul class="b"><li>Enforce laws and ordinances protecting lives and property.</li><li>Maintain peace and order and ensure public safety.</li><li>Investigate and prevent crimes, arrest offenders, bring them to justice, assist prosecution.</li><li>Arrest, search and seize in accordance with the Constitution and law.</li><li>Detain an arrested person only for the legal period, informing him of his constitutional rights.</li><li>License firearms and explosives; supervise security agencies, guards and private detectives.</li><li>Perform other duties provided by law.</li></ul>
+<p><b>PNP Hymn keywords:</b> hangarin, maglingkod, giting, katapatan, tungkulin, buhay, katahimikan, kapayapaan, kaayusan, mamamayan, kalayaan, karapatan, Maykapal; closing: <i>Serbisyo, Dangal, at Katarungan</i>.</p>
+<h3>Assignment glossary</h3>
+<div class="tw"><table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Ethics / Morality / Values</td><td>Study of right and wrong / the lived beliefs and practices / deeply held beliefs guiding choices</td></tr>
+<tr><td>Delicadeza</td><td>Personal sense of propriety and self-imposed restraint to avoid conflict of interest or compromising honor</td></tr>
+<tr><td>Grave offense</td><td>Serious violation carrying the heaviest penalty, such as dismissal (grave misconduct, dishonesty, gross neglect)</td></tr>
+<tr><td>Due process</td><td>No deprivation of life, liberty or property without notice, hearing and an impartial decision-maker</td></tr>
+<tr><td>Misconduct</td><td>Improper or unlawful behavior connected to official duties; simple or grave</td></tr>
+<tr><td>Conscience</td><td>Inner moral awareness that distinguishes right from wrong</td></tr>
+<tr><td>Police ethics / Creed</td><td>Ethics applied to policing (authority, force, discretion) / formal statement of guiding beliefs</td></tr>
+<tr><td>Social awareness / Social norms</td><td>Sensitivity to society’s needs and perspectives / unwritten accepted rules of behavior</td></tr>
+<tr><td>Legal justice / Character</td><td>Justice administered strictly by law / one’s moral and mental qualities</td></tr>
+<tr><td>Temperance / Perseverance / Courtesy</td><td>Self-restraint / persistence despite obstacles / politeness and respect</td></tr>
+<tr><td>Esprit de corps</td><td>Unity, pride and shared purpose in an organization</td></tr>
+<tr><td>Sophist</td><td>Ancient Greek teacher of rhetoric; today, one who uses clever but fallacious reasoning to win arguments</td></tr>
+<tr><td>Normative ethics</td><td>Sets criteria for what makes actions right or wrong (vs. descriptive ethics)</td></tr>
+<tr><td>Crime prevention / Police personnel</td><td>Measures that reduce crime before it happens / members of a police organization</td></tr>
+<tr><td>Death under exceptional circumstances</td><td>Classification for deaths of personnel in unusual conditions, relevant to benefits or honors</td></tr></tbody></table></div></section>
+
+<section class="lesson" id="fcs" style="--k:var(--c2)" data-t="⚡ · Flashcards"><div class="lh"><div class="num">⚡</div><div><h2>100 flashcards</h2><p>Click the card or press Space to flip; ← → to move</p></div></div>
+<h3>Flashcard deck</h3>
+<div class="fx"><span id="cnt"></span><button id="sh">Shuffle</button><button id="ag">Review “again” only</button></div>
+<div class="scene"><button id="card" aria-label="Flip card"><div class="fc ft"><small id="st"></small><span id="qq"></span></div><div class="fc bk"><small>Answer</small><span id="aa"></span></div></button></div>
+<div class="fn"><button id="pv">← Prev</button><button class="no" id="no">Again</button><button class="yes" id="ye">Got it</button><button id="nx">Next →</button></div>
+<p id="sc" style="text-align:center;color:var(--mut);font-size:.88rem"></p></section>
+</main></div>
+<button id="tg">☰ Topics</button>
+<footer>Study aid built from your Ethics Reviewer, assignment glossary and PNP notes. Verify details against your own handout.</footer>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const D=`Values?|Beliefs and ideals about what is important, desirable and worth pursuing; they guide choices (honesty, fairness).
+Morals?|Standards of right and wrong behavior from conscience, religion and culture; from Latin mores.
+Ethics?|Systematic study of right and wrong and the rules that follow; from Greek ethos; moral philosophy.
+Values vs. morals vs. ethics map?|Values: what we care about. Morals: what we should or should not do. Ethics: why and how we justify it.
+“Do not lie even when alone” is which concept?|A moral (a mark of integrity).
+Honesty and fairness are examples of?|Values.
+Duty toward community and society is?|Ethics.
+Acts of man?|Not controlled by the will; lack knowledge and/or free will; amoral (breathing, reflexes).
+Human acts?|Done knowingly, deliberately and freely: knowledge + freedom + voluntariness; morally good or bad.
+Proper object of ethics?|Human acts.
+What lowers or removes responsibility?|Ignorance, fear, violence, passion, habit.
+Applied ethics?|Applies ethical theories to real-world problems and professions (medical, business, police ethics).
+Metaethics, normative, descriptive ethics?|Meaning of moral terms; standards of right and wrong (Kant, utilitarianism, virtue); what people actually believe.
+You find a lost cellphone?|Do not keep, use or browse it; turn it in to the teacher or school office and ask for acknowledgement.
+Legal tie-in for lost property?|Art. 308 RPC: failing to deliver found property to authorities or the owner is theft.
+How to avoid being a credit grabber?|Name teammates and sources, never present others’ work as yours, share recognition, own failures.
+Cradle of civilization?|Mesopotamia, between the Tigris and Euphrates: first cities, cuneiform, laws, the wheel.
+Code of Hammurabi?|Babylon, about 1754 BC; one of the oldest written codes; retribution (“an eye for an eye”).
+Cradle of Western civilization?|Ancient Greece: philosophy, democracy, systematic ethics (Socrates, Plato, Aristotle).
+Golden Rule?|“Do unto others as you would have them do unto you”; ethic of reciprocity.
+Silver Rule?|Do not do to others what you would not want done to you.
+Socrates: dates and method?|470–399 BC; Socratic method of rational questioning that exposes contradictions.
+Famous ideas of Socrates?|“The unexamined life is not worth living”; virtue is knowledge; no one does wrong willingly.
+How did Socrates die?|Condemned in 399 BC for impiety and corrupting youth; drank hemlock.
+Karma?|Sanskrit “action”: cause and effect in Hinduism, Buddhism, Jainism; related terms dharma, moksha, samsara.
+Kant’s ethics?|Deontological: rightness depends on duty and moral law, not consequences.
+Categorical Imperative?|Act on a rule you could will as universal law; treat humanity always as an end, never merely a means.
+Utilitarianism?|Consequentialist theory: the right act gives the greatest happiness to the greatest number.
+Founders of utilitarianism?|Jeremy Bentham and John Stuart Mill.
+Bentham vs. Mill?|Bentham: quantity of pleasure. Mill: quality (higher vs. lower pleasures).
+Criticism of utilitarianism?|It may sacrifice minorities and individual rights.
+Virtue ethics?|Aristotle: the good life (eudaimonia) comes from living virtuously and building good character.
+Aristotle’s Golden Mean?|Virtue lies between two extremes, e.g., courage between cowardice and recklessness.
+Plato’s cardinal virtues?|Wisdom, courage, temperance, justice.
+Civil Code Art. 19?|Act with justice, give everyone his due, observe honesty and good faith (abuse of rights).
+Civil Code Art. 20?|Willful or negligent damage contrary to law must be indemnified.
+Civil Code Art. 21?|Willful loss or injury contrary to morals, good customs or public policy must be compensated.
+Civil Code Art. 32?|Officers or individuals who violate constitutional rights are liable for damages.
+Misfeasance?|Improper performance of a lawful act (lawful arrest with excessive force).
+Nonfeasance?|Failure to perform a required duty; omission (ignoring a crime in progress).
+Malfeasance?|Performing an unlawful act one has no right to do (bribery, planting evidence, torture).
+Eight norms of conduct (RA 6713 Sec. 4)?|Public interest, professionalism, justness and sincerity, political neutrality, responsiveness, nationalism and patriotism, democracy, simple living.
+Simple living?|Modest life suited to position and income; no ostentatious display of wealth (Sec. 4(h)).
+Political neutrality?|Serve everyone regardless of party; no partisan politics.
+PNP core values listed?|Integrity, respect for human rights, professionalism, discipline, accountability.
+Search warrant requirements (Art. III Sec. 2)?|Probable cause found personally by the judge after oath-based examination; particular description of place and things.
+Probable cause?|Facts that would lead a reasonably prudent person to believe an offense was committed and the items are in the place.
+Search warrant validity and scope?|One specific offense; valid 10 days; served in daytime unless justified.
+Witness rule in searches (Rule 126 Sec. 8)?|Lawful occupant or family member present; if absent, two witnesses of sufficient age and discretion from the same locality.
+Effect of searching without required witnesses?|Search is illegal; evidence may be inadmissible; officer may be liable under Art. 130 RPC.
+Rights under Art. III Sec. 12?|Remain silent; competent, independent counsel (provided if unaffordable); no torture or incommunicado detention.
+How can custodial rights be waived?|Only in writing and in the presence of counsel.
+Valid extrajudicial confession?|Voluntary, with competent independent counsel, express, in writing; needs corroboration by corpus delicti.
+Origin of Miranda rights?|Miranda v. Arizona (US, 1966); implemented here by Art. III Sec. 12 and RA 7438.
+Miranda warning in substance?|Right to remain silent; anything said can be used against you; right to a lawyer; one appointed if you cannot afford.
+Bail for a capital offense?|Depends: denied if evidence of guilt is strong, allowed if not (Art. III Sec. 13); summary hearing, prosecution burden.
+Which law abolished the death penalty?|RA 9346 (2006); capital offense now means reclusion perpetua or life imprisonment.
+Warrantless arrest grounds (Rule 113 Sec. 5)?|In flagrante delicto; hot pursuit; escaped prisoner.
+In flagrante delicto?|Caught committing, attempting or just having committed an offense in the arrester’s presence.
+Hot pursuit?|Offense just committed and the arrester has probable cause from personal knowledge of facts.
+Time to deliver an arrested person?|12, 18 or 36 hours depending on the penalty (Art. 125 RPC).
+Custodial investigation?|Questioning by law enforcers after a person is in custody or significantly deprived of freedom (RA 7438); includes an “invitation”.
+Not custodial investigation?|General on-scene questioning, spontaneous statements, statements to private persons, routine booking (check your module).
+RA 6713?|Code of Conduct and Ethical Standards for Public Officials and Employees (1989).
+SALN filing schedule?|Within 30 days of assuming office, by April 30 yearly, and within 30 days after leaving office.
+Penalty for violating RA 6713 Secs. 7, 8, 9?|Up to 5 years imprisonment or up to ₱5,000 fine, or both, plus possible disqualification.
+Prohibited acts (RA 6713 Sec. 7)?|Financial interest in office transactions, conflicting outside work, misusing confidential information, soliciting or accepting gifts.
+RA 3019?|Anti-Graft and Corrupt Practices Act (1960).
+RA 3019 penalty?|6 years 1 month to 15 years, perpetual disqualification, confiscation of unexplained wealth.
+RA 3019 Sec. 3(e)?|Undue injury or unwarranted benefits through manifest partiality, evident bad faith or gross inexcusable negligence.
+RA 3019 Sec. 3(f)?|Neglecting or refusing to act within a reasonable time on a pending matter to get a benefit.
+Conflict of interest?|Private interest conflicts with public duty; remedy: disclose, inhibit or recuse, divest.
+Test for a gift?|Was it solicited? From someone dealing with the office? More than nominal? Would it influence the act?
+Gift exception?|Unsolicited gifts of small or nominal value as a token of gratitude or friendship.
+Public officer (Art. 203 RPC)?|Anyone taking part in public functions by law, election or appointment, of any rank, including police.
+Qualified bribery (Art. 211-A)?|Law enforcer does not arrest or prosecute an offender of a reclusion perpetua crime in exchange for a gift.
+Other bribery articles?|Direct bribery Art. 210; indirect Art. 211; corruption of public officials Art. 212 (the giver).
+Art. 223 RPC?|Infidelity in custody of prisoners: officer consents to or connives in a prisoner’s escape.
+Art. 224 vs. Art. 225?|Art. 224: escape through the officer’s negligence. Art. 225: custody by a person who is not a public officer.
+Art. 245 RPC?|Abuses against chastity: indecent advances to a woman with a pending matter or in custody; arresto mayor and suspension.
+Dishonesty?|Concealing or distorting the truth about one’s office; lying, cheating (e.g., falsified PDS); grave offense, dismissal on first offense.
+RA 7877?|Anti-Sexual Harassment Act of 1995: demand for a sexual favor by one with authority, influence or moral ascendancy.
+RA 11313?|Safe Spaces Act (2019): gender-based sexual harassment in streets, public spaces, online and workplaces.
+Insubordination?|Willful disregard of lawful, reasonable orders of a superior; unlawful orders need not be obeyed.
+Abandonment of duty?|Leaving post without valid reason and with intent to relinquish; resignation takes effect only on acceptance.
+Art. 238 RPC?|Abandoning office before resignation is accepted, to the detriment of public service: arresto mayor.
+Loafing?|Being away from post or wasting time during office hours without permission.
+Unanswered letter?|Violation of RA 6713 Sec. 5(a): respond within 15 working days.
+PNP rank law?|RA 11200: standardized military-style rank names.
+PNP commissioned officer ranks?|PGEN, PLTGEN, PMGEN, PBGEN, PCOL, PLTCOL, PMAJ, PCPT, PLT.
+PNP non-commissioned ranks?|PEMS, PCMS, PSMS, PMSg, PSSg, PCpl, Patrolman/Patrolwoman.
+PNP powers (RA 6975 Sec. 24)?|Enforce laws, keep peace, investigate and arrest, search and seize lawfully, detain within legal periods, license firearms and supervise security agencies.
+Delicadeza?|Filipino sense of propriety and self-restraint to avoid conflicts of interest and compromising honor.
+Sophist?|Ancient Greek teacher of rhetoric; today, one who uses clever but fallacious reasoning to win arguments.
+Esprit de corps?|Unity, pride and shared purpose among members of an organization such as a police force.
+Due process?|No deprivation of life, liberty or property without fair procedure: notice, hearing and an impartial decision-maker.
+Grave offense?|Serious violation carrying the heaviest penalty, such as dismissal (grave misconduct, dishonesty, gross neglect of duty).
+Creed?|A formal statement of beliefs and guiding principles held by a person or organization.
+Misconduct?|Improper or unlawful behavior connected to official duties; simple or grave depending on severity and intent.
+Closing line of the PNP Hymn?|“Serbisyo, Dangal, at Katarungan”.`.split('\n').map(l=>l.split('|'));
+let ord=D.map((_,i)=>i),i=0,known={};
+const draw=()=>{const c=D[ord[i]];$('#card').classList.remove('f');$('#qq').textContent=c[0];$('#aa').textContent=c[1];$('#cnt').textContent='Card '+(i+1)+' of '+ord.length;$('#st').textContent=known[ord[i]]==1?'Got it':known[ord[i]]==2?'Again':'';
+$('#sc').textContent='Got it: '+Object.values(known).filter(v=>v==1).length+' · Again: '+Object.values(known).filter(v=>v==2).length+' · Total: '+D.length};
+const mv=d=>{i=(i+d+ord.length)%ord.length;draw()},mark=v=>{known[ord[i]]=v;mv(1)};
+$('#card').onclick=()=>$('#card').classList.toggle('f');$('#nx').onclick=()=>mv(1);$('#pv').onclick=()=>mv(-1);$('#ye').onclick=()=>mark(1);$('#no').onclick=()=>mark(2);
+$('#sh').onclick=()=>{ord=D.map((_,k)=>k);for(let n=ord.length-1;n>0;n--){const j=Math.random()*(n+1)|0;[ord[n],ord[j]]=[ord[j],ord[n]]}i=0;$('#ag').classList.remove('on');draw()};
+$('#ag').onclick=()=>{const on=$('#ag').classList.toggle('on');ord=on?D.map((_,k)=>k).filter(k=>known[k]==2):D.map((_,k)=>k);if(!ord.length){$('#ag').classList.remove('on');ord=D.map((_,k)=>k)}i=0;draw()};
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')mv(1);if(e.key==='ArrowLeft')mv(-1);if(e.key===' '&&e.target.id!=='card'){e.preventDefault();$('#card').classList.toggle('f')}});
+draw();
+const tree=$('#tree'),gs=[];
+$$('section.lesson').forEach(s=>{const g=document.createElement('div');g.className='g';g.setAttribute('style',s.getAttribute('style'));const b=document.createElement('button');b.innerHTML='<i></i>'+s.dataset.t.split(' · ')[1];const ul=document.createElement('ul');g.append(b,ul);tree.append(g);b.onclick=()=>g.classList.toggle('open');
+$$('#'+s.id+' h3').forEach((h,n)=>{h.id=s.id+'-'+n;const li=document.createElement('li');li.innerHTML='<a href="#'+h.id+'">'+h.textContent+'</a>';ul.append(li);gs.push({a:li.firstChild,h,g})})});
+gs[0].g.classList.add('open');
+const spy=()=>{$('#bar').style.width=scrollY/(document.documentElement.scrollHeight-innerHeight)*100+'%';let on=null;for(const x of gs){if(x.h.getBoundingClientRect().top<160)on=x;else break}
+if(on){gs.forEach(x=>x.a.classList.toggle('on',x===on));if(!$('#q').value)$$('.g').forEach(g=>g.classList.toggle('open',g===on.g))}};addEventListener('scroll',spy,{passive:true});spy();
+$('#q').oninput=e=>{const v=e.target.value.toLowerCase().trim();$$('.g').forEach(g=>{let hit=0;g.querySelectorAll('li').forEach(li=>{const x=gs.find(o=>o.a===li.firstChild);const m=!v||li.textContent.toLowerCase().includes(v)||x.h.parentElement.textContent.toLowerCase().includes(v);li.classList.toggle('hide',!m);if(m)hit=1});g.classList.toggle('hide',!hit);if(v&&hit)g.classList.add('open')})};
+$('#tb').onclick=()=>{const d=document.documentElement,dk=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;d.dataset.theme=dk?'light':'dark'};
+$('#tg').onclick=()=>$('#side').classList.add('open');
+$('#side').onclick=e=>{if(e.target.closest('a'))$('#side').classList.remove('open')};
+document.addEventListener('click',e=>{const s=$('#side');if(s.classList.contains('open')&&!s.contains(e.target)&&e.target.id!=='tg')s.classList.remove('open')});
+</script></body></html>
