@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Polygraphy &amp; Lie Detection Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3f3;--pane:#fbfefe;--ink:#13262b;--mut:#587077;--line:#d3e0e1;--soft:#e2eded;--hl:#e0a526;--onk:#fff;--c1:#0e6b73;--c2:#b8321f;--c3:#5b3f8f;--c4:#8a5a12;--c5:#1f3f77;--sea:#0b1f2a}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0a1518;--pane:#10201f;--ink:#e8f3f3;--mut:#98b2b4;--line:#223b3d;--soft:#172b2c;--onk:#0a1518;--c1:#6fd1d9;--c2:#ff9b8c;--c3:#c3a3f0;--c4:#e8bf5c;--c5:#7fa6ee;--sea:#050d10}}
+:root[data-theme=dark]{--bg:#0a1518;--pane:#10201f;--ink:#e8f3f3;--mut:#98b2b4;--line:#223b3d;--soft:#172b2c;--onk:#0a1518;--c1:#6fd1d9;--c2:#ff9b8c;--c3:#c3a3f0;--c4:#e8bf5c;--c5:#7fa6ee;--sea:#050d10}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Georgia,sans-serif}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--hl);z-index:80}
+.hero{background:var(--sea);color:#e6ecf8;padding:48px 6vw 70px}.hero div{max-width:1240px;margin:auto}
+.hero h1{font-size:clamp(2.2rem,6vw,4.4rem);line-height:1;margin:0 0 14px}.hero p{max-width:62ch;margin:0;color:#aab8d6}
+.tiles{max-width:1240px;margin:-34px auto 0;padding:0 6vw;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;position:relative}
+.tile{text-decoration:none;color:var(--ink);background:var(--pane);border:1px solid var(--line);border-top:5px solid var(--k);border-radius:12px;padding:11px 14px}
+.tile b{display:block;font-size:.76rem;color:var(--k)}.tile span{font:700 1rem/1.2 "Bricolage Grotesque"}
+.wrap{display:grid;grid-template-columns:290px 1fr;gap:30px;max-width:1240px;margin:auto;padding:36px 6vw 70px}
+aside{position:sticky;top:14px;align-self:start;max-height:calc(100vh - 28px);overflow:auto;background:var(--pane);border:1px solid var(--line);border-radius:14px;padding:13px}
+aside input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:.9rem;margin-bottom:8px}
+.g>button{all:unset;width:100%;box-sizing:border-box;cursor:pointer;display:flex;gap:9px;align-items:center;padding:8px 9px;border-radius:9px;font-weight:700;font-size:.92rem}
+.g>button:hover{background:var(--soft)}.g>button i{width:11px;height:11px;border-radius:3px;background:var(--k)}
+.g ul{list-style:none;margin:0 0 6px 14px;padding:0 0 0 9px;border-left:2px solid var(--line);display:none}.g.open ul{display:block}
+.g li a{display:block;padding:4px 8px;border-radius:7px;color:var(--mut);text-decoration:none;font-size:.86rem;line-height:1.35}
+.g li a:hover,.g li a.on{color:var(--ink);background:var(--soft)}.g li a.on{font-weight:700;box-shadow:inset 3px 0 var(--k)}.hide{display:none!important}
+#tb{all:unset;cursor:pointer;margin-top:8px;font-size:.78rem;color:var(--mut);padding:5px 10px;border:1px solid var(--line);border-radius:8px}#tg{display:none}
+main{min-width:0}section.lesson{background:var(--pane);border:1px solid var(--line);border-radius:18px;padding:0 clamp(16px,4vw,42px) 28px;margin-bottom:30px;overflow:hidden}
+.lh{margin:0 calc(-1*clamp(16px,4vw,42px)) 18px;padding:26px clamp(16px,4vw,42px) 20px;background:var(--k);color:var(--onk);display:flex;gap:16px;align-items:center}
+.lh .num{font:800 clamp(3rem,8vw,5rem)/.8 "Bricolage Grotesque";opacity:.9}.lh h2{margin:0;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.08}.lh p{margin:4px 0 0;opacity:.9;font-size:.95rem}
+h3{font-size:1.4rem;margin:30px 0 9px;line-height:1.15}
+.big{background:var(--soft);border-left:5px solid var(--hl);padding:12px 17px;border-radius:0 12px 12px 0;margin:14px 0;font-weight:600}
+.big small{display:block;font:700 .7rem Figtree;letter-spacing:.09em;text-transform:uppercase;color:var(--mut)}
+dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:11px;margin:0}
+dl div{border:1px solid var(--line);border-radius:12px;padding:11px 15px;background:var(--bg)}dt{font-weight:700;color:var(--k)}dd{margin:2px 0 0;font-size:.94rem;line-height:1.5}
+ul.b,ol.b{padding-left:1.2em;margin:.4em 0}li{margin:.2em 0}
+.tw{overflow-x:auto;margin:13px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:500px;font-size:.92rem;line-height:1.45}
+th{background:var(--k);color:var(--onk);text-align:left;font:700 .8rem Figtree;letter-spacing:.05em;text-transform:uppercase}
+th,td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:700}tr:last-child td{border-bottom:0}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0;font-weight:700;font-size:.86rem}.flow span{background:var(--k);color:var(--onk);padding:5px 12px;border-radius:8px}
+.note{font-size:.88rem;color:var(--ink);border:1px dashed var(--c5);border-radius:10px;padding:9px 14px;margin:14px 0;background:var(--bg)}
+.fx{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;font-weight:600;font-size:.88rem;color:var(--mut)}.fx button,.fn button{all:unset;cursor:pointer;padding:7px 16px;border-radius:99px;border:1.5px solid var(--ink);font-weight:700;font-size:.86rem}
+.fx button.on{background:var(--k);border-color:var(--k);color:var(--onk)}
+.scene{perspective:1400px}#card{all:unset;display:block;width:100%;cursor:pointer;position:relative;min-height:290px;transform-style:preserve-3d;transition:transform .5s}#card.f{transform:rotateY(180deg)}
+#card .fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;padding:26px 30px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:auto}
+#card .ft{background:var(--soft);border:2px solid var(--line);font:700 clamp(1.3rem,3vw,2rem)/1.25 "Bricolage Grotesque"}
+#card .bk{background:var(--k);color:var(--onk);transform:rotateY(180deg);font:500 clamp(1rem,2vw,1.25rem)/1.6 Figtree}
+#card small{font:700 .72rem Figtree;letter-spacing:.1em;text-transform:uppercase;opacity:.65;margin-bottom:10px}
+.fn{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}.fn .no{border-color:var(--c5);color:var(--c5)}.fn .yes{border-color:var(--c3);color:var(--c3)}
+button:focus-visible,a:focus-visible,input:focus-visible,#card:focus-visible{outline:3px solid var(--hl);outline-offset:2px}
+footer{text-align:center;color:var(--mut);padding:0 6vw 60px;font-size:.88rem}
+@media(max-width:900px){.wrap{display:block}aside{position:fixed;inset:0 auto 0 0;width:min(320px,88vw);max-height:none;border-radius:0 14px 14px 0;z-index:70;transform:translateX(-105%);transition:.25s}aside.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.5)}
+#tg{display:block;position:fixed;right:16px;bottom:16px;z-index:60;background:var(--hl);color:#241a00;padding:12px 20px;border-radius:99px;font-weight:700;cursor:pointer}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style></head><body>
+<div id="bar"></div>
+<div class="hero"><div><h1>Polygraphy &amp; Lie Detection</h1><p>Lie detection basics, ordeals and other methods, psychology of lying, polygraph history, the instrument, examination procedure, chart marking and interpretation, question types, and tests. Then drill 100 flashcards.</p></div></div>
+<nav class="tiles">
+<a class="tile" href="#s1" style="--k:var(--c1)"><b>1</b><span>Basics &amp; theory</span></a>
+<a class="tile" href="#s2" style="--k:var(--c2)"><b>2</b><span>Methods &amp; ordeals</span></a>
+<a class="tile" href="#s3" style="--k:var(--c3)"><b>3</b><span>Psychology of lying</span></a>
+<a class="tile" href="#s4" style="--k:var(--c4)"><b>4</b><span>History</span></a>
+<a class="tile" href="#s5" style="--k:var(--c5)"><b>5</b><span>The instrument</span></a>
+<a class="tile" href="#s6" style="--k:var(--c1)"><b>6</b><span>Examination</span></a>
+<a class="tile" href="#s7" style="--k:var(--c2)"><b>7</b><span>Charts &amp; questions</span></a>
+<a class="tile" href="#fcs" style="--k:var(--c3)"><b>⚡</b><span>100 flashcards</span></a></nav>
+<div class="wrap">
+<aside id="side"><input id="q" type="search" placeholder="Search topics…"><div id="tree"></div><button id="tb">Dark / light</button></aside>
+<main>
+
+<section class="lesson" id="s1" style="--k:var(--c1)" data-t="1 · Basics & theory"><div class="lh"><div class="num">1</div><div><h2>Basics &amp; theory</h2><p>Definitions, stimulus–response, objectives, limits</p></div></div>
+<h3>Key definitions</h3>
+<div class="big"><small>Polygraphy</small>The scientific detection of deception through the use or aid of a polygraph. <b>Polygraph</b> = Greek <i>poly</i> (many) + <i>graphos</i> (writings): an instrument recording changes in blood pressure/pulse, respiration and galvanic skin reflex (GSR) as signs of emotional excitement, especially lying.</div>
+<dl><div><dt>Lie detection</dt><dd>Recording a person’s psycho-physiological reactions while questioned, with scientific interpretation by trained experts.</dd></div><div><dt>Psychophysiology</dt><dd>Study of the nervous system and bodily reactions influenced by mental responses to a stimulus.</dd></div><div><dt>Deception / detection</dt><dd>Deceiving or misleading by lying / discovering something hidden.</dd></div><div><dt>Lying</dt><dd>Creating a false or misleading impression to wrongfully affect another’s acts, opinion or affection; by words, or by acts, feigns, ruses, marks and symbols.</dd></div><div><dt>Emotion / fear / heredity</dt><dd>Acute disturbance of the whole individual / response to danger beyond one’s defensive power / transmission of traits from parents to offspring.</dd></div><div><dt>Normal tracing</dt><dd>Tracing produced when an irrelevant question is asked.</dd></div><div><dt>Dicrotic notch</dt><dd>Short horizontal line on the cardio tracing in the middle of the diastolic stem.</dd></div><div><dt>Chart / polygram</dt><dd>Composite record of pneumograph, galvanograph and cardiosphygmograph tracings from one series of questions.</dd></div></dl>
+<h3>Stimulus–response theory</h3>
+<div class="tw"><table><thead><tr><th>Term</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Stimulus</td><td>Force from the environment that excites receptors (a question acting as a stressor)</td></tr>
+<tr><td>Reaction</td><td>Activity aroused by a stimulus; mental, psychological</td></tr>
+<tr><td>Response</td><td>Muscular or glandular reaction; physiological (faster breathing, palpitation)</td></tr>
+<tr><td>Specific response</td><td>Response to a particular question that deviates from the norm (sweating, nervousness)</td></tr>
+<tr><td>Baseline</td><td>Established normal level; changes from it are presumed to show emotional reaction when lying</td></tr></tbody></table></div>
+<h3>Examination basics</h3>
+<ul class="b"><li><b>Subject:</b> suspect, complainant, witness, victim, relative, or job applicant. <b>Examiner/polygraphist:</b> conducts the test.</li><li><b>Admission:</b> self-incriminating statement short of guilt. <b>Confession:</b> voluntary acknowledgement of guilt with circumstances. The ultimate objective is to obtain either.</li><li>Questions are answerable by yes or no. Accuracy relies on the competency of the examiner. <b>Cardinal rule:</b> objectivity over subjectivity.</li><li><b>Theory:</b> when a mentally normal person lies, recordable physiological changes occur.</li><li><b>Uses:</b> criminal investigation, pre-employment screening, periodic integrity checks, claim verification, loyalty test, promotion.</li><li><b>In investigation:</b> eliminate innocent subjects, recognize fabricated complaints, determine veracity, narrow inquiry, locate fruits of the crime, gather information from reluctant witnesses.</li><li><b>Limitations:</b> only for a willing subject; result is not accepted as court evidence; interpretation may vary.</li></ul></section>
+
+<section class="lesson" id="s2" style="--k:var(--c2)" data-t="2 · Methods & ordeals"><div class="lh"><div class="num">2</div><div><h2>Methods &amp; ordeals</h2><p>Ancient ordeals, observation, drugs, hypnotism, word association</p></div></div>
+<h3>Trial by ordeal</h3>
+<p><b>Ordeal</b> (Latin <i>dei indicum</i>, “miraculous decisions”): the accused is exposed to physical danger supposedly harmless if innocent. It rested on religious and superstitious belief, not psychology, and lasted to the late 16th century.</p>
+<div class="tw"><table><thead><tr><th>Ordeal</th><th>How it worked</th></tr></thead><tbody>
+<tr><td>Red hot iron</td><td>Tongue to hot iron nine times (Rajmal, North Bengal); burned means death</td></tr>
+<tr><td>Balance</td><td>Accuser and accused on a scale (India); the lighter is acquitted</td></tr>
+<tr><td>Boiling water</td><td>Arm into the pot to the elbow (Africa); blisters mark the thief</td></tr>
+<tr><td>Rice chewing</td><td>“Sathee” rice (India); blood in saliva, swollen mouth corner or trembling means liar</td></tr>
+<tr><td>Red water</td><td>Eastern Africa; fast 12 hours, swallow rice and emetic; coughing it up means guilty</td></tr>
+<tr><td>Combat</td><td>Loser is guilty; only legal ordeal in England under Henry III; champions could be hired (<i>Ivanhoe</i>)</td></tr>
+<tr><td>Corsned</td><td>Swallow a morsel of bread; choking means guilt</td></tr>
+<tr><td>Heat and fire / needle / tiger / cross / waxen shirt</td><td>Walk through fire; red-hot needle through lips (Wanaka, East Africa); tiger spares the innocent (Siam); endure arms crossed before 3 adjudicators; wax-covered cloth over coals</td></tr>
+<tr><td>Donkey’s tail</td><td>Donkey alone in a room; if it cries, guilt is presumed</td></tr>
+<tr><td>By country</td><td>Burma: candles, the first to burn out is the liar. Borneo: shellfish, first to move wins. Greece: spinning axe. Nigeria: cock’s feather through the tongue. Madagascar: “tangena” poison fruit juice</td></tr></tbody></table></div>
+<h3>Observation and police methods</h3>
+<ul class="b"><li><b>Observation:</b> facial expressions, postural reactions, stimulus–reaction. Signs of emotional tension: color change, sweating, avoiding eye contact, heart rate change, holding breath, dry mouth and throat, unusual behavior.</li><li><b>Internal guilt response:</b> quickening palpitation, gripping intestine, dry mouth, sinking stomach, urge to swallow.</li><li><b>External guilt response:</b> uneasy hands and feet, avoiding eye contact, monotone voice, fidgeting, Adam’s apple movement; eyes dilated, blushing or paling, lip twitching, excessive winking.</li><li><b>5W1H:</b> who, what, where, when, why, how. <b>3 I’s:</b> information, interview/interrogation, instrumentation.</li></ul>
+<h3>Other deception detection methods</h3>
+<dl><div><dt>Truth serum</dt><dd>Dr. Edward Mandel House. A misnomer: a drug (hyoscine hydrobromide) given until delirium. Narcoanalysis uses sodium amytal or pentothal, which depress the brain’s inhibitory mechanism.</dd></div><div><dt>Why not advised</dt><dd>Dangerous, unreliable, removes free will, inadmissible in court (though useful for further investigation).</dd></div><div><dt>Intoxication</dt><dd>Alcohol “inhibits the inhibitor”; <i>in vino veritas</i>. Inadmissible unless the subject later recalls and confirms the statement.</dd></div><div><dt>Stimulus association</dt><dd>Stimulus words, objects or persons; time interval and reaction are studied.</dd></div><div><dt>Hypnotism (1778)</dt><dd>Franz Anton Mesmer, animal magnetism. Needs the subject’s cooperation; inadmissible; strong-willed professionals resist.</dd></div><div><dt>Word association</dt><dd>Sir Francis Galton (1879); Carl Jung (Swiss, 1875–1961) developed it. The key factor is response time.</dd></div><div><dt>Psychological Stress Evaluator</dt><dd>Displays inaudible voice micro-tremors (8–14 cycles/sec).</dd></div></dl></section>
+
+<section class="lesson" id="s3" style="--k:var(--c3)" data-t="3 · Psychology of lying"><div class="lh"><div class="num">3</div><div><h2>Psychology of lying</h2><p>Why people lie, kinds and types of lies, types of liars</p></div></div>
+<h3>Why lying shows in the body</h3>
+<p>Lying is an emotional experience. Fear of detection and being penalized triggers automatic, self-regulating changes beyond conscious control, which the polygraph records. <b>Reasons for lying:</b> avoid trouble with the law, avoid hurting feelings, personal gain, avoid embarrassment, a joke.</p>
+<h3>Kinds, types of lies</h3>
+<div class="tw"><table><thead><tr><th>Kind</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>White / benign</td><td>Most common; protects harmony at home, office, friendship</td></tr>
+<tr><td>Pathological</td><td>By persons who cannot distinguish right from wrong</td></tr>
+<tr><td>Red</td><td>Political; Communist propaganda, brain-washing, blackmail via espionage and treason</td></tr>
+<tr><td>Black</td><td>Used to deceive others</td></tr>
+<tr><td>Malicious / judicious</td><td>Unjustifiable lie to mislead justice; perjury (liar lawyers, false witnesses)</td></tr></tbody></table></div>
+<dl><div><dt>Direct denial</dt><dd>“I did not do it!”</dd></div><div><dt>Omission</dt><dd>Truth with troublesome details left out.</dd></div><div><dt>Fabrication</dt><dd>Most difficult lie to tell in an interview.</dd></div><div><dt>Minimization</dt><dd>Admits it but downplays (“only slapped” after a broken nose).</dd></div><div><dt>Exaggeration</dt><dd>Inflates for advantage, e.g., on resumes; found via inconsistencies.</dd></div></dl>
+<h3>Types of liars</h3>
+<dl><div><dt>Panic</dt><dd>Lies to avoid the consequences of confession.</dd></div><div><dt>Occupational</dt><dd>Lies when it pays more than the truth.</dd></div><div><dt>Tournament</dt><dd>Loves the challenge of not being caught.</dd></div><div><dt>Psychopathic</dt><dd>Most difficult; no conscience, regret or guilt.</dd></div><div><dt>Ethnological</dt><dd>Taught not to be a squealer (underworld gangs).</dd></div><div><dt>Pathological</dt><dd>Cannot tell right from wrong; sick mind.</dd></div><div><dt>Black liar</dt><dd>Always pretends about what he is.</dd></div></dl></section>
+
+<section class="lesson" id="s4" style="--k:var(--c4)" data-t="4 · History"><div class="lh"><div class="num">4</div><div><h2>History of polygraphy</h2><p>Pioneers and the Philippine experience</p></div></div>
+<h3>Pioneers</h3>
+<div class="tw"><table><thead><tr><th>Who / when</th><th>Contribution</th></tr></thead><tbody>
+<tr><td>Daniel Defoe (1730)</td><td>Recommended taking the pulse to identify a criminal</td></tr>
+<tr><td>Cesare Lombroso (1895)</td><td>Italian criminologist; hydrosphygmograph; first to use an instrument (blood pressure) for lie detection</td></tr>
+<tr><td>Angelo Mosso (1895)</td><td>Sphygmomanometer and scientific cradle; fear as sign of deception</td></tr>
+<tr><td>George Sticker (1897); Otto Veraguth (1907)</td><td>Galvanograph for deception; coined “psychogalvanic reflex”</td></tr>
+<tr><td>Sir James MacKenzie (1908)</td><td>“The Ink Polygraph” for medical research</td></tr>
+<tr><td>Vittorio Benussi (1914)</td><td>Pneumograph; inspiration–expiration ratio changes in deception</td></tr>
+<tr><td>Harold Burtt (1918)</td><td>Confirmed Benussi; blood pressure more diagnostic than respiration</td></tr>
+<tr><td>John A. Larson (1921)</td><td>Continuous BP, pulse, respiration recording (“Bread Lie Detector”); Father of Scientific Lie Detection</td></tr>
+<tr><td>William M. Marston</td><td>“Father of Modern Polygraphy”; systolic BP test, galvanometer; creator of Wonder Woman</td></tr>
+<tr><td>Leonarde Keeler (1926)</td><td>Added GSR; kymograph; card test; question formulation</td></tr>
+<tr><td>John E. Reid (1945)</td><td>Reid polygraph; control question technique; muscular resistance</td></tr>
+<tr><td>Cleve Backster</td><td>Numerical scoring; standardized quantitative technique; SKY questions</td></tr></tbody></table></div>
+<div class="note"><b>Philippines:</b> introduced in 1945 by the Military Police Crime Laboratory (Jose Navarro, Conrado Dumlao trained in the U.S.). In 1950 the NBI sent Agustin Patricio to the Keeler Polygraph Institute; Atty. Manuel Roura succeeded him as chief of the NBI Polygraph Division.</div></section>
+
+<section class="lesson" id="s5" style="--k:var(--c5)" data-t="5 · The instrument"><div class="lh"><div class="num">5</div><div><h2>The instrument</h2><p>Pneumograph, cardiosphygmograph, galvanograph, keymograph</p></div></div>
+<h3>Major components</h3>
+<div class="tw"><table><thead><tr><th>Component</th><th>Measures / placement</th></tr></thead><tbody>
+<tr><td>Pneumograph</td><td>Respiration. Corrugated rubber tube (about 7–10 inches) around chest and abdomen; two top upper pens (thoracic and abdominal); beaded chain locks the tube</td></tr>
+<tr><td>Cardiosphygmograph</td><td>Blood pressure and pulse. Cuff on the upper right arm over the brachial artery; bottom (fourth) pen; inflated by hand pump to about 60–80 mm Hg. Parts: sphygmomanometer, pump bulb, resonance control, centering control, vent, 5-inch pen</td></tr>
+<tr><td>Galvanograph</td><td>Skin resistance (GSR/electrodermal). Electrodes on left index and ring fingers; longest, third pen; amplifier, 7-inch pen</td></tr>
+<tr><td>Keymograph</td><td>Chart-drive unit; synchronous motor moves paper 6 to 12 inches per minute</td></tr></tbody></table></div>
+<ul class="b"><li><b>Blood pressure terms:</b> systolic = upward, heart contraction; diastolic = downward, heart relaxed; dicrotic notch on the diastolic stem.</li><li><b>Chart paper:</b> about 100 ft rolls; heavy vertical lines every ½ inch = 5 seconds; pulse rate per minute = beats in one division × 12. Parts: rubber roller, paper rail guide, cutter bar, pen table, synchronous motor.</li><li><b>Remember:</b> the last to attach is the first to detach. The instrumental test runs 5 to 8 minutes.</li><li><b>Models:</b> Lafayette conventional (5 pens), Stoelting conventional (4 pens), LX 4000 computerized, handheld.</li></ul></section>
+
+<section class="lesson" id="s6" style="--k:var(--c1)" data-t="6 · Examination"><div class="lh"><div class="num">6</div><div><h2>Examination procedure</h2><p>Request, four phases, pre-test conditions, room, chart marking</p></div></div>
+<h3>Requests and phases</h3>
+<ul class="b"><li>Requires a formal written request (PNP, AFP, other agencies, court order, or a private individual approved by the Director, PNPCL), hand-carried by the investigator-on-case with the investigation report, sworn statements, crime scene sketch and background data. Telephone requests only in emergencies; radio requests state the case, number of subjects and location.</li><li>Only for offenses under the RPC, Articles of War or special laws; civil cases only by court or higher-headquarters order. Cases already examined by another agency are not accepted unless directed.</li></ul>
+<div class="tw"><table><thead><tr><th>Phase</th><th>What happens</th></tr></thead><tbody>
+<tr><td>1 Initial interview</td><td>With the investigator: obtain and evaluate case facts, decide areas to ask about</td></tr>
+<tr><td>2 Pre-test interview</td><td>With the subject, 20–30 minutes: constitutional rights (silence, informed of accusation, counsel, against self-incrimination), written consent, personal data, suitability, observation, psychological preparation</td></tr>
+<tr><td>3 Instrumental test</td><td>Attach transducers, give instructions, stimulate and condition, preliminary evaluation</td></tr>
+<tr><td>4 Post-test interview</td><td>If deception is indicated: short interrogation for admission or confession; if truthful: released cordially</td></tr></tbody></table></div>
+<h3>Conditions and room</h3>
+<ul class="b"><li>No medication 2 days before; not hungry; no smoking 2 hours before; no alcohol 12 hours before; at least 5 hours of sleep; calm; no tight clothing; no abuse.</li><li>A pregnant or menstruating female subject is not tested. Postpone for insufficient sleep or temporary illness.</li><li>Room: quiet, private, semi-soundproof, plain and ventilated, with an adjoining observation room with a one-way mirror.</li></ul>
+<h3>Chart markings</h3>
+<div class="tw"><table><thead><tr><th>Mark</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>x/60/1.5 A</td><td>First marking: 60 mm Hg, 1.5 ohms GSR sensitivity, A or M = automatic or manual galvo amplifier</td></tr>
+<tr><td>X / XX</td><td>Start / end of test</td></tr>
+<tr><td>ll</td><td>Where each question begins and ends (stimulus marks)</td></tr>
+<tr><td>+ / −</td><td>YES / NO answer</td></tr>
+<tr><td>A, M, T, R, C</td><td>Adjustment, movement, subject talked, request for repetition, cough</td></tr>
+<tr><td>N, S, L, Y, B</td><td>Noise, sigh, laugh, yawn, belch</td></tr>
+<tr><td>C+ / C−, PJ, CT, SN, BI, OS, IM, IS</td><td>Galvo sensitivity up/down, paper jam, clearing throat, sniff, breathing instruction, outside stimulus, movement instruction, ink stop</td></tr></tbody></table></div></section>
+
+<section class="lesson" id="s7" style="--k:var(--c2)" data-t="7 · Charts & questions"><div class="lh"><div class="num">7</div><div><h2>Charts, questions &amp; tests</h2><p>Interpretation rules, question types, test types, court</p></div></div>
+<h3>Interpretation rules</h3>
+<ul class="b"><li><b>General rule:</b> there must be a specific response; it must deviate from the norm; it must appear in at least two charts; the best sign of deception is a specific response in all three tracings at once.</li><li><b>Legal rule:</b> specific responses appear consistently on relevant questions in two or more charts.</li><li><b>Deception signs:</b> galvanograph (double saddle, rise from baseline, vertical rise, long duration, plunging); cardio (slow pulse, roller-coaster shape); respiration (blocking, suppression, staircase suppression, baseline rise).</li></ul>
+<h3>Question formulation and types</h3>
+<p>Questions must be simple, direct, in language the subject understands, answerable by yes or no, about one offense only; no legal terms (rape, murder), accusations, inferences or references to religion or race.</p>
+<div class="tw"><table><thead><tr><th>Type</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>Irrelevant</td><td>No bearing on the case; establishes the norm and lowers excitement</td></tr>
+<tr><td>Relevant</td><td>Key questions to detect deception; strong (primary) vs. weak (secondary, guilty knowledge)</td></tr>
+<tr><td>Sacrifice (DYAT)</td><td>Absorbs the response to the first relevant question (“Do you intend to answer truthfully?”)</td></tr>
+<tr><td>Knowledge (DYK)</td><td>Does the subject know the offender or evidence location</td></tr>
+<tr><td>Evidence connecting</td><td>Stimulates a guilty subject with evidence found at the scene</td></tr>
+<tr><td>Control (probable lie)</td><td>Gets a response from the innocent; primary (known lie, 3–5 years before) or secondary (up to the present)</td></tr>
+<tr><td>Symptomatic</td><td>Detects an outside issue worrying the subject</td></tr>
+<tr><td>SKY (Backster)</td><td>Suspect, Know, You; “Did you steal…?”</td></tr>
+<tr><td>Check / fishing expedition</td><td>Last lie-test question about truthfulness / routine questions to vagrants with no known offense</td></tr></tbody></table></div>
+<h3>Types of tests</h3>
+<dl><div><dt>General question test (GQT)</dt><dd>Planned sequence of irrelevant, relevant and control questions to compare responses; at least five tests when deception is indicated.</dd></div><div><dt>Card test</dt><dd>Subject picks one of seven numbered cards and says “No” to all; used to find the lie and stimulate lying subjects.</dd></div><div><dt>Peak of tension</dt><dd>Only one question relates to the case; used when only the offender knows the details.</dd></div><div><dt>Silent answer</dt><dd>Confirmatory; the subject answers silently.</dd></div><div><dt>Guilt complex</dt><dd>Fictitious similar incident for an overly responsive subject; diagnostic for post-test interrogation.</dd></div><div><dt>Mixed question</dt><dd>Rearranged first and third test questions to rule out accidental responses.</dd></div></dl>
+<h3>Physiology, admissibility, accuracy</h3>
+<ul class="b"><li>The <b>hypothalamus</b> triggers the physiological changes (fight-or-flight): higher pulse and blood pressure.</li><li>The result is <b>not conclusive</b> (it is an opinion). It can be admitted by stipulation, by court order, or when the defense shows the examiner tested the accused at the investigator’s request and offers the report.</li><li>Accuracy factors: the instrument, the subject’s condition, the room, the examiner’s qualifications. With a trained examiner and established procedure, accuracy is generally 85–95% for specific-issue investigations.</li></ul></section>
+
+<section class="lesson" id="fcs" style="--k:var(--c3)" data-t="⚡ · Flashcards"><div class="lh"><div class="num">⚡</div><div><h2>100 flashcards</h2><p>Click the card or press Space to flip; ← → to move</p></div></div>
+<h3>Flashcard deck</h3>
+<div class="fx"><span id="cnt"></span><button id="sh">Shuffle</button><button id="ag">Review “again” only</button></div>
+<div class="scene"><button id="card" aria-label="Flip card"><div class="fc ft"><small id="st"></small><span id="qq"></span></div><div class="fc bk"><small>Answer</small><span id="aa"></span></div></button></div>
+<div class="fn"><button id="pv">← Prev</button><button class="no" id="no">Again</button><button class="yes" id="ye">Got it</button><button id="nx">Next →</button></div>
+<p id="sc" style="text-align:center;color:var(--mut);font-size:.88rem"></p></section>
+</main></div>
+<button id="tg">☰ Topics</button>
+<footer>Study aid built from your Polygraphy slides (299 slides). Verify details against your own handout.</footer>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const D=`Lie detection?|Recording a person’s psycho-physiological reactions while questioned, with scientific interpretation by trained experts.
+Psychophysiology?|Study of the nervous system and bodily reactions influenced by mental responses to a stimulus.
+Polygraphy?|The scientific detection of deception through the use or aid of a polygraph.
+Origin of the word polygraph?|Greek poly (many) + graphos (writings).
+What does a polygraph record?|Blood pressure/pulse, respiration and galvanic skin reflex (GSR) as signs of emotional excitement, especially lying.
+Deception vs. detection?|Deception: deceiving or misleading by lying. Detection: discovering something hidden or obscured.
+Lying?|Creating a false or misleading impression to wrongfully affect another’s acts, opinion or affection.
+Emotion vs. fear?|Emotion: acute disturbance of the whole individual. Fear: response to danger beyond one’s defensive power.
+Normal tracing?|Tracing produced when an irrelevant question is asked.
+Dicrotic notch?|Short horizontal line on the cardio tracing in the middle of the diastolic stem.
+Chart or polygram?|Composite record of pneumograph, galvanograph and cardiosphygmograph tracings from one series of questions.
+Stimulus?|Force from the environment that excites receptors; a question acting as a stressor.
+Reaction?|Any activity aroused by a stimulus; mental, psychological.
+Response?|Muscular or glandular reaction to stimulation; physiological, e.g., faster breathing and heartbeat.
+Specific response?|Response to a particular question that deviates from the norm.
+Subject?|Anyone undergoing the exam: suspect, complainant, witness, victim, relative, or job applicant.
+Polygraph examiner?|The polygraphist or expert who conducts the examination.
+Admission?|Self-incriminating statement that falls short of acknowledging guilt.
+Confession?|Voluntary statement to proper authorities acknowledging guilt and disclosing the circumstances.
+Accuracy of the polygraph relies on?|The competency of the examiner.
+Principle behind the polygraph?|Conscious mental effort to deceive produces involuntary physiological changes.
+Baseline?|Established normal level; changes from it are presumed to show emotional reaction when lying.
+Polygraph uses in investigation?|Eliminate innocents, spot fabricated complaints, determine veracity, narrow inquiry, locate fruits of the crime, gather information.
+Limitations of the polygraph?|Only for willing subjects; result not accepted as court evidence; interpretation may vary.
+Ordeal?|From Latin dei indicum, “miraculous decisions”; ancient trial exposing the accused to physical danger supposedly harmless if innocent.
+Basis of ancient ordeals?|Religious and superstitious belief, not psychology; used until the late 16th century.
+Red hot iron ordeal?|Tongue to hot iron nine times (Rajmal, North Bengal); if burned, death.
+Ordeal by balance?|Accuser and accused on a scale (India); the lighter is acquitted.
+Ordeal by rice chewing?|“Sathee” rice (India); blood in saliva, swollen mouth corner or trembling means liar.
+Ordeal by combat?|Loser is guilty; only legal ordeal in England under Henry III; champions could be hired (Ivanhoe).
+Ordeal of the donkey’s tail?|Donkey alone in a room; if it cries out, guilt is presumed.
+Burma ordeal?|Candle lighting: the candle that burns out first marks the guilty or liar.
+Observation methods?|Facial expressions, postural reactions, and the stimulus–reaction (cause–effect) process.
+Signs of emotional tension?|Color change, sweating, avoiding eye contact, heart rate change, holding breath, dry mouth and throat, unusual behavior.
+Internal guilt response?|Quickening palpitation, gripping intestine, dry mouth, sinking stomach, urge to swallow saliva.
+External guilt response?|Uneasy hands and feet, avoiding eye contact, monotone voice, fidgeting, excessive Adam’s apple movement.
+Truth serum?|A misnomer: a drug (hyoscine hydrobromide) given until delirium; introduced by Dr. Edward Mandel House.
+Narcoanalysis?|Sodium amytal or pentothal depress the brain’s inhibitory mechanism so the subject talks freely.
+Why are drugs not advised?|Dangerous, unreliable, remove free will, and the information is inadmissible in court.
+Intoxication method?|Alcohol “inhibits the inhibitor”; “in vino veritas”; statements generally inadmissible.
+Hypnotism method?|Franz Anton Mesmer (1778); animal magnetism; needs cooperation; inadmissible.
+Word association test?|Galton (1879), developed by Carl Jung; key factor is response time to stimulus words.
+Psychological Stress Evaluator?|Displays inaudible voice micro-tremors (8–14 cycles/sec).
+Why does lying cause body changes?|Fear of detection triggers automatic, self-regulating changes beyond conscious control.
+Reasons people lie?|Avoid trouble with the law, avoid hurting feelings, gain, avoid embarrassment, a joke.
+Kinds of lies?|White/benign, pathological, red, black, malicious/judicious.
+White lie?|Most common; protects harmony in friendship, home and office.
+Red lie?|Political lie; Communist propaganda, brain-washing, blackmail via espionage and treason.
+Malicious or judicious lie?|Unjustifiable lie to mislead justice; leads to perjury (liar lawyers, false witnesses).
+Types of lies?|Direct denial, omission, fabrication, minimization, exaggeration.
+Lie of minimization?|Admits it happened but downplays it (“only slapped” after a broken nose).
+Types of liars?|Panic, occupational, tournament, psychopathic, ethnological, pathological, black.
+Psychopathic liar?|Most difficult; no conscience, regret or guilt.
+Panic liar?|Lies to avoid the consequences of confession.
+Sir James MacKenzie?|Scottish cardiologist; “The Ink Polygraph” (1908) for medical research.
+Cesare Lombroso?|Italian criminologist; hydrosphygmograph; first to use an instrument (blood pressure) for lie detection.
+Vittorio Benussi (1914)?|Pneumograph; noted inspiration–expiration ratio changes in deception.
+Harold Burtt (1918)?|Confirmed Benussi; found blood pressure more diagnostic than respiration.
+William Moulton Marston?|“Father of Modern Polygraphy”; systolic blood pressure test and galvanometer; creator of Wonder Woman.
+John A. Larson (1921)?|Father of Scientific Lie Detection; continuous BP, pulse, respiration recording (“Bread Lie Detector”).
+Leonarde Keeler (1926)?|Added GSR; kymograph; card test; method of question formulation.
+John E. Reid?|Reid polygraph (1945); control question technique; muscular resistance.
+Cleve Backster?|Numerical scoring, standardized quantitative technique, SKY questions.
+Polygraph in the Philippines?|Introduced 1945 by the Military Police Crime Laboratory; NBI sent Agustin Patricio to the Keeler institute in 1950.
+Four major polygraph components?|Pneumograph, cardiosphygmograph, galvanograph, keymograph.
+Pneumograph?|Records respiration; corrugated tube around chest and abdomen; the two top upper pens.
+Cardiosphygmograph?|Blood pressure and pulse; cuff on the upper right arm over the brachial artery; bottom pen; about 60–80 mm Hg.
+Galvanograph?|Skin resistance (GSR); electrodes on left index and ring fingers; longest, third pen.
+Keymograph?|Chart-drive unit; synchronous motor moves paper 6 to 12 inches per minute.
+Systolic vs. diastolic?|Systolic: upward, heart contracts. Diastolic: downward, heart relaxed.
+Pulse rate from the chart?|Beats counted in one division × 12.
+Attachment rule and test length?|Last to attach is first to detach; the test lasts about 5 to 8 minutes.
+Cardinal rule of the examiner?|Objectivity over subjectivity.
+Four phases of the examination?|Initial interview, pre-test interview, instrumental test, post-test interview.
+Pre-test interview?|With the subject, 20–30 minutes: rights, written consent, personal data, suitability, preparation.
+Rights told in the pre-test?|Silence, being informed of the accusation, counsel, and against self-incrimination.
+Pre-test conditions?|No medication 2 days, no smoking 2 hours, no alcohol 12 hours, at least 5 hours of sleep, calm.
+Who is not tested?|A pregnant or menstruating female subject; postpone for illness or lack of sleep.
+Examination room?|Quiet, private, semi-soundproof, plain, ventilated, with an observation room and one-way mirror.
+Post-test interview?|If deception is indicated, short interrogation for admission or confession; if truthful, released cordially.
+Chart marking symbols X and XX?|X: start of test. XX: end of test.
+Other chart marks?|+ yes, − no, M movement, T talked, R repetition request, C cough, N noise, S sigh, A adjustment.
+General rule of interpretation?|Specific response, deviating from the norm, in at least two charts; best sign is all three tracings at once.
+Legal rule of interpretation?|Specific responses appear consistently on relevant questions in two or more charts.
+Rules for formulating questions?|Simple, direct, yes/no, one offense, no legal terms, no accusation, no inference, no religion or race.
+Irrelevant vs. relevant questions?|Irrelevant: no bearing on the case, sets the norm. Relevant: key questions to detect deception.
+Control question?|Probable-lie question that gets a response from the innocent; primary (known lie, 3–5 years back) or secondary.
+Sacrifice (DYAT), knowledge (DYK), evidence connecting?|Absorb first-response excitement; test knowledge of offender or evidence; stimulate the guilty with scene evidence.
+Symptomatic and SKY questions?|Symptomatic: outside-issue worry. SKY (Backster): Suspect, Know, You.
+General question test and card test?|GQT: planned irrelevant–relevant–control sequence. Card test: pick one of seven cards, answer “No” to all.
+Peak of tension, silent answer, guilt complex?|Only one question relevant; silent confirmatory answers; fictitious similar incident for an overly responsive subject.
+Court use and accuracy of the polygraph?|Not conclusive (an opinion); admitted by stipulation or court order; accuracy generally 85–95% with trained examiners.
+Ordeal of the tiger?|A tiger is set loose on accuser and accused; the one spared is innocent (Siam).
+Ordeal by red hot needle?|Needle drawn through the lips; blisters mean guilty (Wanaka, East Africa).
+Daniel Defoe (1730)?|Recommended taking the pulse as a way to identify a criminal.
+Angelo Mosso (1895)?|Developed a sphygmomanometer and scientific cradle; stressed fear as a sign of deception.
+Purpose of a polygraph examination?|Determine truth or deception from emotional disturbance on questions relevant to the case.
+Uses of the polygraph?|Criminal investigation, pre-employment screening, periodic integrity checks, claim verification, loyalty test, promotion.
+Hypothalamus?|Origin of the physiological changes; sends fight-or-flight messages, raising pulse rate and blood pressure.
+Check question and fishing expedition question?|Check: last lie-test question on truthfulness. Fishing: routine questions to vagrants when no offense is known.`.split('\n').map(l=>l.split('|'));
+let ord=D.map((_,i)=>i),i=0,known={};
+const draw=()=>{const c=D[ord[i]];$('#card').classList.remove('f');$('#qq').textContent=c[0];$('#aa').textContent=c[1];$('#cnt').textContent='Card '+(i+1)+' of '+ord.length;$('#st').textContent=known[ord[i]]==1?'Got it':known[ord[i]]==2?'Again':'';
+$('#sc').textContent='Got it: '+Object.values(known).filter(v=>v==1).length+' · Again: '+Object.values(known).filter(v=>v==2).length+' · Total: '+D.length};
+const mv=d=>{i=(i+d+ord.length)%ord.length;draw()},mark=v=>{known[ord[i]]=v;mv(1)};
+$('#card').onclick=()=>$('#card').classList.toggle('f');$('#nx').onclick=()=>mv(1);$('#pv').onclick=()=>mv(-1);$('#ye').onclick=()=>mark(1);$('#no').onclick=()=>mark(2);
+$('#sh').onclick=()=>{ord=D.map((_,k)=>k);for(let n=ord.length-1;n>0;n--){const j=Math.random()*(n+1)|0;[ord[n],ord[j]]=[ord[j],ord[n]]}i=0;$('#ag').classList.remove('on');draw()};
+$('#ag').onclick=()=>{const on=$('#ag').classList.toggle('on');ord=on?D.map((_,k)=>k).filter(k=>known[k]==2):D.map((_,k)=>k);if(!ord.length){$('#ag').classList.remove('on');ord=D.map((_,k)=>k)}i=0;draw()};
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')mv(1);if(e.key==='ArrowLeft')mv(-1);if(e.key===' '&&e.target.id!=='card'){e.preventDefault();$('#card').classList.toggle('f')}});
+draw();
+const tree=$('#tree'),gs=[];
+$$('section.lesson').forEach(s=>{const g=document.createElement('div');g.className='g';g.setAttribute('style',s.getAttribute('style'));const b=document.createElement('button');b.innerHTML='<i></i>'+s.dataset.t.split(' · ')[1];const ul=document.createElement('ul');g.append(b,ul);tree.append(g);b.onclick=()=>g.classList.toggle('open');
+$$('#'+s.id+' h3').forEach((h,n)=>{h.id=s.id+'-'+n;const li=document.createElement('li');li.innerHTML='<a href="#'+h.id+'">'+h.textContent+'</a>';ul.append(li);gs.push({a:li.firstChild,h,g})})});
+gs[0].g.classList.add('open');
+const spy=()=>{$('#bar').style.width=scrollY/(document.documentElement.scrollHeight-innerHeight)*100+'%';let on=null;for(const x of gs){if(x.h.getBoundingClientRect().top<160)on=x;else break}
+if(on){gs.forEach(x=>x.a.classList.toggle('on',x===on));if(!$('#q').value)$$('.g').forEach(g=>g.classList.toggle('open',g===on.g))}};addEventListener('scroll',spy,{passive:true});spy();
+$('#q').oninput=e=>{const v=e.target.value.toLowerCase().trim();$$('.g').forEach(g=>{let hit=0;g.querySelectorAll('li').forEach(li=>{const x=gs.find(o=>o.a===li.firstChild);const m=!v||li.textContent.toLowerCase().includes(v)||x.h.parentElement.textContent.toLowerCase().includes(v);li.classList.toggle('hide',!m);if(m)hit=1});g.classList.toggle('hide',!hit);if(v&&hit)g.classList.add('open')})};
+$('#tb').onclick=()=>{const d=document.documentElement,dk=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;d.dataset.theme=dk?'light':'dark'};
+$('#tg').onclick=()=>$('#side').classList.add('open');
+$('#side').onclick=e=>{if(e.target.closest('a'))$('#side').classList.remove('open')};
+document.addEventListener('click',e=>{const s=$('#side');if(s.classList.contains('open')&&!s.contains(e.target)&&e.target.id!=='tg')s.classList.remove('open')});
+</script></body></html>
